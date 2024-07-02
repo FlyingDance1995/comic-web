@@ -9,7 +9,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "npm run build && vercel --prod"
+    "deploy": "npm run build && vercel --prod",
   },
   "dependencies": {
     "@nuxtjs/seo": "^2.0.0-rc.10",
