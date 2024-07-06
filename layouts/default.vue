@@ -74,6 +74,7 @@ watch(() => route.path, () => {
         <!--End Back To Top Button-->
         <CommonFooter/>
     </div>
-    <!--loading-->
+
+    <!-- loading -->
     <CommonLoadingModal/>
 </template>
