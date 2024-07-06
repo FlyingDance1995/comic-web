@@ -1,6 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
+    nitro: {
+        storage: {
+            data: {
+            driver: 'vercelKV'
+            /* Vercel KV driver options */
+            }
+        }
+    },
     devtools: {enabled: false},
     css: ['~/assets/css/main.css'],
     app: {
