@@ -1,18 +1,23 @@
+// {
+//     "version": 2,
+//     "builds": [
+//       {
+//         "src": "nuxt.config.ts",
+//         "use": "@nuxtjs/vercel-builder",
+//         "config": {
+//           "serverFiles": ["server.ts"]
+//         }
+//       }
+//     ],
+//     "routes": [
+//       {
+//         "src": "/(.*)",
+//         "dest": "/"
+//       }
+//     ]
+//   }
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "nuxt.config.ts",
-        "use": "@nuxtjs/vercel-builder",
-        "config": {
-          "serverFiles": ["server.ts"]
-        }
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/"
-      }
-    ]
+    "github": {
+      "silent": true
+    }
   }
