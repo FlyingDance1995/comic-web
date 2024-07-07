@@ -9,10 +9,32 @@ export const useStoryStore = defineStore('story', {
   }),
 
   actions: {
-    async fetchStorys() {
+    async fetchStorys(params) {
       this.loading = true
       try {
-        const response = await axios.get('http://103.176.146.159:8498/api/story')
+        const response = await axios.get('http://103.176.146.159:8498/api/story', {})
+        this.storys = response.data.results
+      } catch (error) {
+        this.error = error
+      } finally {
+        this.loading = false
+      }
+    }
+  }
+})
+
+export const useStoryStore1 = defineStore('story', {
+  state: () => ({
+    storys: [],
+    loading: false,
+    error: null
+  }),
+
+  actions: {
+    async fetchStorys(params) {
+      this.loading = true
+      try {
+        const response = await axios.get('http://103.176.146.159:8498/api/story', {})
         this.storys = response.data.results
       } catch (error) {
         this.error = error
