@@ -155,17 +155,6 @@ export default defineNuxtConfig({
         "@nuxtjs/seo",
         '@pinia/nuxt',
     ],
-    nitro: {
-        // prerender: {
-        //     crawlLinks: true,
-        //     routes: [
-        //         '/',
-        //         '/sitemap.xml'
-        //     ],
-        //     ignore: ['/tak', '/konfiguration', '/checkout'],
-        // },
-        compressPublicAssets: true,
-    },
     site: {
         url: process.env.NUXT_PUBLIC_SITE_URL,
         name: 'MonkeyD',
@@ -181,7 +170,8 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            SITE_URL: process.env.NUXT_PUBLIC_SITE_URL
+            SITE_URL: process.env.NUXT_PUBLIC_SITE_URL,
+            apiEndpoint: process.env.NUXT_PUBLIC_API_BASE ?? 'http://103.176.146.159:8498',
         }
     }
 })
