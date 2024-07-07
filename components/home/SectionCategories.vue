@@ -29,7 +29,7 @@
                         <div v-for="(item, index) in category" :key="index" 
                                 class="col-6 col-sm-4 col-md-3">
                             <h4 class="item-category">
-                                <a :href="`https://monkeyd.vn/the-loai/${item.slug}.html`">
+                                <a :href="`http://localhost:3000/the-loai/${item.slug}.html`">
                                     <i class="bx bx-caret-right"></i> {{ item.name }} 
                                 </a>
                             </h4>

@@ -57,7 +57,7 @@
                                 <ul class="dropdown-menu scroll-menu ps ps--active-x ps--active-y ps--scrolling-y">
                                     <li v-for="(item, index) in category" :key="index">
                                         <a class="dropdown-item"
-                                            :href="`https://monkeyd.vn/the-loai/${item.slug}.html`">
+                                            :href="`http://localhost:3000/the-loai/${item.slug}.html`">
                                             <i class="bx bx-chevron-right"></i>{{ item.name }} 
                                         </a>
                                     </li>
