@@ -27,7 +27,7 @@ const page = 1;
 
                             <div class="text-center mb-4 pagination justify-content-center">
                                 <!-- Pagination -->
-                                <HomePagination :total="total" :page="page"/>
+                                <HomePagination :total="total" :page="page" :size="20"/>
                                 <!-- Pagination -->
                             </div>
                         </div>
