@@ -2,7 +2,7 @@
 import {useStoryStore} from '@/store/storys'
 
 const route = useRoute();
-const page = +route?.query?.page;
+const page = +route?.query?.page || 1;
 
 const storyStore = useStoryStore();
 await storyStore.fetchStorys({
