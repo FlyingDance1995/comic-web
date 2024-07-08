@@ -5,17 +5,14 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "start": "nuxt start",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "deploy": "npm run build && vercel --prod"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@nuxtjs/seo": "^2.0.0-rc.10",
     "@nuxtjs/sitemap": "^5.2.0",
     "@pinia/nuxt": "^0.5.1",
-    "@vercel/kv": "^1.0.1",
     "axios": "^1.7.2",
     "boxicons": "^2.1.4",
     "moment": "^2.30.1",
@@ -25,5 +22,6 @@
     "pinia": "^2.1.7",
     "vue": "^3.4.27",
     "vue-router": "^4.3.3"
-  }
+  },
+  "devDependencies": {}
 }

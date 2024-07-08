@@ -1,5 +1,5 @@
 <script setup>
-import {userDarkMode} from "@/composables/state.js";
+import {userDarkMode} from "@/composables/state";
 
 const {isDarkMode, toggleDarkMode} = userDarkMode();
 </script>
