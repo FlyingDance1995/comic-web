@@ -32,13 +32,13 @@ const { category, loading, error } = storeToRefs(categoryStore);
                     <div class="offcanvas-body">
                         <ul class="navbar-nav align-items-center flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link" href="https://monkeyd.vn">
+                                <a class="nav-link" href="/">
                                     <div class="menu-title d-flex align-items-center">Trang chủ</div>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="https://monkeyd.vn/truyen-moi.html">
+                                <a class="nav-link" href="/truyen-moi">
                                     <div class="menu-title d-flex align-items-center">Truyện mới</div>
                                 </a>
                             </li>
@@ -56,7 +56,7 @@ const { category, loading, error } = storeToRefs(categoryStore);
                                     style="overflow: auto !important;">
                                     <li v-for="(item, index) in category" :key="index">
                                         <a class="dropdown-item"
-                                            :href="`http://localhost:3000/the-loai/${item.slug}.html`">
+                                            :href="`/the-loai/${item.slug}`">
                                             <i class="bx bx-chevron-right"></i>{{ item.name }} 
                                         </a>
                                     </li>
@@ -64,13 +64,13 @@ const { category, loading, error } = storeToRefs(categoryStore);
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="https://monkeyd.vn/truyen-hoan-thanh.html">
+                                <a class="nav-link" href="/truyen-hoan-thanh">
                                     <div class="menu-title d-flex align-items-center">Truyện Full</div>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="https://monkeyd.vn/truyen-sang-tac.html">
+                                <a class="nav-link" href="/truyen-sang-tac">
                                     <div class="menu-title d-flex align-items-center">
                                         <div class="parent-icon">
                                             <i class="bx bx-star"></i>
@@ -81,7 +81,7 @@ const { category, loading, error } = storeToRefs(categoryStore);
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="https://monkeyd.vn/danh-sach-nhom-dich">
+                                <a class="nav-link" href="/danh-sach-nhom-dich">
                                     <div class="parent-icon">
                                         <i class="bx bx-group"></i>
                                     </div>
