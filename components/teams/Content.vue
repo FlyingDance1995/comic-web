@@ -1,5 +1,15 @@
 <script setup>
+    import {useTeamStore} from '@/store/teams'
 
+    const storyTeams = useTeamStore();
+    await storyTeams.fetchTeams({
+        ordering: "-modification_time",
+        page: 1,
+        size: 500
+    });
+    const {teams, total} = storeToRefs(storyTeams);
+
+    console.log('teams111', teams)
 </script>
 
 <template>

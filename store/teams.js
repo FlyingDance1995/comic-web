@@ -8,7 +8,7 @@ export const useTeamStore = defineStore('teams', {
     }),
 
     actions: {
-        async fetchTeams() {
+        async fetchTeams(params) {
             this.loading = true;
             try {
                 const { data: teams } = await useAPI('/teams', params);

@@ -1,8 +1,10 @@
 import {defineStore} from 'pinia'
 
+// Truyen moi nhat
 export const useStoryStore = defineStore('story', {
     state: () => ({
         storys: [],
+        total: 0,
         loading: false,
         error: null
     }),
@@ -18,6 +20,7 @@ export const useStoryStore = defineStore('story', {
                     }
                 });
                 this.$state.storys = story.value.results;
+                this.$state.total = story.value.count;
             } catch (error) {
                 this.error = error;
             } finally {
@@ -27,9 +30,11 @@ export const useStoryStore = defineStore('story', {
     }
 })
 
+// Truyen hoan thanh
 export const useStoryStore1 = defineStore('story1', {
     state: () => ({
         storys1: [],
+        total1: 0,
         loading: false,
         error: null
     }),
@@ -45,6 +50,7 @@ export const useStoryStore1 = defineStore('story1', {
                     }
                 });
                 this.$state.storys1 = story.value.results;
+                this.$state.total1 = story.value.count;
             } catch (error) {
                 this.error = error;
             } finally {

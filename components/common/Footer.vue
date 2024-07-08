@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="footer-logo text-center">
-                        <a href="https://monkeyd.vn">
+                        <a href="/">
                             <img src="https://monkeyd.vn/images/logo/Logo-MonkeyD.png"
                                  alt="MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024"
                                  width="300" height="80">
