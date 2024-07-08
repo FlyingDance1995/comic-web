@@ -11,7 +11,9 @@ export const useStoryStore = defineStore('story', {
         async fetchStorys(params = null) {
             this.loading = true;
             try {
-                const { data: story } = await useAPI('/story', params);
+                const { data: story } = await useAPI('/story', {
+                    query: params
+                });
                 this.$state.storys = story.value.results;
             } catch (error) {
                 this.error = error;
@@ -33,7 +35,9 @@ export const useStoryStore1 = defineStore('story1', {
         async fetchStorys(params = null) {
             this.loading = true;
             try {
-                const { data: story } = await useAPI('/story', params);
+                const { data: story } = await useAPI('/story', {
+                    query: params
+                });
                 this.$state.storys1 = story.value.results;
             } catch (error) {
                 this.error = error;
