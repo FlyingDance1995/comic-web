@@ -11,10 +11,11 @@
                 <div class="d-lg-flex align-items-center mb-4 gap-3">
                     <div class="position-relative">
                         <form action="https://monkeyd.vn/danh-sach-nhom-dich" method="GET">
-                            <input type="text" class="form-control ps-5 radius-30" name="search" id="search" value="" placeholder="Tìm dịch giả/tác giả">
+                            <input type="text" class="form-control ps-5 radius-30" name="search" id="search" value=""
+                                placeholder="Tìm dịch giả/tác giả">
                             <span class="position-absolute top-50 product-show translate-middle-y">
-                                        <i class="bx bx-search"></i>
-                                    </span>
+                                <i class="bx bx-search"></i>
+                            </span>
                         </form>
                     </div>
                 </div>
@@ -22,7 +23,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/7">
-                                <img alt="Tiểu Lạc Lạc" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/13/1710310901-7.jpg">
+                                <img alt="Tiểu Lạc Lạc" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/13/1710310901-7.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/7">
@@ -40,7 +43,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2238">
-                                <img alt="Anan" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/17/1715953258-2238.jpg">
+                                <img alt="Anan" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/17/1715953258-2238.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2238">
@@ -58,7 +63,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/689">
-                                <img alt="Nguyệt Nhi" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/18/1710773836-689.jpg">
+                                <img alt="Nguyệt Nhi" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/18/1710773836-689.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/689">
@@ -76,7 +83,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/958">
-                                <img alt="Bao đồng một mối lương duyên?" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/20/1710950875-958.jpg">
+                                <img alt="Bao đồng một mối lương duyên?" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/20/1710950875-958.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/958">
@@ -94,7 +103,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3254">
-                                <img alt="Xoăn dịch truyện" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/01/1714501943-3254.jpg">
+                                <img alt="Xoăn dịch truyện" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/01/1714501943-3254.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3254">
@@ -112,7 +123,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/424">
-                                <img alt="Cá Mặn Rất Mặn" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/31/1711873411-424.jpg">
+                                <img alt="Cá Mặn Rất Mặn" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/31/1711873411-424.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/424">
@@ -130,7 +143,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2837">
-                                <img alt="Chuồng nhỏ của Hoài" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/27/1714193978-2837.jpg">
+                                <img alt="Chuồng nhỏ của Hoài" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/27/1714193978-2837.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2837">
@@ -148,7 +163,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2431">
-                                <img alt="Anh Lanh Chanh" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/30/1714433206-2431.jpg">
+                                <img alt="Anh Lanh Chanh" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/30/1714433206-2431.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2431">
@@ -166,7 +183,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4471">
-                                <img alt="Một Chiếc Chanh Vô Tree" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/12/1715497276-4471.jpg">
+                                <img alt="Một Chiếc Chanh Vô Tree" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/12/1715497276-4471.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4471">
@@ -184,7 +203,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3064">
-                                <img alt="Đan Linh" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/29/1714358429-3064.jpg">
+                                <img alt="Đan Linh" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/29/1714358429-3064.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3064">
@@ -202,7 +223,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4387">
-                                <img alt="Huyện Lệnh 94" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/11/1715442076-4387.jpg">
+                                <img alt="Huyện Lệnh 94" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/11/1715442076-4387.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4387">
@@ -220,7 +243,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/287">
-                                <img alt="Yêu Phi Họa Quốc" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/21/1711034053-287.jpg">
+                                <img alt="Yêu Phi Họa Quốc" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/21/1711034053-287.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/287">
@@ -238,7 +263,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3">
-                                <img alt="Tớ Là Con Ma Nè" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/13/1710300907-3.jpg">
+                                <img alt="Tớ Là Con Ma Nè" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/13/1710300907-3.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3">
@@ -256,7 +283,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/8951">
-                                <img alt="Nhân Trí" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/09/1717919192-8951.jpg">
+                                <img alt="Nhân Trí" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/09/1717919192-8951.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/8951">
@@ -274,7 +303,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/6758">
-                                <img alt="Đồng Đồng" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/27/1716794908-6758.jpg">
+                                <img alt="Đồng Đồng" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/27/1716794908-6758.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/6758">
@@ -292,7 +323,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/1040">
-                                <img alt="Diệp Gia Gia" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/24/1719244472-1040.jpg">
+                                <img alt="Diệp Gia Gia" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/24/1719244472-1040.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/1040">
@@ -310,7 +343,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/787">
-                                <img alt="caconyeudau" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/19/1710840155-787.jpg">
+                                <img alt="caconyeudau" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/19/1710840155-787.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/787">
@@ -328,7 +363,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/8431">
-                                <img alt="Lộn Xộn page" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/25/1719301468-8431.jpg">
+                                <img alt="Lộn Xộn page" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/25/1719301468-8431.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/8431">
@@ -346,7 +383,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/1945">
-                                <img alt="Vân Mộng Hạ Vũ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/09/1712635206-1945.jpg">
+                                <img alt="Vân Mộng Hạ Vũ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/09/1712635206-1945.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/1945">
@@ -364,7 +403,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/6780">
-                                <img alt="Nhược Khiết" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/26/1716741850-6780.jpg">
+                                <img alt="Nhược Khiết" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/26/1716741850-6780.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/6780">
@@ -382,7 +423,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2514">
-                                <img alt="Hạt Đậu Xanh" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/12/1718200406-2514.jpg">
+                                <img alt="Hạt Đậu Xanh" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/12/1718200406-2514.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2514">
@@ -400,7 +443,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2980">
-                                <img alt="Dư Huy" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/27/1714225871-2980.jpg">
+                                <img alt="Dư Huy" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/27/1714225871-2980.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2980">
@@ -418,7 +463,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/11">
-                                <img alt="Tiêu Dao Ngôn Tình" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/13/1710331140-11.jpg">
+                                <img alt="Tiêu Dao Ngôn Tình" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/13/1710331140-11.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/11">
@@ -436,7 +483,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4915">
-                                <img alt="Mắm Muối Chanh Đường" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/16/1715849457-4915.jpg">
+                                <img alt="Mắm Muối Chanh Đường" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/16/1715849457-4915.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4915">
@@ -454,7 +503,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/1193">
-                                <img alt="Hân Nghiên" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/23/1711183290-1193.jpg">
+                                <img alt="Hân Nghiên" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/23/1711183290-1193.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/1193">
@@ -472,7 +523,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/8660">
-                                <img alt="Mộng Đẹp" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/03/1720012790-8660.jpg">
+                                <img alt="Mộng Đẹp" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/03/1720012790-8660.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/8660">
@@ -490,7 +543,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4">
-                                <img alt="Cẩm Mộ Mạt Đào - 坎莫马道" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/14/1710430313-4.jpg">
+                                <img alt="Cẩm Mộ Mạt Đào - 坎莫马道" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/14/1710430313-4.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4">
@@ -508,7 +563,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/702">
-                                <img alt="Sếp Dí Tụt Quần" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/23/1711163076-702.jpg">
+                                <img alt="Sếp Dí Tụt Quần" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/23/1711163076-702.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/702">
@@ -526,7 +583,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/28">
-                                <img alt="Cá Mặn Mộng Mơ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/03/1719976991-28.jpg">
+                                <img alt="Cá Mặn Mộng Mơ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/03/1719976991-28.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/28">
@@ -544,7 +603,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/353">
-                                <img alt="Chữ MiNi" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/19/1710817476-353.jpg">
+                                <img alt="Chữ MiNi" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/19/1710817476-353.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/353">
@@ -562,7 +623,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4400">
-                                <img alt="Bông Hoa Nhỏ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/12/1715446953-4400.jpg">
+                                <img alt="Bông Hoa Nhỏ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/12/1715446953-4400.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4400">
@@ -580,7 +643,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3260">
-                                <img alt="Bé Hạt Tiêu" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/18/1716044160-3260.jpg">
+                                <img alt="Bé Hạt Tiêu" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/18/1716044160-3260.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3260">
@@ -598,7 +663,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/7875">
-                                <img alt="Khô gà chấm mắm tôm" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/06/1717647757-7875.jpg">
+                                <img alt="Khô gà chấm mắm tôm" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/06/1717647757-7875.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/7875">
@@ -616,7 +683,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/7398">
-                                <img alt="Anh Ba Chị Út" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/02/1717330502-7398.jpg">
+                                <img alt="Anh Ba Chị Út" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/02/1717330502-7398.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/7398">
@@ -634,7 +703,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2793">
-                                <img alt="Một mớ deadline" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/24/1713951781-2793.jpg">
+                                <img alt="Một mớ deadline" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/24/1713951781-2793.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2793">
@@ -652,7 +723,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/13285">
-                                <img alt="Mắt Nâu" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/02/1719926356-13285.jpg">
+                                <img alt="Mắt Nâu" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/02/1719926356-13285.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/13285">
@@ -670,7 +743,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3944">
-                                <img alt="Góc tiểu thuyết của mèo đen" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/12/1715523980-3944.jpg">
+                                <img alt="Góc tiểu thuyết của mèo đen" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/12/1715523980-3944.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3944">
@@ -688,7 +763,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/1398">
-                                <img alt="TruyệnHN" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/27/1711515221-1398.jpg">
+                                <img alt="TruyệnHN" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/27/1711515221-1398.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/1398">
@@ -706,7 +783,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/7504">
-                                <img alt="Ác Ma Đến Từ Thiên Đường" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/01/1717180671-7504.jpg">
+                                <img alt="Ác Ma Đến Từ Thiên Đường" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/01/1717180671-7504.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/7504">
@@ -724,7 +803,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/15">
-                                <img alt="Nguyệt Linh Ca" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/01/1719848226-15.jpg">
+                                <img alt="Nguyệt Linh Ca" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/01/1719848226-15.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/15">
@@ -742,7 +823,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2284">
-                                <img alt="Cuối Đầu Trước Bát Cơm" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/11/1718045633-2284.jpg">
+                                <img alt="Cuối Đầu Trước Bát Cơm" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/11/1718045633-2284.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2284">
@@ -760,7 +843,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/5638">
-                                <img alt="Mễ Mễ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/19/1716122508-5638.jpg">
+                                <img alt="Mễ Mễ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/19/1716122508-5638.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/5638">
@@ -778,7 +863,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/6587">
-                                <img alt="Mộng Hoa Trà" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/04/1717466032-6587.jpg">
+                                <img alt="Mộng Hoa Trà" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/04/1717466032-6587.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/6587">
@@ -796,7 +883,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/882">
-                                <img alt="Tiểu Cẩm" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/20/1710937590-882.jpg">
+                                <img alt="Tiểu Cẩm" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/20/1710937590-882.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/882">
@@ -814,7 +903,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4661">
-                                <img alt="Kiều Kiều" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/17/1715907904-4661.jpg">
+                                <img alt="Kiều Kiều" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/17/1715907904-4661.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4661">
@@ -832,7 +923,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3635">
-                                <img alt="Ổ Mèo Mụp Sữa" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/05/1714890936-3635.jpg">
+                                <img alt="Ổ Mèo Mụp Sữa" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/05/1714890936-3635.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3635">
@@ -850,7 +943,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/12368">
-                                <img alt="Ú nu phơi nắng" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/28/1719573424-12368.jpg">
+                                <img alt="Ú nu phơi nắng" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/28/1719573424-12368.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/12368">
@@ -868,7 +963,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/12381">
-                                <img alt="Cam - 橙子" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/27/1719505918-12381.jpg">
+                                <img alt="Cam - 橙子" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/27/1719505918-12381.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/12381">
@@ -886,7 +983,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/966">
-                                <img alt="Tiểu Bạch Mao Dịch Lâu" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/21/1710954389-966.jpg">
+                                <img alt="Tiểu Bạch Mao Dịch Lâu" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/21/1710954389-966.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/966">
@@ -904,7 +1003,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/1589">
-                                <img alt="Thiều Hoa Xuân Ý" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/29/1711728343-1589.jpg">
+                                <img alt="Thiều Hoa Xuân Ý" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/29/1711728343-1589.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/1589">
@@ -922,7 +1023,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4326">
-                                <img alt="Trà đào cam sả" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/11/1715412265-4326.jpg">
+                                <img alt="Trà đào cam sả" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/11/1715412265-4326.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4326">
@@ -940,7 +1043,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/40">
-                                <img alt="Đại Ngọc Nhi" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/16/1710594998-40.jpg">
+                                <img alt="Đại Ngọc Nhi" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/16/1710594998-40.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/40">
@@ -958,7 +1063,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/7160">
-                                <img alt="22h mẹ bắt Triệu ngủ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/03/1717423367-7160.jpg">
+                                <img alt="22h mẹ bắt Triệu ngủ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/03/1717423367-7160.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/7160">
@@ -976,7 +1083,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4412">
-                                <img alt="May" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/07/1717739004-4412.jpg">
+                                <img alt="May" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/07/1717739004-4412.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4412">
@@ -994,7 +1103,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/11845">
-                                <img alt="Bắc Cung Phồn Di" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/25/1719321843-11845.jpg">
+                                <img alt="Bắc Cung Phồn Di" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/25/1719321843-11845.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/11845">
@@ -1012,7 +1123,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/38">
-                                <img alt="[Hủ nữ ẩn danh]" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/17/1710652702-38.jpg">
+                                <img alt="[Hủ nữ ẩn danh]" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/17/1710652702-38.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/38">
@@ -1030,7 +1143,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/5606">
-                                <img alt="Giải tích về nỗi nhớ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/04/1717477930-5606.jpg">
+                                <img alt="Giải tích về nỗi nhớ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/04/1717477930-5606.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/5606">
@@ -1048,7 +1163,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/21">
-                                <img alt="TỬU CÁC" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/13/1710342944-21.jpg">
+                                <img alt="TỬU CÁC" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/13/1710342944-21.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/21">
@@ -1066,7 +1183,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/5859">
-                                <img alt="Over the moon" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/21/1716302854-5859.jpg">
+                                <img alt="Over the moon" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/21/1716302854-5859.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/5859">
@@ -1084,7 +1203,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3462">
-                                <img alt="Lư Y Đạo Nhân" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/16/1715869425-3462.jpg">
+                                <img alt="Lư Y Đạo Nhân" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/16/1715869425-3462.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3462">
@@ -1102,7 +1223,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3385">
-                                <img alt="Hóng Dưa Là Chính" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/02/1714636911-3385.jpg">
+                                <img alt="Hóng Dưa Là Chính" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/02/1714636911-3385.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3385">
@@ -1120,7 +1243,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/5806">
-                                <img alt="Angela Diệp Lạc" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/21/1716263673-5806.jpg">
+                                <img alt="Angela Diệp Lạc" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/21/1716263673-5806.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/5806">
@@ -1138,7 +1263,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/11179">
-                                <img alt="Con Kien Cang" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/20/1718825294-11179.jpg">
+                                <img alt="Con Kien Cang" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/20/1718825294-11179.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/11179">
@@ -1156,7 +1283,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4099">
-                                <img alt="LattesTeam" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/18/1716007493-4099.jpg">
+                                <img alt="LattesTeam" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/18/1716007493-4099.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4099">
@@ -1174,7 +1303,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10534">
-                                <img alt="sì tréc con người" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/18/1718725740-10534.jpg">
+                                <img alt="sì tréc con người" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/18/1718725740-10534.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10534">
@@ -1192,7 +1323,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/559">
-                                <img alt="Xoài Sợ Ngược" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/18/1710727013-559.jpg">
+                                <img alt="Xoài Sợ Ngược" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/18/1710727013-559.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/559">
@@ -1210,7 +1343,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2166">
-                                <img alt="Cột sống bất ổn" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/17/1713325541-2166.jpg">
+                                <img alt="Cột sống bất ổn" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/17/1713325541-2166.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2166">
@@ -1228,7 +1363,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/9226">
-                                <img alt="Thề Non Hẹn Biển" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/10/1718031342-9226.jpg">
+                                <img alt="Thề Non Hẹn Biển" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/10/1718031342-9226.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/9226">
@@ -1246,7 +1383,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/5755">
-                                <img alt="Cẩm Hân" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/21/1718902841-5755.jpg">
+                                <img alt="Cẩm Hân" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/21/1718902841-5755.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/5755">
@@ -1264,7 +1403,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/8217">
-                                <img alt="Lưu Ly" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/08/1717845193-8217.jpg">
+                                <img alt="Lưu Ly" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/08/1717845193-8217.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/8217">
@@ -1282,7 +1423,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2305">
-                                <img alt="Gâu Lười thích ngọt" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/04/1714763885-2305.jpg">
+                                <img alt="Gâu Lười thích ngọt" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/04/1714763885-2305.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2305">
@@ -1300,7 +1443,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3383">
-                                <img alt="Cung Thanh Vũ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/03/1714720870-3383.jpg">
+                                <img alt="Cung Thanh Vũ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/03/1714720870-3383.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3383">
@@ -1318,7 +1463,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/17">
-                                <img alt="ASHLEY" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/02/1714604377-17.jpg">
+                                <img alt="ASHLEY" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/02/1714604377-17.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/17">
@@ -1336,7 +1483,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/795">
-                                <img alt="12h Phải Deadline" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/02/1714663189-795.jpg">
+                                <img alt="12h Phải Deadline" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/02/1714663189-795.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/795">
@@ -1354,7 +1503,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/13362">
-                                <img alt="Dưa ngọt ngày hè" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/03/1719978932-13362.jpg">
+                                <img alt="Dưa ngọt ngày hè" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/03/1719978932-13362.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/13362">
@@ -1372,7 +1523,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/14">
-                                <img alt="Tiểu Yêu Tinh" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/20/1710904078-14.jpg">
+                                <img alt="Tiểu Yêu Tinh" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/20/1710904078-14.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/14">
@@ -1390,7 +1543,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/1666">
-                                <img alt="BJ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/01/1711980242-1666.jpg">
+                                <img alt="BJ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/01/1711980242-1666.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/1666">
@@ -1408,7 +1563,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4291">
-                                <img alt="Tháng Năm Đổi Dời" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/07/1717743488-4291.jpg">
+                                <img alt="Tháng Năm Đổi Dời" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/07/1717743488-4291.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4291">
@@ -1426,7 +1583,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4532">
-                                <img alt="Bán Hạ Nương Nương" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/12/1715523282-4532.jpg">
+                                <img alt="Bán Hạ Nương Nương" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/12/1715523282-4532.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4532">
@@ -1444,7 +1603,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4037">
-                                <img alt="Tư Hoa Lệnh" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/04/1720112031-4037.jpg">
+                                <img alt="Tư Hoa Lệnh" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/04/1720112031-4037.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4037">
@@ -1462,7 +1623,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/7122">
-                                <img alt="Ami" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/09/1717875348-7122.jpg">
+                                <img alt="Ami" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/09/1717875348-7122.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/7122">
@@ -1480,7 +1643,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/768">
-                                <img alt="Sắc Xuân" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/03/1720015696-768.jpg">
+                                <img alt="Sắc Xuân" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/03/1720015696-768.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/768">
@@ -1498,7 +1663,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3532">
-                                <img alt="Limerence" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/04/1714811782-3532.jpg">
+                                <img alt="Limerence" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/04/1714811782-3532.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3532">
@@ -1516,7 +1683,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/7412">
-                                <img alt="Thành viên ẩn danh" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/24/1719213999-7412.jpg">
+                                <img alt="Thành viên ẩn danh" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/24/1719213999-7412.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/7412">
@@ -1534,7 +1703,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/9176">
-                                <img alt="Tâm Nhu Yên" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/09/1717951139-9176.jpg">
+                                <img alt="Tâm Nhu Yên" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/09/1717951139-9176.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/9176">
@@ -1552,7 +1723,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/13115">
-                                <img alt="Dật Lạc" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/02/1719858738-13115.jpg">
+                                <img alt="Dật Lạc" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/02/1719858738-13115.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/13115">
@@ -1570,7 +1743,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2616">
-                                <img alt="Thúy An Hồ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/22/1713791902-2616.jpg">
+                                <img alt="Thúy An Hồ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/22/1713791902-2616.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2616">
@@ -1588,7 +1763,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/5581">
-                                <img alt="Cảnh Cảnh Tinh Hà" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/19/1716088892-5581.jpg">
+                                <img alt="Cảnh Cảnh Tinh Hà" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/19/1716088892-5581.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/5581">
@@ -1606,7 +1783,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/6118">
-                                <img alt="Vịt Con Xấu Xí" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/17/1718618999-6118.jpg">
+                                <img alt="Vịt Con Xấu Xí" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/17/1718618999-6118.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/6118">
@@ -1624,7 +1803,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/1333">
-                                <img alt="Ý Nhi" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Ý Nhi" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/1333">
@@ -1642,7 +1823,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/1953">
-                                <img alt="Nhất Chi Mai" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/22/1713790161-1953.jpg">
+                                <img alt="Nhất Chi Mai" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/22/1713790161-1953.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/1953">
@@ -1660,7 +1843,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/12189">
-                                <img alt="Ngày mai sẽ giảm cân" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/28/1719580770-12189.jpg">
+                                <img alt="Ngày mai sẽ giảm cân" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/28/1719580770-12189.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/12189">
@@ -1678,7 +1863,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/6569">
-                                <img alt="Haru Haru" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/16/1718529756-6569.jpg">
+                                <img alt="Haru Haru" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/16/1718529756-6569.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/6569">
@@ -1696,7 +1883,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/7311">
-                                <img alt="裴青鸾" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/30/1717081321-7311.jpg">
+                                <img alt="裴青鸾" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/30/1717081321-7311.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/7311">
@@ -1714,7 +1903,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2881">
-                                <img alt="Tiểu Miêu Miêu" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/30/1714474102-2881.jpg">
+                                <img alt="Tiểu Miêu Miêu" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/30/1714474102-2881.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2881">
@@ -1732,7 +1923,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/5240">
-                                <img alt="Gấu trúc thích ăn thịt" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/16/1715876261-5240.jpg">
+                                <img alt="Gấu trúc thích ăn thịt" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/16/1715876261-5240.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/5240">
@@ -1750,7 +1943,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3486">
-                                <img alt="Rose Library" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/03/1714752866-3486.jpg">
+                                <img alt="Rose Library" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/03/1714752866-3486.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3486">
@@ -1768,7 +1963,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10884">
-                                <img alt="Vô Ngải" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/18/1718722527-10884.jpg">
+                                <img alt="Vô Ngải" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/18/1718722527-10884.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10884">
@@ -1786,7 +1983,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3534">
-                                <img alt="ChươngHU" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/04/1714822886-3534.jpg">
+                                <img alt="ChươngHU" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/04/1714822886-3534.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3534">
@@ -1804,7 +2003,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/5393">
-                                <img alt="Ninh Tuệ Di" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/06/1720279475-5393.jpg">
+                                <img alt="Ninh Tuệ Di" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/06/1720279475-5393.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/5393">
@@ -1822,7 +2023,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3645">
-                                <img alt="Vụn Nhớ Vỡ Thương" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/07/1715084946-3645.jpg">
+                                <img alt="Vụn Nhớ Vỡ Thương" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/07/1715084946-3645.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3645">
@@ -1840,7 +2043,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/5902">
-                                <img alt="Xuân Tàn Hoa Lạc" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/21/1716275863-5902.jpg">
+                                <img alt="Xuân Tàn Hoa Lạc" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/21/1716275863-5902.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/5902">
@@ -1858,7 +2063,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3278">
-                                <img alt="NHAL" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/04/1720100270-3278.jpg">
+                                <img alt="NHAL" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/04/1720100270-3278.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3278">
@@ -1876,7 +2083,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/12018">
-                                <img alt="Diệp Tịch Vụ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/04/1720109303-12018.jpg">
+                                <img alt="Diệp Tịch Vụ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/04/1720109303-12018.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/12018">
@@ -1894,7 +2103,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/11711">
-                                <img alt="Luyn Luyn" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/07/1720333399-11711.jpg">
+                                <img alt="Luyn Luyn" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/07/1720333399-11711.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/11711">
@@ -1912,7 +2123,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/11550">
-                                <img alt="Uyển" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/24/1719215717-11550.jpg">
+                                <img alt="Uyển" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/24/1719215717-11550.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/11550">
@@ -1930,7 +2143,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2224">
-                                <img alt="Tiểu Hồ Tiên" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/17/1718627153-2224.jpg">
+                                <img alt="Tiểu Hồ Tiên" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/17/1718627153-2224.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2224">
@@ -1948,7 +2163,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2635">
-                                <img alt="Bas" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/22/1713803711-2635.jpg">
+                                <img alt="Bas" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/22/1713803711-2635.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2635">
@@ -1966,7 +2183,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2975">
-                                <img alt="Sơ Yến" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/02/1714657522-2975.jpg">
+                                <img alt="Sơ Yến" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/02/1714657522-2975.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2975">
@@ -1984,7 +2203,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/621">
-                                <img alt="Mặt trăng nhỏ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/18/1710760340-621.jpg">
+                                <img alt="Mặt trăng nhỏ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/18/1710760340-621.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/621">
@@ -2002,7 +2223,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/450">
-                                <img alt="Ngỗng con ôm minh nguyệt" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/16/1710599238-450.jpg">
+                                <img alt="Ngỗng con ôm minh nguyệt" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/16/1710599238-450.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/450">
@@ -2020,7 +2243,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/19">
-                                <img alt="Khè" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/15/1710506864-19.jpg">
+                                <img alt="Khè" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/15/1710506864-19.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/19">
@@ -2038,7 +2263,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/423">
-                                <img alt="Gian bếp nhỏ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/16/1710572560-423.jpg">
+                                <img alt="Gian bếp nhỏ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/16/1710572560-423.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/423">
@@ -2056,7 +2283,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4013">
-                                <img alt="Mạn" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Mạn" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4013">
@@ -2074,7 +2303,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3694">
-                                <img alt="Nguyên Trường Bạch" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Nguyên Trường Bạch" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3694">
@@ -2092,7 +2323,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/9129">
-                                <img alt="Cá Mực Nhỏ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/11/1718100277-9129.jpg">
+                                <img alt="Cá Mực Nhỏ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/11/1718100277-9129.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/9129">
@@ -2110,7 +2343,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/5418">
-                                <img alt="wasuthornwave" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="wasuthornwave" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/5418">
@@ -2128,7 +2363,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2036">
-                                <img alt="Đậu Trắng" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/11/1712848314-2036.jpg">
+                                <img alt="Đậu Trắng" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/11/1712848314-2036.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2036">
@@ -2146,7 +2383,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/9304">
-                                <img alt="Thy Thy mít ướt" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/10/1718036786-9304.jpg">
+                                <img alt="Thy Thy mít ướt" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/10/1718036786-9304.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/9304">
@@ -2164,7 +2403,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/5215">
-                                <img alt="Cua Rang Me" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/04/1717504083-5215.jpg">
+                                <img alt="Cua Rang Me" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/04/1717504083-5215.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/5215">
@@ -2182,7 +2423,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10503">
-                                <img alt="Maryu bị cuti" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/21/1718981627-10503.jpg">
+                                <img alt="Maryu bị cuti" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/21/1718981627-10503.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10503">
@@ -2200,7 +2443,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/9">
-                                <img alt="ZLS &amp; RMY" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/30/1719759356-9.jpg">
+                                <img alt="ZLS &amp; RMY" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/30/1719759356-9.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/9">
@@ -2218,7 +2463,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/7146">
-                                <img alt="Bé Ú Ham Ngủ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/04/1720095125-7146.jpg">
+                                <img alt="Bé Ú Ham Ngủ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/04/1720095125-7146.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/7146">
@@ -2236,7 +2483,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10748">
-                                <img alt="Quả Chanh Thành Tinh" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/17/1718596858-10748.jpg">
+                                <img alt="Quả Chanh Thành Tinh" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/17/1718596858-10748.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10748">
@@ -2254,7 +2503,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2714">
-                                <img alt="Miên Miên" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/23/1713866834-2714.jpg">
+                                <img alt="Miên Miên" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/23/1713866834-2714.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2714">
@@ -2272,7 +2523,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/9805">
-                                <img alt="Phù Mộng" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/12/1718200755-9805.jpg">
+                                <img alt="Phù Mộng" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/12/1718200755-9805.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/9805">
@@ -2290,7 +2543,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/4244">
-                                <img alt="Meo Meo" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/10/1715353359-4244.jpg">
+                                <img alt="Meo Meo" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/10/1715353359-4244.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/4244">
@@ -2308,7 +2563,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/9416">
-                                <img alt="hawill" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/11/1718039844-9416.jpg">
+                                <img alt="hawill" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/11/1718039844-9416.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/9416">
@@ -2326,7 +2583,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/1949">
-                                <img alt="Lý Lục Phong" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/09/1712647702-1949.jpg">
+                                <img alt="Lý Lục Phong" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/09/1712647702-1949.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/1949">
@@ -2344,7 +2603,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/5935">
-                                <img alt="Nguyệt Hạ Tương Tư" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/20/1718895132-5935.jpg">
+                                <img alt="Nguyệt Hạ Tương Tư" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/20/1718895132-5935.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/5935">
@@ -2362,7 +2623,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/12083">
-                                <img alt="Linh Lan" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Linh Lan" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/12083">
@@ -2380,7 +2643,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2">
-                                <img alt="MonkeyD" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/13/1710296088-2.jpg">
+                                <img alt="MonkeyD" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/03/13/1710296088-2.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2">
@@ -2398,7 +2663,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/13348">
-                                <img alt="Rum 47" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Rum 47" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/13348">
@@ -2416,7 +2683,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/6482">
-                                <img alt="Gấu Lười Dùng Mạng 2G" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/26/1716689848-6482.jpg">
+                                <img alt="Gấu Lười Dùng Mạng 2G" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/26/1716689848-6482.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/6482">
@@ -2434,7 +2703,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10258">
-                                <img alt="TrangVla" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="TrangVla" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10258">
@@ -2452,7 +2723,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/2900">
-                                <img alt="Cá muối thích mưa" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/31/1717147550-2900.jpg">
+                                <img alt="Cá muối thích mưa" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/31/1717147550-2900.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/2900">
@@ -2470,7 +2743,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/13783">
-                                <img alt="Lớp 12 Bị Gia Đình Phát Hiện Yêu Sớm" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/08/1720406672-13783.jpg">
+                                <img alt="Lớp 12 Bị Gia Đình Phát Hiện Yêu Sớm" class="card-img-top" width="200"
+                                    height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/08/1720406672-13783.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/13783">
@@ -2488,7 +2763,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/8928">
-                                <img alt="Hoa cổ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/16/1718496772-8928.jpg">
+                                <img alt="Hoa cổ" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/16/1718496772-8928.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/8928">
@@ -2506,7 +2783,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10533">
-                                <img alt="Lynnn" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/15/1718467798-10533.jpg">
+                                <img alt="Lynnn" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/15/1718467798-10533.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10533">
@@ -2524,7 +2803,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/1812">
-                                <img alt="めいぷる" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/05/1712332100-1812.jpg">
+                                <img alt="めいぷる" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/04/05/1712332100-1812.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/1812">
@@ -2542,7 +2823,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3380">
-                                <img alt="Ghét hành" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/02/1714631327-3380.jpg">
+                                <img alt="Ghét hành" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/05/02/1714631327-3380.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3380">
@@ -2560,7 +2843,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/3447">
-                                <img alt="Samie" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Samie" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/3447">
@@ -2578,7 +2863,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/8642">
-                                <img alt="Lão bát" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Lão bát" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/8642">
@@ -2596,7 +2883,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/9347">
-                                <img alt="Nghiên Linh" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/21/1718957324-9347.jpg">
+                                <img alt="Nghiên Linh" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/21/1718957324-9347.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/9347">
@@ -2614,7 +2903,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/9378">
-                                <img alt="Philomena" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/10/1718033327-9378.jpg">
+                                <img alt="Philomena" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/10/1718033327-9378.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/9378">
@@ -2632,7 +2923,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/9508">
-                                <img alt="Tiên Sinh Cà Tím" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/11/1718082096-9508.jpg">
+                                <img alt="Tiên Sinh Cà Tím" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/11/1718082096-9508.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/9508">
@@ -2650,7 +2943,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/9602">
-                                <img alt="Carrot Và Tịch Dương" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/11/1718114099-9602.jpg">
+                                <img alt="Carrot Và Tịch Dương" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/11/1718114099-9602.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/9602">
@@ -2668,7 +2963,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/9794">
-                                <img alt="Một Liễu Dư Sinh" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Một Liễu Dư Sinh" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/9794">
@@ -2686,7 +2983,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10015">
-                                <img alt="Đậu Phộng" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/13/1718277561-10015.jpg">
+                                <img alt="Đậu Phộng" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/13/1718277561-10015.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10015">
@@ -2704,7 +3003,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10207">
-                                <img alt="Ký ức" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/01/1719796559-10207.jpg">
+                                <img alt="Ký ức" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/01/1719796559-10207.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10207">
@@ -2722,7 +3023,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10275">
-                                <img alt="Hoa hồng xanh có phải là vĩnh cửu" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/24/1719212870-10275.jpg">
+                                <img alt="Hoa hồng xanh có phải là vĩnh cửu" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/24/1719212870-10275.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10275">
@@ -2740,7 +3043,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10541">
-                                <img alt="Eri" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/28/1719579226-10541.jpg">
+                                <img alt="Eri" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/28/1719579226-10541.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10541">
@@ -2758,7 +3063,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10555">
-                                <img alt="Tiểu Miêu" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/16/1718475577-10555.jpg">
+                                <img alt="Tiểu Miêu" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/16/1718475577-10555.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10555">
@@ -2776,7 +3083,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10632">
-                                <img alt="Rau Răm" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Rau Răm" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10632">
@@ -2794,7 +3103,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10652">
-                                <img alt="Trăng Trên Trời" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/24/1719198787-10652.jpg">
+                                <img alt="Trăng Trên Trời" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/24/1719198787-10652.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10652">
@@ -2812,7 +3123,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10764">
-                                <img alt="Mei" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Mei" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10764">
@@ -2830,7 +3143,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/10867">
-                                <img alt="Phương Nguyễn" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/19/1718735667-10867.jpg">
+                                <img alt="Phương Nguyễn" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/19/1718735667-10867.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/10867">
@@ -2848,7 +3163,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/11105">
-                                <img alt="Hoàng Thư" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Hoàng Thư" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/11105">
@@ -2866,7 +3183,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/11147">
-                                <img alt="Linhlazaly" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Linhlazaly" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/11147">
@@ -2884,7 +3203,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/11203">
-                                <img alt="ở đây có truyện hay nè" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/20/1718850316-11203.jpg">
+                                <img alt="ở đây có truyện hay nè" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/20/1718850316-11203.jpg">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/11203">
@@ -2902,7 +3223,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/11374">
-                                <img alt="Diệp Bạch Tịch" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Diệp Bạch Tịch" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/11374">
@@ -2920,7 +3243,9 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/11418">
-                                <img alt="Thanhtu99" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <img alt="Thanhtu99" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/img/no-image.png">
                             </a>
                             <div class="card-body">
                                 <a href="https://monkeyd.vn/nhom-dich/11418">
@@ -2938,331 +3263,366 @@
                     <div class="col-md-3 col-6">
                         <div class="card">
                             <a href="https://monkeyd.vn/nhom-dich/11520">
-                                <img alt="Nhà Tôm Ổ Vịt" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/02/1719914618-11520.jpg">
+                                <img alt="Nhà Tôm Ổ Vịt" class="card-img-top" width="200" height="260"
+                                    onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                    src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/02/1719914618-11520.jpg">
                             </a>
                             <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/11520">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Nhà Tôm Ổ Vịt
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <a href="https://monkeyd.vn/nhom-dich/11520">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Nhà Tôm Ổ Vịt
+                                </h3>
+                            </a>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/11825">
+                            <img alt="Thanh Trà" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/24/1719241186-11825.jpg">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/11825">
-                                <img alt="Thanh Trà" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/24/1719241186-11825.jpg">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Thanh Trà
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/11825">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Thanh Trà
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 1</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 1</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/11940">
+                            <img alt="Mint" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/25/1719299976-11940.jpg">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/11940">
-                                <img alt="Mint" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/25/1719299976-11940.jpg">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Mint
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/11940">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Mint
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/12130">
+                            <img alt="Hôm nay tôi giảm béo chưa" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/26/1719388144-12130.jpg">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/12130">
-                                <img alt="Hôm nay tôi giảm béo chưa" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/06/26/1719388144-12130.jpg">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Hôm nay tôi giảm béo chưa
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/12130">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Hôm nay tôi giảm béo chưa
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/12147">
+                            <img alt="Kim Kim" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/img/no-image.png">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/12147">
-                                <img alt="Kim Kim" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Kim Kim
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/12147">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Kim Kim
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/12545">
+                            <img alt="Nhật Bán Quang" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/img/no-image.png">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/12545">
-                                <img alt="Nhật Bán Quang" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Nhật Bán Quang
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/12545">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Nhật Bán Quang
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/12683">
+                            <img alt="Yển Nguyệt Thanh Vân" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/04/1720075624-12683.jpg">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/12683">
-                                <img alt="Yển Nguyệt Thanh Vân" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/04/1720075624-12683.jpg">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Yển Nguyệt Thanh Vân
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/12683">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Yển Nguyệt Thanh Vân
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/12794">
+                            <img alt="Mie" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/img/no-image.png">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/12794">
-                                <img alt="Mie" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Mie
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/12794">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Mie
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/13155">
+                            <img alt="Kang Soo Bin" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/img/no-image.png">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/13155">
-                                <img alt="Kang Soo Bin" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Kang Soo Bin
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/13155">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Kang Soo Bin
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/13222">
+                            <img alt="Hoa cổ" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/02/1719894258-13222.jpg">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/13222">
-                                <img alt="Hoa cổ" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/02/1719894258-13222.jpg">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Hoa cổ
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/13222">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Hoa cổ
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/13252">
+                            <img alt="Tiểu Muội Muội - 小妹妹" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/03/1719985190-13252.jpg">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/13252">
-                                <img alt="Tiểu Muội Muội - 小妹妹" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/03/1719985190-13252.jpg">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Tiểu Muội Muội - 小妹妹
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/13252">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Tiểu Muội Muội - 小妹妹
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/13398">
+                            <img alt="Lennie" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/08/1720451917-13398.jpg">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/13398">
-                                <img alt="Lennie" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/08/1720451917-13398.jpg">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Lennie
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/13398">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Lennie
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/13459">
+                            <img alt="Chế Quan Nam Phương" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/img/no-image.png">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/13459">
-                                <img alt="Chế Quan Nam Phương" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Chế Quan Nam Phương
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/13459">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Chế Quan Nam Phương
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/13532">
+                            <img alt="Hanail" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/04/1720078725-13532.jpg">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/13532">
-                                <img alt="Hanail" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/04/1720078725-13532.jpg">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Hanail
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/13532">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Hanail
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/13694">
+                            <img alt="Thiên Châu Vũ Nhiên" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/05/1720162466-13694.jpg">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/13694">
-                                <img alt="Thiên Châu Vũ Nhiên" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/05/1720162466-13694.jpg">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Thiên Châu Vũ Nhiên
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/13694">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Thiên Châu Vũ Nhiên
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/13785">
+                            <img alt="Một Cọng Hành Tím" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/06/1720228307-13785.jpg">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/13785">
-                                <img alt="Một Cọng Hành Tím" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/images/avatar/thumbs/290/2024/07/06/1720228307-13785.jpg">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Một Cọng Hành Tím
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/13785">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Một Cọng Hành Tím
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/14049">
+                            <img alt="Ninh Mộng" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/img/no-image.png">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/14049">
-                                <img alt="Ninh Mộng" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Ninh Mộng
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/14049">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Ninh Mộng
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class="card">
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="card">
+                        <a href="https://monkeyd.vn/nhom-dich/14208">
+                            <img alt="Hoạ Y Uyển Đình" class="card-img-top" width="200" height="260"
+                                onerror="this.src='https://monkeyd.vn/img/no-image.png'"
+                                src="https://monkeyd.vn/img/no-image.png">
+                        </a>
+                        <div class="card-body">
                             <a href="https://monkeyd.vn/nhom-dich/14208">
-                                <img alt="Hoạ Y Uyển Đình" class="card-img-top" width="200" height="260" onerror="this.src='https://monkeyd.vn/img/no-image.png'" src="https://monkeyd.vn/img/no-image.png">
+                                <h3 class="card-title cursor-pointer story-item-title">
+                                    Hoạ Y Uyển Đình
+                                </h3>
                             </a>
-                            <div class="card-body">
-                                <a href="https://monkeyd.vn/nhom-dich/14208">
-                                    <h3 class="card-title cursor-pointer story-item-title">
-                                        Hoạ Y Uyển Đình
-                                    </h3>
-                                </a>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> 0</span>
-                                    <span><i class="bx bx-book-alt"></i> 0</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="bx bx-show"></i> 0</span>
+                                <span><i class="bx bx-book-alt"></i> 0</span>
                             </div>
                         </div>
                     </div>
-                </div><!--end row-->
-            </div>
-
-            <HomeWidgetFanpage/>
+                </div>
+            </div><!--end row-->
         </div>
+
+        <HomeWidgetFanpage />
     </div>
-</template>
+</div></template>
