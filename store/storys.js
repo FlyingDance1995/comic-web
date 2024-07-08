@@ -12,7 +12,10 @@ export const useStoryStore = defineStore('story', {
             this.loading = true;
             try {
                 const { data: story } = await useAPI('/story', {
-                    query: params
+                    query: {
+                        size: 20,
+                        ...params
+                    }
                 });
                 this.$state.storys = story.value.results;
             } catch (error) {
@@ -36,7 +39,10 @@ export const useStoryStore1 = defineStore('story1', {
             this.loading = true;
             try {
                 const { data: story } = await useAPI('/story', {
-                    query: params
+                    query: {
+                        size: 20,
+                        ...params
+                    }
                 });
                 this.$state.storys1 = story.value.results;
             } catch (error) {
