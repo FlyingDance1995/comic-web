@@ -1,14 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-    nitro: {
-        storage: {
-            data: {
-            driver: 'vercelKV'
-            /* Vercel KV driver options */
-            }
-        }
-    },
     devtools: {enabled: false},
     css: ['~/assets/css/main.css'],
     app: {
@@ -171,7 +163,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             SITE_URL: process.env.NUXT_PUBLIC_SITE_URL,
-            apiEndpoint: process.env.NUXT_PUBLIC_API_BASE ?? 'http://103.176.146.159:8498',
+            apiEndpoint: process.env.NUXT_PUBLIC_API_BASE ?? 'http://103.176.146.159:8498/api',
         }
     }
 })

@@ -4,19 +4,6 @@ import { useStoryStore, useStoryStore1 } from '@/store/storys'
 const storyStore = useStoryStore()
 const storyStore1 = useStoryStore1()
 
-onMounted(() => {
-    const params = {
-        ordering: "-modification_time"
-    }
-
-    const params1 = {
-        status: "finish"
-    }
-
-    storyStore.fetchStorys(params)
-    storyStore1.fetchStorys(params1)
-})
-
 const { storys, loading, error } = storeToRefs(storyStore)
 const { storys1, loading1, error1 } = storeToRefs(storyStore1)
 </script>

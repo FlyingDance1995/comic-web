@@ -1,13 +1,11 @@
 <script setup>
-    import { useCategoryStore } from '@/store/category'
+import { useCategoryStore } from '@/store/category'
 
-    const categoryStore = useCategoryStore()
+const categoryStore = useCategoryStore();
 
-    onMounted(() => {
-        categoryStore.fetchCategory()
-    })
+await categoryStore.fetchCategory();
 
-    const { category, loading, error } = storeToRefs(categoryStore)
+const { category, loading, error } = storeToRefs(categoryStore);
 </script>
 
 <template>
