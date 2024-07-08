@@ -14,6 +14,7 @@ await useStoryStore().fetchStorys(params);
 await useStoryStore1().fetchStorys(params1);
 await useCategoryStore().fetchCategory();
 </script>
+
 <template>
     <HomeContent/>
 </template>
