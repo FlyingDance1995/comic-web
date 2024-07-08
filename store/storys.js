@@ -24,17 +24,17 @@ export const useStoryStore = defineStore('story', {
 
 export const useStoryStore1 = defineStore('story1', {
     state: () => ({
-        storys: [],
+        storys1: [],
         loading: false,
         error: null
     }),
 
     actions: {
-        async fetchStorys(params) {
+        async fetchStorys(params = null) {
             this.loading = true;
             try {
                 const { data: story } = await useAPI('/story', params);
-                this.$state.storys = story.value.results;
+                this.$state.storys1 = story.value.results;
             } catch (error) {
                 this.error = error;
             } finally {
