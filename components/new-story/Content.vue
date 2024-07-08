@@ -2,13 +2,13 @@
 import {useStoryStore} from '@/store/storys'
 
 const route = useRoute();
-const page = +route?.query?.page;
+const page = +route?.query?.page || 1;
 
 const storyStore = useStoryStore();
 await storyStore.fetchStorys({
     ordering: "-modification_time",
     page: page,
-    size: 1
+    size: 20
 });
 const {storys, total} = storeToRefs(storyStore);
 </script>
@@ -27,7 +27,7 @@ const {storys, total} = storeToRefs(storyStore);
 
                 <div class="text-center mb-4 pagination justify-content-center">
                     <!-- Pagination -->
-                    <HomePagination :total="total" :page="page" :size="1"/>
+                    <HomePagination :total="total" :page="page" :size="20"/>
                     <!-- Pagination -->
                 </div>
             </div>
