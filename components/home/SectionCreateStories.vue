@@ -10,7 +10,7 @@
                     <div class="total-item-show position-relative">
                         <h5 class="mb-0 text-uppercase"><i class="bx bx-star"></i> Truyện Sáng Tác </h5>
                         <hr>
-                        <a href="http://localhost:3000/truyen-sang-tac.html"
+                        <a href="/truyen-sang-tac"
                            class="read-more-story btn btn-outline-primary radius-30 btn-sm">Xem thêm</a>
                     </div>
                     <div class="card">

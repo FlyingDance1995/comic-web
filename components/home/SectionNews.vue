@@ -1,11 +1,13 @@
 <script setup>
 import {useStoryStore, useStoryStore1} from '@/store/storys'
 
-const storyStore = useStoryStore()
-const storyStore1 = useStoryStore1()
+const storyStore = useStoryStore();
+const storyStore1 = useStoryStore1();
 
-const {storys} = storeToRefs(storyStore)
-const {storys1} = storeToRefs(storyStore1)
+const {storys, total} = storeToRefs(storyStore);
+const {storys1, total1} = storeToRefs(storyStore1);
+
+const page = 1;
 </script>
 
 <template>
@@ -25,43 +27,7 @@ const {storys1} = storeToRefs(storyStore1)
 
                             <div class="text-center mb-4 pagination justify-content-center">
                                 <!-- Pagination -->
-                                <nav aria-label="...">
-                                    <ul class="pagination">
-
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="javascript:;" tabindex="-1" aria-disabled="true">
-                                                <i class="bx bx-chevrons-left"></i>
-                                            </a>
-                                        </li>
-
-
-                                        <li class="page-item active" aria-current="page">
-                                            <a class="page-link" href="javascript:;">1 <span
-                                                class="visually-hidden">(current)</span></a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                                 href="https://monkeyd.vn?page=2">2</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                                 href="https://monkeyd.vn?page=3">3</a>
-                                        </li>
-
-
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="javascript:;">
-                                                ...
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link"
-                                                                 href="https://monkeyd.vn?page=66">66</a>
-                                        </li>
-
-
-                                        <li class="page-item"><a class="page-link" href="https://monkeyd.vn?page=2"><i
-                                            class="bx bx-chevrons-right"></i></a>
-                                        </li>
-                                    </ul>
-                                </nav>
+                                <HomePagination :total="total" :page="page"/>
                                 <!-- Pagination -->
                             </div>
                         </div>
