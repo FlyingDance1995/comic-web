@@ -1,8 +1,7 @@
 <script setup>
-const config = useRuntimeConfig()
 
 </script>
 
 <template>
-
+    <TeamsContent/>
 </template>
