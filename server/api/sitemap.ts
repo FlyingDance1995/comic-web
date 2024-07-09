@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default defineSitemapEventHandler(async () => {
     try {
-        const { data } = await axios.get(`http://103.176.146.159:8498/api/category`, {
+        const { data } = await axios.get(`https://admin.hoannq.click/api/category`, {
             params: {
                 limit: 70,
                 offset: 0

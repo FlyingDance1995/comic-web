@@ -169,7 +169,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
       public: {
           SITE_URL: process.env.NUXT_PUBLIC_SITE_URL,
-          apiEndpoint: process.env.NUXT_PUBLIC_API_BASE ?? 'http://103.176.146.159:8498/api',
+          apiEndpoint: process.env.NUXT_PUBLIC_API_BASE ?? 'https://admin.hoannq.click/api',
       }
   },
 
