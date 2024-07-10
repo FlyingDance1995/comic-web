@@ -1,36 +1,37 @@
 <script setup>
-import {useStoryStore} from '@/store/storys'
+import {useStoryStore1} from '@/store/storys'
 
 const route = useRoute();
 const page = +route?.query?.page || 1;
 const params = {
-    ordering: "-modification_time",
+    status: "finish",
     page: page,
     size: 20
 };
 
-const storyStore = useStoryStore();
+const storyStore = useStoryStore1();
 await storyStore.fetchStorys(params);
-const {storys, total} = storeToRefs(storyStore);
+const {storys1, total1} = storeToRefs(storyStore);
 </script>
 
 <template>
     <div class="container">
-        <h1 class="mb-0 text-uppercase">Truyện mới cập nhật</h1>
+        <h1 class="mb-0 text-uppercase">Truyện hoàn thành</h1>
         <hr>
         <div class="row">
             <div class="col-lg-9 col-md-9 col-12">
                 <div class="row product-grid">
-                    <LazyHomeProductItem v-for="(item, index) in storys"
+                    <LazyHomeProductItem v-for="(item, index) in storys1"
                                          :key="index"
                                          :item="item"/>
                 </div>
 
                 <div class="text-center mb-4 pagination justify-content-center">
                     <!-- Pagination -->
-                    <HomePagination :total="total"
+                    <HomePagination :total="total1"
                                     :page="page"
-                                    :size="params.size"/>
+                                    :size="params.size"
+                                    type="truyen-hoan-thanh"/>
                     <!-- Pagination -->
                 </div>
             </div>

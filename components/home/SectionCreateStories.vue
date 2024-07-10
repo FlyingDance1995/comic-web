@@ -1,5 +1,34 @@
 <script setup>
+const loading = ref(true);
 
+onMounted(() => {
+    $(document).ready(function () {
+        $(".creative-stories-slider").owlCarousel({
+            items: 5,
+            margin: 20,
+            nav: false,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                768: {
+                    items: 3
+                },
+                1024: {
+                    items: 4
+                },
+                1200: {
+                    items: 5
+                }
+            }
+        });
+        loading.value = false;
+    });
+});
 </script>
 
 <template>
@@ -18,9 +47,9 @@
                             <div class="creative-stories-slider owl-carousel owl-loaded owl-drag"
                                  id="propose-story-slider">
                                 <div class="owl-stage-outer">
-                                    <div class="owl-stage"
-                                         style="transform: translate3d(-954px, 0px, 0px); transition: all 1.2s ease 0s; width: 2385px;">
-                                        <div class="owl-item" style="width: 139px; margin-right: 20px;">
+                                    <div v-show="!loading"
+                                         class="owl-stage">
+                                        <div class="owl-item">
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -43,7 +72,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item" style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item" >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -66,7 +95,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item" style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item" >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -89,7 +118,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item" style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item" >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -112,7 +141,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item" style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item" >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -133,7 +162,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item" style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item" >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -157,8 +186,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item active"
-                                             style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item"
+                                             >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -180,8 +209,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item active"
-                                             style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item"
+                                             >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -204,8 +233,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item active"
-                                             style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item"
+                                             >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -228,8 +257,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item active"
-                                             style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item"
+                                             >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -253,8 +282,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item active"
-                                             style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item"
+                                             >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -277,7 +306,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item" style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item" >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -299,7 +328,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item" style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item" >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -321,7 +350,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item" style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item" >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -344,7 +373,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item" style="width: 139px; margin-right: 20px;">
+                                        <div class="owl-item" >
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
@@ -365,16 +394,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div v-show="loading" style="text-align: center">
+                                        Loading...
+                                    </div>
                                 </div>
-                                <div class="owl-nav disabled">
-                                    <button type="button" role="presentation"
-                                            class="owl-prev"><span
-                                        aria-label="Previous">‹</span></button>
-                                    <button type="button"
-                                            role="presentation" class="owl-next"><span
-                                        aria-label="Next">›</span></button>
-                                </div>
-                                <div class="owl-dots disabled"></div>
                             </div>
                         </div>
                     </div>

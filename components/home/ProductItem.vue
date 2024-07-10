@@ -23,14 +23,14 @@ const props = defineProps({
                     <span>
                         <i class="bx bx-show"></i>
                         {{
-                            item.statistics.total_watched
+                            item.statistics.total_watched?.toLocaleString()?.replace('.', ',')
                         }}
                     </span>
 
                     <span>
                         <i class="bx bx-bookmark-alt"></i>
                         {{
-                            item.statistics.total_follow
+                            item.statistics.total_follow?.toLocaleString()?.replace('.', ',')
                         }}
                     </span>
                 </div>
@@ -58,7 +58,7 @@ const props = defineProps({
                         </a>
                     </span>
 
-                    <span class="post-on font-meta">6 phút trước</span>
+                    <span class="post-on font-meta">{{timeAgo(item?.modification_time)}}</span>
                 </div>
             </div>
         </div>

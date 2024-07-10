@@ -13,8 +13,8 @@ const props = defineProps({
 
 <template>
     <div class="owl-item"
-         :class="{'active': active}"
-         style="width: 612px; margin-right: 40px;">
+         :class="{'active': active}">
+<!--         style="width: 612px; margin-right: 40px;">-->
         <div class="grid grid-cols-1 gap-y-4">
             <div v-for="(item, index) in data"
                  :key="index"

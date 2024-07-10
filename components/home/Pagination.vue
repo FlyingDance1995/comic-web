@@ -10,7 +10,11 @@ const props = defineProps({
     },
     size: {
         type: Number,
-        default: 10
+        default: 20
+    },
+    type: {
+        type: String,
+        default: 'truyen-moi'
     }
 });
 </script>
@@ -21,7 +25,7 @@ const props = defineProps({
             <li class="page-item">
                 <a class="page-link"
                    :class="{'disabled': page === 1}"
-                   :href="`/truyen-moi?page=${page - 1}`"
+                   :href="`/${type}?page=${page - 1}`"
                    tabindex="-1">
                     <i class="bx bx-chevrons-left"></i>
                 </a>
@@ -38,14 +42,14 @@ const props = defineProps({
 
             <li v-if="1 + page < Math.ceil(total / size)" class="page-item">
                 <a class="page-link"
-                   :href="`/truyen-moi?page=${1 + page}`">
+                   :href="`/${type}?page=${1 + page}`">
                     {{1 + page}}
                 </a>
             </li>
 
             <li v-if="2 + page < Math.ceil(total / size)" class="page-item">
                 <a class="page-link"
-                   :href="`/truyen-moi?page=${2 + page}`">
+                   :href="`/${type}?page=${2 + page}`">
                     {{2 + page}}
                 </a>
             </li>
@@ -59,7 +63,7 @@ const props = defineProps({
 
             <li v-if="page !== Math.ceil(total / size)" class="page-item">
                 <a class="page-link"
-                   :href="`/truyen-moi?page=${Math.ceil(total / size)}`">
+                   :href="`/${type}?page=${Math.ceil(total / size)}`">
                     {{Math.ceil(total / size)}}
                 </a>
             </li>
@@ -67,7 +71,7 @@ const props = defineProps({
             <li class="page-item"
                 :class="{'disabled': page === Math.ceil(total / size)}">
                 <a class="page-link"
-                   :href="`/truyen-moi?page=${1 + page}`">
+                   :href="`/${type}?page=${1 + page}`">
                     <i class="bx bx-chevrons-right"></i>
                 </a>
             </li>

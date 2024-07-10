@@ -1,4 +1,11 @@
 import moment from "moment/moment";
+import 'moment/locale/vi';
+
+moment.locale('vi');
+
+export const timeAgo = (timestamp) => {
+    return moment.unix(timestamp).fromNow();
+}
 
 export const formattedDate = (value) => {
     if (!value) return ""

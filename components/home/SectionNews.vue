@@ -5,9 +5,10 @@ const storyStore = useStoryStore();
 const storyStore1 = useStoryStore1();
 
 const {storys, total} = storeToRefs(storyStore);
-const {storys1, total1} = storeToRefs(storyStore1);
+const {storys1} = storeToRefs(storyStore1);
 
 const page = 1;
+const size = 20;
 </script>
 
 <template>
@@ -20,14 +21,16 @@ const page = 1;
                         <hr>
                         <div id="new-story">
                             <div class="row product-grid">
-                                <HomeProductItem v-for="(item, index) in storys"
-                                                 :key="index"
-                                                 :item="item"/>
+                                <LazyHomeProductItem v-for="(item, index) in storys"
+                                                     :key="index"
+                                                     :item="item"/>
                             </div>
 
                             <div class="text-center mb-4 pagination justify-content-center">
                                 <!-- Pagination -->
-                                <HomePagination :total="total" :page="page" :size="20"/>
+                                <HomePagination :total="total"
+                                                :page="page"
+                                                :size="size"/>
                                 <!-- Pagination -->
                             </div>
                         </div>
@@ -45,9 +48,9 @@ const page = 1;
 
                         <div id="new-story">
                             <div class="row product-grid">
-                                <HomeProductItem v-for="(item, index) in storys1"
-                                                 :key="index"
-                                                 :item="item"/>
+                                <LazyHomeProductItem v-for="(item, index) in storys1"
+                                                     :key="index"
+                                                     :item="item"/>
                             </div>
 
                             <div class="text-center mb-4 pagination justify-content-center">
