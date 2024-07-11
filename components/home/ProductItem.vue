@@ -35,9 +35,11 @@ const props = defineProps({
                     </span>
                 </div>
 
-                <div v-if="item.statistics.status === 'finish'"
+                <div v-if="item.status === 'finish'"
                      class="position-absolute top-0 end-0 m-1 product-discount">
-                    <div class="hot-item"><span class="is-full">FULL</span></div>
+                    <div class="hot-item">
+                        <span class="is-full">FULL</span>
+                    </div>
                 </div>
             </div>
 
