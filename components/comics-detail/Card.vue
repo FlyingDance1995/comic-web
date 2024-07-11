@@ -48,7 +48,7 @@ const props = defineProps({
 
                         <dt class="col-sm-3">Team</dt>
                         <dd class="col-sm-9">
-                            <a href="https://monkeyd.vn/nhom-dich/958" class="btn btn-sm btn-info px-3 radius-30">
+                            <a :href="`/nhom-dich/${item?.id}`" class="btn btn-sm btn-info px-3 radius-30">
                                 Bao đồng một mối lương duyên?
                             </a>
                         </dd>

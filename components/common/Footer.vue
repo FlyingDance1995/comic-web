@@ -1,5 +1,5 @@
 <script setup>
-
+    const runtimeConfig = useRuntimeConfig()
 </script>
 
 <template>
@@ -15,8 +15,8 @@
                         </a>
                     </div>
                     <div class="footer-content my-3">
-                        <p>Email: monkeyd.contact@gmail.com</p>
-                        <p>Liên hệ hỗ trợ: https://www.fb.com/monkeyd.vn</p>
+                        <p>Email: {{ runtimeConfig.public.email }}</p>
+                        <p>Liên hệ hỗ trợ: {{ runtimeConfig.public.contactFb }}</p>
                         <button type="button" class="btn btn-sm btn-danger radius-30 px-3">
                             Báo cáo vi phạm bản quyền
                         </button>
