@@ -92,13 +92,13 @@ const active = ref('top-day');
                                 <div class="d-flex justify-content-between">
                                     <div class="last_chapter">
                                         Chương {{
-                                            item.last_chapter ? item.last_chapter.chapter_number : 1
+                                            item?.last_chapter ? item?.last_chapter?.chapter_number : 1
                                         }}
                                     </div>
                                     <div class="view">
                                         <i class="bx bx-show"></i> 
                                         {{
-                                            item.statistics.daily_watched?.toLocaleString()?.replaceAll('.', ',')
+                                            item?.statistics?.daily_watched?.toLocaleString()?.replaceAll('.', ',')
                                         }}
                                     </div>
                                 </div>
@@ -129,13 +129,13 @@ const active = ref('top-day');
                                 <div class="d-flex justify-content-between">
                                     <div class="last_chapter">
                                         Chương {{
-                                            item.last_chapter ? item.last_chapter.chapter_number : 1
+                                            item?.last_chapter ? item?.last_chapter?.chapter_number : 1
                                         }}
                                     </div>
                                     <div class="view">
                                         <i class="bx bx-show"></i> 
                                         {{
-                                            item.statistics.daily_watched?.toLocaleString()?.replaceAll('.', ',')
+                                            item?.statistics?.weekly_watched?.toLocaleString()?.replaceAll('.', ',')
                                         }}
                                     </div>
                                 </div>
@@ -166,13 +166,13 @@ const active = ref('top-day');
                                 <div class="d-flex justify-content-between">
                                     <div class="last_chapter">
                                         Chương {{
-                                            item.last_chapter ? item.last_chapter.chapter_number : 1
+                                            item?.last_chapter ? item?.last_chapter?.chapter_number : 1
                                         }}
                                     </div>
                                     <div class="view">
                                         <i class="bx bx-show"></i> 
                                         {{
-                                            item.statistics.daily_watched?.toLocaleString()?.replaceAll('.', ',')
+                                            item?.statistics?.monthly_watched?.toLocaleString()?.replaceAll('.', ',')
                                         }}
                                     </div>
                                 </div>
