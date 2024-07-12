@@ -23,14 +23,14 @@ const props = defineProps({
                     <span>
                         <i class="bx bx-show"></i>
                         {{
-                            item.statistics.total_watched?.toLocaleString()?.replace('.', ',')
+                            item.statistics.total_watched?.toLocaleString()?.replaceAll('.', ',')
                         }}
                     </span>
 
                     <span>
                         <i class="bx bx-bookmark-alt"></i>
                         {{
-                            item.statistics.total_follow?.toLocaleString()?.replace('.', ',')
+                            item.statistics.total_follow?.toLocaleString()?.replaceAll('.', ',')
                         }}
                     </span>
                 </div>

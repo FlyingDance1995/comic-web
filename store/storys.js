@@ -19,8 +19,8 @@ export const useStoryStore = defineStore('story', {
                         ...params
                     }
                 });
-                this.$state.storys = story.value.results;
-                this.$state.total = story.value.count;
+                this.$state.storys = story?.value?.results;
+                this.$state.total = story?.value?.count;
             } catch (error) {
                 this.error = error;
             } finally {
@@ -49,8 +49,8 @@ export const useStoryStore1 = defineStore('story1', {
                         ...params
                     }
                 });
-                this.$state.storys1 = story.value.results;
-                this.$state.total1 = story.value.count;
+                this.$state.storys1 = story?.value?.results;
+                this.$state.total1 = story?.value?.count;
             } catch (error) {
                 this.error = error;
             } finally {

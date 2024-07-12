@@ -58,8 +58,6 @@ export default defineNuxtConfig({
                 },
             ],
             link: [
-                // {rel: 'stylesheet', href: '/owlcarousel/assets/owl.carousel.min.css'},
-                // {rel: 'stylesheet', href: '/owlcarousel/assets/owl.theme.default.min.css'},
                 {rel: 'index', href: process.env.NUXT_PUBLIC_SITE_URL},
                 {rel: 'icon', type: 'image/x-icon', href: 'https://monkeyd.vn/images/favicon/android-icon-192x192.png'},
                 {rel: 'shortcut icon', href: 'https://monkeyd.vn/images/favicon/android-icon-192x192.png'},
@@ -67,7 +65,7 @@ export default defineNuxtConfig({
                 // {
                 //     rel: 'stylesheet',
                 //     type: 'text/css',
-                //     href: 'https://monkeyd.vn/assets/app.min.css?ver=2.0.3'
+                //     href: 'https://monkeyd.vn/assets/app.min.css?ver=2.0.10'
                 // },
                 {
                     rel: 'dns-prefetch',
@@ -111,7 +109,6 @@ export default defineNuxtConfig({
             ],
             script: [
                 {src: 'https://www.googletagmanager.com/gtag/js?id=__ID__', async: true},
-                // {src: '/owlcarousel/owl.carousel.min.js', async: true},
                 {
                     innerHTML: `
                       window.dataLayer = window.dataLayer || [];
@@ -178,11 +175,10 @@ export default defineNuxtConfig({
         }
     },
 
-    compatibilityDate: '2024-07-08',
+    // compatibilityDate: '2024-07-08',
 
     plugins: [
-        { src: "~/plugins/jquery", mode: "client" },
-        { src: '~/plugins/jquery.js', mode: 'client' },
-        { src: '~/plugins/owl-carousel.js', mode: 'client' }
+        { src: '~/plugins/jquery', mode: 'client' },
+        { src: '~/plugins/owl-carousel', mode: 'client' }
     ],
 })

@@ -45,7 +45,7 @@ function performSearch() {
                     <div class="position-relative">
                         <form @onsubmit="()=> performSearch()">
                             <input type="text" class="form-control ps-5 radius-30" name="search" id="search"
-                                :value="searchQuery.search" placeholder="Tìm dịch giả/tác giả">
+                                   :value="searchQuery.search" placeholder="Tìm dịch giả/tác giả">
                             <span class="position-absolute top-50 product-show translate-middle-y">
                                 <i class="bx bx-search"></i>
                             </span>

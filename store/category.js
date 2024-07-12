@@ -12,7 +12,7 @@ export const useCategoryStore = defineStore('category', {
             this.loading = true;
             try {
                 const { data: category } = await useAPI('/category?page=1&size=300');
-                this.$state.category = category.value.results;
+                this.$state.category = category?.value?.results;
             } catch (error) {
                 this.error = error;
             } finally {

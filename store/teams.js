@@ -18,7 +18,7 @@ export const useTeamStore = defineStore('teams', {
                     }
                 });
                 
-                this.$state.teams = teams.value.results;
+                this.$state.teams = teams?.value?.results;
             } catch (error) {
                 this.error = error;
             } finally {

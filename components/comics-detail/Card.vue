@@ -44,7 +44,7 @@ const props = defineProps({
                         </dd>
 
                         <dt class="col-sm-3">Lượt xem</dt>
-                        <dd class="col-sm-9">{{data?.statistics?.total_watched?.toLocaleString()?.replace('.', ',')}}</dd>
+                        <dd class="col-sm-9">{{data?.statistics?.total_watched?.toLocaleString()?.replaceAll('.', ',')}}</dd>
 
                         <dt class="col-sm-3">Team</dt>
                         <dd class="col-sm-9">
@@ -54,7 +54,7 @@ const props = defineProps({
                         </dd>
 
                         <dt class="col-sm-3">Lượt theo dõi</dt>
-                        <dd class="col-sm-9">{{data?.statistics?.total_follow?.toLocaleString()?.replace('.', ',')}}</dd>
+                        <dd class="col-sm-9">{{data?.statistics?.total_follow?.toLocaleString()?.replaceAll('.', ',')}}</dd>
 
                         <dt class="col-sm-3">Trạng thái</dt>
                         <dd class="col-sm-9">{{data?.status === 'finish' ? 'Hoàn thành' : 'Đang phát hành'}}</dd>

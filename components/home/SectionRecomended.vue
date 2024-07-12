@@ -45,11 +45,11 @@ onMounted(() => {
                             <div class="owl-stage-outer">
                                 <div v-show="!loading"
                                      class="owl-stage">
-                                    <HomeOwlItem :data="storys.slice(0, 3)" active/>
+                                    <HomeOwlItem :data="storys?.slice(0, 3)" active/>
 
-                                    <HomeOwlItem :data="storys.slice(3, 6)" active/>
+                                    <HomeOwlItem :data="storys?.slice(3, 6)" active/>
 
-                                    <HomeOwlItem :data="storys.slice(6, 9)"/>
+                                    <HomeOwlItem :data="storys?.slice(6, 9)"/>
                                 </div>
                                 <div v-show="loading" style="text-align: center">
                                     Loading...
