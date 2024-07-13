@@ -8,8 +8,7 @@ const data = ref(null);
 const getData = async () => {
     try {
         const {data: story} = await useAPI(`/story/${slug}`);
-        console.log(story.value);
-        data.value = story.value;
+        data.value = story?.value;
     } catch (error) {
         console.log("error", error);
     }

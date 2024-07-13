@@ -17,6 +17,7 @@ const props = defineProps({
                          :alt="data?.name" style="width: 100%;" onerror="this.src='/no-image.png'">
                 </div>
             </div>
+            
             <div class="col-md-9">
                 <div class="card-body">
                     <h1 class="card-title">{{data?.name}}</h1>
@@ -37,6 +38,7 @@ const props = defineProps({
                         <dt class="col-sm-3">Thể loại</dt>
                         <dd class="col-sm-9">
                             <a v-for="item in data?.category"
+                               :key="item?.id"
                                class="cate-item"
                                :href="`/the-loai/${item?.slug}`">
                                 {{item?.name}}
@@ -48,8 +50,8 @@ const props = defineProps({
 
                         <dt class="col-sm-3">Team</dt>
                         <dd class="col-sm-9">
-                            <a :href="`/nhom-dich/${item?.id}`" class="btn btn-sm btn-info px-3 radius-30">
-                                Bao đồng một mối lương duyên?
+                            <a :href="`/nhom-dich/${data?.team?.slug}`" class="btn btn-sm btn-info px-3 radius-30">
+                                {{data?.team?.name}}
                             </a>
                         </dd>
 
@@ -66,7 +68,7 @@ const props = defineProps({
                         <ul class="social_like_single clear mt-3 p-0">
                             <li class="fb_btn fb-like-tbn" style="list-style-type: none">
                                 <!-- Your like button code -->
-                                <div class="fb-like fb_iframe_widget" data-href="https://monkeyd.vn/dong-chi.html"
+                                <div class="fb-like fb_iframe_widget" data-href="/dong-chi"
                                      data-width="" data-layout="standard" data-action="like" data-size="small"
                                      data-share="true" fb-xfbml-state="rendered"
                                      fb-iframe-plugin-query="action=like&amp;app_id=439215208546321&amp;container_width=805&amp;href=https%3A%2F%2Fmonkeyd.vn%2Fdong-chi.html&amp;layout=standard&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;size=small&amp;width=">
@@ -129,143 +131,7 @@ const props = defineProps({
         <div class="card-body  mt-4 ">
             <h5 class="mb-0 text-uppercase text-primary">Danh sách chương</h5>
             <hr>
-            <div class="list-chapters">
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-15.html">
-                            Chương 15
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-14.html">
-                            Chương 14
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-13.html">
-                            Chương 13
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-12.html">
-                            Chương 12
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-11.html">
-                            Chương 11
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-10.html">
-                            Chương 10
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-09.html">
-                            Chương 09
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-08.html">
-                            Chương 08
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-07.html">
-                            Chương 07
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-06.html">
-                            Chương 06
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-05.html">
-                            Chương 05
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-04.html">
-                            Chương 04
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-03.html">
-                            Chương 03
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-02.html">
-                            Chương 02
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-                <div class="item d-flex justify-content-between">
-                    <div class="episode-title">
-                        <a href="https://monkeyd.vn/dong-chi/chuong-01.html">
-                            Chương 01
-                        </a></div>
-                    <div class="episode-date">
-                        <span>1 ngày trước</span>
-                    </div>
-                </div>
-            </div>
+            <ComicsDetailListChapters/>
 
             <h5 class="mb-0 text-uppercase mt-5 text-primary">Bình luận</h5>
             <hr>

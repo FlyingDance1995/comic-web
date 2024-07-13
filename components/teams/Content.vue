@@ -1,6 +1,6 @@
 <script setup>
-import { useRoute, useRouter } from 'vue-router'
-import { useTeamStore } from '@/store/teams'
+import {useRoute, useRouter} from 'vue-router'
+import {useTeamStore} from '@/store/teams'
 
 const route = useRoute()
 const router = useRouter()
@@ -22,14 +22,14 @@ await storyTeams.fetchTeams(searchQuery.value ? {
     size: 1000,
 });
 
-const { teams } = storeToRefs(storyTeams);
+const {teams} = storeToRefs(storyTeams);
 
 function performSearch() {
-     // Thực hiện tìm kiếm và hiển thị kết quả
-    if( searchQuery.value.search) {
-        router.push({ query: searchQuery.value })
+    // Thực hiện tìm kiếm và hiển thị kết quả
+    if (searchQuery.value.search) {
+        router.push({query: searchQuery.value})
     } else {
-        router.push({ query: null })
+        router.push({query: null})
     }
 }
 </script>
@@ -58,19 +58,19 @@ function performSearch() {
                 <div class="row product-grid">
                     <div v-for="(team, index) in teams" :key="index" class="col-md-3 col-6">
                         <div class="card">
-                            <a :href="`/nhom-dich/${team?.id}`">
+                            <a :href="`/nhom-dich/${team?.slug}`">
                                 <img :alt="`${team?.name}`" class="card-img-top" width="200" height="260"
-                                    onerror="this.src='/no-image.png'" :src="`${team?.avatar}`">
+                                     onerror="this.src='/no-image.png'" :src="`${team?.avatar}`">
                             </a>
                             <div class="card-body">
-                                <a :href="`/nhom-dich/${team?.id}`">
+                                <a :href="`/nhom-dich/${team?.slug}`">
                                     <h3 class="card-title cursor-pointer story-item-title">
                                         {{ team?.name }}
                                     </h3>
                                 </a>
                                 <div class="d-flex justify-content-between">
-                                    <span><i class="bx bx-show"></i> {{ team?.statistics?.total_watched }} </span>
-                                    <span><i class="bx bx-book-alt"></i> {{ team?.statistics?.total_follow }} </span>
+                                    <span><i class="bx bx-show"></i> {{ team?.statistics?.total_watched?.toLocaleString()?.replaceAll('.', ',') }} </span>
+                                    <span><i class="bx bx-book-alt"></i> {{ team?.statistics?.total_follow?.toLocaleString()?.replaceAll('.', ',') }} </span>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@ function performSearch() {
                 <!-- danh sách team -->
             </div>
 
-            <HomeWidgetFanpage />
+            <HomeWidgetFanpage/>
         </div>
     </div>
 </template>

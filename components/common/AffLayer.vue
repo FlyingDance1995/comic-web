@@ -1,6 +1,7 @@
 <script setup>
-const linkAds = "https://s.shopee.vn/4KyL9eABIm";
-
+const {data: ads} = await useAPI('/affiliate');
+const linkAds = ads?.value?.[Math.floor(Math.random() * ads?.value?.length)] || [];
+console.log(ads.value)
 const aff = ref();
 
 const handleAffLayerClick = () => {

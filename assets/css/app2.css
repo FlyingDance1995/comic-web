@@ -32999,7 +32999,7 @@ ul.comments li ul {
 }
 
 .list-story-categories .btn-genres:before {
-    content: "\e98c";
+    content: "\ea29";
     font-family: boxicons !important;
     font-weight: 900;
     color: #0d6efd;
