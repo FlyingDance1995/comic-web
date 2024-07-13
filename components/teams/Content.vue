@@ -58,16 +58,16 @@ function performSearch() {
                 <div class="row product-grid">
                     <div v-for="(team, index) in teams" :key="index" class="col-md-3 col-6">
                         <div class="card">
-                            <a :href="`/nhom-dich/${team?.slug}`">
+                            <NuxtLink :to="`/nhom-dich/${team?.slug}`">
                                 <img :alt="`${team?.name}`" class="card-img-top" width="200" height="260"
                                      onerror="this.src='/no-image.png'" :src="`${team?.avatar}`">
-                            </a>
+                            </NuxtLink>
                             <div class="card-body">
-                                <a :href="`/nhom-dich/${team?.slug}`">
+                                <NuxtLink :to="`/nhom-dich/${team?.slug}`">
                                     <h3 class="card-title cursor-pointer story-item-title">
                                         {{ team?.name }}
                                     </h3>
-                                </a>
+                                </NuxtLink>
                                 <div class="d-flex justify-content-between">
                                     <span><i class="bx bx-show"></i> {{ team?.statistics?.total_watched?.toLocaleString()?.replaceAll('.', ',') }} </span>
                                     <span><i class="bx bx-book-alt"></i> {{ team?.statistics?.total_follow?.toLocaleString()?.replaceAll('.', ',') }} </span>

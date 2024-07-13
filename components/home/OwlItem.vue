@@ -20,7 +20,7 @@ const props = defineProps({
                  :key="index"
                  class="d-flex space-x-3 pt-2 px-2">
                 <div class="flex-shrink-0">
-                    <a :href="`/${item?.slug}`"
+                    <NuxtLink :to="`/${item?.slug}`"
                        :title="item?.name"
                        class="text-title font-weight-bold">
                         <img onerror="this.src='/no-image.png'"
@@ -29,16 +29,16 @@ const props = defineProps({
                              :data-src="`${item?.avatar}`"
                              :src="`${item?.avatar}`"
                              width="200" height="260">
-                    </a>
+                    </NuxtLink>
                 </div>
 
                 <div class="space-y-2">
                     <div>
-                        <a :href="`/${item?.slug}`"
+                        <NuxtLink :to="`/${item?.slug}`"
                            :title="item?.name"
                            class="text-title fw-bold">
                             {{item?.name}}
-                        </a>
+                        </NuxtLink>
                     </div>
 
                     <div class="text-gray-500 text-overflow-multiple-lines">
@@ -48,12 +48,12 @@ const props = defineProps({
                     <div
                         class="d-flex justify-content-between items-center space-x-2 pt-1">
                         <div class="d-flex grow-0 align-items-center space-x-1">
-                            <a :href="`/nhom-dich/${item?.team?.slug}`"
+                            <NuxtLink :to="`/nhom-dich/${item?.team?.slug}`"
                                class="text-title">
                                 <i class="bx bx-user"
                                    style="margin-right: 5px;"></i>
                                 {{item?.team?.name || 'No name'}}
-                            </a>
+                            </NuxtLink>
                         </div>
                     </div>
                 </div>

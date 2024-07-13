@@ -15,11 +15,11 @@ const {isDarkMode, toggleDarkMode} = userDarkMode();
 
                 <div class="topbar-logo-header d-flex">
                     <div class="">
-                        <a href="/">
+                        <NuxtLink to="/">
                             <img src="https://monkeyd.vn/images/logo/Logo-MonkeyD.png" class="logo-icon"
                                  alt="MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024"
                                  width="120" height="30">
-                        </a>
+                        </NuxtLink>
                     </div>
                 </div>
 

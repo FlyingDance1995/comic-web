@@ -37,12 +37,12 @@ const props = defineProps({
 
                         <dt class="col-sm-3">Thể loại</dt>
                         <dd class="col-sm-9">
-                            <a v-for="item in data?.category"
+                            <NuxtLink v-for="item in data?.category"
                                :key="item?.id"
                                class="cate-item"
-                               :href="`/the-loai/${item?.slug}`">
+                               :to="`/the-loai/${item?.slug}`">
                                 {{item?.name}}
-                            </a>
+                            </NuxtLink>
                         </dd>
 
                         <dt class="col-sm-3">Lượt xem</dt>
@@ -50,9 +50,9 @@ const props = defineProps({
 
                         <dt class="col-sm-3">Team</dt>
                         <dd class="col-sm-9">
-                            <a :href="`/nhom-dich/${data?.team?.slug}`" class="btn btn-sm btn-info px-3 radius-30">
+                            <NuxtLink :to="`/nhom-dich/${data?.team?.slug}`" class="btn btn-sm btn-info px-3 radius-30">
                                 {{data?.team?.name}}
-                            </a>
+                            </NuxtLink>
                         </dd>
 
                         <dt class="col-sm-3">Lượt theo dõi</dt>

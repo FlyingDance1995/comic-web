@@ -11,13 +11,13 @@ const props = defineProps({
     <div class="col-md-3 col-4">
         <div class="card">
             <div class="position-relative">
-                <a :href="`/${item?.slug}`">
+                <NuxtLink :to="`/${item?.slug}`">
                     <img onerror="this.src=`/no-image.png`"
                          class="lazyload card-img-top" :alt="`${item?.name}`"
                          :data-src="`${item?.avatar}`" :src="`${item?.avatar}`"
                          width="200"
                          height="260">
-                </a>
+                </NuxtLink>
 
                 <div class="story-meta-data d-flex justify-content-start">
                     <span>
@@ -45,19 +45,19 @@ const props = defineProps({
 
             <div class="card-body">
                 <h6 class="card-title cursor-pointer story-item-title">
-                    <a :href="`/${item?.slug}`">
+                    <NuxtLink :to="`/${item?.slug}`">
                         {{ item?.description }}
-                    </a>
+                    </NuxtLink>
                 </h6>
 
                 <div class="d-flex justify-content-between">
                     <span class="chapter font-meta">
-                        <a :href="`/${item?.slug}/chuong-${item?.last_chapter
+                        <NuxtLink :to="`/${item?.slug}/chuong-${item?.last_chapter
                             ? item?.last_chapter?.chapter_number : 1}`">
                             Chương {{
                                 item?.last_chapter ? item?.last_chapter?.chapter_number : 1
                             }}
-                        </a>
+                        </NuxtLink>
                     </span>
 
                     <span class="post-on font-meta">{{timeAgo(item?.modification_time)}}</span>

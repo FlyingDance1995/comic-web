@@ -81,7 +81,7 @@ onMounted(() => {
                                                 <div class="single-story-block">
                                                     <div class="single-story-wrap">
                                                         <div class="single-story-img">
-                                                            <a :href="`/${item?.slug}`">
+                                                            <NuxtLink to="`/${item?.slug}`">
                                                                 <img
                                                                     :src="item?.avatar"
                                                                     class="lazyload"
@@ -89,15 +89,15 @@ onMounted(() => {
                                                                     :alt="item?.name"
                                                                     width="200" height="260"
                                                                     onerror="this.src='/no-image.png'">
-                                                            </a>
+                                                            </NuxtLink>
                                                         </div>
                                                     </div>
 
                                                     <div class="single-story-details">
                                                         <h3>
-                                                            <a :href="`/${item?.slug}`">
+                                                            <NuxtLink :to="`/${item?.slug}`">
                                                                 {{item?.name}}
-                                                            </a>
+                                                            </NuxtLink>
                                                         </h3>
                                                     </div>
                                                 </div>

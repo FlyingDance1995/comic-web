@@ -83,10 +83,10 @@ const active = ref('top-day');
                             </div>
                             <div class="detail">
                                 <h3>
-                                    <a
-                                        :href="`/${item?.slug}`">
+                                    <NuxtLink
+                                        :to="`/${item?.slug}`">
                                         {{item?.name}}
-                                    </a>
+                                    </NuxtLink>
                                 </h3>
 
                                 <div class="d-flex justify-content-between">
@@ -120,10 +120,10 @@ const active = ref('top-day');
                             </div>
                             <div class="detail">
                                 <h3>
-                                    <a
-                                        :href="`/${item?.slug}`">
+                                    <NuxtLink
+                                        :to="`/${item?.slug}`">
                                         {{item?.name}}
-                                    </a>
+                                    </NuxtLink>
                                 </h3>
 
                                 <div class="d-flex justify-content-between">
@@ -157,10 +157,10 @@ const active = ref('top-day');
                             </div>
                             <div class="detail">
                                 <h3>
-                                    <a
-                                        :href="`/${item?.slug}`">
+                                    <NuxtLink
+                                        :to="`/${item?.slug}`">
                                         {{item?.name}}
-                                    </a>
+                                    </NuxtLink>
                                 </h3>
 
                                 <div class="d-flex justify-content-between">

@@ -80,10 +80,10 @@ if (slug) {
                          :key="index"
                          class="col-6 col-sm-4 col-md-3">
                         <h4 class="item-category">
-                            <a :href="`/the-loai/${item.slug}`">
+                            <NuxtLink :to="`/the-loai/${item.slug}`">
                                 <i class="bx bx-caret-right"></i>
                                 {{ item?.name }}
-                            </a>
+                            </NuxtLink>
                         </h4>
                     </div>
                 </div>
@@ -93,9 +93,9 @@ if (slug) {
                 <div class="row">
                     <div class="col-6 col-sm-4 col-md-2">
                         <h4 class="item-category">
-                            <a :href="`/the-loai/${category?.name}`">
+                            <NuxtLink :to="`/the-loai/${category?.name}`">
                                 <i class="bx bx-caret-right"></i> {{ category?.name }}
-                            </a>
+                            </NuxtLink>
                         </h4>
                     </div>
                 </div>

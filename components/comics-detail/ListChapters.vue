@@ -32,9 +32,9 @@ if (slug) getData();
             :key="item?.id"
             class="item d-flex justify-content-between">
             <div class="episode-title">
-                <a :href="`/${slug}/chuong-${item?.chapter_number}`">
+                <NuxtLink :to="`/${slug}/chuong-${item?.chapter_number}`">
                     Chương {{item?.chapter_number}}
-                </a></div>
+                </NuxtLink></div>
             <div class="episode-date">
                 <span>{{timeAgo(item?.creation_time)}}</span>
             </div>

@@ -13,7 +13,7 @@ const props = defineProps({
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item">
-                        <a href="/">Trang chủ</a>
+                        <NuxtLink to="/">Trang chủ</NuxtLink>
                     </li>
 <!--                    <i class='bx bx-chevron-right'></i>-->
                     <li class="breadcrumb-item active" aria-current="page">

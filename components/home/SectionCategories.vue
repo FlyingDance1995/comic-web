@@ -25,10 +25,10 @@ const handleExpand = (value) => {
                         <div v-for="(item, index) in category" :key="index"
                              class="col-6 col-sm-4 col-md-3">
                             <h4 class="item-category">
-                                <a :href="`/the-loai/${item.slug}`">
+                                <NuxtLink :to="`/the-loai/${item.slug}`">
                                     <i class="bx bx-caret-right"></i>
                                     {{ item.name }}
-                                </a>
+                                </NuxtLink>
                             </h4>
                         </div>
                     </div>

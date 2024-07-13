@@ -8,11 +8,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="footer-logo text-center">
-                        <a href="/">
+                        <NuxtLink to="/">
                             <img src="https://monkeyd.vn/images/logo/Logo-MonkeyD.png"
                                  alt="MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024"
                                  width="300" height="80">
-                        </a>
+                        </NuxtLink>
                     </div>
                     <div class="footer-content my-3">
                         <p>Email: {{ runtimeConfig.public.email }}</p>

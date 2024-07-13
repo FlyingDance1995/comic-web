@@ -42,8 +42,8 @@ const size = 20;
                         <div class="total-item-show position-relative">
                             <h5 class="mb-0 text-uppercase">Truyện đã hoàn thành</h5>
                             <hr>
-                            <a href="/truyen-hoan-thanh"
-                               class="read-more-story btn btn-outline-primary radius-30 btn-sm">Xem thêm</a>
+                            <NuxtLink to="/truyen-hoan-thanh"
+                               class="read-more-story btn btn-outline-primary radius-30 btn-sm">Xem thêm</NuxtLink>
                         </div>
 
                         <div id="new-story">
@@ -54,10 +54,10 @@ const size = 20;
                             </div>
 
                             <div class="text-center mb-4 pagination justify-content-center">
-                                <a href="/truyen-hoan-thanh"
+                                <NuxtLink to="/truyen-hoan-thanh"
                                    class="btn btn-sm btn-primary">
                                     Xem thêm
-                                </a>
+                                </NuxtLink>
                             </div>
                         </div>
                     </div>

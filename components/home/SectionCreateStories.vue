@@ -50,8 +50,8 @@ onMounted(() => {
                     <div class="total-item-show position-relative">
                         <h5 class="mb-0 text-uppercase"><i class="bx bx-star"></i> Truyện Sáng Tác </h5>
                         <hr>
-                        <a href="/truyen-sang-tac"
-                           class="read-more-story btn btn-outline-primary radius-30 btn-sm">Xem thêm</a>
+                        <NuxtLink to="/truyen-sang-tac"
+                           class="read-more-story btn btn-outline-primary radius-30 btn-sm">Xem thêm</NuxtLink>
                     </div>
                     <div class="card">
                         <div class="card-body">
@@ -66,7 +66,7 @@ onMounted(() => {
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
-                                                        <a :href="`/${item?.slug}`">
+                                                        <NuxtLink :to="`/${item?.slug}`">
                                                             <img
                                                                 :src="item?.avatar"
                                                                 class="lazyload"
@@ -74,15 +74,15 @@ onMounted(() => {
                                                                 :alt="item?.name"
                                                                 width="200" height="260"
                                                                 onerror="this.src='/no-image.png'">
-                                                        </a>
+                                                        </NuxtLink>
                                                     </div>
                                                 </div>
 
                                                 <div class="single-story-details">
                                                     <h3>
-                                                        <a :href="`/${item?.slug}`">
+                                                        <NuxtLink :to="`/${item?.slug}`">
                                                             {{item?.name}}
-                                                        </a>
+                                                        </NuxtLink>
                                                     </h3>
                                                 </div>
                                             </div>
