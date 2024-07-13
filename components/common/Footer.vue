@@ -9,7 +9,7 @@
                 <div class="col-md-6">
                     <div class="footer-logo text-center">
                         <a href="/">
-                            <img src="https://monkeyd.vn/images/logo/Logo-MonkeyD.png"
+                            <img src="/images/logo/Logo-MonkeyD.png"
                                  alt="MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024"
                                  width="300" height="80">
                         </a>
@@ -38,9 +38,9 @@
             </div>
         </div>
         <p class="mb-0 border-top pt-1">
-            <a href="https://monkeyd.vn/page/chinh-sach-va-quy-dinh-chung.html"><b>Chính sách và quy định chung</b></a>
-            - <a href="https://monkeyd.vn/page/chinh-sach-bao-mat.html"><b>Chính sách bảo mật</b></a> - <a
-            href="https://monkeyd.vn/sitemap-index"><b>Sitemap</b></a><br>
+            <a href="/page/chinh-sach-va-quy-dinh-chung.html"><b>Chính sách và quy định chung</b></a>
+            - <a href="/page/chinh-sach-bao-mat.html"><b>Chính sách bảo mật</b></a> - <a
+            href="/sitemap.xml"><b>Sitemap</b></a><br>
             Copyright © 2024. All right reserved.
         </p>
     </footer>

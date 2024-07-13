@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-    devtools: {enabled: false},
+    devtools: { enabled: false },
     css: ['~/assets/css/main.css'],
 
     app: {
@@ -13,104 +13,51 @@ export default defineNuxtConfig({
             viewport: 'width=device-width,initial-scale=1',
             title: "MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024",
             meta: [
-                {charset: 'utf-8'},
-                {
-                    name: 'title',
-                    content: 'MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
-                },
-                {
-                    name: 'msapplication-TileColor',
-                    content: '#ffffff'
-                },
-                {
-                    name: 'msapplication-TileImage',
-                    content: 'https://monkeyd.vn/images/favicon/ms-icon-144x144.png'
-                },
-                {
-                    name: 'theme-color',
-                    content: '#ffffff'
-                },
-                {property: 'og:type', content: 'website'},
-                {
-                    name: 'description',
-                    content: 'MonkeyD nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
-                },
-                {name: 'image', content: 'https://monkeyd.vn/images/seo/seo-image.png'},
-                {
-                    property: 'og:title',
-                    content: 'MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
-                },
-                {property: 'og:image', content: 'https://monkeyd.vn/images/seo/seo-image.png'},
-                {
-                    property: 'og:description',
-                    content: 'MonkeyD nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
-                },
-                {name: 'author', content: 'MonkeyD'},
-                {name: 'copyright', content: 'Copyright©2024 MonkeyD.　All Right Reserved.'},
-                {property: 'og:url', content: process.env.NUXT_PUBLIC_SITE_URL},
-                {property: 'og:locale', content: 'vi_VN'},
-                {property: 'og:site_name', content: 'MonkeyD'},
-                {property: 'rating', content: 'general'},
-                {property: 'distribution', content: 'global'},
-                {
-                    name: 'keywords',
-                    content: 'monkeyd, truyện ngắn, ngôn tình, tiểu thuyết, trọng sinh, truyện chữ, tổng tài, đoản văn'
-                },
+                { charset: 'utf-8' },
+                { name: 'title', content: 'MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024' },
+                { name: 'msapplication-TileColor', content: '#ffffff' },
+                { name: 'msapplication-TileImage', content: '/images/favicon/ms-icon-144x144.png' },
+                { name: 'theme-color', content: '#ffffff' },
+                { property: 'og:type', content: 'website' },
+                { name: 'description', content: 'MonkeyD nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024' },
+                { name: 'image', content: '/images/seo/seo-image.png' },
+                { property: 'og:title', content: 'MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024' },
+                { property: 'og:image', content: '/images/seo/seo-image.png' },
+                { property: 'og:description', content: 'MonkeyD nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024' },
+                { name: 'author', content: 'MonkeyD' },
+                { name: 'copyright', content: 'Copyright©2024 MonkeyD. All Right Reserved.' },
+                { property: 'og:url', content: process.env.NUXT_PUBLIC_SITE_URL },
+                { property: 'og:locale', content: 'vi_VN' },
+                { property: 'og:site_name', content: 'MonkeyD' },
+                { property: 'rating', content: 'general' },
+                { property: 'distribution', content: 'global' },
+                { name: 'keywords', content: 'monkeyd, truyện ngắn, ngôn tình, tiểu thuyết, trọng sinh, truyện chữ, tổng tài, đoản văn' },
             ],
             link: [
                 // {rel: 'stylesheet', href: '/owlcarousel/assets/owl.carousel.min.css'},
                 // {rel: 'stylesheet', href: '/owlcarousel/assets/owl.theme.default.min.css'},
-                {rel: 'index', href: process.env.NUXT_PUBLIC_SITE_URL},
-                {rel: 'icon', type: 'image/x-icon', href: 'https://monkeyd.vn/images/favicon/android-icon-192x192.png'},
-                {rel: 'shortcut icon', href: 'https://monkeyd.vn/images/favicon/android-icon-192x192.png'},
-                {rel: 'canonical', href: process.env.NUXT_PUBLIC_SITE_URL},
+                { rel: 'index', href: process.env.NUXT_PUBLIC_SITE_URL },
+                { rel: 'icon', type: 'image/x-icon', href: '/images/favicon/android-icon-192x192.png' },
+                { rel: 'shortcut icon', href: '/images/favicon/android-icon-192x192.png' },
+                { rel: 'canonical', href: process.env.NUXT_PUBLIC_SITE_URL },
                 // {
                 //     rel: 'stylesheet',
                 //     type: 'text/css',
                 //     href: 'https://monkeyd.vn/assets/app.min.css?ver=2.0.3'
                 // },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//fonts.googleapis.com'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//googleads.g.doubleclick.net'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//pagead2.googlesyndication.com'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//www.google-analytics.com'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//www.googletagservices.com'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//www.facebook.com'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//connect.facebook.net'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//apis.google.com'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//static.xx.fbcdn.net'
-                },
-                {
-                    href: process.env.NUXT_PUBLIC_SITE_URL
-                },
+                { rel: 'dns-prefetch', href: '//fonts.googleapis.com' },
+                { rel: 'dns-prefetch', href: '//googleads.g.doubleclick.net' },
+                { rel: 'dns-prefetch', href: '//pagead2.googlesyndication.com' },
+                { rel: 'dns-prefetch', href: '//www.google-analytics.com' },
+                { rel: 'dns-prefetch', href: '//www.googletagservices.com' },
+                { rel: 'dns-prefetch', href: '//www.facebook.com' },
+                { rel: 'dns-prefetch', href: '//connect.facebook.net' },
+                { rel: 'dns-prefetch', href: '//apis.google.com' },
+                { rel: 'dns-prefetch', href: '//static.xx.fbcdn.net' },
+                { href: process.env.NUXT_PUBLIC_SITE_URL },
             ],
             script: [
-                {src: 'https://www.googletagmanager.com/gtag/js?id=__ID__', async: true},
+                { src: 'https://www.googletagmanager.com/gtag/js?id=__ID__', async: true },
                 // {src: '/owlcarousel/owl.carousel.min.js', async: true},
                 {
                     innerHTML: `
@@ -161,9 +108,7 @@ export default defineNuxtConfig({
         defaultLocale: "vi"
     },
 
-    sitemap: {
-        sources: ['/api/sitemap'],
-    },
+    sitemap: { sources: ['/api/sitemap'], },
 
     seo: {
         redirectToCanonicalSiteUrl: true

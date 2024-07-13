@@ -19,7 +19,7 @@ useSchemaOrg([
         "sameAs": ["https://www.facebook.com/fanpage/"],
         "@id": "#organization",
         "name": "MonkeyD",
-        "logo": "https://monkeyd.vn/images/logo/Logo-MonkeyD.png"
+        "logo": "/images/logo/Logo-MonkeyD.png"
     }
 ])
 

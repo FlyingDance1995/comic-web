@@ -4,7 +4,7 @@ import {useStoryStore1} from '@/store/storys'
 const route = useRoute();
 const page = +route?.query?.page || 1;
 const params = {
-    type: "composed",
+    status: "finish",
     page: page,
     size: 20
 };
@@ -16,7 +16,7 @@ const {storys1, total1} = storeToRefs(storyStore);
 
 <template>
     <div class="container">
-        <h1 class="mb-0 text-uppercase">Truyện Sáng Tác</h1>
+        <h1 class="mb-0 text-uppercase">Truyện Hoàn Thành</h1>
         <hr>
         <div class="row">
             <div class="col-lg-9 col-md-9 col-12">
@@ -31,7 +31,7 @@ const {storys1, total1} = storeToRefs(storyStore);
                     <HomePagination :total="total1"
                                     :page="page"
                                     :size="params.size"
-                                    type="truyen-sang-tac"/>
+                                    type="truyen-hoan-thanh"/>
                     <!-- Pagination -->
                 </div>
             </div>

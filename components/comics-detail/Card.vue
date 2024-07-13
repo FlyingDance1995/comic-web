@@ -115,12 +115,12 @@ const props = defineProps({
                         </div>
                     </div>
 
-                    <div class="mt-3 mx-lg-4 mx-0">
+                    <!-- <div class="mt-3 mx-lg-4 mx-0">
                         <a href="https://goeco.mobi/lUtqaGcJ" target="_blank">
                             <img src="https://monkeyd.vn/images/banner/lazada-1.jpg" alt=""
                                  style="width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 5px;">
                         </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
