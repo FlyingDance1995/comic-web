@@ -1,7 +1,7 @@
 <script setup>
 const {data: ads} = await useAPI('/affiliate');
 const linkAds = ads?.value?.[Math.floor(Math.random() * ads?.value?.length)] || [];
-console.log(ads.value)
+
 const aff = ref();
 
 const handleAffLayerClick = () => {

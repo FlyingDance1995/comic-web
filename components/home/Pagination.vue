@@ -61,7 +61,7 @@ const props = defineProps({
                 </a>
             </li>
 
-            <li v-if="page !== Math.ceil(total / size)" class="page-item">
+            <li v-if="page !== Math.ceil(total / size) && Math.ceil(total / size) !== 0" class="page-item">
                 <a class="page-link"
                    :href="`/${type}?page=${Math.ceil(total / size)}`">
                     {{Math.ceil(total / size)}}

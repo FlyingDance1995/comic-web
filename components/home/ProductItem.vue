@@ -11,10 +11,10 @@ const props = defineProps({
     <div class="col-md-3 col-4">
         <div class="card">
             <div class="position-relative">
-                <a :href="`/${item.slug}`">
+                <a :href="`/${item?.slug}`">
                     <img onerror="this.src=`/no-image.png`"
-                         class="lazyload card-img-top" :alt="`${item.name}`"
-                         :data-src="`${item.avatar}`" :src="`${item.avatar}`"
+                         class="lazyload card-img-top" :alt="`${item?.name}`"
+                         :data-src="`${item?.avatar}`" :src="`${item?.avatar}`"
                          width="200"
                          height="260">
                 </a>
@@ -23,19 +23,19 @@ const props = defineProps({
                     <span>
                         <i class="bx bx-show"></i>
                         {{
-                            item.statistics.total_watched?.toLocaleString()?.replaceAll('.', ',')
+                            item?.statistics?.total_watched?.toLocaleString()?.replaceAll('.', ',')
                         }}
                     </span>
 
                     <span>
                         <i class="bx bx-bookmark-alt"></i>
                         {{
-                            item.statistics.total_follow?.toLocaleString()?.replaceAll('.', ',')
+                            item?.statistics?.total_follow?.toLocaleString()?.replaceAll('.', ',')
                         }}
                     </span>
                 </div>
 
-                <div v-if="item.status === 'finish'"
+                <div v-if="item?.status === 'finish'"
                      class="position-absolute top-0 end-0 m-1 product-discount">
                     <div class="hot-item">
                         <span class="is-full">FULL</span>
@@ -45,17 +45,17 @@ const props = defineProps({
 
             <div class="card-body">
                 <h6 class="card-title cursor-pointer story-item-title">
-                    <a :href="`/${item.slug}`">
-                        {{ item.description }}
+                    <a :href="`/${item?.slug}`">
+                        {{ item?.description }}
                     </a>
                 </h6>
 
                 <div class="d-flex justify-content-between">
                     <span class="chapter font-meta">
-                        <a :href="`/${item.slug}/chuong-${item.last_chapter
-                            ? item.last_chapter.chapter_number : 1}`">
+                        <a :href="`/${item?.slug}/chuong-${item?.last_chapter
+                            ? item?.last_chapter?.chapter_number : 1}`">
                             Chương {{
-                                item.last_chapter ? item.last_chapter.chapter_number : 1
+                                item?.last_chapter ? item?.last_chapter?.chapter_number : 1
                             }}
                         </a>
                     </span>
