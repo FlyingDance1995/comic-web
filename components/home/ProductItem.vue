@@ -46,7 +46,7 @@ const props = defineProps({
             <div class="card-body">
                 <h6 class="card-title cursor-pointer story-item-title">
                     <a :href="`/${item.slug}`">
-                        {{ item.description }}
+                        {{ item.name }}
                     </a>
                 </h6>
 

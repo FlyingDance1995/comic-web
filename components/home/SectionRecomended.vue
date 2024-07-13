@@ -60,5 +60,7 @@ onMounted(() => {
                 </div>
             </div>
         </div>
+        <HomeSectionHotStories/>
     </section>
+
 </template>
