@@ -91,7 +91,7 @@ export const useStoryHotStore1 = defineStore('story2', {
 })
 
 // Truyen Sang tac
-export const usecreateStore1 = defineStore('story2', {
+export const usecreateStore1 = defineStore('story3', {
     state: () => ({
         storys1: [],
         total1: 0,
