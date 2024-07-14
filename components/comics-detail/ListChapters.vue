@@ -30,7 +30,7 @@ if (slug) getData();
     <div class="list-chapters">
         <div v-for="item in data?.results" :key="item?.id" class="item d-flex justify-content-between">
             <div class="episode-title">
-                <a :href="`/${slug}/chuong-${item?.chapter_number}`">
+                <a :href="`/${slug}/${item?.slug}`">
                     {{ formattedNameChaper(item?.type) }} {{ item?.chapter_number }}: {{ item?.name }}
                 </a>
             </div>
