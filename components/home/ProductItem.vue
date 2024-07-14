@@ -12,11 +12,8 @@ const props = defineProps({
         <div class="card">
             <div class="position-relative">
                 <a :href="`/${item?.slug}`">
-                    <img onerror="this.src=`/no-image.png`"
-                         class="lazyload card-img-top" :alt="`${item?.name}`"
-                         :data-src="`${item?.avatar}`" :src="`${item?.avatar}`"
-                         width="200"
-                         height="260">
+                    <img onerror="this.src=`/no-image.png`" class="lazyload card-img-top" :alt="`${item?.name}`"
+                        :data-src="`${item?.avatar}`" :src="`${item?.avatar}`" width="200" height="260">
                 </a>
 
                 <div class="story-meta-data d-flex justify-content-start">
@@ -35,8 +32,7 @@ const props = defineProps({
                     </span>
                 </div>
 
-                <div v-if="item?.status === 'finish'"
-                     class="position-absolute top-0 end-0 m-1 product-discount">
+                <div v-if="item?.status === 'finish'" class="position-absolute top-0 end-0 m-1 product-discount">
                     <div class="hot-item">
                         <span class="is-full">FULL</span>
                     </div>
@@ -45,8 +41,8 @@ const props = defineProps({
 
             <div class="card-body">
                 <h6 class="card-title cursor-pointer story-item-title">
-                    <a :href="`/${item?.slug}`">
-                        {{ item?.description }}
+                    <a :href="`/${item.slug}`">
+                        {{ item.name }}
                     </a>
                 </h6>
 
@@ -60,7 +56,7 @@ const props = defineProps({
                         </a>
                     </span>
 
-                    <span class="post-on font-meta">{{timeAgo(item?.modification_time)}}</span>
+                    <span class="post-on font-meta">{{ timeAgo(item?.modification_time) }}</span>
                 </div>
             </div>
         </div>

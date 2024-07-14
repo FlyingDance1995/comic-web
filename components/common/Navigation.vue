@@ -18,7 +18,7 @@ const { category, loading, error } = storeToRefs(categoryStore);
                         <div class="d-flex align-items-center">
                             <div class="">
                                 <a href="/">
-                                    <img src="https://monkeyd.vn/images/logo/Logo-MonkeyD.png" class="logo-icon"
+                                    <img src="/images/logo/Logo-MonkeyD.png" class="logo-icon"
                                          alt="MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024">
                                 </a>
                             </div>

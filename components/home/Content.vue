@@ -4,6 +4,8 @@
 
 <template>
     <HomeSectionRecomended/>
+    
+    <!-- <SectionHotStories/> -->
 
     <HomeSectionNews/>
 

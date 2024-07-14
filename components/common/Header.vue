@@ -16,7 +16,7 @@ const {isDarkMode, toggleDarkMode} = userDarkMode();
                 <div class="topbar-logo-header d-flex">
                     <div class="">
                         <a href="/">
-                            <img src="https://monkeyd.vn/images/logo/Logo-MonkeyD.png" class="logo-icon"
+                            <img src="/images/logo/Logo-MonkeyD.png" class="logo-icon"
                                  alt="MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024"
                                  width="120" height="30">
                         </a>
@@ -25,7 +25,7 @@ const {isDarkMode, toggleDarkMode} = userDarkMode();
 
                 <div class="search-bar d-lg-block d-none">
                     <div class="position-relative popup-search w-100">
-                        <form action="https://monkeyd.vn/tim-kiem" method="GET">
+                        <form action="/tim-kiem" method="GET">
                             <input class="form-control search-input form-control-lg ps-5" type="search"
                                    placeholder="Tìm truyện" name="search" value="" id="searchInputPC"
                                    style="max-height: 40px !important; min-height: inherit !important;">
