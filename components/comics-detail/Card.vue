@@ -90,11 +90,12 @@ const props = defineProps({
                         <button class="btn btn-sm btn-danger px-3 radius-30" onclick="donate()">
                             <i class="bx bx-dollar-circle"></i>Donate
                         </button>
-                        <a :href="`/${data?.slug}/${data?.last_chapter?.slug}`"
+                        <a :href="`/${data?.slug}/${data?.first_chapter?.slug}`"
                             class="btn btn-sm btn-warning px-3 radius-30">
                             <i class="bx bx-book-open"></i>Đọc từ đầu
                         </a>
-                        <a :href="`/${data?.slug}/${data?.first_chapter?.slug}`"
+<!--                        <pre>{{data}}</pre>-->
+                        <a :href="`/${data?.slug}/${data?.last_chapter?.slug}`"
                             class="btn btn-sm btn-success px-3 radius-30">
                             <i class="bx bx-star"></i>Đọc tập mới
                         </a>

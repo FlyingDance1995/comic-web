@@ -9,12 +9,12 @@ export const timeAgo = (timestamp) => {
 
 export const formattedDate = (value) => {
     if (!value) return ""
-    return moment(value * 1000).format('hh:mm MM/DD/YYYY')
+    return moment(value * 1000).format('HH:mm MM/DD/YYYY')
 };
 
-export const formattedDateTour = (value) => {
+export const formattedFullDate = (value) => {
     if (!value) return ""
-    return moment(value).format('DD/MM/YYYY HH:mm:ss')
+    return moment(value * 1000).format('YYYY-MM-DD HH:mm:ss')
 };
 
 export const formatTimeVPoster = (data) => {

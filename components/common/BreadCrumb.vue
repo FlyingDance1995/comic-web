@@ -15,6 +15,7 @@ const props = defineProps({
                     <li class="breadcrumb-item">
                         <a href="/">Trang chủ</a>
                     </li>
+                    <slot/>
 <!--                    <i class='bx bx-chevron-right'></i>-->
                     <li class="breadcrumb-item active" aria-current="page">
                         {{name}}
