@@ -1,20 +1,3 @@
-<template>
-    <div class="container">
-        <div class="login-box">
-            <h2>Đăng nhập</h2>
-            <form action="/login" method="POST">
-                <input type="text" v-model="email" placeholder="Username hoặc Email" required>
-                <input type="password" v-model="password" placeholder="Mật khẩu" required>
-                <button :disabled="loading">Đăng nhập</button>
-                <a href="#">Quên mật khẩu?</a>
-                <p>Chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
-
-                <div style="color: red;">{{ error }}</div>
-            </form>
-        </div>
-    </div>
-</template>
-
 <script setup lang="ts">
 import { useLoginStore } from '@/store/account'
 
@@ -36,6 +19,23 @@ const { account, loading, error } = storeToRefs(accountStore);
 console.log('account', account)
 
 </script>
+
+<template>
+    <div class="container">
+        <div class="login-box">
+            <h2>Đăng nhập</h2>
+            <form action="/login" method="POST">
+                <input type="text" v-model="email" placeholder="Username hoặc Email" required>
+                <input type="password" v-model="password" placeholder="Mật khẩu" required>
+                <button type="submit" class="btn btn-primary" :disabled="loading">Đăng nhập</button>
+                <a href="#">Quên mật khẩu?</a>
+                <p>Chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
+
+                <div style="color: red;">{{ error }}</div>
+            </form>
+        </div>
+    </div>
+</template>
 
 <style scoped>
 /* CSS styles */
@@ -78,7 +78,6 @@ body {
 }
 
 .login-box button {
-    background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -88,12 +87,7 @@ body {
     width: 100%;
 }
 
-.login-box button:hover {
-    background-color: #45a049;
-}
-
 .login-box a {
-    color: #4CAF50;
     text-decoration: none;
 }
 
