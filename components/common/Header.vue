@@ -70,9 +70,9 @@ const {isDarkMode, toggleDarkMode} = userDarkMode();
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <a href="https://monkeyd.vn/login" class="btn btn-sm btn-primary" style="margin-right: 5px">
+                    <a href="/login" class="btn btn-sm btn-primary" style="margin-right: 5px">
                         Đăng nhập</a>
-                    <a href="https://monkeyd.vn/tao-tai-khoan" class="btn btn-sm btn-primary">
+                    <a href="/tao-tai-khoan" class="btn btn-sm btn-primary">
                         Đăng ký
                     </a>
                 </div>

@@ -62,11 +62,13 @@ export const useRegisterStore = defineStore('register', {
     }),
 
     actions: {
-        async fetchRegister() {
+        async fetchRegister(params) {
             this.loading = true;
 
             try {
-                const { data } = await useAPI('/users/register');
+                const { data } = await useAPI('/users/register', {
+                    body: params
+                });
 
                 console.log('data', data.value)
 
