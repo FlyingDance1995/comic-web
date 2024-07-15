@@ -42,11 +42,6 @@ console.log('account', account)
                                         <form class="row g-3" action="https://monkeyd.vn/user/create" method="POST">
                                             <input type="hidden" name="_token"
                                                 value="WUxnEw8B4kTJLog3u8UugUGuMAE7gwUi6qq5jnMr">
-                                            <div class="mgt-10 alert alert-danger alert-dismissible" role="alert">
-                                                <p class="mb-1">Nhập tên hiển thị của bạn</p>
-                                                <p class="mb-1">Hãy nhập vào địa chỉ Email</p>
-                                                <p class="mb-1">Hãy nhập mật khẩu</p>
-                                            </div>
 
                                             <div class="col-12">
                                                 <label for="inputUsername" class="form-label">Email</label>
