@@ -127,7 +127,7 @@ const validateField = () => {
                                 </div>
 
                                 <div class="form-body">
-                                    <form v-if="formOTP"
+                                    <form v-if="!formOTP"
                                           class="row g-3"
                                           action=""
                                           method="POST"
