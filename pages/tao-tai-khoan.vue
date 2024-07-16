@@ -53,7 +53,7 @@ const handleVerify = async () => {
                 otp: form.otp,
             }
         });
-        console.log(response?.data)
+        window.location.href = '/login';
         loading.value = false;
     } catch (e) {
         if (e?.response?.status !== 500 && e?.response?._data?.error) {
@@ -76,7 +76,6 @@ const handleRetryOTP = async () => {
             }
         });
         loadingRetry.value = false;
-        window.location.href = '/login';
     } catch (e) {
         console.log("error", e?.response);
         loadingRetry.value = false;
