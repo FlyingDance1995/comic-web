@@ -32,6 +32,7 @@ onMounted(() => {
             nav: false,
             dots: true,
             autoplay: true,
+            smartSpeed: 500,
             autoplayTimeout: 3000,
             responsiveClass: true,
             responsive: {

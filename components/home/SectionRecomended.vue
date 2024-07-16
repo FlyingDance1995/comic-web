@@ -6,7 +6,7 @@ const storyStore = useStoryStore();
 const {storys} = storeToRefs(storyStore);
 const loading = ref(true);
 
-onMounted(() => {
+onBeforeMount(() => {
     $(document).ready(function () {
         $(".recommendedStory").owlCarousel({
             items: 2,
@@ -14,7 +14,8 @@ onMounted(() => {
             nav: false,
             dots: true,
             autoplay: true,
-            autoplayTimeout: 5000,
+            smartSpeed: 500,
+            autoplayTimeout: 3000,
             responsiveClass: true,
             responsive: {
                 0: {
@@ -60,7 +61,6 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-        <HomeSectionHotStories/>
+<!--        <HomeSectionHotStories/>-->
     </section>
-
 </template>

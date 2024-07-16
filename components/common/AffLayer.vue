@@ -9,9 +9,13 @@ const handleAffLayerClick = () => {
     aff.value = true;
 };
 
-onBeforeMount(() => {
-    aff.value = sessionStorage.getItem('aff') !== null;
-})
+// onBeforeMount(() => {
+//     aff.value = sessionStorage.getItem('aff') !== null;
+// });
+
+if (window) {
+    aff.value = window.sessionStorage.getItem('aff') !== null;
+}
 </script>
 
 <template>

@@ -1,11 +1,11 @@
 <script setup>
-   
+
 </script>
 
 <template>
     <HomeSectionRecomended/>
-    
-    <!-- <SectionHotStories/> -->
+
+    <HomeSectionHotStories/>
 
     <HomeSectionNews/>
 

@@ -11,6 +11,7 @@ const { data: story } = await useAPI('/story', {
     query: query
 });
 
+const loading = ref(true);
 
 onMounted(() => {
     $(document).ready(function () {
@@ -20,6 +21,7 @@ onMounted(() => {
             nav: false,
             dots: true,
             autoplay: true,
+            smartSpeed: 500,
             autoplayTimeout: 3000,
             responsiveClass: true,
             responsive: {
