@@ -5,12 +5,15 @@ const form = reactive({
     email: '',
     fullname: '',
     password: '',
-    rePassword: ''
+    rePassword: '',
+    otp: ''
 });
 const showPass = ref(false);
 const showRePass = ref(false);
 const loading = ref(false);
+const loadingRetry = ref(false);
 const error = ref({});
+const formOTP = ref(false);
 
 const handleRegister = async () => {
     validateField();
@@ -18,7 +21,6 @@ const handleRegister = async () => {
 
     try {
         loading.value = true;
-
         const response = await useNuxtApp().$api('/users/register', {
             method: "POST",
             body: {
@@ -27,14 +29,57 @@ const handleRegister = async () => {
                 fullname: form.fullname,
             }
         });
-        console.log('data', response)
+        formOTP.value = true;
         loading.value = false;
     } catch (e) {
         if (e?.response?.status !== 500 && e?.response?._data?.email) {
             error.value['email'] = "Email đã được sử dụng";
         }
-
+        console.log("error", e?.response);
         loading.value = false;
+    }
+};
+
+const handleVerify = async () => {
+    try {
+        error.value = {};
+        if (!form.otp) return error.value['otp'] = "Hãy nhập mã OTP";
+
+        loading.value = true;
+        const response = await useNuxtApp().$api('/users/register/verify-otp', {
+            method: "POST",
+            body: {
+                email: form.email,
+                otp: form.otp,
+            }
+        });
+        console.log(response?.data)
+        loading.value = false;
+    } catch (e) {
+        if (e?.response?.status !== 500 && e?.response?._data?.error) {
+            error.value['otp'] = e?.response?._data?.error;
+        }
+        console.log("error", e?.response);
+        loading.value = false;
+    }
+};
+
+const handleRetryOTP = async () => {
+    try {
+        if (loadingRetry.value) return;
+
+        loadingRetry.value = true;
+        const response = await useNuxtApp().$api('/users/create-otp', {
+            method: "POST",
+            body: {
+                email: form.email,
+            }
+        });
+        loadingRetry.value = false;
+        window.location.href = '/login';
+    } catch (e) {
+        console.log("error", e?.response);
+        loadingRetry.value = false;
     }
 };
 
@@ -82,7 +127,11 @@ const validateField = () => {
                                 </div>
 
                                 <div class="form-body">
-                                    <form class="row g-3" action="" method="POST" @submit.prevent="handleRegister">
+                                    <form v-if="formOTP"
+                                          class="row g-3"
+                                          action=""
+                                          method="POST"
+                                          @submit.prevent="handleRegister">
                                         <div v-if="error && Object.keys(error)?.length > 0"
                                              class="mgt-10 alert alert-danger alert-dismissible" role="alert">
                                             <p v-for="item in Object.keys(error)"
@@ -148,6 +197,63 @@ const validateField = () => {
                                                             pointerEvents: loading ? 'none' : 'auto'
                                                         }">
                                                      {{ loading ? 'Loading...' : 'Đăng ký'}}
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="text-center">
+                                                <p class="mb-0">
+                                                    Đã có tài khoản?
+                                                    <a href="/login">Đăng nhập ngay</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <form v-else
+                                          class="row g-3"
+                                          action=""
+                                          method="POST"
+                                          @submit.prevent="handleVerify">
+                                        <div v-if="error && Object.keys(error)?.length > 0"
+                                             class="mgt-10 alert alert-danger alert-dismissible" role="alert">
+                                            <p v-for="item in Object.keys(error)"
+                                               :key="item"
+                                               class="mb-1">
+                                                {{error[item]}}
+                                            </p>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="inputUsername" class="form-label">Email</label>
+                                            <input v-model="form.email"
+                                                   type="email" class="form-control" name="email" id="inputUsername"
+                                                   placeholder="example@user.com" disabled>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="inputChoosePassword" class="form-label">Mã OTP</label>
+                                            <div class="input-group" id="show_hide_password">
+                                                <input v-model="form.otp"
+                                                       type="text"
+                                                       class="form-control border-end-0"
+                                                       id="inputChoosePassword" placeholder="123456">
+                                                <a href="javascript:;" class="input-group-text bg-transparent"
+                                                   @click="handleRetryOTP">
+                                                    Gửi lại
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="d-grid">
+                                                <button type="submit"
+                                                        class="btn btn-primary"
+                                                        :style="{
+                                                            pointerEvents: loading ? 'none' : 'auto'
+                                                        }">
+                                                    {{ loading ? 'Loading...' : 'Xác nhận'}}
                                                 </button>
                                             </div>
                                         </div>
