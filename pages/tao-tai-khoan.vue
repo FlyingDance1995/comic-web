@@ -1,6 +1,4 @@
 <script setup>
-import {useRegisterStore} from '@/store/account'
-
 const form = reactive({
     email: '',
     fullname: '',
@@ -12,10 +10,12 @@ const showPass = ref(false);
 const showRePass = ref(false);
 const loading = ref(false);
 const loadingRetry = ref(false);
-const error = ref({});
 const formOTP = ref(false);
+const error = ref({});
 
 const handleRegister = async () => {
+    if (loading.value) return;
+
     validateField();
     if (error.value && Object.keys(error.value)?.length > 0) return;
 
@@ -41,6 +41,8 @@ const handleRegister = async () => {
 };
 
 const handleVerify = async () => {
+    if (loading.value) return;
+
     try {
         error.value = {};
         if (!form.otp) return error.value['otp'] = "Hãy nhập mã OTP";
@@ -54,7 +56,6 @@ const handleVerify = async () => {
             }
         });
         window.location.href = '/login';
-        loading.value = false;
     } catch (e) {
         if (e?.response?.status !== 500 && e?.response?._data?.error) {
             error.value['otp'] = e?.response?._data?.error;
@@ -98,7 +99,7 @@ const validateField = () => {
     if (!form.password) {
         error.value['password'] = 'Mật khẩu không được để trống';
     } else if (form.password.length < 6) {
-        error.value['password'] = 'Mật khẩu phải lớn hơn 6 ký tự';
+        error.value['password'] = 'Mật khẩu phải tối thiểu 6 ký tự';
     }
 
     if (!form.rePassword) {

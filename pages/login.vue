@@ -1,21 +1,64 @@
 <script setup>
-import {useLoginStore} from '@/store/account'
 
-const email = ref('admin@admin.vn');
-const password = ref('Admin@1235!!');
-const accountStore = useLoginStore();
+import {useUserStore} from "@/store/user.js";
+
+let userStore = null;
+if (window) {
+    userStore = useUserStore();
+}
+
+const form = reactive({
+    email: '',
+    password: '',
+});
 const showPass = ref(false);
+const loading = ref(false);
+const error = ref({});
 
 const handleLogin = async () => {
-    await accountStore.fetchLogin(
-        {
-            email: email.value,
-            password: password.value,
+    if (loading.value) return;
+
+    validateField();
+    if (error.value && Object.keys(error.value)?.length > 0) return;
+
+    try {
+        loading.value = true;
+        const response = await useNuxtApp().$api('/auth/login', {
+            method: "POST",
+            body: {
+                email: form.email,
+                password: form.password,
+            }
+        });
+        userStore.setUser(response?.user);
+        userStore.setToken(response?.token);
+        userStore.setExpiry(response?.expiry);
+        // loading.value = false;
+        window.location.href = '/';
+    } catch (e) {
+        if (e?.response?.status !== 500 && e?.response?._data) {
+            error.value['error'] = "Email hoặc mật khẩu không chính xác";
         }
-    );
+        console.log("error", e?.response);
+        loading.value = false;
+    }
 };
 
-const {account, loading, error} = storeToRefs(accountStore);
+const validateField = () => {
+    error.value = {};
+
+    if (!form.email) {
+        error.value['email'] = 'Email không được để trống';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+        error.value['email'] = 'Email không đúng định dạng';
+    }
+
+    if (!form.password) {
+        error.value['password'] = 'Mật khẩu không được để trống';
+    } else if (form.password.length < 6) {
+        error.value['password'] = 'Mật khẩu phải tối thiểu 6 ký tự';
+    }
+};
 </script>
 
 <template>
@@ -36,23 +79,32 @@ const {account, loading, error} = storeToRefs(accountStore);
 
                                 <div class="form-body">
                                     <form class="row g-3" action="" method="POST" @submit.prevent="handleLogin">
-<!--                                        <div class="mgt-10 alert alert-danger alert-dismissible" role="alert">-->
-<!--                                            <p class="mb-1">Địa chỉ Email đã tồn tại</p>-->
-<!--                                            <p class="mb-1">Xác nhận mật khẩu không đúng</p>-->
-<!--                                        </div>-->
+                                        <div v-if="error && Object.keys(error)?.length > 0"
+                                             class="mgt-10 alert alert-danger alert-dismissible" role="alert">
+                                            <p v-for="item in Object.keys(error)"
+                                               :key="item"
+                                               class="mb-1">
+                                                {{ error[item] }}
+                                            </p>
+                                        </div>
 
                                         <div class="col-12">
                                             <label for="inputEmailAddress" class="form-label">
-                                                Username hoặc Email
+                                                Email
                                             </label>
-                                            <input type="text" name="email" class="form-control" id="inputEmailAddress"
+                                            <input v-model="form.email"
+                                                   type="text" name="email"
+                                                   class="form-control" id="inputEmailAddress"
                                                    placeholder="jhon@example.com">
                                         </div>
 
                                         <div class="col-12">
                                             <label for="inputChoosePassword" class="form-label">Mật khẩu</label>
                                             <div class="input-group" id="show_hide_password">
-                                                <input :type="showPass ? 'text': 'password'" class="form-control border-end-0" name="password"
+                                                <input v-model="form.password"
+                                                       :type="showPass ? 'text': 'password'"
+                                                       class="form-control border-end-0"
+                                                       name="password"
                                                        id="inputChoosePassword" placeholder="Nhập mật khẩu">
                                                 <a href="javascript:;" class="input-group-text bg-transparent"
                                                    @click="showPass = !showPass">
@@ -70,7 +122,12 @@ const {account, loading, error} = storeToRefs(accountStore);
 
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                                                <button type="submit" class="btn btn-primary"
+                                                        :style="{
+                                                            pointerEvents: loading ? 'none' : 'auto'
+                                                        }">
+                                                    {{ loading ? 'Loading...' : 'Đăng nhập' }}
+                                                </button>
                                             </div>
                                         </div>
 
