@@ -23,7 +23,7 @@ const getData = async () => {
     try {
         const {data} = await useAPI(`/story`, {
             query: {
-                params,
+                ...params,
                 category: slug
             }
         });
@@ -115,7 +115,8 @@ if (slug) {
                 <div class="pagination mt-4 justify-content-center">
                     <HomePagination :total="total"
                                     :page="page"
-                                    :size="params.size"/>
+                                    :size="params.size"
+                                    :type="`the-loai/${slug}`"/>
                 </div>
             </div>
 

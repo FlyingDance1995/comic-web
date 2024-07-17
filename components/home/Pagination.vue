@@ -23,12 +23,12 @@ const props = defineProps({
     <nav aria-label="...">
         <ul class="pagination">
             <li class="page-item">
-                <NuxtLink class="page-link"
+                <a class="page-link"
                    :class="{'disabled': page === 1}"
-                   :to="`/${type}?page=${page - 1}`"
+                   :href="`/${type}?page=${page - 1}`"
                    tabindex="-1">
                     <i class="bx bx-chevrons-left"></i>
-                </NuxtLink>
+                </a>
             </li>
 
             <li class="page-item active"
@@ -41,17 +41,17 @@ const props = defineProps({
             </li>
 
             <li v-if="1 + page < Math.ceil(total / size)" class="page-item">
-                <NuxtLink class="page-link"
-                   :to="`/${type}?page=${1 + page}`">
+                <a class="page-link"
+                   :href="`/${type}?page=${1 + page}`">
                     {{1 + page}}
-                </NuxtLink>
+                </a>
             </li>
 
             <li v-if="2 + page < Math.ceil(total / size)" class="page-item">
-                <NuxtLink class="page-link"
-                   :to="`/${type}?page=${2 + page}`">
+                <a class="page-link"
+                   :href="`/${type}?page=${2 + page}`">
                     {{2 + page}}
-                </NuxtLink>
+                </a>
             </li>
 
             <li v-if="3 + page < Math.ceil(total / size)" class="page-item disabled">
@@ -62,18 +62,18 @@ const props = defineProps({
             </li>
 
             <li v-if="page !== Math.ceil(total / size) && Math.ceil(total / size) !== 0" class="page-item">
-                <NuxtLink class="page-link"
-                   :to="`/${type}?page=${Math.ceil(total / size)}`">
+                <a class="page-link"
+                   :href="`/${type}?page=${Math.ceil(total / size)}`">
                     {{Math.ceil(total / size)}}
-                </NuxtLink>
+                </a>
             </li>
 
             <li class="page-item"
                 :class="{'disabled': page === Math.ceil(total / size)}">
-                <NuxtLink class="page-link"
-                   :to="`/${type}?page=${1 + page}`">
+                <a class="page-link"
+                   :href="`/${type}?page=${1 + page}`">
                     <i class="bx bx-chevrons-right"></i>
-                </NuxtLink>
+                </a>
             </li>
         </ul>
     </nav>
