@@ -101,7 +101,7 @@ const handleClickMenu = () => {
                        data-bs-toggle="dropdown"
                        :aria-expanded="openMenu"
                        @click="openMenu = !openMenu">
-                        <img src="https://monkeyd.vn/img/avata.png" class="user-img" alt="test">
+                        <img src="/images/avata.png" class="user-img" alt="test">
                         <div class="user-info">
                             <p class="user-name mb-0">{{ user?.email }}</p>
                             <p class="designattion mb-0">{{ user?.fullname }}</p>
