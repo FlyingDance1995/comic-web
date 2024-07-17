@@ -2,7 +2,7 @@ export default defineNuxtPlugin(() => {
     const runtimeConfig = useRuntimeConfig();
 
     const api = $fetch.create({
-        baseURL: process.env.NODE_ENV === 'development' ? runtimeConfig.public.apiEndpoint : '/api',
+        baseURL: runtimeConfig.public.apiEndpoint,
         // @ts-ignore
         onRequest({ request, options, error }) {
             // const access_token = localStorage.getItem('access_token');
