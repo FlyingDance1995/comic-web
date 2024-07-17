@@ -1,9 +1,15 @@
 <script setup>
+const props = defineProps({
+    slug: {
+        type: String,
+        default: ''
+    }
+});
+
 const route = useRoute();
 
 const slug = route?.params?.slug;
 
-const story = ref([]);
 const loading = ref(true);
 
 const query = {
@@ -12,17 +18,12 @@ const query = {
     ordering: 'recommended',
 };
 
-const getData = async () => {
-    const {data} = await useAPI('/story', {
-        query: {
-            ...query,
-            story: slug
-        }
-    });
-    story.value = data?.value
-};
-
-if (slug) getData();
+const {data: story} = await useAPI('/story', {
+    query: {
+        ...query,
+        story: slug
+    }
+});
 
 onMounted(() => {
     $(document).ready(function () {
@@ -30,8 +31,9 @@ onMounted(() => {
             items: 6,
             margin: 20,
             nav: false,
-            dots: true,
+            dots: false,
             autoplay: true,
+            smartSpeed: 500,
             autoplayTimeout: 3000,
             responsiveClass: true,
             responsive: {

@@ -1,4 +1,6 @@
 <script setup>
+import {useMenuStore} from "~/store/menu.js";
+
 useSchemaOrg([
     {
         "@context": "http://schema.org",
@@ -19,15 +21,17 @@ useSchemaOrg([
         "sameAs": ["https://www.facebook.com/fanpage/"],
         "@id": "#organization",
         "name": "MonkeyD",
-        "logo": "https://monkeyd.vn/images/logo/Logo-MonkeyD.png"
+        "logo": "/images/logo/Logo-MonkeyD.png"
     }
 ])
 
 import menu from "@/constants/menu.js";
 
 const route = useRoute();
+const menuStore = useMenuStore();
 
 const tabValue = ref("/");
+const openMenu = computed(() => menuStore.$state.open);
 
 watch(() => route.path, () => {
     if (route?.path) {
@@ -44,7 +48,8 @@ watch(() => route.path, () => {
     <!--ads-->
     <CommonAffLayer/>
     <!--wrapper-->
-    <div class="wrapper">
+    <div class="wrapper"
+         :class="openMenu ? 'toggled' : ''">
         <!--start header wrapper-->
         <div class="header-wrapper">
             <!--start header -->

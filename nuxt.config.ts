@@ -1,5 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+// Function to get the domain URL
+function getDomainUrl() {
+    let domainUrl = 'https://admin.hoannq.click/api'
+    if (typeof window !== 'undefined') {
+        domainUrl = `${window.location.protocol}//${window.location.host}/api`
+    }
+    return domainUrl
+}
+
 export default defineNuxtConfig({
     devtools: {enabled: false},
     css: ['~/assets/css/main.css'],
@@ -18,35 +27,26 @@ export default defineNuxtConfig({
                     name: 'title',
                     content: 'MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
                 },
-                {
-                    name: 'msapplication-TileColor',
-                    content: '#ffffff'
-                },
-                {
-                    name: 'msapplication-TileImage',
-                    content: 'https://monkeyd.vn/images/favicon/ms-icon-144x144.png'
-                },
-                {
-                    name: 'theme-color',
-                    content: '#ffffff'
-                },
+                {name: 'msapplication-TileColor', content: '#ffffff'},
+                {name: 'msapplication-TileImage', content: '/images/favicon/ms-icon-144x144.png'},
+                {name: 'theme-color', content: '#ffffff'},
                 {property: 'og:type', content: 'website'},
                 {
                     name: 'description',
                     content: 'MonkeyD nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
                 },
-                {name: 'image', content: 'https://monkeyd.vn/images/seo/seo-image.png'},
+                {name: 'image', content: '/images/seo/seo-image.png'},
                 {
                     property: 'og:title',
                     content: 'MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
                 },
-                {property: 'og:image', content: 'https://monkeyd.vn/images/seo/seo-image.png'},
+                {property: 'og:image', content: '/images/seo/seo-image.png'},
                 {
                     property: 'og:description',
                     content: 'MonkeyD nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
                 },
                 {name: 'author', content: 'MonkeyD'},
-                {name: 'copyright', content: 'Copyright©2024 MonkeyD.　All Right Reserved.'},
+                {name: 'copyright', content: 'Copyright©2024 MonkeyD. All Right Reserved.'},
                 {property: 'og:url', content: process.env.NUXT_PUBLIC_SITE_URL},
                 {property: 'og:locale', content: 'vi_VN'},
                 {property: 'og:site_name', content: 'MonkeyD'},
@@ -58,64 +58,38 @@ export default defineNuxtConfig({
                 },
             ],
             link: [
+                // {rel: 'stylesheet', href: '/owlcarousel/assets/owl.carousel.min.css'},
+                // {rel: 'stylesheet', href: '/owlcarousel/assets/owl.theme.default.min.css'},
                 {rel: 'index', href: process.env.NUXT_PUBLIC_SITE_URL},
-                {rel: 'icon', type: 'image/x-icon', href: 'https://monkeyd.vn/images/favicon/android-icon-192x192.png'},
-                {rel: 'shortcut icon', href: 'https://monkeyd.vn/images/favicon/android-icon-192x192.png'},
+                {rel: 'icon', type: 'image/x-icon', href: '/images/favicon/android-icon-192x192.png'},
+                {rel: 'shortcut icon', href: '/images/favicon/android-icon-192x192.png'},
                 {rel: 'canonical', href: process.env.NUXT_PUBLIC_SITE_URL},
                 // {
                 //     rel: 'stylesheet',
                 //     type: 'text/css',
                 //     href: 'https://monkeyd.vn/assets/app.min.css?ver=2.0.10'
                 // },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//fonts.googleapis.com'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//googleads.g.doubleclick.net'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//pagead2.googlesyndication.com'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//www.google-analytics.com'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//www.googletagservices.com'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//www.facebook.com'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//connect.facebook.net'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//apis.google.com'
-                },
-                {
-                    rel: 'dns-prefetch',
-                    href: '//static.xx.fbcdn.net'
-                },
-                {
-                    href: process.env.NUXT_PUBLIC_SITE_URL
-                },
+                {rel: 'dns-prefetch', href: '//fonts.googleapis.com'},
+                {rel: 'dns-prefetch', href: '//googleads.g.doubleclick.net'},
+                {rel: 'dns-prefetch', href: '//pagead2.googlesyndication.com'},
+                {rel: 'dns-prefetch', href: '//www.google-analytics.com'},
+                {rel: 'dns-prefetch', href: '//www.googletagservices.com'},
+                {rel: 'dns-prefetch', href: '//www.facebook.com'},
+                {rel: 'dns-prefetch', href: '//connect.facebook.net'},
+                {rel: 'dns-prefetch', href: '//apis.google.com'},
+                {rel: 'dns-prefetch', href: '//static.xx.fbcdn.net'},
+                {href: process.env.NUXT_PUBLIC_SITE_URL},
             ],
             script: [
                 {src: 'https://www.googletagmanager.com/gtag/js?id=__ID__', async: true},
+
                 {
                     innerHTML: `
-                      window.dataLayer = window.dataLayer || [];
-                      function gtag() { dataLayer.push(arguments); }
-                      gtag('js', new Date());
-                      gtag('config', '__ID__');
-                    `,
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() { dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', '__ID__');
+                  `,
                     type: 'text/javascript'
                 },
                 {
@@ -158,9 +132,7 @@ export default defineNuxtConfig({
         defaultLocale: "vi"
     },
 
-    sitemap: {
-        sources: ['/api/sitemap'],
-    },
+    sitemap: {sources: ['/api/sitemap'],},
 
     seo: {
         redirectToCanonicalSiteUrl: true
@@ -169,16 +141,17 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             SITE_URL: process.env.NUXT_PUBLIC_SITE_URL,
-            apiEndpoint: process.env.NUXT_PUBLIC_API_BASE ?? 'https://admin.hoannq.click/api',
+            apiEndpoint: getDomainUrl(),
             email: process.env.NUXT_PUBLIC_EMAIL,
             contactFb: process.env.NUXT_PUBLIC_CONTACT_FB,
         }
     },
 
-    // compatibilityDate: '2024-07-08',
 
     plugins: [
-        { src: '~/plugins/jquery', mode: 'client' },
-        { src: '~/plugins/owl-carousel', mode: 'client' }
+        {src: '~/plugins/jquery', mode: 'client'},
+        {src: '~/plugins/owl-carousel', mode: 'client'}
     ],
+
+    compatibilityDate: '2024-07-17',
 })

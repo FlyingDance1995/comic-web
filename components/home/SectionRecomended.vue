@@ -14,7 +14,8 @@ onMounted(() => {
             nav: false,
             dots: true,
             autoplay: true,
-            autoplayTimeout: 5000,
+            smartSpeed: 500,
+            autoplayTimeout: 3000,
             responsiveClass: true,
             responsive: {
                 0: {
@@ -60,5 +61,6 @@ onMounted(() => {
                 </div>
             </div>
         </div>
+<!--        <HomeSectionHotStories/>-->
     </section>
 </template>

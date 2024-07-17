@@ -1,15 +1,32 @@
 <script setup>
+const topDonate = ref(null);
 const query = {
     size: 10,
     page: 1,
 };
 
-const {data: topDonate} = await useAPI('/teams', {
-    query: {
-        ...query,
-        ordering: 'total_story',
+const getData = async () => {
+    try {
+        const response = await useNuxtApp().$api('/teams', {
+            query: {
+                ...query,
+                ordering: 'total_story',
+            }
+        });
+        topDonate.value = response;
+    } catch (error) {
+        console.log("error", error);
     }
-});
+};
+
+getData();
+
+// const {data: topDonate} = await useAPI('/teams', {
+//     query: {
+//         ...query,
+//         ordering: 'total_story',
+//     }
+// });
 </script>
 <template>
     <div class="col-md-12">

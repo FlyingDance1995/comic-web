@@ -1,5 +1,4 @@
 <script setup>
-const loading = ref(true);
 
 const query = {
     size: 20,
@@ -8,9 +7,11 @@ const query = {
     type: 'composed'
 };
 
-const {data: story} = await useAPI('/story', {
+const { data: story } = await useAPI('/story', {
     query: query
 });
+
+const loading = ref(true);
 
 onMounted(() => {
     $(document).ready(function () {
@@ -20,6 +21,7 @@ onMounted(() => {
             nav: false,
             dots: true,
             autoplay: true,
+            smartSpeed: 500,
             autoplayTimeout: 3000,
             responsiveClass: true,
             responsive: {
@@ -40,6 +42,7 @@ onMounted(() => {
         loading.value = false;
     });
 });
+
 </script>
 
 <template>
@@ -56,24 +59,17 @@ onMounted(() => {
                     <div class="card">
                         <div class="card-body">
                             <div class="creative-stories-slider owl-carousel owl-loaded owl-drag"
-                                 id="propose-story-slider">
+                                id="propose-story-slider">
                                 <div class="owl-stage-outer">
-                                    <div v-show="!loading"
-                                         class="owl-stage">
-                                        <div v-for="item in story?.results" 
-                                            :key="item?.id"
-                                            class="owl-item">
+                                    <div v-show="!loading" class="owl-stage">
+                                        <div v-for="item in story?.results" :key="item?.id" class="owl-item">
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
                                                         <NuxtLink :to="`/${item?.slug}`">
-                                                            <img
-                                                                :src="item?.avatar"
-                                                                class="lazyload"
-                                                                :data-src="item?.avatar"
-                                                                :alt="item?.name"
-                                                                width="200" height="260"
-                                                                onerror="this.src='/no-image.png'">
+                                                            <img :src="item?.avatar" class="lazyload"
+                                                                 :data-src="item?.avatar" :alt="item?.name" width="200"
+                                                                 height="260" onerror="this.src='/no-image.png'">
                                                         </NuxtLink>
                                                     </div>
                                                 </div>
@@ -87,6 +83,7 @@ onMounted(() => {
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
 
                                     <div v-show="loading" style="text-align: center">

@@ -15,6 +15,7 @@ const props = defineProps({
                     <li class="breadcrumb-item">
                         <NuxtLink to="/">Trang chủ</NuxtLink>
                     </li>
+                    <slot/>
 <!--                    <i class='bx bx-chevron-right'></i>-->
                     <li class="breadcrumb-item active" aria-current="page">
                         {{name}}

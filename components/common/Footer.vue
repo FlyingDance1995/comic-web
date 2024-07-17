@@ -9,7 +9,7 @@
                 <div class="col-md-6">
                     <div class="footer-logo text-center">
                         <NuxtLink to="/">
-                            <img src="https://monkeyd.vn/images/logo/Logo-MonkeyD.png"
+                            <img src="/images/logo/Logo-MonkeyD.png"
                                  alt="MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024"
                                  width="300" height="80">
                         </NuxtLink>
@@ -31,16 +31,16 @@
                             trách nhiệm liên quan đến các nội dung trên website này. Nếu làm ảnh hưởng đến cá nhân
                             hay tổ chức nào, khi được yêu cầu, chúng tôi sẽ xem xét và gỡ bỏ ngay lập tức. Các vấn
                             đề liên quan đến bản quyền hoặc thắc mắc khác, vui lòng liên hệ fanpage: <a
-                                href="https://www.facebook.com/profile.php?id=61557293151319" target="_blank">MonkeyD</a>
+                                :href="`${runtimeConfig.public.contactFb}`" target="_blank">MonkeyD</a>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
         <p class="mb-0 border-top pt-1">
-            <a href="https://monkeyd.vn/page/chinh-sach-va-quy-dinh-chung.html"><b>Chính sách và quy định chung</b></a>
-            - <a href="https://monkeyd.vn/page/chinh-sach-bao-mat.html"><b>Chính sách bảo mật</b></a> - <a
-            href="https://monkeyd.vn/sitemap-index"><b>Sitemap</b></a><br>
+            <NuxtLink to="/page/chinh-sach-va-quy-dinh-chung"><b>Chính sách và quy định chung</b></NuxtLink>
+            - <NuxtLink to="/page/chinh-sach-bao-mat"><b>Chính sách bảo mật</b></NuxtLink> - <NuxtLink
+            to="/sitemap.xml"><b>Sitemap</b></NuxtLink><br>
             Copyright © 2024. All right reserved.
         </p>
     </footer>
