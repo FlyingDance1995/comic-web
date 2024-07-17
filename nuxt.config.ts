@@ -1,14 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-
-// Function to get the domain URL
-function getDomainUrl() {
-    let domainUrl = 'https://admin.hoannq.click/api'
-    if (typeof window !== 'undefined') {
-        domainUrl = `${window.location.protocol}//${window.location.host}/api`
-    }
-    return domainUrl
-}
-
 export default defineNuxtConfig({
     devtools: {enabled: false},
     css: ['~/assets/css/main.css'],
@@ -141,7 +131,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             SITE_URL: process.env.NUXT_PUBLIC_SITE_URL,
-            apiEndpoint: getDomainUrl(),
+            apiEndpoint: 'https://admin.hoannq.click/api',
             email: process.env.NUXT_PUBLIC_EMAIL,
             contactFb: process.env.NUXT_PUBLIC_CONTACT_FB,
         }
