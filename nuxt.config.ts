@@ -131,7 +131,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             SITE_URL: process.env.NUXT_PUBLIC_SITE_URL,
-            apiEndpoint: 'https://admin.hoannq.click/api',
+            apiEndpoint: process.env.NUXT_PUBLIC_API_URL,
             email: process.env.NUXT_PUBLIC_EMAIL,
             contactFb: process.env.NUXT_PUBLIC_CONTACT_FB,
         }
