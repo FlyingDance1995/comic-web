@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <p class="mb-0 border-top pt-1">t
+        <p class="mb-0 border-top pt-1">
             <a href="/page/chinh-sach-va-quy-dinh-chung"><b>Chính sách và quy định chung</b></a>
             - <a href="/page/chinh-sach-bao-mat"><b>Chính sách bảo mật</b></a> - <a
             href="/sitemap.xml"><b>Sitemap</b></a><br>
