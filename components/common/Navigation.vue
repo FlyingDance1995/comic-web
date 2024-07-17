@@ -1,18 +1,29 @@
 <script setup>
 import { useCategoryStore } from '@/store/category'
+import {useMenuStore} from "~/store/menu.js";
 
+const menuStore = useMenuStore();
 const categoryStore = useCategoryStore();
 
 await categoryStore.fetchCategory();
 
 const { category, loading, error } = storeToRefs(categoryStore);
+const openMenu = computed(() => menuStore.$state.open);
+const openSubMenu = ref(false);
+
+const closeMenu = () => {
+    menuStore.setMenu(false);
+};
 </script>
 
 <template>
     <div class="primary-menu">
         <nav class="navbar navbar-expand-lg align-items-center">
             <div class="container">
-                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                <div class="offcanvas offcanvas-start"
+                     :class="openMenu ? 'show' : 'hiding'"
+                     tabindex="-1"
+                     id="offcanvasNavbar"
                      aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header border-bottom">
                         <div class="d-flex align-items-center">
@@ -25,7 +36,7 @@ const { category, loading, error } = storeToRefs(categoryStore);
                         </div>
 
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                aria-label="Close">
+                                aria-label="Close" @click="closeMenu">
                         </button>
                     </div>
 
@@ -44,8 +55,11 @@ const { category, loading, error } = storeToRefs(categoryStore);
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
-                                   data-bs-toggle="dropdown">
+                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret"
+                                   :class="openSubMenu ? 'show' : ''"
+                                   :aria-expanded="openSubMenu"
+                                   href="javascript:;"
+                                   data-bs-toggle="dropdown" @click="openSubMenu = !openSubMenu">
                                     <div class="parent-icon"><i class="bx bx-list-ol"></i>
                                     </div>
                                     <div class="menu-title d-flex align-items-center">Thể loại</div>
@@ -53,7 +67,8 @@ const { category, loading, error } = storeToRefs(categoryStore);
                                 </a>
                                 
                                 <ul class="dropdown-menu scroll-menu ps ps--active-x ps--active-y ps--scrolling-y"
-                                    style="overflow: auto !important;">
+                                    :class="openSubMenu ? 'show' : ''"
+                                    style="overflow: auto !important; animation: none">
                                     <li v-for="(item, index) in category" :key="index">
                                         <a class="dropdown-item"
                                             :href="`/the-loai/${item.slug}`">
@@ -95,7 +110,3 @@ const { category, loading, error } = storeToRefs(categoryStore);
         </nav>
     </div>
 </template>
-
-<style scoped>
-
-</style>

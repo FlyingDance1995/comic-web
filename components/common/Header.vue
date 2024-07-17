@@ -1,8 +1,11 @@
 <script setup>
 import {userDarkMode} from "@/composables/state";
 import {useUserStore} from "~/store/user.js";
+import {useMenuStore} from "~/store/menu.js";
 
 let userStore = null;
+
+const menuStore = useMenuStore();
 
 const {isDarkMode, toggleDarkMode} = userDarkMode();
 const user = ref();
@@ -19,6 +22,10 @@ const handleLogout = () => {
     userStore.setExpiry(null);
     window.location.reload();
 };
+
+const handleClickMenu = () => {
+    menuStore.setMenu(true)
+};
 </script>
 
 <template>
@@ -26,7 +33,7 @@ const handleLogout = () => {
         <div class="topbar d-flex align-items-center">
             <nav class="navbar navbar-expand gap-3 container">
                 <div class="mobile-toggle-menu d-block d-lg-none" data-bs-toggle="offcanvas"
-                     data-bs-target="#offcanvasNavbar">
+                     data-bs-target="#offcanvasNavbar" @click="handleClickMenu">
                     <i class="bx bx-menu"></i>
                 </div>
 
