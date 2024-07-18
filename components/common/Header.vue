@@ -25,7 +25,7 @@ const handleClickMenu = () => {
 const handleForcusOut = () => {
     setTimeout(() => {
         openMenu.value = false
-    }, 100);
+    }, 200);
 };
 
 const getInfo = async () => {
