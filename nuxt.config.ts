@@ -146,6 +146,10 @@ export default defineNuxtConfig({
     compatibilityDate: '2024-07-17',
 
     routeRules: {
-        '/user/thong-tin-ca-nhan': { ssr: false }
+        '/user/thong-tin-ca-nhan': { ssr: false },
+        '/user/truyen-da-luu': { ssr: false },
+        '/user/dich-gia-dang-theo-doi': { ssr: false },
+        '/user/lich-su-doc-truyen': { ssr: false },
+        '/tim-kiem': { ssr: false },
     }
 })

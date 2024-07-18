@@ -16,7 +16,7 @@ const handleOk = async () => {
             configStore.setSwal({
                 open: true,
                 title: 'Thành công',
-                text: 'Đã lưu truyện này',
+                text: swal.value.title === 'Theo dõi' ? 'Theo dõi thành công' : 'Đã lưu truyện này',
                 type: 'success',
             });
         }, 200);

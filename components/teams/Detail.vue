@@ -1,5 +1,8 @@
 <script setup>
+import {useConfigStore} from "~/store/config.js";
+
 const route = useRoute();
+const configStore = useConfigStore();
 
 const slug = route?.params?.slug;
 const page = +route?.query?.page || 1;
@@ -40,7 +43,43 @@ const getStory = async () => {
 if (slug) {
     await getData();
     await getStory();
-}
+};
+
+const handleFollow = () => {
+    const user = JSON.parse(localStorage.getItem('user') || null);
+
+    if (!user) {
+        return configStore.setSwal({
+            open: true,
+            title: 'Oops...',
+            text: 'Bạn cần đăng nhập để có thể theo dõi người này.',
+            type: 'error'
+        });
+    }
+
+    configStore.setSwal({
+        open: true,
+        title: 'Theo dõi',
+        text: 'Bạn muốn theo dõi người này?',
+        type: 'info',
+        onSubmit: async () => {
+            try {
+                configStore.setLoadingModal(true);
+                await useNuxtApp().$api('/profile/team', {
+                    method: "POST",
+                    body: {
+                        team: slug,
+                        type: 'follow'
+                    }
+                });
+                configStore.setLoadingModal(false);
+            } catch (e) {
+                configStore.setLoadingModal(false);
+                console.log("error", e?.response);
+            }
+        }
+    });
+};
 </script>
 
 <template>
@@ -81,7 +120,7 @@ if (slug) {
                                     <i class="bx bx-dollar-circle"></i>Donate
                                 </button>
 
-                                <button type="button" id="btnBookmarkDetail" onclick="followAuthor(7)"
+                                <button type="button" id="btnBookmarkDetail" @click="handleFollow"
                                         class="btn btn-primary btn-sm px-3 radius-30">
                                     <i class="bx bx-bookmark-alt font-18 me-1"></i>Theo dõi
                                 </button>

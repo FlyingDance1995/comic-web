@@ -196,7 +196,7 @@ watch(() => route?.params, () => {
                             <li v-for="item in data?.results"
                                 :key="item?.id">
                                 <div class="avt_user">
-                                    <img :src="item?.avatar || ''"
+                                    <img :src="item?.owner?.avatar || ''"
                                          alt=""
                                          onerror="this.src='/images/avata.png'">
                                 </div>
