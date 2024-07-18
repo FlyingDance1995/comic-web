@@ -63,7 +63,7 @@ onMounted(() => {
                                                     <NuxtLink :to="`/${item.slug}`">
                                                         <img onerror="this.src=`/no-image.png`"
                                                             class="lazyload card-img-top" :alt="`${item.name}`"
-                                                            :data-src="`${item.avatar}`" :src="`${item.avatar}`"
+                                                            :data-src="`${item.avatar || ''}`" :src="`${item.avatar || ''}`"
                                                             width="200"
                                                             height="260">
                                                     </NuxtLink>

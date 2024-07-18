@@ -46,14 +46,18 @@ watch(() => route.path, () => {
 
 <template>
     <!--ads-->
-    <CommonAffLayer/>
+    <ClientOnly>
+        <CommonAffLayer/>
+    </ClientOnly>
     <!--wrapper-->
     <div class="wrapper"
          :class="openMenu ? 'toggled' : ''">
         <!--start header wrapper-->
         <div class="header-wrapper">
             <!--start header -->
-            <CommonHeader/>
+            <ClientOnly>
+                <CommonHeader/>
+            </ClientOnly>
             <!--end header -->
             <!--navigation-->
             <CommonNavigation/>
@@ -82,4 +86,6 @@ watch(() => route.path, () => {
 
     <!-- loading -->
     <CommonLoadingModal/>
+    <!-- swal -->
+    <CommonSwal/>
 </template>

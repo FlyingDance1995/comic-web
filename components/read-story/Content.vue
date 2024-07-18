@@ -21,7 +21,7 @@ if (slug && chapter) getData();
 <template>
     <div class="container page-chapter-detail">
         <!--breadcrumb-->
-        <CommonBreadCrumb :name="`Chương ${data?.chapter_number}`">
+        <CommonBreadCrumb :name="`Chương ${data?.chapter_number || ''}`">
             <li class="breadcrumb-item">
                 <NuxtLink :to="`/${data?.story?.slug}`">{{data?.story?.name}}</NuxtLink>
             </li>
@@ -64,39 +64,7 @@ if (slug && chapter) getData();
             <div class="card-body">
                 <h5 class="mb-0 text-uppercase text-primary">Bình luận</h5>
                 <hr>
-                <div class="comment-static">
-                    <div class="ajax_load_cmt">
-                        <div class="clear comment-website">
-                            <div class="cm-based">
-                                <p class="comment-count">0 bình luận</p>
-                                <div id="comment_loading" style="display:none; text-align:center;">
-                                    <img alt="Please Wait" src="https://monkeyd.vn/img/loading.gif">
-                                </div>
-                                <form name="frmContact" id="frmContact"
-                                      onsubmit="if (!window.__cfRLUnblockHandlers) return false; comment(1944,'',10); return false"
-                                      method="POST">
-                                    <input type="hidden" name="_token" value="nm4jEABAkXmcbQ6Hma9rsCPrKHG0bAbhwjdQuBRI">
-                                    <div class="form row">
-                                        <div class="form-group col-md-10 comment-text">
-                                            <textarea name="txtContent" id="txtContent" class="form-control"
-                                                      placeholder="Vui lòng bình luận bằng tiếng việt có dấu. Spam, chửi bậy, đưa link web khác sẽ bị ban nick"></textarea>
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <button type="submit" class="btn btn-read btn-lg btn-block"
-                                                    name="btnComment" id="btnComment">
-                                                <i class="bx bx-check"></i>
-                                            </button>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </form>
-                                <div id="comment-done" class="blog-comment">
-                                    <ul class="comments"></ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <ComicsDetailComment />
             </div>
         </div>
     </div>

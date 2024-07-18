@@ -4,7 +4,7 @@ import 'moment/locale/vi';
 moment.locale('vi');
 
 export const timeAgo = (timestamp) => {
-    return moment.unix(timestamp).fromNow();
+    return moment.unix(timestamp).fromNow().replace('tới', 'trước');
 }
 
 export const formattedDate = (value) => {

@@ -50,7 +50,7 @@ if (slug) {
                 <div class="row g-0">
                     <div class="col-md-2">
                         <div class="m-2 text-center">
-                            <img :src="data?.avatar"
+                            <img :src="data?.avatar || ''"
                                  class="img-fluid"
                                  :alt="data?.name"
                                  style="border: 3px solid #ccc; width: 100px; border-radius: 50%; height: 100px; object-fit: cover"

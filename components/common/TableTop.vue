@@ -118,7 +118,7 @@ const show = ref('top-day');
                             <div class="stt">{{ index + 1 }}</div>
                             <div class="thumbnail">
                                 <img
-                                    :src="item?.avatar"
+                                    :src="item?.avatar || ''"
                                     :alt="item?.name"
                                     onerror="this.src='/no-image.png'">
                             </div>
@@ -158,7 +158,7 @@ const show = ref('top-day');
                             <div class="stt">{{ index + 1 }}</div>
                             <div class="thumbnail">
                                 <img
-                                    :src="item?.avatar"
+                                    :src="item?.avatar || ''"
                                     :alt="item?.name"
                                     onerror="this.src='/no-image.png'">
                             </div>
@@ -198,7 +198,7 @@ const show = ref('top-day');
                             <div class="stt">{{ index + 1 }}</div>
                             <div class="thumbnail">
                                 <img
-                                    :src="item?.avatar"
+                                    :src="item?.avatar || ''"
                                     :alt="item?.name"
                                     onerror="this.src='/no-image.png'">
                             </div>

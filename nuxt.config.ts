@@ -144,4 +144,8 @@ export default defineNuxtConfig({
     ],
 
     compatibilityDate: '2024-07-17',
+
+    routeRules: {
+        '/user/thong-tin-ca-nhan': { ssr: false }
+    }
 })

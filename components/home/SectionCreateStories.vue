@@ -67,8 +67,8 @@ onMounted(() => {
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">
                                                         <NuxtLink :to="`/${item?.slug}`">
-                                                            <img :src="item?.avatar" class="lazyload"
-                                                                 :data-src="item?.avatar" :alt="item?.name" width="200"
+                                                            <img :src="item?.avatar || ''" class="lazyload"
+                                                                 :data-src="item?.avatar || ''" :alt="item?.name" width="200"
                                                                  height="260" onerror="this.src='/no-image.png'">
                                                         </NuxtLink>
                                                     </div>

@@ -43,13 +43,13 @@ const closeMenu = () => {
                     <div class="offcanvas-body">
                         <ul class="navbar-nav align-items-center flex-grow-1">
                             <li class="nav-item">
-                                <NuxtLink class="nav-link" to="/">
+                                <NuxtLink class="nav-link" to="/" @click="closeMenu">
                                     <div class="menu-title d-flex align-items-center">Trang chủ</div>
                                 </NuxtLink>
                             </li>
 
                             <li class="nav-item">
-                                <NuxtLink class="nav-link" to="/truyen-moi">
+                                <NuxtLink class="nav-link" to="/truyen-moi" @click="closeMenu">
                                     <div class="menu-title d-flex align-items-center">Truyện mới</div>
                                 </NuxtLink>
                             </li>
@@ -71,7 +71,7 @@ const closeMenu = () => {
                                     style="overflow: auto !important; animation: none">
                                     <li v-for="(item, index) in category" :key="index">
                                         <NuxtLink class="dropdown-item"
-                                            :to="`/the-loai/${item.slug}`">
+                                            :to="`/the-loai/${item.slug}`" @click="closeMenu">
                                             <i class="bx bx-chevron-right"></i>{{ item.name }} 
                                         </NuxtLink>
                                     </li>
@@ -79,13 +79,13 @@ const closeMenu = () => {
                             </li>
 
                             <li class="nav-item">
-                                <NuxtLink class="nav-link" to="/truyen-hoan-thanh">
+                                <NuxtLink class="nav-link" to="/truyen-hoan-thanh" @click="closeMenu">
                                     <div class="menu-title d-flex align-items-center">Truyện Full</div>
                                 </NuxtLink>
                             </li>
 
                             <li class="nav-item">
-                                <NuxtLink class="nav-link" to="/truyen-sang-tac">
+                                <NuxtLink class="nav-link" to="/truyen-sang-tac" @click="closeMenu">
                                     <div class="menu-title d-flex align-items-center">
                                         <div class="parent-icon">
                                             <i class="bx bx-star"></i>
@@ -96,7 +96,7 @@ const closeMenu = () => {
                             </li>
 
                             <li class="nav-item">
-                                <NuxtLink class="nav-link" to="/danh-sach-nhom-dich">
+                                <NuxtLink class="nav-link" to="/danh-sach-nhom-dich" @click="closeMenu">
                                     <div class="parent-icon">
                                         <i class="bx bx-group"></i>
                                     </div>

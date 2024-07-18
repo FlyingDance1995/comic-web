@@ -60,7 +60,7 @@ function performSearch() {
                         <div class="card">
                             <NuxtLink :to="`/nhom-dich/${team?.slug}`">
                                 <img :alt="`${team?.name}`" class="card-img-top" width="200" height="260"
-                                     onerror="this.src='/no-image.png'" :src="`${team?.avatar}`">
+                                     onerror="this.src='/no-image.png'" :src="`${team?.avatar || ''}`">
                             </NuxtLink>
                             <div class="card-body">
                                 <NuxtLink :to="`/nhom-dich/${team?.slug}`">

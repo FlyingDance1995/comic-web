@@ -1,21 +1,20 @@
 <script setup>
-const {data: ads} = await useAPI('/affiliate');
-const linkAds = ads?.value?.[Math.floor(Math.random() * ads?.value?.length)] || [];
-
 const aff = ref();
+const linkAds = ref();
+
+try {
+    const ads = await useNuxtApp().$api('/affiliate');
+    linkAds.value = ads[Math.floor(Math.random() * ads.length)] || [];
+} catch (error) {
+    console.log(error);
+}
 
 const handleAffLayerClick = () => {
     sessionStorage.setItem('aff', 'true');
     aff.value = true;
 };
 
-// onBeforeMount(() => {
-//     aff.value = sessionStorage.getItem('aff') !== null;
-// });
-
-if (window) {
-    aff.value = window.sessionStorage.getItem('aff') !== null;
-}
+aff.value = sessionStorage.getItem('aff') !== null;
 </script>
 
 <template>

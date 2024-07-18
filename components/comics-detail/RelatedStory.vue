@@ -85,7 +85,7 @@ onMounted(() => {
                                                         <div class="single-story-img">
                                                             <NuxtLink to="`/${item?.slug}`">
                                                                 <img
-                                                                    :src="item?.avatar"
+                                                                    :src="item?.avatar || ''"
                                                                     class="lazyload"
                                                                     :data-src="item?.avatar"
                                                                     :alt="item?.name"

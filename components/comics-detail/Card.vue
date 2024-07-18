@@ -12,7 +12,7 @@ const props = defineProps({
         <div class="row g-0">
             <div class="col-md-3">
                 <div class="m-3 text-center">
-                    <img :src="data?.avatar" class="img-fluid" :alt="data?.name" style="width: 100%;"
+                    <img :src="data?.avatar || ''" class="img-fluid" :alt="data?.name" style="width: 100%;"
                         onerror="this.src='/no-image.png'">
                 </div>
             </div>
@@ -139,68 +139,9 @@ const props = defineProps({
             <ComicsDetailListChapters />
             <h5 class="mb-0 text-uppercase mt-5 text-primary">Bình luận</h5>
             <hr>
-            <div class="comment-static">
-                <div class="ajax_load_cmt">
-                    <div class="clear comment-website">
-                        <div class="cm-based">
-                            <p class="comment-count">2 bình luận</p>
-                            <div id="comment_loading" style="display:none; text-align:center;">
-                                <img alt="Please Wait" src="https://monkeyd.vn/img/loading.gif">
-                            </div>
-                            <form name="frmContact" id="frmContact" onsubmit="comment(1774,'',10); return false"
-                                method="POST">
-                                <input type="hidden" name="_token" value="xN8ggw5HxTq12UHc7fxLVWV5ofnjDQwqZCcpZVpH">
-                                <div class="form row">
-                                    <div class="form-group col-md-10 comment-text">
-                                        <textarea name="txtContent" id="txtContent" class="form-control"
-                                            placeholder="Vui lòng bình luận bằng tiếng việt có dấu. Spam, chửi bậy, đưa link web khác sẽ bị ban nick"></textarea>
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <button type="submit" class="btn btn-read btn-lg btn-block" name="btnComment"
-                                            id="btnComment">
-                                            <i class="bx bx-check"></i>
-                                        </button>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </form>
-                            <div id="comment-done" class="blog-comment">
-                                <ul class="comments">
-                                    <li class="comment_8243">
-                                        <div class="avt_user">
-                                            <img src="https://monkeyd.vn/img/avata.png" alt="">
-                                        </div>
-                                        <div class="post-comments">
-                                            <p>hay quá, loveline của nam nữ 9 đỉnh quá</p>
-                                            <p class="meta-2">
-                                                <a href="javascript:void(0)"><abbr title="Thành viên">yut</abbr></a>
-                                                <small class="pull-right">5 giờ trước · <a href="javascript:void(0)"
-                                                        onclick="commentReply(1774,8243,'/img/avata.png')">Trả
-                                                        lời</a></small>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="comment_8137">
-                                        <div class="avt_user">
-                                            <img src="https://monkeyd.vn/img/avata.png" alt="">
-                                        </div>
-                                        <div class="post-comments">
-                                            <p>Truyện hay lắm!</p>
-                                            <p class="meta-2">
-                                                <a href="javascript:void(0)"><abbr title="Thành viên">dang
-                                                        van</abbr></a>
-                                                <small class="pull-right">1 ngày trước · <a href="javascript:void(0)"
-                                                        onclick="commentReply(1774,8137,'/img/avata.png')">Trả
-                                                        lời</a></small>
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ClientOnly>
+                <ComicsDetailComment />
+            </ClientOnly>
         </div>
     </div>
 </template>

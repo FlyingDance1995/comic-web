@@ -3,18 +3,13 @@ import {userDarkMode} from "@/composables/state";
 import {useUserStore} from "~/store/user.js";
 import {useMenuStore} from "~/store/menu.js";
 
-let userStore = null;
-
 const menuStore = useMenuStore();
+const userStore = useUserStore();
 
 const {isDarkMode, toggleDarkMode} = userDarkMode();
-const user = ref();
-const openMenu = ref(false);
 
-if (window) {
-    userStore = useUserStore();
-    user.value = userStore.$state.user;
-}
+const user = computed(() => userStore.$state.user);
+const openMenu = ref(false);
 
 const handleLogout = () => {
     userStore.setUser(null);
@@ -26,6 +21,26 @@ const handleLogout = () => {
 const handleClickMenu = () => {
     menuStore.setMenu(true)
 };
+
+const handleForcusOut = () => {
+    setTimeout(() => {
+        openMenu.value = false
+    }, 100);
+};
+
+const getInfo = async () => {
+    try {
+        const response = await useNuxtApp().$api('/profile');
+        userStore.setUser({
+            ...user.value,
+            ...response
+        })
+    } catch (error) {
+        console.log("error", error);
+    }
+};
+
+if (user.value) getInfo();
 </script>
 
 <template>
@@ -100,8 +115,9 @@ const handleClickMenu = () => {
                        role="button"
                        data-bs-toggle="dropdown"
                        :aria-expanded="openMenu"
-                       @click="openMenu = !openMenu">
-                        <img src="/images/avata.png" class="user-img" alt="test">
+                       @click="openMenu = !openMenu"
+                       @focusout="handleForcusOut">
+                        <img :src="user?.avatar || ''" onerror="this.src='/images/avata.png'" class="user-img" alt="test">
                         <div class="user-info">
                             <p class="user-name mb-0">{{ user?.email }}</p>
                             <p class="designattion mb-0">{{ user?.fullname }}</p>
@@ -110,40 +126,60 @@ const handleClickMenu = () => {
 
                     <ul class="dropdown-menu dropdown-menu-end"
                         :class="openMenu ? 'show' : ''">
-                        <!--                        <li>-->
-                        <!--                            <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">-->
-                        <!--                                <i class="bx bx-coin-stack fs-5"></i><span>0</span>-->
-                        <!--                            </a>-->
-                        <!--                        </li>-->
-                        <!--                        <li>-->
-                        <!--                            <div class="dropdown-divider mb-0"></div>-->
-                        <!--                        </li>-->
-                        <!--                        <li><a class="dropdown-item d-flex align-items-center"-->
-                        <!--                               href="https://monkeyd.vn/user/tro-thanh-tac-gia"><i-->
-                        <!--                            class="bx bx-chevrons-up fs-5"></i><span>Đăng truyện</span></a>-->
-                        <!--                        </li>-->
-                        <!--                        <li><a class="dropdown-item d-flex align-items-center"-->
-                        <!--                               href="https://monkeyd.vn/user/dich-gia-dang-theo-doi"><i-->
-                        <!--                            class="bx bx-bell fs-5"></i><span>Đang theo dõi</span></a>-->
-                        <!--                        </li>-->
-                        <!--                        <li><a class="dropdown-item d-flex align-items-center"-->
-                        <!--                               href="https://monkeyd.vn/user/lich-su-doc-truyen"><i class="bx bx-show fs-5"></i><span>Truyện đã đọc</span></a>-->
-                        <!--                        </li>-->
-                        <!--                        <li><a class="dropdown-item d-flex align-items-center"-->
-                        <!--                               href="https://monkeyd.vn/user/truyen-da-luu"><i-->
-                        <!--                            class="bx bx-bookmark-alt fs-5"></i><span>Truyện đã lưu</span></a>-->
-                        <!--                        </li>-->
-                        <!--                        <li><a class="dropdown-item d-flex align-items-center"-->
-                        <!--                               href="https://monkeyd.vn/user/thong-tin-ca-nhan"><i-->
-                        <!--                            class="bx bx-user fs-5"></i><span>Thông tin</span></a>-->
-                        <!--                        </li>-->
-                        <!--                        <li><a class="dropdown-item d-flex align-items-center"-->
-                        <!--                               href="https://monkeyd.vn/user/doi-mat-khau"><i-->
-                        <!--                            class="bx bx-cog fs-5"></i><span>Đổi mật khẩu</span></a>-->
-                        <!--                        </li>-->
-                        <!--                        <li>-->
-                        <!--                            <div class="dropdown-divider mb-0"></div>-->
-                        <!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">-->
+<!--                                <i class="bx bx-coin-stack fs-5"></i><span>0</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <div class="dropdown-divider mb-0"></div>-->
+<!--                        </li>-->
+
+<!--                        <li><a class="dropdown-item d-flex align-items-center"-->
+<!--                               href="https://monkeyd.vn/user/tro-thanh-tac-gia"><i-->
+<!--                            class="bx bx-chevrons-up fs-5"></i><span>Đăng truyện</span></a>-->
+<!--                        </li>-->
+
+                        <li>
+                            <NuxtLink class="dropdown-item d-flex align-items-center"
+                                      to="/user/dich-gia-dang-theo-doi">
+                                <i class="bx bx-bell fs-5"></i><span>Đang theo dõi</span>
+                            </NuxtLink>
+                        </li>
+
+                        <li>
+                            <NuxtLink class="dropdown-item d-flex align-items-center"
+                                      to="/user/lich-su-doc-truyen">
+                                <i class="bx bx-show fs-5"></i><span>Truyện đã đọc</span>
+                            </NuxtLink>
+                        </li>
+
+                        <li>
+                            <NuxtLink class="dropdown-item d-flex align-items-center"
+                                      to="/user/truyen-da-luu">
+                                <i class="bx bx-bookmark-alt fs-5"></i><span>Truyện đã lưu</span>
+                            </NuxtLink>
+                        </li>
+
+                        <li>
+                            <NuxtLink class="dropdown-item d-flex align-items-center"
+                                      to="/user/thong-tin-ca-nhan">
+                                <i class="bx bx-user fs-5"></i><span>Thông tin</span>
+                            </NuxtLink>
+                        </li>
+
+                        <li>
+                            <NuxtLink
+                                class="dropdown-item d-flex align-items-center"
+                                to="/user/doi-mat-khau">
+                                <i class="bx bx-cog fs-5"></i><span>Đổi mật khẩu</span>
+                            </NuxtLink>
+                        </li>
+
+                        <li>
+                            <div class="dropdown-divider mb-0"></div>
+                        </li>
+
                         <li>
                             <a class="dropdown-item d-flex align-items-center"
                                href="javascript:;"
