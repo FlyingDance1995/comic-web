@@ -1,10 +1,20 @@
 <script setup>
+import {useConfigStore} from "~/store/config.js";
+
 const props = defineProps({
     data: {
         type: Object,
         default: null
     }
 });
+
+const configStore = useConfigStore();
+
+const handleFollow = () => {
+    configStore.setSwal(true);
+    configStore.setTitleSwal('Theo dõi truyện');
+    configStore.setTextSwal('Bạn muốn theo dõi truyện này?')
+};
 </script>
 
 <template>
@@ -96,12 +106,11 @@ const props = defineProps({
                             class="btn btn-sm btn-warning px-3 radius-30">
                             <i class="bx bx-book-open"></i>Đọc từ đầu
                         </NuxtLink>
-<!--                        <pre>{{data}}</pre>-->
                         <NuxtLink :to="`/${data?.slug}/${data?.last_chapter?.slug}`"
                             class="btn btn-sm btn-success px-3 radius-30">
                             <i class="bx bx-star"></i>Đọc tập mới
                         </NuxtLink>
-                        <button type="button" id="btnBookmarkDetail" onclick="bookmark(1774, 'dong-chi')"
+                        <button type="button" id="btnBookmarkDetail" @click="handleFollow"
                             class="btn btn-primary btn-sm px-3 radius-30">
                             <i class="bx bx-bookmark-alt font-18 me-1"></i>Theo dõi
                         </button>

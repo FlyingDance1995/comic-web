@@ -6,7 +6,8 @@ export const useConfigStore = defineStore({
         return {
             loadingModal: false,
             swal: false,
-            textSwal: ''
+            textSwal: '',
+            titleSwal: '',
         }
     },
     actions: {
@@ -18,6 +19,9 @@ export const useConfigStore = defineStore({
         },
         setTextSwal(value) {
             this.$state.textSwal = value;
-        }
+        },
+        setTitleSwal(value) {
+            this.$state.titleSwal = value;
+        },
     },
 });

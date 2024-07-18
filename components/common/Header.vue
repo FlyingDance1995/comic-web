@@ -1,8 +1,11 @@
 <script setup>
+import { clickOutSide as vClickOutSide } from '@mahdikhashan/vue3-click-outside'
+
 import {userDarkMode} from "@/composables/state";
 import {useUserStore} from "~/store/user.js";
 import {useMenuStore} from "~/store/menu.js";
 
+const route = useRoute();
 const menuStore = useMenuStore();
 const userStore = useUserStore();
 
@@ -22,10 +25,8 @@ const handleClickMenu = () => {
     menuStore.setMenu(true)
 };
 
-const handleForcusOut = () => {
-    setTimeout(() => {
-        openMenu.value = false
-    }, 200);
+const handleClickOutside = () => {
+    if (openMenu.value) openMenu.value = false;
 };
 
 const getInfo = async () => {
@@ -41,6 +42,10 @@ const getInfo = async () => {
 };
 
 if (user.value) getInfo();
+
+watch(() => route.path, () => {
+    openMenu.value = false;
+}, {deep: true})
 </script>
 
 <template>
@@ -108,15 +113,16 @@ if (user.value) getInfo();
                     </ul>
                 </div>
 
-                <div v-if="user?.id" class="user-box dropdown px-2">
+                <div v-if="user?.id" class="user-box dropdown px-2"
+                     v-click-out-side="handleClickOutside"
+                >
                     <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                        :class="openMenu ? 'show' : ''"
                        href="#"
                        role="button"
                        data-bs-toggle="dropdown"
                        :aria-expanded="openMenu"
-                       @click="openMenu = !openMenu"
-                       @focusout="handleForcusOut">
+                       @click.prevent="openMenu = !openMenu">
                         <img :src="user?.avatar || ''" onerror="this.src='/images/avata.png'" class="user-img" alt="test">
                         <div class="user-info">
                             <p class="user-name mb-0">{{ user?.fullname }}</p>
@@ -124,7 +130,7 @@ if (user.value) getInfo();
                         </div>
                     </a>
 
-                    <ul class="dropdown-menu dropdown-menu-end"
+                    <ul id="drop-menu" class="dropdown-menu dropdown-menu-end"
                         :class="openMenu ? 'show' : ''">
 <!--                        <li>-->
 <!--                            <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">-->

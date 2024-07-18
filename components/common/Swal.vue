@@ -4,6 +4,7 @@ import {useConfigStore} from "~/store/config.js";
 const configStore = useConfigStore();
 
 const swal = computed(() => configStore.$state.swal);
+const titleSwal = computed(() => configStore.$state.titleSwal);
 const textSwal = computed(() => configStore.$state.textSwal);
 
 const handleOk = () => {
@@ -17,7 +18,7 @@ const handleOk = () => {
     setTimeout(() => {
         configStore.setSwal(false);
     }, 300);
-}
+};
 </script>
 
 <template>
@@ -31,18 +32,22 @@ const handleOk = () => {
              @click.stop="">
             <div class="swal2-header">
                 <ul class="swal2-progress-steps" style="display: none;"></ul>
-                <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;">
+                <div :class="{'swal2-icon-show': titleSwal === 'Oops...'}" class="swal2-icon swal2-error"
+                     :style="{display: titleSwal === 'Oops...' ? 'flex' : 'none'}">
                     <span class="swal2-x-mark">
                     <span class="swal2-x-mark-line-left"></span>
                     <span class="swal2-x-mark-line-right"></span>
                   </span>
                 </div>
-                <div class="swal2-icon swal2-question" style="display: none;"></div>
+                <div :class="{'swal2-icon-show': titleSwal === 'Theo dõi truyện'}" class="swal2-icon swal2-question"
+                     :style="{display: titleSwal === 'Theo dõi truyện' ? 'flex' : 'none'}">
+                    <div class="swal2-icon-content">?</div>
+                </div>
                 <div class="swal2-icon swal2-warning" style="display: none;"></div>
                 <div class="swal2-icon swal2-info" style="display: none;"></div>
                 <div class="swal2-icon swal2-success" style="display: none;"></div>
                 <img class="swal2-image" style="display: none;">
-                <h2 class="swal2-title" id="swal2-title" style="display: flex;">Oops...</h2>
+                <h2 class="swal2-title" id="swal2-title" style="display: flex;">{{titleSwal}}</h2>
                 <button type="button" class="swal2-close" aria-label="Close this dialog" style="display: none;">×
                 </button>
             </div>

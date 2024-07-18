@@ -48,6 +48,7 @@ const openReply = (item) => {
             document.querySelector('#txtReply').focus();
         }, 100);
     } else {
+        configStore.setTitleSwal('Oops...');
         configStore.setTextSwal('Bạn cần đăng nhập để có thể tham gia bình luận.');
         configStore.setSwal(true);
     }
@@ -79,6 +80,7 @@ const submitComment = async (item) => {
     } catch (error) {
         configStore.setLoadingModal(false);
         if (error?.response?._data?.error) {
+            configStore.setTitleSwal('Oops...');
             configStore.setTextSwal('Bình luận không được để trống.');
             configStore.setSwal(true);
         }
@@ -106,6 +108,7 @@ const handleSubmit = async () => {
             } catch (error) {
                 configStore.setLoadingModal(false);
                 if (error?.response?._data?.error) {
+                    configStore.setTitleSwal('Oops...');
                     configStore.setTextSwal('Bình luận không được để trống.');
                     configStore.setSwal(true);
                 }
@@ -113,6 +116,7 @@ const handleSubmit = async () => {
             }
         }
     } else {
+        configStore.setTitleSwal('Oops...');
         configStore.setTextSwal('Bạn cần đăng nhập để có thể tham gia bình luận.');
         configStore.setSwal(true);
     }
