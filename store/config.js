@@ -16,6 +16,7 @@ export const useConfigStore = defineStore({
                 type: '',
                 onSubmit: null
             },
+            searchModal: false
         }
     },
     actions: {
@@ -27,6 +28,9 @@ export const useConfigStore = defineStore({
         },
         setOpenSwal(value) {
             this.$state.swal.open = value;
-        }
+        },
+        setSearchModal(value) {
+            this.$state.searchModal = value;
+        },
     },
 });

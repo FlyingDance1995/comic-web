@@ -4,10 +4,12 @@ import {clickOutSide as vClickOutSide} from '@mahdikhashan/vue3-click-outside'
 import {userDarkMode} from "@/composables/state";
 import {useUserStore} from "~/store/user.js";
 import {useMenuStore} from "~/store/menu.js";
+import {useConfigStore} from "~/store/config.js";
 
 const route = useRoute();
 const menuStore = useMenuStore();
 const userStore = useUserStore();
+const configStore = useConfigStore();
 
 const {isDarkMode, toggleDarkMode} = userDarkMode();
 
@@ -54,6 +56,10 @@ const getNotify = async () => {
     } catch (error) {
         console.log("error", error);
     }
+};
+
+const openSearchModal = () => {
+    configStore.setSearchModal(true)
 };
 
 if (user.value) {
@@ -117,7 +123,8 @@ watch(() => route.path, () => {
                 <div class="top-menu ms-auto">
                     <ul class="navbar-nav align-items-center gap-1">
                         <li class="nav-item mobile-search-icon d-flex d-lg-none" data-bs-toggle="modal"
-                            data-bs-target="#SearchModal">
+                            data-bs-target="#SearchModal"
+                            @click="openSearchModal">
                             <a class="nav-link" href="javascript:;">
                                 <i class="bx bx-search"></i>
                             </a>
