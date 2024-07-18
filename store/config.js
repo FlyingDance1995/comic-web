@@ -1,13 +1,21 @@
 import { defineStore } from 'pinia'
 
+const swalSubmitFunction = () => {
+    console.log(11)
+};
+
 export const useConfigStore = defineStore({
     id: 'config-store',
     state: () => {
         return {
             loadingModal: false,
-            swal: false,
-            textSwal: '',
-            titleSwal: '',
+            swal: {
+                open: false,
+                title: '',
+                text: '',
+                type: '',
+                onSubmit: null
+            },
         }
     },
     actions: {
@@ -17,11 +25,8 @@ export const useConfigStore = defineStore({
         setSwal(value) {
             this.$state.swal = value;
         },
-        setTextSwal(value) {
-            this.$state.textSwal = value;
-        },
-        setTitleSwal(value) {
-            this.$state.titleSwal = value;
-        },
+        setOpenSwal(value) {
+            this.$state.swal.open = value;
+        }
     },
 });

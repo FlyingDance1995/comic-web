@@ -48,9 +48,12 @@ const openReply = (item) => {
             document.querySelector('#txtReply').focus();
         }, 100);
     } else {
-        configStore.setTitleSwal('Oops...');
-        configStore.setTextSwal('Bạn cần đăng nhập để có thể tham gia bình luận.');
-        configStore.setSwal(true);
+        configStore.setSwal({
+            open: true,
+            title: 'Oops...',
+            text: 'Bạn cần đăng nhập để có thể tham gia bình luận.',
+            type: 'error'
+        });
     }
 };
 
@@ -80,9 +83,12 @@ const submitComment = async (item) => {
     } catch (error) {
         configStore.setLoadingModal(false);
         if (error?.response?._data?.error) {
-            configStore.setTitleSwal('Oops...');
-            configStore.setTextSwal('Bình luận không được để trống.');
-            configStore.setSwal(true);
+            configStore.setSwal({
+                open: true,
+                title: 'Oops...',
+                text: 'Bình luận không được để trống.',
+                type: 'error'
+            });
         }
         console.log("error", error?.response);
     }
@@ -108,17 +114,23 @@ const handleSubmit = async () => {
             } catch (error) {
                 configStore.setLoadingModal(false);
                 if (error?.response?._data?.error) {
-                    configStore.setTitleSwal('Oops...');
-                    configStore.setTextSwal('Bình luận không được để trống.');
-                    configStore.setSwal(true);
+                    configStore.setSwal({
+                        open: true,
+                        title: 'Oops...',
+                        text: 'Bình luận không được để trống.',
+                        type: 'error'
+                    });
                 }
                 console.log("error", error?.response);
             }
         }
     } else {
-        configStore.setTitleSwal('Oops...');
-        configStore.setTextSwal('Bạn cần đăng nhập để có thể tham gia bình luận.');
-        configStore.setSwal(true);
+        configStore.setSwal({
+            open: true,
+            title: 'Oops...',
+            text: 'Bạn cần đăng nhập để có thể tham gia bình luận.',
+            type: 'error'
+        });
     }
 };
 

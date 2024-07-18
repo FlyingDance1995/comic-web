@@ -4,10 +4,26 @@ import {useConfigStore} from "~/store/config.js";
 const configStore = useConfigStore();
 
 const swal = computed(() => configStore.$state.swal);
-const titleSwal = computed(() => configStore.$state.titleSwal);
-const textSwal = computed(() => configStore.$state.textSwal);
 
-const handleOk = () => {
+const handleOk = async () => {
+    if (swal.value.type === 'error' || swal.value.type === 'success') {
+        closeModal();
+    }
+    if (swal.value.type === 'info') {
+        closeModal();
+        await swal.value.onSubmit();
+        setTimeout(() => {
+            configStore.setSwal({
+                open: true,
+                title: 'Thành công',
+                text: 'Đã lưu truyện này',
+                type: 'success',
+            });
+        }, 200);
+    }
+};
+
+const closeModal = () => {
     const swalContainer = document.querySelector('.swal2-container');
     const swalModal = document.querySelector('.swal2-modal');
 
@@ -16,45 +32,57 @@ const handleOk = () => {
     swalModal.classList.remove('swal2-show');
     swalModal.classList.add('swal2-hide');
     setTimeout(() => {
-        configStore.setSwal(false);
+        configStore.setOpenSwal(false);
     }, 300);
 };
 </script>
 
 <template>
-    <div v-if="swal"
+    <div v-if="swal.open"
          class="swal2-container swal2-center swal2-backdrop-show"
          style="overflow-y: auto;"
-         @click="handleOk">
+         @click="closeModal">
         <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
              class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1" role="dialog"
              aria-live="assertive" aria-modal="true" style="display: flex;"
              @click.stop="">
             <div class="swal2-header">
                 <ul class="swal2-progress-steps" style="display: none;"></ul>
-                <div :class="{'swal2-icon-show': titleSwal === 'Oops...'}" class="swal2-icon swal2-error"
-                     :style="{display: titleSwal === 'Oops...' ? 'flex' : 'none'}">
+                <div v-if="swal.type === 'error'"
+                     class="swal2-icon swal2-error swal2-icon-show"
+                     style="display: flex">
                     <span class="swal2-x-mark">
                     <span class="swal2-x-mark-line-left"></span>
                     <span class="swal2-x-mark-line-right"></span>
                   </span>
                 </div>
-                <div :class="{'swal2-icon-show': titleSwal === 'Theo dõi truyện'}" class="swal2-icon swal2-question"
-                     :style="{display: titleSwal === 'Theo dõi truyện' ? 'flex' : 'none'}">
+                <div v-if="swal.type === 'info'"
+                     class="swal2-icon swal2-question swal2-icon-show"
+                     style="display: flex">
                     <div class="swal2-icon-content">?</div>
                 </div>
-                <div class="swal2-icon swal2-warning" style="display: none;"></div>
-                <div class="swal2-icon swal2-info" style="display: none;"></div>
-                <div class="swal2-icon swal2-success" style="display: none;"></div>
-                <img class="swal2-image" style="display: none;">
-                <h2 class="swal2-title" id="swal2-title" style="display: flex;">{{titleSwal}}</h2>
+                <div v-if="swal.type === 'warning'"
+                     class="swal2-icon swal2-warning swal2-icon-show" style="display: flex;"></div>
+                <div v-if="swal.type === 'info2'"
+                     class="swal2-icon swal2-info swal2-icon-show" style="display: flex;"></div>
+                <div v-if="swal.type === 'success'"
+                     class="swal2-icon swal2-success swal2-icon-show" style="display: flex;">
+                    <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                    <span class="swal2-success-line-tip"></span>
+                    <span class="swal2-success-line-long"></span>
+                    <div class="swal2-success-ring"></div>
+                    <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                    <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                </div>
+                <img class="swal2-image" style="display: none;" alt="">
+                <h2 class="swal2-title" id="swal2-title" style="display: flex;">{{ swal.title }}</h2>
                 <button type="button" class="swal2-close" aria-label="Close this dialog" style="display: none;">×
                 </button>
             </div>
 
             <div class="swal2-content">
                 <div id="swal2-content" class="swal2-html-container" style="display: block;">
-                    {{textSwal}}
+                    {{ swal.text }}
                 </div>
                 <input class="swal2-input" style="display: none;"><input type="file" class="swal2-file"
                                                                          style="display: none;">
@@ -78,9 +106,11 @@ const handleOk = () => {
                     OK
                 </button>
 
-                <button type="button"
+                <button v-if="swal.type !== 'error' && swal.type !== 'success'"
+                        type="button"
                         class="swal2-cancel swal2-styled"
-                        aria-label="" style="display: none;">
+                        aria-label=""
+                        @click.stop="closeModal">
                     Cancel
                 </button>
             </div>

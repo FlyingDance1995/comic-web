@@ -11,9 +11,39 @@ const props = defineProps({
 const configStore = useConfigStore();
 
 const handleFollow = () => {
-    configStore.setSwal(true);
-    configStore.setTitleSwal('Theo dõi truyện');
-    configStore.setTextSwal('Bạn muốn theo dõi truyện này?')
+    const user = JSON.parse(localStorage.getItem('user') || null);
+
+    if (!user) {
+        return configStore.setSwal({
+            open: true,
+            title: 'Oops...',
+            text: 'Bạn cần đăng nhập để có thể lưu truyện này.',
+            type: 'error'
+        });
+    }
+
+    configStore.setSwal({
+        open: true,
+        title: 'Theo dõi truyện',
+        text: 'Bạn muốn theo dõi truyện này?',
+        type: 'info',
+        onSubmit: async () => {
+            try {
+                configStore.setLoadingModal(true);
+                await useNuxtApp().$api('/profile/story', {
+                    method: "POST",
+                    body: {
+                        story: props.data?.slug,
+                        type: 'bookmark'
+                    }
+                });
+                configStore.setLoadingModal(false);
+            } catch (e) {
+                configStore.setLoadingModal(false);
+                console.log("error", e?.response);
+            }
+        }
+    });
 };
 </script>
 
@@ -23,7 +53,7 @@ const handleFollow = () => {
             <div class="col-md-3">
                 <div class="m-3 text-center">
                     <img :src="data?.avatar || ''" class="img-fluid" :alt="data?.name" style="width: 100%;"
-                        onerror="this.src='/no-image.png'">
+                         onerror="this.src='/no-image.png'">
                 </div>
             </div>
 
@@ -46,27 +76,29 @@ const handleFollow = () => {
                         <dt class="col-sm-3">Thể loại</dt>
                         <dd class="col-sm-9">
                             <NuxtLink v-for="item in data?.category"
-                               :key="item?.id"
-                               class="cate-item"
-                               :to="`/the-loai/${item?.slug}`">
-                                {{item?.name}}
+                                      :key="item?.id"
+                                      class="cate-item"
+                                      :to="`/the-loai/${item?.slug}`">
+                                {{ item?.name }}
                             </NuxtLink>
                         </dd>
 
                         <dt class="col-sm-3">Lượt xem</dt>
-                        <dd class="col-sm-9">{{ data?.statistics?.total_watched?.toLocaleString()?.replaceAll('.', ',')
+                        <dd class="col-sm-9">{{
+                                data?.statistics?.total_watched?.toLocaleString()?.replaceAll('.', ',')
                             }}
                         </dd>
 
                         <dt class="col-sm-3">Team</dt>
                         <dd class="col-sm-9">
                             <NuxtLink :to="`/nhom-dich/${data?.team?.slug}`" class="btn btn-sm btn-info px-3 radius-30">
-                                {{data?.team?.name}}
+                                {{ data?.team?.name }}
                             </NuxtLink>
                         </dd>
 
                         <dt class="col-sm-3">Lượt theo dõi</dt>
-                        <dd class="col-sm-9">{{ data?.statistics?.total_follow?.toLocaleString()?.replaceAll('.', ',')
+                        <dd class="col-sm-9">{{
+                                data?.statistics?.total_follow?.toLocaleString()?.replaceAll('.', ',')
                             }}
                         </dd>
 
@@ -103,15 +135,15 @@ const handleFollow = () => {
                             <i class="bx bx-dollar-circle"></i>Donate
                         </button>
                         <NuxtLink :to="`/${data?.slug}/${data?.first_chapter?.slug}`"
-                            class="btn btn-sm btn-warning px-3 radius-30">
+                                  class="btn btn-sm btn-warning px-3 radius-30">
                             <i class="bx bx-book-open"></i>Đọc từ đầu
                         </NuxtLink>
                         <NuxtLink :to="`/${data?.slug}/${data?.last_chapter?.slug}`"
-                            class="btn btn-sm btn-success px-3 radius-30">
+                                  class="btn btn-sm btn-success px-3 radius-30">
                             <i class="bx bx-star"></i>Đọc tập mới
                         </NuxtLink>
                         <button type="button" id="btnBookmarkDetail" @click="handleFollow"
-                            class="btn btn-primary btn-sm px-3 radius-30">
+                                class="btn btn-primary btn-sm px-3 radius-30">
                             <i class="bx bx-bookmark-alt font-18 me-1"></i>Theo dõi
                         </button>
                         <button type="button" onclick="report(1774)" class="btn btn-dark btn-sm px-3 radius-30">
@@ -145,11 +177,11 @@ const handleFollow = () => {
         <div class="card-body  mt-4 ">
             <h5 class="mb-0 text-uppercase text-primary">Danh sách chương</h5>
             <hr>
-            <ComicsDetailListChapters />
+            <ComicsDetailListChapters/>
             <h5 class="mb-0 text-uppercase mt-5 text-primary">Bình luận</h5>
             <hr>
             <ClientOnly>
-                <ComicsDetailComment />
+                <ComicsDetailComment/>
             </ClientOnly>
         </div>
     </div>
