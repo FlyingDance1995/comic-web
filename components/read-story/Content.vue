@@ -64,7 +64,9 @@ if (slug && chapter) getData();
             <div class="card-body">
                 <h5 class="mb-0 text-uppercase text-primary">Bình luận</h5>
                 <hr>
-                <ComicsDetailComment />
+                <ClientOnly>
+                    <ComicsDetailComment />
+                </ClientOnly>
             </div>
         </div>
     </div>

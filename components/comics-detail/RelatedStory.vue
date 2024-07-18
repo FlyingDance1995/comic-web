@@ -1,16 +1,10 @@
 <script setup>
-const props = defineProps({
-    slug: {
-        type: String,
-        default: ''
-    }
-});
-
 const route = useRoute();
 
 const slug = route?.params?.slug;
 
 const loading = ref(true);
+const stories = ref([]);
 
 const query = {
     size: 15,
@@ -18,45 +12,51 @@ const query = {
     ordering: 'recommended',
 };
 
-const {data: story} = await useAPI('/story', {
-    query: {
-        ...query,
-        story: slug
-    }
-});
-
-onMounted(() => {
-    $(document).ready(function () {
-        $(".top-story-slider").owlCarousel({
-            items: 6,
-            margin: 20,
-            nav: false,
-            dots: false,
-            autoplay: true,
-            smartSpeed: 500,
-            autoplayTimeout: 3000,
-            responsiveClass: true,
-            responsive: {
-                0: {
-                    items: 2
-                },
-                768: {
-                    items: 3
-                },
-                1024: {
-                    items: 4
-                },
-                1100: {
-                    items: 5
-                },
-                1200: {
-                    items: 6
-                }
-            }
-        });
-        loading.value = false;
+try {
+    loading.value = true;
+    const response = await useNuxtApp().$api('/story', {
+        query: {
+            ...query,
+            story: slug
+        }
     });
-});
+    stories.value = response;
+    setTimeout(() => {
+        $(document).ready(function () {
+            $(".top-story-slider").owlCarousel({
+                items: 6,
+                margin: 20,
+                nav: false,
+                dots: false,
+                autoplay: true,
+                smartSpeed: 500,
+                autoplayTimeout: 3000,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    768: {
+                        items: 3
+                    },
+                    1024: {
+                        items: 4
+                    },
+                    1100: {
+                        items: 5
+                    },
+                    1200: {
+                        items: 6
+                    }
+                }
+            });
+            loading.value = false;
+        });
+    }, 500)
+} catch (error) {
+    loading.value = false;
+    console.log("error", error);
+}
 </script>
 
 <template>
@@ -77,13 +77,13 @@ onMounted(() => {
                                     <div class="owl-stage-outer">
                                         <div v-show="!loading"
                                              class="owl-stage">
-                                            <div v-for="item in story?.results"
+                                            <div v-for="item in stories?.results"
                                                  :key="item?.id"
                                                  class="owl-item">
                                                 <div class="single-story-block">
                                                     <div class="single-story-wrap">
                                                         <div class="single-story-img">
-                                                            <NuxtLink to="`/${item?.slug}`">
+                                                            <NuxtLink :to="`/${item?.slug}`">
                                                                 <img
                                                                     :src="item?.avatar || ''"
                                                                     class="lazyload"

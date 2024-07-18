@@ -25,6 +25,8 @@ if (slug) getData();
 
         <ComicsDetailCard :data="data"/>
 
-        <ComicsDetailRelatedStory :slug="slug"/>
+        <ClientOnly>
+            <ComicsDetailRelatedStory />
+        </ClientOnly>
     </div>
 </template>
