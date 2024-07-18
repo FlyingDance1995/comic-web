@@ -3,7 +3,7 @@ const route = useRoute();
 const page = +route?.query?.page || 1;
 const query = {
     page: page,
-    size: 2
+    size: 20
 };
 
 const categories = ref([]);
