@@ -119,8 +119,8 @@ if (user.value) getInfo();
                        @focusout="handleForcusOut">
                         <img :src="user?.avatar || ''" onerror="this.src='/images/avata.png'" class="user-img" alt="test">
                         <div class="user-info">
-                            <p class="user-name mb-0">{{ user?.email }}</p>
-                            <p class="designattion mb-0">{{ user?.fullname }}</p>
+                            <p class="user-name mb-0">{{ user?.fullname }}</p>
+                            <p class="designattion mb-0">{{ user?.email }}</p>
                         </div>
                     </a>
 
