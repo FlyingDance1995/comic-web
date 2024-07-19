@@ -92,6 +92,9 @@ const validateField = () => {
 </script>
 
 <template>
+  <Head>
+    <Title>Quên mật khẩu</Title>
+  </Head>
     <div class="section-authentication-cover">
         <div>
             <div class="row g-0">

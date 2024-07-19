@@ -15,6 +15,9 @@ const {storys1, total1} = storeToRefs(storyStore);
 </script>
 
 <template>
+    <Head>
+      <Title>Truyện Hoàn Thành</Title>
+    </Head>
     <div class="container">
         <h1 class="mb-0 text-uppercase">Truyện Hoàn Thành</h1>
         <hr>

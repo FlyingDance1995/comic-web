@@ -60,6 +60,9 @@ const deleteItem = async (item) => {
 </script>
 
 <template>
+    <Head>
+      <Title>Truyện đã lưu</Title>
+    </Head>
     <div class="container">
         <h1 class="mb-0 text-uppercase">Truyện đã lưu</h1>
         <hr>

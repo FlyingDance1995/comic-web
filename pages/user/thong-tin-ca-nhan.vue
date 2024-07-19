@@ -84,6 +84,9 @@ watch(user, () => {
 </script>
 
 <template>
+    <Head>
+      <Title>Thông tin tài khoản</Title>
+    </Head>
     <div class="row">
         <div class="col-xl-6 mx-auto">
             <h6 class="mb-0 text-uppercase">Thông tin tài khoản</h6>

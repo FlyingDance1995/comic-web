@@ -43,6 +43,9 @@ const reportError = () => {
 </script>
 
 <template>
+    <Head>
+    <Title>{{data?.name}} - Chương {{data?.chapter_number}}</Title>
+    </Head>
     <div class="container page-chapter-detail">
         <!--breadcrumb-->
         <CommonBreadCrumb :name="`Chương ${data?.chapter_number || ''}`">

@@ -35,6 +35,9 @@ function performSearch() {
 </script>
 
 <template>
+    <Head>
+      <Title>Team</Title>
+    </Head>
     <div class="container">
         <h1 class="mb-0 text-uppercase">Team</h1>
         <hr>

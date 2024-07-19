@@ -17,6 +17,7 @@ const report = () => {
 
     setTimeout(() => configStore.setReportModal(true), 100)
 };
+
 </script>
 
 <template>
