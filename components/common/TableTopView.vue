@@ -25,19 +25,13 @@ const getData = async (ordering = 'daily_watched') => {
         });
         if (ordering === 'daily_watched') {
             show.value = 'top-day';
-            if (!topDaily.value) {
-                topStore.setTopViewDaily(response);
-            }
+            topStore.setTopViewDaily(response);
         } else if (ordering === 'weekly_watched') {
             show.value = 'top-week';
-            if (!topWeek.value) {
-                topStore.setTopViewWeek(response);
-            }
+            topStore.setTopViewWeek(response);
         } else if (ordering === 'monthly_watched') {
             show.value = 'top-month';
-            if (!topMonth.value) {
-                topStore.setTopViewMonth(response);
-            }
+            topStore.setTopViewMonth(response);
         }
     } catch (error) {
         console.log("error", error);

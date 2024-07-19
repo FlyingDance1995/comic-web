@@ -17,9 +17,7 @@ const getData = async () => {
                 ordering: 'total_story',
             }
         });
-        if (!topDonate.value) {
-            topStore.setTopDonate(response);
-        }
+        topStore.setTopDonate(response);
     } catch (error) {
         console.log("error", error);
     }
@@ -39,7 +37,7 @@ getData();
                     role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" data-bs-toggle="pill" href="#top-contributions"
-                            role="tab" aria-selected="true">
+                           role="tab" aria-selected="true">
                             <div class="d-flex align-items-center">
                                 <div class="tab-title">Cống hiến</div>
                             </div>
@@ -49,10 +47,10 @@ getData();
 
                 <div class="tab-content" id="danger-pills-tabContent">
                     <div class="tab-pane fade show active" id="top-contributions" role="tabpanel">
-                        <div v-for="(item, index) in topDonate?.results" 
-                            :key="item?.id"
-                            class="d-flex top-item">
-                            <div class="stt">{{index + 1}}</div>
+                        <div v-for="(item, index) in topDonate?.results"
+                             :key="item?.id"
+                             class="d-flex top-item">
+                            <div class="stt">{{ index + 1 }}</div>
                             <div class="thumbnail">
                                 <img
                                     :src="item?.avatar || ''"
@@ -64,7 +62,7 @@ getData();
                                 <h3>
                                     <NuxtLink
                                         :to="`/nhom-dich/${item?.slug}`">
-                                        {{item?.name}}
+                                        {{ item?.name }}
                                     </NuxtLink>
                                 </h3>
 
@@ -76,7 +74,7 @@ getData();
                                         }}
                                     </div>
                                     <div class="view">
-                                        TOP {{index + 1}}
+                                        TOP {{ index + 1 }}
                                     </div>
                                 </div>
                             </div>
