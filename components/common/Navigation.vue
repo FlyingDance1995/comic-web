@@ -19,9 +19,13 @@ const closeMenu = () => {
 
 let userStore = null;
 const user = ref();
-if (window) {
+if (process.client) {
     userStore = useUserStore();
-    user.value = userStore.$state.user;
+    const userComputed = computed(() => userStore.$state.user);
+
+    watch(userComputed, () => {
+        user.value = userComputed.value;
+    }, {immediate: true, deep: true});
 }
 </script>
 

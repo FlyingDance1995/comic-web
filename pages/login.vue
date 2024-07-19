@@ -4,7 +4,7 @@ import {useUserStore} from "@/store/user.js";
 const router = useRouter();
 
 let userStore = null;
-if (window) {
+if (process.client) {
     userStore = useUserStore();
 }
 

@@ -5,7 +5,7 @@ const route = useRoute();
 const configStore = useConfigStore();
 
 const slug = route?.params?.slug;
-const chapter = route?.params?.chapter;
+const chapter = route?.params?.chapter || '';
 
 const data = ref(null);
 
@@ -83,5 +83,5 @@ const reportError = () => {
         </div>
     </div>
 
-    <ReadStoryChapterFooter :chapter="chapter" :list-chapter="data?.list_chapter" :slug="slug" :chapter_number="data?.chapter_number"/>
+    <ReadStoryChapterFooter :chapter="chapter" :list-chapter="data?.list_chapter" :slug="slug" :chapter_number="data?.chapter_number || 1"/>
 </template>
