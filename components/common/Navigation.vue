@@ -81,7 +81,7 @@ if (process.client) {
 
                                 <ul class="dropdown-menu scroll-menu ps ps--active-x ps--active-y ps--scrolling-y"
                                     :class="openSubMenu ? 'show' : ''"
-                                    style="overflow: auto !important; animation: none">
+                                    style="overflow: auto !important;">
                                     <li v-for="(item, index) in category" :key="index">
                                         <NuxtLink class="dropdown-item"
                                                   :to="`/the-loai/${item.slug}`" @click="closeMenu">
