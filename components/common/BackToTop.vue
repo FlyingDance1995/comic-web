@@ -1,28 +1,24 @@
 <script setup>
-const showBackToTop = ref(false);
-
-const handleScroll = () => {
-    showBackToTop.value = window.scrollY > 300;
-};
-
-const scrollToTop = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-    });
-};
-
 onMounted(() => {
-    window.addEventListener('scroll', handleScroll);
-});
+    $(document).ready(function () {
+        $(window).on("scroll", function () {
+            if ($(this).scrollTop() > 300) {
+                $(".back-to-top").fadeIn();
+            } else {
+                $(".back-to-top").fadeOut();
+            }
+        });
 
-onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll);
+        $(".back-to-top").on("click", function () {
+            $("html, body").animate({scrollTop: 0}, 600);
+            return false;
+        });
+    })
 });
 </script>
 
 <template>
-    <a v-if="showBackToTop" href="javaScript:;" class="back-to-top" style="display: inline;" @click="scrollToTop">
+    <a href="javaScript:;" class="back-to-top" style="display: none;">
         <i class="bx bxs-up-arrow-alt"/>
     </a>
 </template>
