@@ -35,11 +35,14 @@ const getData = async () => {
 };
 
 const getCategory = async () => {
-    try {
-        const {data} = await useAPI(`/category/${slug}`);
-        category.value = data?.value;
-    } catch (error) {
-        console.log("error", error);
+    const {data} = await useAPI(`/category/${slug}`);
+    category.value = data?.value;
+    if (data.value === null) {
+        throw createError({
+            statusCode: 404,
+            fatal: true,
+            statusMessage: 'Page Not Found'
+        });
     }
 };
 

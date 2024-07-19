@@ -10,7 +10,7 @@ export default defineNuxtPlugin(() => {
                 access_token = localStorage.getItem('token');
             }
 
-            if (access_token) {
+            if (access_token && access_token !== 'null') {
                 const headers = options.headers ||= {};
                 if (Array.isArray(headers)) {
                     headers.push(['Authorization', `Token ${access_token}`]);

@@ -10,11 +10,14 @@ const chapter = route?.params?.chapter || '';
 const data = ref(null);
 
 const getData = async () => {
-    try {
-        const { data: story } = await useAPI(`/story/${slug}/chapter/${chapter}`);
-        data.value = story?.value;
-    } catch (error) {
-        console.log("error", error);
+    const { data: story } = await useAPI(`/story/${slug}/chapter/${chapter}`);
+    data.value = story?.value;
+    if (story.value === null) {
+        throw createError({
+            statusCode: 404,
+            fatal: true,
+            statusMessage: 'Page Not Found'
+        });
     }
 };
 

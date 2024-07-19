@@ -16,11 +16,14 @@ const storys = ref([]);
 const total = ref(0);
 
 const getData = async () => {
-    try {
-        const {data: team} = await useAPI(`/teams/${slug}`);
-        data.value = team?.value;
-    } catch (error) {
-        console.log("error", error);
+    const {data: team} = await useAPI(`/teams/${slug}`);
+    data.value = team?.value;
+    if (team.value === null) {
+        throw createError({
+            statusCode: 404,
+            fatal: true,
+            statusMessage: 'Page Not Found'
+        });
     }
 };
 
@@ -113,7 +116,7 @@ const handleFollow = () => {
                                     {{ data?.statistics?.total_watched?.toLocaleString()?.replaceAll('.', ',') }}
                                 </div>
                                 <div class="mb-1"><b>Số truyện:</b>
-                                    {{data?.statistics?.total_story?.toLocaleString()?.replaceAll('.', ',')}}
+                                    {{ data?.statistics?.total_story?.toLocaleString()?.replaceAll('.', ',') }}
                                 </div>
                             </div>
 
