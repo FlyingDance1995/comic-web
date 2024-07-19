@@ -55,9 +55,7 @@ watch(() => route.path, () => {
         <!--start header wrapper-->
         <div class="header-wrapper">
             <!--start header -->
-            <ClientOnly>
-                <CommonHeader/>
-            </ClientOnly>
+            <CommonHeader/>
             <!--end header -->
             <!--navigation-->
             <CommonNavigation/>
