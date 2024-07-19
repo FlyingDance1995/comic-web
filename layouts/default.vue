@@ -73,8 +73,10 @@ watch(() => route.path, () => {
         <!-- search modal -->
         <CommonSearchModal/>
         <!-- end search modal -->
-        <!-- Report Modal -->
-        <CommonReportModal/>
+        <!-- Report License Modal -->
+        <CommonReportLicenseModal/>
+        <!-- Report Error Modal -->
+        <CommonReportErrorModal/>
         <!--start overlay-->
         <CommonOverlay/>
         <!--end overlay-->

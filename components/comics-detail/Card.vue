@@ -10,6 +10,8 @@ const props = defineProps({
 
 const configStore = useConfigStore();
 
+const listChaptersRef = ref();
+
 const handleFollow = () => {
     const user = JSON.parse(localStorage.getItem('user') || null);
 
@@ -50,6 +52,11 @@ const handleFollow = () => {
 
 const report = () => {
     setTimeout(() => configStore.setReportModal(true), 100)
+};
+
+const reportError = () => {
+    configStore.setStoryReportError(listChaptersRef.value?.data);
+    setTimeout(() => configStore.setReportErrorModal(true), 100);
 };
 </script>
 
@@ -152,7 +159,7 @@ const report = () => {
                                 class="btn btn-primary btn-sm px-3 radius-30">
                             <i class="bx bx-bookmark-alt font-18 me-1"></i>Theo dõi
                         </button>
-                        <button type="button" onclick="report(1774)" class="btn btn-dark btn-sm px-3 radius-30">
+                        <button type="button" @click.prevent="reportError" class="btn btn-dark btn-sm px-3 radius-30">
                             <i class="bx bx-error-circle font-18 me-1"></i>Báo lỗi
                         </button>
                     </div>
@@ -183,7 +190,7 @@ const report = () => {
         <div class="card-body  mt-4 ">
             <h5 class="mb-0 text-uppercase text-primary">Danh sách chương</h5>
             <hr>
-            <ComicsDetailListChapters/>
+            <ComicsDetailListChapters ref="listChaptersRef"/>
             <h5 class="mb-0 text-uppercase mt-5 text-primary">Bình luận</h5>
             <hr>
             <ClientOnly>

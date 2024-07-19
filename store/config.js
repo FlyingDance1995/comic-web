@@ -13,7 +13,9 @@ export const useConfigStore = defineStore({
                 onSubmit: null
             },
             searchModal: false,
-            reportModal: false
+            reportModal: false,
+            reportErrorModal: false,
+            storyReportError: null
         }
     },
     actions: {
@@ -31,6 +33,12 @@ export const useConfigStore = defineStore({
         },
         setReportModal(value) {
             this.$state.reportModal = value;
+        },
+        setReportErrorModal(value) {
+            this.$state.reportErrorModal = value;
+        },
+        setStoryReportError(value) {
+            this.$state.storyReportError = value;
         }
     },
 });

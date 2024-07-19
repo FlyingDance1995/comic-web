@@ -25,6 +25,10 @@ const getData = async () => {
 };
 
 if (slug) getData();
+
+defineExpose({
+    data
+});
 </script>
 <template>
     <div class="list-chapters">

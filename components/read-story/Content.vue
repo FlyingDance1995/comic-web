@@ -1,5 +1,8 @@
 <script setup>
+import {useConfigStore} from "~/store/config.js";
+
 const route = useRoute();
+const configStore = useConfigStore();
 
 const slug = route?.params?.slug;
 const chapter = route?.params?.chapter;
@@ -16,6 +19,15 @@ const getData = async () => {
 };
 
 if (slug && chapter) getData();
+
+const reportError = () => {
+    console.log(data.value)
+    configStore.setStoryReportError({
+        ...data.value,
+        results: data.value?.list_chapter
+    });
+    setTimeout(() => configStore.setReportErrorModal(true), 100);
+};
 </script>
 
 <template>
@@ -53,7 +65,7 @@ if (slug && chapter) getData();
 
                 <div class="my-3 text-center">
                     <button type="button" class="btn btn-danger"
-                            onclick="if (!window.__cfRLUnblockHandlers) return false; report(1944)">
+                            @click.prevent="reportError">
                         Báo cáo nội dung vi phạm
                     </button>
                 </div>
