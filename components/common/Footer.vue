@@ -49,8 +49,7 @@ const report = () => {
             -
             <NuxtLink to="/page/chinh-sach-bao-mat"><b>Chính sách bảo mật</b></NuxtLink>
             -
-            <NuxtLink
-                to="/sitemap.xml"><b>Sitemap</b></NuxtLink>
+            <NuxtLink to="/sitemap.xml" external><b>Sitemap</b></NuxtLink>
             <br>
             Copyright © 2024. All right reserved.
         </p>
