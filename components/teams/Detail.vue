@@ -43,7 +43,7 @@ const getStory = async () => {
 if (slug) {
     await getData();
     await getStory();
-};
+}
 
 const handleFollow = () => {
     const user = JSON.parse(localStorage.getItem('user') || null);

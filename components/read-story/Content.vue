@@ -18,7 +18,7 @@ const getData = async () => {
     }
 };
 
-if (slug && chapter) getData();
+if (slug && chapter) await getData();
 
 const reportError = () => {
     console.log(data.value)

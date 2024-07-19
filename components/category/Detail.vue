@@ -58,9 +58,9 @@ const getCategories = async () => {
 };
 
 if (slug) {
-    getCategory();
-    getData();
-    getCategories();
+    await getCategory();
+    await getData();
+    await getCategories();
 }
 </script>
 
