@@ -1,7 +1,15 @@
 <script setup>
-const topDaily = ref(null);
-const topWeek = ref(null);
-const topMonth = ref(null);
+import {useTopStore} from "~/store/top.js";
+
+const topStore = useTopStore();
+
+const topDaily = computed(() => topStore.$state.topViewDaily);
+const topWeek = computed(() => topStore.$state.topViewWeek);
+const topMonth = computed(() => topStore.$state.topViewMonth);
+
+const active = ref('top-day');
+const show = ref('top-day');
+
 const query = {
     size: 10,
     page: 1,
@@ -16,14 +24,20 @@ const getData = async (ordering = 'daily_watched') => {
             }
         });
         if (ordering === 'daily_watched') {
-            topDaily.value = response;
             show.value = 'top-day';
+            if (!topDaily.value) {
+                topStore.setTopViewDaily(response);
+            }
         } else if (ordering === 'weekly_watched') {
-            topWeek.value = response;
             show.value = 'top-week';
+            if (!topWeek.value) {
+                topStore.setTopViewWeek(response);
+            }
         } else if (ordering === 'monthly_watched') {
-            topMonth.value = response;
             show.value = 'top-month';
+            if (!topMonth.value) {
+                topStore.setTopViewMonth(response);
+            }
         }
     } catch (error) {
         console.log("error", error);
@@ -31,30 +45,6 @@ const getData = async (ordering = 'daily_watched') => {
 };
 
 getData();
-
-// const {data: topDaily} = await useAPI('/teams', {
-//     query: {
-//         ...query,
-//         ordering: 'daily_watched',
-//     }
-// });
-//
-// const {data: topWeek} = await useAPI('/teams', {
-//     query: {
-//         ...query,
-//         ordering: 'weekly_watched',
-//     }
-// });
-//
-// const {data: topMonth} = await useAPI('/teams', {
-//     query: {
-//         ...query,
-//         ordering: 'monthly_watched',
-//     }
-// });
-
-const active = ref('top-day');
-const show = ref('top-day');
 </script>
 
 <template>
@@ -68,8 +58,8 @@ const show = ref('top-day');
                 <ul class="nav nav-pills mb-3 justify-content-center" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a :class="active === 'top-day' ? 'active' : ''"
-                            class="nav-link" data-bs-toggle="pill" href="javascript:void(0)" role="tab"
-                            :aria-selected="active === 'top-day'" @click="() => {
+                           class="nav-link" data-bs-toggle="pill" href="javascript:void(0)" role="tab"
+                           :aria-selected="active === 'top-day'" @click="() => {
                                 active = 'top-day';
                                 getData('daily_watched');
                             }">
@@ -81,8 +71,8 @@ const show = ref('top-day');
 
                     <li class="nav-item" role="presentation">
                         <a :class="active === 'top-week' ? 'active' : ''"
-                            class="nav-link" data-bs-toggle="pill" href="javascript:void(0)" role="tab"
-                            :aria-selected="active === 'top-week'" @click="() => {
+                           class="nav-link" data-bs-toggle="pill" href="javascript:void(0)" role="tab"
+                           :aria-selected="active === 'top-week'" @click="() => {
                                 active = 'top-week';
                                 getData('weekly_watched');
                             }">
@@ -94,8 +84,8 @@ const show = ref('top-day');
 
                     <li class="nav-item" role="presentation">
                         <a :class="active === 'top-month' ? 'active' : ''"
-                            class="nav-link" data-bs-toggle="pill" href="javascript:void(0)" role="tab"
-                            :aria-selected="active === 'top-month'" @click="() => {
+                           class="nav-link" data-bs-toggle="pill" href="javascript:void(0)" role="tab"
+                           :aria-selected="active === 'top-month'" @click="() => {
                                 active = 'top-month';
                                 getData('monthly_watched');
                             }">
@@ -111,11 +101,11 @@ const show = ref('top-day');
                             active: active === 'top-day',
                             show: show === 'top-day',
                           }"
-                        class="tab-pane fade" id="top-user-view-day" role="tabpanel">
-                        <div v-for="(item, index) in topDaily?.results" 
-                            :key="item?.id"
-                            class="d-flex top-item">
-                            <div class="stt">{{index + 1}}</div>
+                         class="tab-pane fade" id="top-user-view-day" role="tabpanel">
+                        <div v-for="(item, index) in topDaily?.results"
+                             :key="item?.id"
+                             class="d-flex top-item">
+                            <div class="stt">{{ index + 1 }}</div>
                             <div class="thumbnail">
                                 <img
                                     :src="item?.avatar || ''"
@@ -126,7 +116,7 @@ const show = ref('top-day');
                                 <h3>
                                     <NuxtLink
                                         :to="`/nhom-dich/${item?.slug}`">
-                                        {{item?.name}}
+                                        {{ item?.name }}
                                     </NuxtLink>
                                 </h3>
 
@@ -146,11 +136,11 @@ const show = ref('top-day');
                             active: active === 'top-week',
                             show: show === 'top-week',
                           }"
-                        class="tab-pane fade" id="top-user-view-week" role="tabpanel">
-                        <div v-for="(item, index) in topWeek?.results" 
-                            :key="item?.id"
-                            class="d-flex top-item">
-                            <div class="stt">{{index + 1}}</div>
+                         class="tab-pane fade" id="top-user-view-week" role="tabpanel">
+                        <div v-for="(item, index) in topWeek?.results"
+                             :key="item?.id"
+                             class="d-flex top-item">
+                            <div class="stt">{{ index + 1 }}</div>
                             <div class="thumbnail">
                                 <img
                                     :src="item?.avatar || ''"
@@ -161,7 +151,7 @@ const show = ref('top-day');
                                 <h3>
                                     <NuxtLink
                                         :to="`/nhom-dich/${item?.slug}`">
-                                        {{item?.name}}
+                                        {{ item?.name }}
                                     </NuxtLink>
                                 </h3>
 
@@ -181,11 +171,11 @@ const show = ref('top-day');
                             active: active === 'top-month',
                             show: show === 'top-month',
                           }"
-                        class="tab-pane fade" id="top-user-view-month" role="tabpanel">
-                        <div v-for="(item, index) in topMonth?.results" 
-                            :key="item?.id"
-                            class="d-flex top-item">
-                            <div class="stt">{{index + 1}}</div>
+                         class="tab-pane fade" id="top-user-view-month" role="tabpanel">
+                        <div v-for="(item, index) in topMonth?.results"
+                             :key="item?.id"
+                             class="d-flex top-item">
+                            <div class="stt">{{ index + 1 }}</div>
                             <div class="thumbnail">
                                 <img
                                     :src="item?.avatar || ''"
@@ -196,7 +186,7 @@ const show = ref('top-day');
                                 <h3>
                                     <NuxtLink
                                         :to="`/nhom-dich/${item?.slug}`">
-                                        {{item?.name}}
+                                        {{ item?.name }}
                                     </NuxtLink>
                                 </h3>
 

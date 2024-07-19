@@ -1,5 +1,9 @@
 <script setup>
-const topDonate = ref(null);
+import {useTopStore} from "~/store/top.js";
+
+const topStore = useTopStore();
+
+const topDonate = computed(() => topStore.$state.topDonate);
 const query = {
     size: 10,
     page: 1,
@@ -13,20 +17,15 @@ const getData = async () => {
                 ordering: 'total_story',
             }
         });
-        topDonate.value = response;
+        if (!topDonate.value) {
+            topStore.setTopDonate(response);
+        }
     } catch (error) {
         console.log("error", error);
     }
 };
 
 getData();
-
-// const {data: topDonate} = await useAPI('/teams', {
-//     query: {
-//         ...query,
-//         ordering: 'total_story',
-//     }
-// });
 </script>
 <template>
     <div class="col-md-12">

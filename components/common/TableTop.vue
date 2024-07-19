@@ -1,7 +1,15 @@
 <script setup>
-const topDaily = ref(null);
-const topWeek = ref(null);
-const topMonth = ref(null);
+import {useTopStore} from "~/store/top.js";
+
+const topStore = useTopStore();
+
+const topDaily = computed(() => topStore.$state.topDaily);
+const topWeek = computed(() => topStore.$state.topWeek);
+const topMonth = computed(() => topStore.$state.topMonth);
+
+const active = ref('top-day');
+const show = ref('top-day');
+
 const query = {
     size: 10,
     page: 1,
@@ -16,14 +24,20 @@ const getData = async (ordering = 'daily_watched') => {
             }
         });
         if (ordering === 'daily_watched') {
-            topDaily.value = response;
             show.value = 'top-day';
+            if (!topDaily.value) {
+                topStore.setTopDaily(response);
+            }
         } else if (ordering === 'weekly_watched') {
-            topWeek.value = response;
             show.value = 'top-week';
+            if (!topWeek.value) {
+                topStore.setTopWeek(response);
+            }
         } else if (ordering === 'monthly_watched') {
-            topMonth.value = response;
             show.value = 'top-month';
+            if (!topMonth.value) {
+                topStore.setTopMonth(response);
+            }
         }
     } catch (error) {
         console.log("error", error);
@@ -31,30 +45,6 @@ const getData = async (ordering = 'daily_watched') => {
 };
 
 getData();
-
-// const {data: topDaily} = await useAPI('/story', {
-//     query: {
-//         ...query,
-//         ordering: 'daily_watched',
-//     }
-// });
-//
-// const {data: topWeek} = await useAPI('/story', {
-//     query: {
-//         ...query,
-//         ordering: 'weekly_watched',
-//     }
-// });
-//
-// const {data: topMonth} = await useAPI('/story', {
-//     query: {
-//         ...query,
-//         ordering: 'monthly_watched',
-//     }
-// });
-
-const active = ref('top-day');
-const show = ref('top-day');
 </script>
 
 <template>
