@@ -16,6 +16,8 @@ const props = defineProps({
                          :data-src="`${item?.avatar}`" :src="`${item?.avatar || ''}`" width="200" height="260">
                 </NuxtLink>
 
+                <slot/>
+
                 <div class="story-meta-data d-flex justify-content-start">
                     <span>
                         <i class="bx bx-show"></i>

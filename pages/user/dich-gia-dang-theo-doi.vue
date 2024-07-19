@@ -1,5 +1,8 @@
 <script setup>
+import {useConfigStore} from "~/store/config.js";
+
 const route = useRoute();
+const configStore = useConfigStore();
 
 const page = +route?.query?.page || 1;
 const params = {
@@ -10,18 +13,50 @@ const params = {
 const teams = ref([]);
 const total = ref(0);
 
-try {
-    const {data} = await useAPI('/profile/team', {
-        query: {
-            ...params,
-            type: 'follow'
+const getData = async () => {
+    try {
+        const {data} = await useAPI('/profile/team', {
+            query: {
+                ...params,
+                type: 'follow'
+            }
+        });
+        teams.value = data.value.results;
+        total.value = data.value.count;
+    } catch (error) {
+        console.log("error", error);
+    }
+};
+
+await getData();
+
+const deleteItem = async (item) => {
+    configStore.setSwal({
+        open: true,
+        title: 'Bỏ theo dõi',
+        text: 'Bạn muốn bỏ theo dõi người này?',
+        type: 'info',
+        onSubmit: async () => {
+            try {
+                configStore.setLoadingModal(true);
+                await useNuxtApp().$api('/profile/team', {
+                    method: "POST",
+                    body: {
+                        team: item?.slug,
+                        type: 'unfollow'
+                    }
+                });
+                await getData();
+                configStore.setLoadingModal(false);
+                return 'Đã xóa bỏ theo dõi người này';
+            } catch (e) {
+                configStore.setLoadingModal(false);
+                console.log("error", e?.response);
+                return null;
+            }
         }
     });
-    teams.value = data.value.results;
-    total.value = data.value.count;
-} catch (error) {
-    console.log("error", error);
-}
+};
 </script>
 
 <template>
@@ -38,6 +73,15 @@ try {
                                     <img :alt="`${team?.name}`" class="card-img-top" width="200" height="260"
                                          onerror="this.src='/no-image.png'" :src="`${team?.avatar || ''}`">
                                 </NuxtLink>
+
+                                <div class="">
+                                    <div class="position-absolute top-0 end-0 m-1 product-discount" style="z-index: 10;">
+                                        <a href="javascript:;" @click.stop="deleteItem(team)" class="ms-3">
+                                            <i class="bx bxs-trash"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
                                 <div class="story-meta-data d-flex justify-content-start">
                                     <span><i class="bx bx-show"></i> {{ team?.statistics?.total_watched?.toLocaleString()?.replaceAll('.', ',') }}</span>
                                     <span><i class="bx bx-bell"></i> {{ team?.statistics?.total_follow?.toLocaleString()?.replaceAll('.', ',') }}</span>
