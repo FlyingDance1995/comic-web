@@ -1,13 +1,19 @@
 <script setup>
 import {userDarkMode} from "@/composables/state";
 import {useMenuStore} from "~/store/menu.js";
+import {useConfigStore} from "~/store/config.js";
 
 const menuStore = useMenuStore();
+const configStore = useConfigStore();
 
 const {isDarkMode, toggleDarkMode} = userDarkMode();
 
 const handleClickMenu = () => {
-    menuStore.setMenu(true)
+    menuStore.setMenu(true);
+};
+
+const openSearchModal = () => {
+    configStore.setSearchModal(true);
 };
 </script>
 
