@@ -75,9 +75,7 @@ watch(token, () => {
                     <div class="d-flex align-items-center">
                         <!--                                            <div class="user-online">-->
                         <div>
-                            <img
-                                src="/images/avata.png"
-                                class="msg-avatar" alt="">
+                            <img src="" class="msg-avatar" alt="" onerror="this.src='/images/avata.png'">
                         </div>
 
                         <div class="flex-grow-1">
