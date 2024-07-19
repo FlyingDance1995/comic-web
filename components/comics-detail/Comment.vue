@@ -173,10 +173,6 @@ watch(() => route?.params, () => {
             <div class="clear comment-website">
                 <div class="cm-based">
                     <p class="comment-count">{{ data?.count || 0 }} bình luận</p>
-                    <div id="comment_loading" style="display:none; text-align:center;">
-                        <img alt="Please Wait" src="https://monkeyd.vn/img/loading.gif">
-                    </div>
-
                     <form name="frmContact" id="frmContact" @submit.prevent="handleSubmit"
                           method="POST">
                         <div class="form row">

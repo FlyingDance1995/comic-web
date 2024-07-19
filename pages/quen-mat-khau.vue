@@ -99,7 +99,7 @@ const validateField = () => {
                     class="col-12 col-xl-7 col-xxl-8 auth-cover-left align-items-center justify-content-center d-none d-xl-flex">
                     <div class="card shadow-none bg-transparent shadow-none rounded-0 mb-0">
                         <div class="card-body">
-                            <img src="https://monkeyd.vn/assets/images/login-images/forgot-password-cover.svg"
+                            <img src="/images/forgot-password-cover.svg"
                                  class="img-fluid" width="600" alt="">
                         </div>
                     </div>
@@ -110,7 +110,7 @@ const validateField = () => {
                         <div class="card-body p-sm-5">
                             <div class="p-3">
                                 <div class="text-center">
-                                    <img src="https://monkeyd.vn/assets/images/icons/forgot-2.png" width="100" alt="">
+                                    <img src="/images/forgot-2.png" width="100" alt="">
                                 </div>
                                 <h4 class="mt-5 font-weight-bold">Quên mật khẩu?</h4>
                                 <p class="text-muted">Nhập Email đăng ký của bạn để đặt lại mật khẩu</p>

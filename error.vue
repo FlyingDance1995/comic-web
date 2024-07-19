@@ -24,7 +24,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-5 col-lg-5 text-center">
                                 <div class="fighting">
-                                    <img src="https://monkeyd.vn/img/fighting.gif" alt="Fighting">
+                                    <img src="/images/fighting.gif" alt="Fighting">
                                 </div>
                                 <!-- end Fighting -->
                             </div>
