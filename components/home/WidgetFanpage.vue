@@ -7,9 +7,9 @@ const linkFanpage = "https://www.facebook.com/plugins/page.php?href=https%3A%2F%
         <div class="widget-fanpage mb-3 text-center">
             <iframe
                 :src="linkFanpage"
-                width="340" height="130" 
-                style="border:none;overflow:hidden" 
-                scrolling="no" 
+                width="340" height="130"
+                style="border:none;overflow:hidden"
+                scrolling="no"
                 frameborder="0"
                 allowfullscreen="true"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>

@@ -157,6 +157,11 @@ const loadMoreReply = async (item) => {
     }
 };
 
+const getAvatar = (item) => {
+    const domain = process.env.NODE_ENV === "development" ? 'https://hoannq.click' : window.location.origin;
+    return domain + item?.owner?.avatar;
+};
+
 watch(() => route?.params, () => {
     if (route?.params?.slug) getData();
 }, {immediate: true, deep: true})
@@ -215,18 +220,19 @@ watch(() => route?.params, () => {
                                     <li v-for="i in item?.reply_5_comment?.top_comment"
                                         :key="i?.id">
                                         <div class="avt_user">
-                                            <img :src="i?.avatar || ''"
+                                            <img :src="getAvatar(i)"
                                                  alt=""
                                                  onerror="this.src='/images/avata.png'">
                                         </div>
-
+                                        <!--                                        {{`${window.location}${i?.owner?.avatar}`}}-->
                                         <div class="post-comments">
                                             <p>{{ i?.contents }}</p>
                                             <p class="meta-2">
                                                 <a href="javascript:void(0)"><abbr
                                                     title="Thành viên">{{ i?.owner?.fullname }}</abbr></a>
                                                 <small class="pull-right">{{ timeAgo(i?.creation_time) }} · <a
-                                                    href="javascript:void(0)" @click="openReply(item)">Trả lời</a></small>
+                                                    href="javascript:void(0)" @click="openReply(item)">Trả
+                                                    lời</a></small>
                                             </p>
                                         </div>
                                     </li>
