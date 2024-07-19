@@ -14,7 +14,7 @@ const getData = async () => {
     }
 };
 
-if (slug) getData();
+if (slug) await getData();
 </script>
 
 <template>

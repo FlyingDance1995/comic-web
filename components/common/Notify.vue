@@ -94,3 +94,8 @@ watch(token, () => {
         </div>
     </li>
 </template>
+<style>
+.ps {
+    overflow: auto !important;
+}
+</style>

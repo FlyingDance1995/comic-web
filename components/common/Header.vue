@@ -94,8 +94,4 @@ const openSearchModal = () => {
         </div>
     </header>
 </template>
-<style>
-.ps {
-    overflow: auto !important;
-}
-</style>
+
