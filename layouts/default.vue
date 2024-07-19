@@ -88,4 +88,6 @@ watch(() => route.path, () => {
     <CommonLoadingModal/>
     <!-- swal -->
     <CommonSwal/>
+    <!-- modal backdrop-->
+    <CommonBackDropModal/>
 </template>

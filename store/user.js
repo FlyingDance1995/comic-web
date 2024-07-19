@@ -29,15 +29,27 @@ export const useUserStore = defineStore({
     actions: {
         setUser(value) {
             this.$state.user = value;
-            localStorage.setItem('user', JSON.stringify(value));
+            if (value === null) {
+                localStorage.removeItem('user');
+            } else {
+                localStorage.setItem('user', JSON.stringify(value));
+            }
         },
         setToken(value) {
             this.$state.token = value;
-            localStorage.setItem('token', value);
+            if (value === null) {
+                localStorage.removeItem('token');
+            } else {
+                localStorage.setItem('token', value);
+            }
         },
         setExpiry(value) {
             this.$state.expiry = value;
-            localStorage.setItem('expiry', value);
+            if (value === null) {
+                localStorage.removeItem('expiry');
+            } else {
+                localStorage.setItem('expiry', value);
+            }
         },
     },
 });

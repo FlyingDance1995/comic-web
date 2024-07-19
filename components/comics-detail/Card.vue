@@ -38,9 +38,11 @@ const handleFollow = () => {
                     }
                 });
                 configStore.setLoadingModal(false);
+                return 'Đã lưu truyện này';
             } catch (e) {
                 configStore.setLoadingModal(false);
                 console.log("error", e?.response);
+                return null;
             }
         }
     });

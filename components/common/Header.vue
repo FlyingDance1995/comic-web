@@ -14,6 +14,7 @@ const configStore = useConfigStore();
 const {isDarkMode, toggleDarkMode} = userDarkMode();
 
 const user = computed(() => userStore.$state.user);
+const token = computed(() => userStore.$state.token);
 const openMenu = ref(false);
 const notify = ref();
 const showNotify = ref(false);
@@ -70,7 +71,12 @@ if (user.value) {
 watch(() => route.path, () => {
     openMenu.value = false;
     showNotify.value = false;
-}, {deep: true})
+}, {deep: true});
+
+watch(token, () => {
+    getInfo();
+    getNotify();
+});
 </script>
 
 <template>

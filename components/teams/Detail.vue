@@ -73,9 +73,11 @@ const handleFollow = () => {
                     }
                 });
                 configStore.setLoadingModal(false);
+                return 'Theo dõi thành công';
             } catch (e) {
                 configStore.setLoadingModal(false);
                 console.log("error", e?.response);
+                return null;
             }
         }
     });

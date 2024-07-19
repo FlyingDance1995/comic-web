@@ -11,13 +11,13 @@ const handleOk = async () => {
     }
     if (swal.value.type === 'info') {
         closeModal();
-        await swal.value.onSubmit();
+        const response = await swal.value.onSubmit();
         setTimeout(() => {
             configStore.setSwal({
                 open: true,
-                title: 'Thành công',
-                text: swal.value.title === 'Theo dõi' ? 'Theo dõi thành công' : 'Đã lưu truyện này',
-                type: 'success',
+                title: response ? 'Thành công' : 'Thất bại',
+                text: response ? response : 'Có lỗi xảy ra',
+                type: response ? 'success' : 'error',
             });
         }, 200);
     }

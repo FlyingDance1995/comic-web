@@ -1,9 +1,5 @@
 import { defineStore } from 'pinia'
 
-const swalSubmitFunction = () => {
-    console.log(11)
-};
-
 export const useConfigStore = defineStore({
     id: 'config-store',
     state: () => {
@@ -16,7 +12,8 @@ export const useConfigStore = defineStore({
                 type: '',
                 onSubmit: null
             },
-            searchModal: false
+            searchModal: false,
+            reportModal: false
         }
     },
     actions: {
@@ -32,5 +29,8 @@ export const useConfigStore = defineStore({
         setSearchModal(value) {
             this.$state.searchModal = value;
         },
+        setReportModal(value) {
+            this.$state.reportModal = value;
+        }
     },
 });

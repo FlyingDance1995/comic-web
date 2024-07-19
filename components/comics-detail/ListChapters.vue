@@ -29,7 +29,10 @@ if (slug) getData();
 <template>
     <div class="list-chapters">
         <div v-for="item in data?.results" :key="item?.id" class="item d-flex justify-content-between">
-            <div class="episode-title">
+            <div class="episode-title"
+                 :class="{
+                    visited: item?.watched
+                 }">
                 <NuxtLink :to="`/${slug}/${item?.slug}`">
                     {{ formattedNameChaper(item?.type) }} {{ item?.chapter_number }}: {{ item?.name }}
                 </NuxtLink>
@@ -40,3 +43,8 @@ if (slug) getData();
         </div>
     </div>
 </template>
+<style>
+.list-chapters .item .episode-title.visited {
+    color: #ccd0d5
+}
+</style>
