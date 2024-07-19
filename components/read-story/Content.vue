@@ -24,7 +24,16 @@ const getData = async () => {
 if (slug && chapter) await getData();
 
 const reportError = () => {
-    console.log(data.value)
+    const user = localStorage.getItem('user');
+    if (!user) {
+        return configStore.setSwal({
+            open: true,
+            title: 'Oops...',
+            text: 'Bạn cần đăng nhập để có thể báo cáo lỗi.',
+            type: 'error'
+        });
+    }
+
     configStore.setStoryReportError({
         ...data.value,
         results: data.value?.list_chapter

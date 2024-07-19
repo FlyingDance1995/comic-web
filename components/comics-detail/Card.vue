@@ -51,10 +51,30 @@ const handleFollow = () => {
 };
 
 const report = () => {
+    const user = localStorage.getItem('user');
+    if (!user) {
+        return configStore.setSwal({
+            open: true,
+            title: 'Oops...',
+            text: 'Bạn cần đăng nhập để có thể báo cáo lỗi.',
+            type: 'error'
+        });
+    }
+
     setTimeout(() => configStore.setReportModal(true), 100)
 };
 
 const reportError = () => {
+    const user = localStorage.getItem('user');
+    if (!user) {
+        return configStore.setSwal({
+            open: true,
+            title: 'Oops...',
+            text: 'Bạn cần đăng nhập để có thể báo cáo lỗi.',
+            type: 'error'
+        });
+    }
+
     configStore.setStoryReportError(listChaptersRef.value?.data);
     setTimeout(() => configStore.setReportErrorModal(true), 100);
 };
