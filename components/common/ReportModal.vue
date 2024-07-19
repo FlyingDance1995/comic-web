@@ -13,6 +13,7 @@ const form = reactive({
     "link_violate": "",
     "contact": ""
 });
+const isChecked = ref(false);
 
 const handleClickOutside = () => {
     if (reportModal.value) configStore.setReportModal(false);
@@ -20,21 +21,34 @@ const handleClickOutside = () => {
 
 const handleSubmit = async () => {
     try {
-        const response = await useNuxtApp().$api('/report-license', {
+        configStore.setLoadingModal(true);
+        await useNuxtApp().$api('/report-license', {
             method: "POST",
             body: {
                 ...form
             }
         });
-        console.log(response);
-
+        configStore.setLoadingModal(false);
+        setTimeout(() => {
+            configStore.setSwal({
+                open: true,
+                title: 'Báo cáo thành công',
+                text: 'Cảm ơn bạn đã gửi báo cáo vi phạm bản quyền đến MonkeyD. Team sẽ xem xét và liên hệ bạn trong thời gian sớm nhất!',
+                type: 'success'
+            });
+        }, 150);
     } catch (error) {
+        configStore.setLoadingModal(false);
         console.log("error", error);
     }
 };
 
 watch(reportModal, () => {
     if (reportModal.value) {
+        form.link_story = "";
+        form.link_violate = "";
+        form.contact = "";
+        isChecked.value = false;
         isBlock.value = true;
         setTimeout(() => {
             isOpen.value = true;
@@ -72,7 +86,7 @@ watch(reportModal, () => {
 
                         <div class="mb-3">
                             <label for="original_link" class="d-block"><b>Link tác phẩm gốc</b></label>
-                            <input v-model="form.link_story"
+                            <input v-model="form.link_violate"
                                    type="text" class="form-control" name="original_link" id="original_link"
                                    placeholder="Ex: https://example.net/tac-pham-goc.1/" required="">
                         </div>
@@ -85,7 +99,8 @@ watch(reportModal, () => {
 
                         <div class="mb-3">
                             <label for="confirm_report">
-                                <input type="checkbox" name="confirm_report" id="confirm_report" required="" value="1">
+                                <input v-model="isChecked"
+                                       type="checkbox" name="confirm_report" id="confirm_report" required="">
                                 Tôi cam kết báo cáo này là đúng sự thật
                             </label>
                         </div>

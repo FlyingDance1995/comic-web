@@ -47,6 +47,10 @@ const handleFollow = () => {
         }
     });
 };
+
+const report = () => {
+    setTimeout(() => configStore.setReportModal(true), 100)
+};
 </script>
 
 <template>
@@ -154,7 +158,7 @@ const handleFollow = () => {
                     </div>
 
                     <div class="d-flex gap-3 mt-3 flex-wrap">
-                        <button type="button" class="btn btn-sm btn-danger radius-30 px-3" onclick="reportLicense()">
+                        <button type="button" class="btn btn-sm btn-danger radius-30 px-3" @click.prevent="report">
                             Báo cáo vi phạm bản quyền
                         </button>
                     </div>
