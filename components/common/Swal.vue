@@ -35,6 +35,14 @@ const closeModal = () => {
         configStore.setOpenSwal(false);
     }, 300);
 };
+
+watch(swal, () => {
+    if (swal.value.open) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
+}, {immediate: true, deep: true});
 </script>
 
 <template>

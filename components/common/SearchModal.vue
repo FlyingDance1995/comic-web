@@ -4,6 +4,14 @@ import {useConfigStore} from "~/store/config.js";
 const configStore = useConfigStore();
 
 const searchModal = computed(() => configStore.$state.searchModal);
+
+watch(searchModal, () => {
+    if (searchModal.value) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
+}, {immediate: true});
 </script>
 
 <template>

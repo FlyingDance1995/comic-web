@@ -58,6 +58,10 @@ const validateField = () => {
 </script>
 
 <template>
+    <Head>
+        <Title>Đổi mật khẩu</Title>
+    </Head>
+
     <div class="row">
         <div class="col-xl-6 mx-auto">
             <h6 class="mb-0 text-uppercase">Đổi mật khẩu</h6>

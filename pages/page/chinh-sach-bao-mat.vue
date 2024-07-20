@@ -3,6 +3,10 @@
 </script>
 
 <template>
+    <Head>
+        <Title>Chính sách bảo mật</Title>
+    </Head>
+
     <div class="container">
         <h1 class="mb-0 text-uppercase">Chính sách bảo mật</h1>
         <hr>

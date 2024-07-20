@@ -88,6 +88,10 @@ const handleFollow = () => {
 </script>
 
 <template>
+    <Head>
+        <Title>{{ data?.name }}</Title>
+    </Head>
+
     <div class="container">
         <div class="card">
             <div class="card-body">

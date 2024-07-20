@@ -64,6 +64,10 @@ const validateField = () => {
 </script>
 
 <template>
+    <Head>
+        <Title>Đăng nhập</Title>
+    </Head>
+
     <div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
         <div class="container">
             <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">

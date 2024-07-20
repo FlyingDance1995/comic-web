@@ -50,11 +50,13 @@ watch(reportModal, () => {
         form.contact = "";
         isChecked.value = false;
         isBlock.value = true;
+        document.body.style.overflow = 'hidden';
         setTimeout(() => {
             isOpen.value = true;
         }, 150);
     } else {
         isOpen.value = false;
+        document.body.style.overflow = '';
         setTimeout(() => {
             isBlock.value = false;
         }, 150);

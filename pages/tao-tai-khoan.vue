@@ -114,6 +114,10 @@ const validateField = () => {
 </script>
 
 <template>
+    <Head>
+        <Title>Đăng ký</Title>
+    </Head>
+
     <div class="d-flex align-items-center justify-content-center my-5">
         <div class="container-fluid">
             <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">

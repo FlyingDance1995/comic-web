@@ -43,6 +43,10 @@ const reportError = () => {
 </script>
 
 <template>
+    <Head>
+        <Title>{{data?.name || data?.story?.name}} - Chương {{data?.chapter_number || ''}}</Title>
+    </Head>
+
     <div class="container page-chapter-detail">
         <!--breadcrumb-->
         <CommonBreadCrumb :name="`Chương ${data?.chapter_number || ''}`">
@@ -54,13 +58,12 @@ const reportError = () => {
 
         <div class="card">
             <div class="card-body">
-                <h1 class="card-title">{{data?.name}} - Chương {{data?.chapter_number}}</h1>
+                <h1 class="card-title">{{data?.name || data?.story?.name}} - Chương {{data?.chapter_number || ''}}</h1>
 
                 <p class="bg-light-info p-3 radius-10 mt-3">
                     Cập nhật lúc: {{ formattedFullDate(data?.list_chapter?.find(x => x?.chapter_number === data?.chapter_number)?.modification_time)}}<br>
                     Lượt xem: 54
                 </p>
-
 
                 <div class="chapter-content">
                     <div class="content-container mt-4" id="chapter-content-render"

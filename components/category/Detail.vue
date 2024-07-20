@@ -68,6 +68,10 @@ if (slug) {
 </script>
 
 <template>
+    <Head>
+        <Title>{{ category?.name }}</Title>
+    </Head>
+
     <div class="container">
         <h1 class="mb-0 text-uppercase">Truyện {{ category?.name }}</h1>
         <hr>
