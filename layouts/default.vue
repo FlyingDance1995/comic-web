@@ -68,26 +68,30 @@ watch(() => route.path, () => {
                 <slot/>
             </div>
         </div>
-        <!-- search modal -->
-        <CommonSearchModal/>
-        <!-- end search modal -->
-        <!-- Report License Modal -->
-        <CommonReportLicenseModal/>
-        <!-- Report Error Modal -->
-        <CommonReportErrorModal/>
-        <!--start overlay-->
-        <CommonOverlay/>
-        <!--end overlay-->
-        <!--Start Back To Top Button-->
-        <CommonBackToTop/>
+        <ClientOnly>
+            <!-- search modal -->
+            <CommonSearchModal/>
+            <!-- end search modal -->
+            <!-- Report License Modal -->
+            <CommonReportLicenseModal/>
+            <!-- Report Error Modal -->
+            <CommonReportErrorModal/>
+            <!--start overlay-->
+            <CommonOverlay/>
+            <!--end overlay-->
+            <!--Start Back To Top Button-->
+            <CommonBackToTop/>
+        </ClientOnly>
         <!--End Back To Top Button-->
         <CommonFooter/>
     </div>
 
-    <!-- loading -->
-    <CommonLoadingModal/>
-    <!-- swal -->
-    <CommonSwal/>
-    <!-- modal backdrop-->
-    <CommonBackDropModal/>
+    <ClientOnly>
+        <!-- loading -->
+        <CommonLoadingModal/>
+        <!-- swal -->
+        <CommonSwal/>
+        <!-- modal backdrop-->
+        <CommonBackDropModal/>
+    </ClientOnly>
 </template>

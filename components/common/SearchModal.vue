@@ -11,7 +11,7 @@ watch(searchModal, () => {
     } else {
         document.body.style.overflow = '';
     }
-}, {immediate: true});
+});
 </script>
 
 <template>

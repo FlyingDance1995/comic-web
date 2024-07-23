@@ -1,5 +1,7 @@
 <script setup>
-
+const props = defineProps({
+    error: Object
+})
 </script>
 
 <template>
@@ -11,6 +13,9 @@
                     <section id="section" class="section clear">
                         <div class="group-section-wrap clear row">
                             <div class="col-xs-12 col-sm-7 col-lg-7">
+                                <pre>
+                                    {{error}}
+                                </pre>
                                 <!-- Info -->
                                 <div class="info">
                                     <h1>Oppps!</h1>

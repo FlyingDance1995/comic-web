@@ -4,12 +4,12 @@ export default defineSitemapEventHandler(async () => {
     try {
         const { data } = await axios.get(`${process.env.NUXT_PUBLIC_API_URL}/story`, {
             params: {
-                limit: 70,
+                limit: 100,
                 offset: 0
             }
-        })
+        });
 
-        return data?.data?.map((p: any) => {
+        return data?.results?.map((p: any) => {
             return {
                 loc: `/${p?.slug}`,
                 lastmod: new Date(),
