@@ -1,14 +1,17 @@
 <script setup>
 import {clickOutSide as vClickOutSide} from '@mahdikhashan/vue3-click-outside'
 import {useUserStore} from "~/store/user.js";
+import {useConfigStore} from "~/store/config.js";
 
 const route = useRoute();
 const userStore = useUserStore();
+const configStore = useConfigStore();
 
 const user = computed(() => userStore.$state.user);
 const token = computed(() => userStore.$state.token);
 
 const notify = ref();
+const notifyNew = ref();
 const showNotify = ref(false);
 
 const handleClickOutsideNotify = () => {
@@ -24,9 +27,70 @@ const getNotify = async () => {
     }
 };
 
+const getNotifyNew = async () => {
+    try {
+        const response = await useNuxtApp().$api('/profile/notify', {
+            query: {
+                "unread": true
+            }
+        });
+        notifyNew.value = response;
+    } catch (error) {
+        console.log("error", error);
+    }
+};
+
 if (user.value) {
+    await getNotifyNew();
     await getNotify();
 }
+
+const handleUnread = async (item) => {
+    try {
+        await useNuxtApp().$api(`/profile/notify/${item?.id}`, {
+            method: 'PATCH',
+            body: {
+                "unread": false
+            }
+        });
+        await getNotifyNew();
+        await getNotify();
+    } catch (e) {
+        console.log("error", e?.response);
+    }
+};
+
+const makeAllRead = async () => {
+    try {
+        configStore.setLoadingModal(true);
+        await useNuxtApp().$api(`/profile/notify/read-all`, {
+            method: 'POST',
+        });
+        await getNotifyNew();
+        await getNotify();
+        configStore.setLoadingModal(false);
+        showNotify.value = false;
+        setTimeout(() => {
+            configStore.setSwal({
+                open: true,
+                title: 'Thành công',
+                text: '',
+                type: 'success'
+            });
+        }, 150);
+    } catch (e) {
+        configStore.setLoadingModal(false);
+        setTimeout(() => {
+            configStore.setSwal({
+                open: true,
+                title: 'Oops...',
+                text: 'Có lỗi xảy ra, vui lòng thử lại sau!',
+                type: 'error'
+            });
+        }, 150);
+        console.log("error", e?.response);
+    }
+};
 
 watch(() => route.path, () => {
     showNotify.value = false;
@@ -46,7 +110,7 @@ watch(token, () => {
            data-bs-toggle="dropdown" aria-expanded="true"
            @click.prevent="showNotify = !showNotify">
             <span class="alert-count">
-                {{ notify?.count ? notify.count > 100 ? '99+' : notify.count : 0 }}
+                {{ notifyNew?.count ? notifyNew.count > 100 ? '99+' : notifyNew.count : 0 }}
             </span>
             <i class="bx bx-bell"></i>
         </a>
@@ -59,7 +123,7 @@ watch(token, () => {
             <a href="javascript:;">
                 <div class="msg-header">
                     <p class="msg-header-title">Thông báo</p>
-                    <p class="msg-header-badge">{{ notify?.count || 0 }} tin mới</p>
+                    <p class="msg-header-badge">{{ notifyNew?.count || 0 }} tin mới</p>
                 </div>
             </a>
 
@@ -71,10 +135,10 @@ watch(token, () => {
                 <NuxtLink v-for="item in notify?.results"
                           :key="item?.id"
                           class="dropdown-item position-relative"
-                          :to="`/${item?.target?.story}`">
+                          :to="`/${item?.target?.story}`"
+                          @click="handleUnread(item)">
                     <div class="d-flex align-items-center">
-                        <!--                                            <div class="user-online">-->
-                        <div>
+                        <div class="user-online">
                             <img src="" class="msg-avatar" alt="" onerror="this.src='/images/avata.png'">
                         </div>
 
@@ -91,6 +155,14 @@ watch(token, () => {
                     </div>
                 </NuxtLink>
             </div>
+
+            <a v-if="notifyNew?.count" href="javascript:void(0)">
+                <div class="text-center msg-footer">
+                    <button class="btn btn-primary w-100" @click="makeAllRead">
+                        Đánh dấu tất cả đã đọc
+                    </button>
+                </div>
+            </a>
         </div>
     </li>
 </template>
