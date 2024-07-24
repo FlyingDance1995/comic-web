@@ -159,7 +159,7 @@ const loadMoreReply = async (item) => {
 
 const getAvatar = (item) => {
     const domain = process.env.NODE_ENV === "development" ? 'https://hoannq.click' : window.location.origin;
-    return domain + item?.owner?.avatar;
+    return item?.owner?.avatar?.includes('://') ? item?.owner?.avatar : domain + item?.owner?.avatar;
 };
 
 watch(() => route?.params, () => {
