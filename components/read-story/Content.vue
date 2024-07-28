@@ -49,7 +49,7 @@ const reportError = () => {
 
     <div class="container page-chapter-detail">
         <!--breadcrumb-->
-        <CommonBreadCrumb :name="`{{ formattedNameChaper(data?.type) }} ${data?.chapter_number || ''}`">
+        <CommonBreadCrumb :name="`${ formattedNameChaper(data?.type) } ${data?.chapter_number || ''}`">
             <li class="breadcrumb-item">
                 <NuxtLink :to="`/${data?.story?.slug}`">{{data?.story?.name}}</NuxtLink>
             </li>

@@ -58,7 +58,7 @@ watch(() => route.path, () => {
             <Layout>
                 <Sider v-model="isCollapsed"
                        collapsible
-                       :collapsed-width="78"
+                       :collapsed-width="85"
                        breakpoint="md"
                        :style="{background: '#F0F1FA', minWidth: '220px', width: '220px'}">
                     <Menu :class="menuitemClasses" :active-name="activeTab" theme="light" width="auto" style="background: #F0F1FA">
@@ -72,11 +72,11 @@ watch(() => route.path, () => {
                     </Menu>
                 </Sider>
 
-                <Layout :style="{padding: '0 24px 24px'}">
-                    <Breadcrumb :style="{margin: '24px 0'}">
-                        <BreadcrumbItem>Trang chủ</BreadcrumbItem>
-                        <BreadcrumbItem>{{ tabName }}</BreadcrumbItem>
-                    </Breadcrumb>
+                <Layout>
+<!--                    <Breadcrumb :style="{margin: '24px 0'}">-->
+<!--                        <BreadcrumbItem>Trang chủ</BreadcrumbItem>-->
+<!--                        <BreadcrumbItem>{{ tabName }}</BreadcrumbItem>-->
+<!--                    </Breadcrumb>-->
 
                     <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
                         <slot/>
