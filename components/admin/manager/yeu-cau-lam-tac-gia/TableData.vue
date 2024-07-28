@@ -14,22 +14,22 @@ const columns = [
     {
         title: 'SDT',
         key: 'sdt',
-        minWidth: 300,
+        width: 120,
     },
     {
         title: 'Facebook',
-        key: 'facebook',
-        width: 120,
+        key: 'fb',
+        minWidth: 500,
     },
     {
         title: 'Lời nhắn',
         key: 'message',
-        width: 120,
+        width: 300,
     },
     {
         title: "Người báo",
         slot: "owner",
-        width: 270,
+        width: 250,
     },
     {
         title: "Trạng thái",
