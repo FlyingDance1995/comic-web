@@ -44,7 +44,7 @@ const reportError = () => {
 
 <template>
     <Head>
-        <Title>{{data?.name || data?.story?.name}} - Chương {{data?.chapter_number || ''}}</Title>
+        <Title>{{data?.name || data?.story?.name}} - {{ formattedNameChaper(data?.type) }} {{data?.chapter_number || ''}}</Title>
     </Head>
 
     <div class="container page-chapter-detail">
