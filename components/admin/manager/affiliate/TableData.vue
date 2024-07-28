@@ -17,44 +17,19 @@ const columns = [
         minWidth: 300,
     },
     {
+        title: 'Link',
+        key: 'link',
+        width: 300,
+    },
+    {
         title: 'Trạng thái',
-        key: 'status',
+        key: 'enable',
         width: 120,
     },
     {
-        title: 'Loại',
-        key: 'type',
-        width: 120,
-    },
-    {
-        title: "Team",
-        slot: "team",
-        width: 270,
-    },
-    {
-        title: "Thời gian cập nhật",
+        title: "Thời điểm tạo",
         slot: "creation_time",
         width: 170,
-    },
-    {
-        title: "Đề cử",
-        slot: "recommended",
-        width: 80,
-    },
-    {
-        title: "Số chương",
-        slot: "last_chapter",
-        width: 110,
-    },
-    {
-        title: "Lượt xem",
-        slot: "total_watched",
-        width: 100,
-    },
-    {
-        title: "Theo dõi",
-        slot: "total_follow",
-        width: 100,
     },
     {
         title: " ",
@@ -138,27 +113,21 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #team="{ row }">
-            {{row?.team?.name}}
+            {{row?.name}}
+        </template>
+
+        <template #link="{ row }">
+            {{row?.link}}
+        </template>
+
+        <template #enable="{ row }">
+            <span :style="row?.enable ? 'color: red' : 'color: blue'">
+                {{row?.enable ? "Đã kích hoạt" : "Không kích hoạt"}}
+            </span>
         </template>
 
         <template #creation_time="{ row }">
             <span>{{ formattedDate(row?.creation_time) }}</span>
-        </template>
-
-        <template #recommended="{ row }">
-            <span>{{ row?.recommended ? "Có" : "Không" }}</span>
-        </template>
-
-        <template #last_chapter="{ row }">
-            <span>{{ row?.last_chapter?.chapter_number || 0 }}</span>
-        </template>
-
-        <template #total_watched="{ row }">
-            <span>{{ row?.statistics?.total_watched?.toLocaleString()?.replaceAll('.', ',') || 0 }}</span>
-        </template>
-
-        <template #total_follow="{ row }">
-            <span>{{ row?.statistics?.total_follow?.toLocaleString()?.replaceAll('.', ',') || 0 }}</span>
         </template>
 
         <template #action="{ row }">

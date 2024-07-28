@@ -12,49 +12,34 @@ const columns = [
         width: 80,
     },
     {
-        title: 'Name',
-        key: 'name',
+        title: 'Truyện',
+        key: 'story',
         minWidth: 300,
     },
     {
-        title: 'Trạng thái',
-        key: 'status',
+        title: 'Chapter',
+        key: 'chapter_number',
+        width: 250,
+    },
+    {
+        title: 'Phân loại',
+        key: 'category',
+        width: 220,
+    },
+    {
+        title: "Người báo",
+        slot: "owner",
+        width: 200,
+    },
+    {
+        title: "Trạng thái",
+        slot: "status",
         width: 120,
     },
     {
-        title: 'Loại',
-        key: 'type',
-        width: 120,
-    },
-    {
-        title: "Team",
-        slot: "team",
-        width: 270,
-    },
-    {
-        title: "Thời gian cập nhật",
+        title: "Thời điểm tạo",
         slot: "creation_time",
         width: 170,
-    },
-    {
-        title: "Đề cử",
-        slot: "recommended",
-        width: 80,
-    },
-    {
-        title: "Số chương",
-        slot: "last_chapter",
-        width: 110,
-    },
-    {
-        title: "Lượt xem",
-        slot: "total_watched",
-        width: 100,
-    },
-    {
-        title: "Theo dõi",
-        slot: "total_follow",
-        width: 100,
     },
     {
         title: " ",
@@ -86,7 +71,9 @@ const getData = async () => {
         data.value = response?.results?.map((item, index) => {
             return {
                 ...item,
-                stt: (10 * (page.value - 1)) + index + 1
+                stt: (10 * (page.value - 1)) + index + 1,
+                story: item?.chapter?.name,
+                chapter_number: item?.chapter?.chapter_number,
             }
         }) || [];
         total.value = response?.count || 0;
@@ -137,28 +124,24 @@ watch(() => route?.query, (value, oldValue) => {
             {{row?.stt}}
         </template>
 
-        <template #team="{ row }">
-            {{row?.team?.name}}
+        <template #story="{ row }">
+            {{row?.story}}
+        </template>
+
+        <template #chapter_number="{ row }">
+            {{row?.chapter_number}}
+        </template>
+
+        <template #owner="{ row }">
+            {{row?.owner?.fullname}}
+        </template>
+
+        <template #status="{ row }">
+            {{row?.status === "init" ? "Khởi tạo" : "Đã xử lý"}}
         </template>
 
         <template #creation_time="{ row }">
             <span>{{ formattedDate(row?.creation_time) }}</span>
-        </template>
-
-        <template #recommended="{ row }">
-            <span>{{ row?.recommended ? "Có" : "Không" }}</span>
-        </template>
-
-        <template #last_chapter="{ row }">
-            <span>{{ row?.last_chapter?.chapter_number || 0 }}</span>
-        </template>
-
-        <template #total_watched="{ row }">
-            <span>{{ row?.statistics?.total_watched?.toLocaleString()?.replaceAll('.', ',') || 0 }}</span>
-        </template>
-
-        <template #total_follow="{ row }">
-            <span>{{ row?.statistics?.total_follow?.toLocaleString()?.replaceAll('.', ',') || 0 }}</span>
         </template>
 
         <template #action="{ row }">
