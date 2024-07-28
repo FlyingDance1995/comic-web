@@ -44,6 +44,23 @@ const loading = ref(false);
 const page = ref(Number(route.query?.page) || 1);
 const total = ref(0);
 
+const openModal = ref(false);
+const loadingModal = ref(true);
+const formItem = ref({
+    type: "",
+    last_chapter: "",
+    name: "",
+    description: "",
+    category: []
+});
+
+const modalRemove = ref(false);
+const loadingRemove = ref(false);
+
+
+const modalApproval = ref(false);
+const loadingApproval = ref(false);
+
 const getData = async () => {
     try {
         loading.value = true;
@@ -88,12 +105,90 @@ const handleChangePage = (value) => {
 };
 
 const removeItem = (row) => {
-    console.log('aaa', row)
+    modalRemove.value = true;
+    formItem.value = row;
 };
 
+const okRemove = async (row) => {
+    try {
+        loadingRemove.value = true;
+        await useNuxtApp().$api(`admin/affiliate/${formItem?.value?.id}`, {
+            method: "DELETE",
+        });
+
+        getData();
+        loadingRemove.value = false;
+        modalRemove.value = false;
+        formItem.value = {
+            type: "",
+            last_chapter: "",
+            name: "",
+            description: "",
+            category: []
+        };
+    } catch (e) {
+        console.log("error", e);
+        loadingRemove.value = false;
+    }
+};
+
+const approvalItem = (row) => {
+    modalApproval.value = true;
+    formItem.value = row;
+};
+
+const okApproval = async (row) => {
+    try {
+        loadingApproval.value = true;
+        await useNuxtApp().$api(`admin/affiliate/${formItem?.value?.id}`, {
+            method: "PATCH",
+            body: {
+                "enable": !formItem?.value?.enable
+            }
+        });
+
+        getData();
+        loadingApproval.value = false;
+        modalApproval.value = false;
+        formItem.value = {
+            type: "",
+            last_chapter: "",
+            name: "",
+            description: "",
+            category: []
+        };
+    } catch (e) {
+        console.log("error", e);
+        loadingApproval.value = false;
+    }
+};
 
 const editItem = (row) => {
+    openModal.value = true;
+    formItem.value = row;
+};
 
+const asyncOK = async () => {
+    loadingModal.value = true;
+
+    await useNuxtApp().$api(`admin/affiliate/${formItem?.value?.id}`, {
+        method: "PATCH",
+        body: {
+            "link": formItem?.value?.link,
+            "name": formItem?.value?.name,
+        }
+    });
+
+    getData();
+    openModal.value = false;
+    loadingModal.value = false;
+    formItem.value = {
+        type: "",
+        last_chapter: "",
+        name: "",
+        description: "",
+        category: []
+    };
 };
 
 watch(() => route?.query, (value, oldValue) => {
@@ -118,7 +213,7 @@ watch(() => route?.query, (value, oldValue) => {
             {{row?.stt}}
         </template>
 
-        <template #team="{ row }">
+        <template #name="{ row }">
             {{row?.name}}
         </template>
 
@@ -145,6 +240,9 @@ watch(() => route?.query, (value, oldValue) => {
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="removeItem(row)">
+                            <span style="color: red">Xóa</span>
+                        </DropdownItem>
+                        <DropdownItem @click="approvalItem(row)">
                             <span v-if="row?.enable" style="color: red">Hủy kích hoạt</span>
                             <span v-else style="color: blue">Kích hoạt</span>
                         </DropdownItem>
@@ -154,6 +252,40 @@ watch(() => route?.query, (value, oldValue) => {
             </Dropdown>
         </template>
     </Table>
+
+    <Modal
+        v-model="openModal"
+        title="Chỉnh sửa Affiliate"
+        :loading="loadingModal"
+        width="800px"
+        @on-ok="asyncOK">
+
+        <Form :model="formItem" label-position="top">
+            <FormItem label="Tên">
+                <Input v-model="formItem.name" placeholder="Tên"></Input>
+            </FormItem>
+
+            <FormItem label="Link">
+                <Input v-model="formItem.link" placeholder="Link"></Input>
+            </FormItem>
+        </Form>
+    </Modal>
+
+    <Modal
+        v-model="modalRemove"
+        title="Xác nhận"
+        :loading="loadingRemove"
+        @on-ok="okRemove">
+        <p>Bạn có muốn chắc chắn xóa "Affiliate" này</p>
+    </Modal>
+
+    <Modal
+        v-model="modalApproval"
+        title="Yêu cầu phê duyệt"
+        :loading="loadingApproval"
+        @on-ok="okApproval">
+        <p>{{ `Bạn có chắc chắn ${formItem?.is_active ? '"Hủy kích hoạt"' : '"Kích hoạt"'} "Affiliate" này` }}</p>
+    </Modal>
 
     <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
 </template>

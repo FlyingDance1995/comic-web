@@ -69,6 +69,20 @@ const loading = ref(false);
 const page = ref(Number(route.query?.page) || 1);
 const total = ref(0);
 
+const openModal = ref(false);
+const loadingModal = ref(true);
+const formItem = ref({
+    type: "",
+    last_chapter: "",
+    name: "",
+    description: "",
+    category: []
+});
+
+const modalRemove = ref(false);
+const loadingRemove = ref(false);
+
+
 const getData = async () => {
     try {
         loading.value = true;
@@ -112,8 +126,32 @@ const handleChangePage = (value) => {
     });
 };
 
-const removeItem = (row) => {
-    console.log('aaa', row)
+const removeItem = async (row) => {
+    modalRemove.value = true;
+    formItem.value = row;
+};
+
+const okRemove = async (row) => {
+    try {
+        loadingRemove.value = true;
+        await useNuxtApp().$api(`admin/story/${formItem?.value?.slug}`, {
+            method: "DELETE",
+        });
+
+        getData();
+        loadingRemove.value = false;
+        modalRemove.value = false;
+        formItem.value = {
+            type: "",
+            last_chapter: "",
+            name: "",
+            description: "",
+            category: []
+        };
+    } catch (e) {
+        console.log("error", e);
+        loadingRemove.value = false;
+    }
 };
 
 const approvalItem = (row) => {
@@ -125,16 +163,52 @@ const deputeItem = (row) => {
 };
 
 const editItem = (row) => {
+    openModal.value = true;
+    formItem.value = row;
+};
 
+const asyncOK = () => {
+    loadingModal.value = true;
+
+
+    getData();
+    openModal.value = false;
+    loadingModal.value = false;
+    formItem.value = {
+        type: "",
+        last_chapter: "",
+        name: "",
+        description: "",
+        category: []
+    };
 };
 
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
         page.value = 1;
     }
+
     getData();
 }, {immediate: true, deep: true});
 
+const handeStatus = (key) => {
+    switch (key) {
+        case 'processing':
+            return 'Đang phát hành';
+
+        case 'draff':
+            return 'Nháp';
+
+        case 'pending_approval':
+            return 'Chờ phê duyệt';
+
+        case 'finish':
+            return 'Hoàn thành';
+    
+        default:
+            return '-';
+    }
+}
 </script>
 
 <template>
@@ -152,6 +226,10 @@ watch(() => route?.query, (value, oldValue) => {
 
         <template #team="{ row }">
             {{row?.team?.name}}
+        </template>
+
+        <template #status="{ row }">
+            {{handeStatus(row?.status)}}
         </template>
 
         <template #creation_time="{ row }">
@@ -191,6 +269,48 @@ watch(() => route?.query, (value, oldValue) => {
             </Dropdown>
         </template>
     </Table>
+
+    <Modal
+        v-model="openModal"
+        title="Chỉnh sửa truyện"
+        :loading="loadingModal"
+        width="800px"
+        @on-ok="asyncOK">
+
+        <Form :model="formItem" label-position="top">
+            <FormItem label="Loại">
+                <Select v-model="formItem.type">
+                    <div v-for="item in formItem.category" :key="item.id">
+                        <Option :value="item.slug">{{ item.name }}</Option>
+                    </div>
+                </Select>
+            </FormItem>
+
+            <FormItem label="Số chương">
+                <Select v-model="formItem.last_chapter">
+                    <Option value="1">1</Option>
+                    <Option value="2">2</Option>
+                    <Option value="3">3</Option>
+                </Select>
+            </FormItem>
+
+            <FormItem label="Tên">
+                <Input v-model="formItem.name" placeholder="Tên"></Input>
+            </FormItem>
+
+            <FormItem label="Nội dung">
+                <Input v-model="formItem.description" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Nội dung"></Input>
+            </FormItem>
+        </Form>
+    </Modal>
+
+    <Modal
+        v-model="modalRemove"
+        title="Xác nhận"
+        :loading="loadingRemove"
+        @on-ok="okRemove">
+        <p>Bạn có muốn chắc chắn xóa truyện này</p>
+    </Modal>
 
     <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
 </template>
