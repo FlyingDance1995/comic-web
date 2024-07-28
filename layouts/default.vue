@@ -23,25 +23,12 @@ useSchemaOrg([
         "name": "MonkeyD",
         "logo": "/images/logo/Logo-MonkeyD.png"
     }
-])
-
-import menu from "@/constants/menu.js";
+]);
 
 const route = useRoute();
 const menuStore = useMenuStore();
 
-const tabValue = ref("/");
 const openMenu = computed(() => menuStore.$state.open);
-
-watch(() => route.path, () => {
-    if (route?.path) {
-        menu.forEach((item) => {
-            if (route.path.includes(item.path)) {
-                tabValue.value = item.path;
-            }
-        });
-    }
-}, {immediate: true, deep: true});
 </script>
 
 <template>
