@@ -39,3 +39,7 @@
     margin-bottom: 0rem;
 }
 /* Override dropdown */
+
+.dark-theme .bxs-trash {
+    color: black;
+}
