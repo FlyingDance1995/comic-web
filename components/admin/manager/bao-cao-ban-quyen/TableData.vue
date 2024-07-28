@@ -12,49 +12,34 @@ const columns = [
         width: 80,
     },
     {
-        title: 'Name',
-        key: 'name',
+        title: 'Link tác phẩm vi phạm',
+        key: 'link_violate',
         minWidth: 300,
     },
     {
-        title: 'Trạng thái',
-        key: 'status',
+        title: 'Link tác phẩm gốc',
+        key: 'link_story',
+        width: 300,
+    },
+    {
+        title: 'Email liên hệ',
+        key: 'contact',
+        width: 200,
+    },
+    {
+        title: "Người báo",
+        slot: "owner",
+        width: 200,
+    },
+    {
+        title: "Trạng thái",
+        slot: "status",
         width: 120,
     },
     {
-        title: 'Loại',
-        key: 'type',
-        width: 120,
-    },
-    {
-        title: "Team",
-        slot: "team",
-        width: 270,
-    },
-    {
-        title: "Thời gian cập nhật",
+        title: "Thời điểm tạo",
         slot: "creation_time",
         width: 170,
-    },
-    {
-        title: "Đề cử",
-        slot: "recommended",
-        width: 80,
-    },
-    {
-        title: "Số chương",
-        slot: "last_chapter",
-        width: 110,
-    },
-    {
-        title: "Lượt xem",
-        slot: "total_watched",
-        width: 100,
-    },
-    {
-        title: "Theo dõi",
-        slot: "total_follow",
-        width: 100,
     },
     {
         title: " ",
@@ -138,28 +123,28 @@ watch(() => route?.query, (value, oldValue) => {
             {{row?.stt}}
         </template>
 
-        <template #team="{ row }">
-            {{row?.team?.name}}
+        <template #link_violate="{ row }">
+            {{row?.link_violate}}
+        </template>
+
+        <template #link_story="{ row }">
+            {{row?.link_story}}
+        </template>
+
+        <template #contact="{ row }">
+            {{row?.contact}}
+        </template>
+        
+        <template #owner="{ row }">
+            {{row?.owner.fullname}}
+        </template>
+
+        <template #status="{ row }">
+            {{row?.status === "init" ? "Khởi tạo" : "Đã xử lý"}}
         </template>
 
         <template #creation_time="{ row }">
             <span>{{ formattedDate(row?.creation_time) }}</span>
-        </template>
-
-        <template #recommended="{ row }">
-            <span>{{ row?.recommended ? "Có" : "Không" }}</span>
-        </template>
-
-        <template #last_chapter="{ row }">
-            <span>{{ row?.last_chapter?.chapter_number || 0 }}</span>
-        </template>
-
-        <template #total_watched="{ row }">
-            <span>{{ row?.statistics?.total_watched?.toLocaleString()?.replaceAll('.', ',') || 0 }}</span>
-        </template>
-
-        <template #total_follow="{ row }">
-            <span>{{ row?.statistics?.total_follow?.toLocaleString()?.replaceAll('.', ',') || 0 }}</span>
         </template>
 
         <template #action="{ row }">
