@@ -52,7 +52,7 @@ const handleChange = (e) => {
                         :key="item?.id"
                         :value="item?.slug"
                         :selected="item?.slug === chapter">
-                    {{ formattedNameChaper(item?.type) }} {{item?.chapter_number || ''}}: {{item?.name || ''}}
+                    {{ formattedNameChaper(item?.type) }} {{item?.chapter_number || ''}}
                 </option>
             </select>
 
