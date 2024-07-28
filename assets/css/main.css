@@ -38,6 +38,13 @@
     padding-left: 0rem;
     margin-bottom: 0rem;
 }
+
+.ivu-select-dropdown-list {
+    min-width: 100%;
+    list-style: none;
+    padding-left: 0rem;
+    margin-bottom: 0rem;
+}
 /* Override dropdown */
 
 .dark-theme .bxs-trash {

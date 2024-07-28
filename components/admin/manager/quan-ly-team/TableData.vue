@@ -64,6 +64,24 @@ const loading = ref(false);
 const page = ref(Number(route.query?.page) || 1);
 const total = ref(0);
 
+const openModal = ref(false);
+const loadingModal = ref(true);
+const formItem = ref({
+    type: "",
+    last_chapter: "",
+    name: "",
+    description: "",
+    category: []
+});
+
+const modalRemove = ref(false);
+const loadingRemove = ref(false);
+
+
+const modalApproval = ref(false);
+const loadingApproval = ref(false);
+
+
 const getData = async () => {
     try {
         loading.value = true;
@@ -109,15 +127,92 @@ const handleChangePage = (value) => {
 };
 
 const removeItem = (row) => {
-    console.log('aaa', row)
+    modalRemove.value = true;
+    formItem.value = row;
+};
+
+const okRemove = async (row) => {
+    try {
+        loadingRemove.value = true;
+        await useNuxtApp().$api(`admin/teams/${formItem?.value?.slug}`, {
+            method: "DELETE",
+        });
+
+        getData();
+        loadingRemove.value = false;
+        modalRemove.value = false;
+        formItem.value = {
+            type: "",
+            last_chapter: "",
+            name: "",
+            description: "",
+            category: []
+        };
+    } catch (e) {
+        console.log("error", e);
+        loadingRemove.value = false;
+    }
 };
 
 const approvalItem = (row) => {
+    modalApproval.value = true;
+    formItem.value = row;
+};
 
+const okApproval = async (row) => {
+    try {
+        loadingApproval.value = true;
+        await useNuxtApp().$api(`admin/teams/${formItem?.value?.slug}`, {
+            method: "PATCH",
+            body: {
+                "status": release
+            }
+        });
+
+        getData();
+        loadingApproval.value = false;
+        modalApproval.value = false;
+        formItem.value = {
+            type: "",
+            last_chapter: "",
+            name: "",
+            description: "",
+            category: []
+        };
+    } catch (e) {
+        console.log("error", e);
+        loadingApproval.value = false;
+    }
 };
 
 const editItem = (row) => {
+    openModal.value = true;
+    formItem.value = row;
+};
 
+const asyncOK = async () => {
+    loadingModal.value = true;
+
+    await useNuxtApp().$api(`admin/teams/${formItem?.value?.slug}`, {
+        method: "PATCH",
+        body: {
+            "avatar": '', // File
+            "name": '',
+            "description": '',
+            "member": '',
+        }
+    });
+
+    getData();
+    openModal.value = false;
+    loadingModal.value = false;
+    formItem.value = {
+        type: "",
+        last_chapter: "",
+        name: "",
+        description: "",
+        category: []
+    };
 };
 
 watch(() => route?.query, (value, oldValue) => {
@@ -183,6 +278,44 @@ watch(() => route?.query, (value, oldValue) => {
             </Dropdown>
         </template>
     </Table>
+
+    <Modal
+        v-model="openModal"
+        title="Chỉnh sửa Team"
+        :loading="loadingModal"
+        width="800px"
+        @on-ok="asyncOK">
+
+        <Form :model="formItem" label-position="top">
+            <FormItem label="Tên nhóm">
+                <Input v-model="formItem.name" placeholder="Tên"></Input>
+            </FormItem>
+
+            <FormItem label="Thành viên">
+                <Input v-model="formItem.description1" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Thành viên"></Input>
+            </FormItem>
+
+            <FormItem label="Mô tả">
+                <Input v-model="formItem.description" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Mô tả"></Input>
+            </FormItem>
+        </Form>
+    </Modal>
+
+    <Modal
+        v-model="modalRemove"
+        title="Xác nhận"
+        :loading="loadingRemove"
+        @on-ok="okRemove">
+        <p>Bạn có muốn chắc chắn xóa team này</p>
+    </Modal>
+
+    <Modal
+        v-model="modalApproval"
+        title="Yêu cầu phê duyệt"
+        :loading="loadingApproval"
+        @on-ok="okApproval">
+        <p>Bạn có muốn phê duyệt team này</p>
+    </Modal>
 
     <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total
         @on-change="handleChangePage" />
