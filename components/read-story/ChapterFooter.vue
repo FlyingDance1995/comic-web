@@ -1,4 +1,5 @@
 <script setup>
+import { formattedNameChaper } from "~/utils/formatName.js";
 const props = defineProps({
     slug: {
         type: {
@@ -51,7 +52,7 @@ const handleChange = (e) => {
                         :key="item?.id"
                         :value="item?.slug"
                         :selected="item?.slug === chapter">
-                    Chương {{item?.chapter_number}}
+                    {{ formattedNameChaper(item?.type) }} {{item?.chapter_number || ''}}: {{item?.name || ''}}
                 </option>
             </select>
 
