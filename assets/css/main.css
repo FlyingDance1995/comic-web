@@ -32,6 +32,14 @@
     min-width: 0 !important;
 }
 
+/* Override dropdown */
+.ivu-dropdown-menu {
+    min-width: 100px;
+    padding-left: 0rem;
+    margin-bottom: 0rem;
+}
+/* Override dropdown */
+
 .dark-theme .bxs-trash {
     color: black;
 }

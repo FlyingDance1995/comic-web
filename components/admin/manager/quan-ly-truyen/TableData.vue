@@ -112,7 +112,19 @@ const handleChangePage = (value) => {
     });
 };
 
-const handlePreview = (row) => {
+const removeItem = (row) => {
+    console.log('aaa', row)
+};
+
+const approvalItem = (row) => {
+
+};
+
+const deputeItem = (row) => {
+
+};
+
+const editItem = (row) => {
 
 };
 
@@ -163,7 +175,20 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Icon type="ios-more" size="24" style="cursor: pointer" />
+            <Dropdown trigger="click">
+                <a href="javascript:void(0)">
+                    <Icon type="ios-more" size="24" style="cursor: pointer" />
+                </a>
+                
+                <template #list>
+                    <DropdownMenu>
+                        <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
+                        <DropdownItem @click="approvalItem(row)"><span style="color: blue">Phê duyệt</span></DropdownItem>
+                        <DropdownItem @click="deputeItem(row)">Đề cử</DropdownItem>
+                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
+                    </DropdownMenu>
+                </template>
+            </Dropdown>
         </template>
     </Table>
 
