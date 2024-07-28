@@ -62,7 +62,7 @@ const reportError = () => {
 
                 <p class="bg-light-info p-3 radius-10 mt-3">
                     Cập nhật lúc: {{ formattedFullDate(data?.list_chapter?.find(x => x?.chapter_number === data?.chapter_number)?.modification_time)}}<br>
-                    Lượt xem: 54
+                    Lượt xem: {{data?.count_watched}}
                 </p>
 
                 <div class="chapter-content">
