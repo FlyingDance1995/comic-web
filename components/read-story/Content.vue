@@ -58,7 +58,7 @@ const reportError = () => {
 
         <div class="card">
             <div class="card-body">
-                <h1 class="card-title">{{data?.name || data?.story?.name}} - {{ formattedNameChaper(data?.type) }} {{data?.chapter_number || ''}}</h1>
+                <h1 class="card-title">{{data?.story?.name}} - {{ formattedNameChaper(data?.type) }} {{data?.chapter_number || ''}}: {{data?.name || ''}}</h1>
 
                 <p class="bg-light-info p-3 radius-10 mt-3">
                     Cập nhật lúc: {{ formattedFullDate(data?.list_chapter?.find(x => x?.chapter_number === data?.chapter_number)?.modification_time)}}<br>
