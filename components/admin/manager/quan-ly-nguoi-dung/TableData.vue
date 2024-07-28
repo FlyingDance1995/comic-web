@@ -13,48 +13,33 @@ const columns = [
     },
     {
         title: 'Name',
-        key: 'name',
-        minWidth: 300,
+        key: 'fullname',
+        minWidth: 200,
     },
     {
-        title: 'Trạng thái',
-        key: 'status',
-        width: 120,
+        title: 'Email',
+        key: 'email',
+        width: 300,
     },
     {
-        title: 'Loại',
-        key: 'type',
-        width: 120,
+        title: 'Role',
+        key: 'role',
+        width: 140,
     },
     {
-        title: "Team",
-        slot: "team",
-        width: 270,
+        title: "Trạng thái",
+        slot: "is_active",
+        width: 140,
     },
     {
-        title: "Thời gian cập nhật",
-        slot: "creation_time",
-        width: 170,
+        title: "Thời điểm tạo",
+        slot: "date_joined",
+        width: 180,
     },
     {
-        title: "Đề cử",
-        slot: "recommended",
-        width: 80,
-    },
-    {
-        title: "Số chương",
-        slot: "last_chapter",
-        width: 110,
-    },
-    {
-        title: "Lượt xem",
-        slot: "total_watched",
-        width: 100,
-    },
-    {
-        title: "Theo dõi",
-        slot: "total_follow",
-        width: 100,
+        title: "Lần đăng nhập gần nhất",
+        slot: "last_login",
+        width: 200,
     },
     {
         title: " ",
@@ -138,27 +123,27 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #team="{ row }">
-            {{row?.team?.name}}
+            {{row?.fullname}}
         </template>
 
-        <template #creation_time="{ row }">
-            <span>{{ formattedDate(row?.creation_time) }}</span>
+        <template #email="{ row }">
+            <span>{{ row?.email }}</span>
         </template>
 
-        <template #recommended="{ row }">
-            <span>{{ row?.recommended ? "Có" : "Không" }}</span>
+        <template #role="{ row }">
+            <span>{{ row?.role }}</span>
         </template>
 
-        <template #last_chapter="{ row }">
-            <span>{{ row?.last_chapter?.chapter_number || 0 }}</span>
+        <template #is_active="{ row }">
+            <span>{{ row?.is_active }}</span>
         </template>
 
-        <template #total_watched="{ row }">
-            <span>{{ row?.statistics?.total_watched?.toLocaleString()?.replaceAll('.', ',') || 0 }}</span>
+        <template #date_joined="{ row }">
+            <span>{{ formattedTime(row?.date_joined) }}</span>
         </template>
-
-        <template #total_follow="{ row }">
-            <span>{{ row?.statistics?.total_follow?.toLocaleString()?.replaceAll('.', ',') || 0 }}</span>
+        
+        <template #last_login="{ row }">
+            <span>{{ timeAgo2(row?.last_login) }}</span>
         </template>
 
         <template #action="{ row }">

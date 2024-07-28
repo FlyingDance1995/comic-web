@@ -12,7 +12,7 @@ const columns = [
         width: 80,
     },
     {
-        title: 'Name',
+        title: 'Tên',
         key: 'name',
         minWidth: 300,
     },
@@ -22,39 +22,34 @@ const columns = [
         width: 120,
     },
     {
-        title: 'Loại',
-        key: 'type',
-        width: 120,
-    },
-    {
-        title: "Team",
-        slot: "team",
+        title: "Trưởng nhóm",
+        slot: "leader",
         width: 270,
     },
     {
-        title: "Thời gian cập nhật",
+        title: "Thời gian tạo",
         slot: "creation_time",
         width: 170,
     },
     {
-        title: "Đề cử",
-        slot: "recommended",
-        width: 80,
+        title: "Thành viên",
+        slot: "member",
+        width: 120,
     },
     {
-        title: "Số chương",
-        slot: "last_chapter",
-        width: 110,
+        title: "Số truyện",
+        slot: "total_story",
+        width: 120,
     },
     {
         title: "Lượt xem",
         slot: "total_watched",
-        width: 100,
+        width: 120,
     },
     {
         title: "Theo dõi",
         slot: "total_follow",
-        width: 100,
+        width: 120,
     },
     {
         title: " ",
@@ -94,6 +89,7 @@ const getData = async () => {
     } catch (e) {
         loading.value = false;
         console.log("error", e);
+        data.value = [];
     }
 };
 
@@ -120,37 +116,38 @@ watch(() => route?.query, (value, oldValue) => {
         page.value = 1;
     }
     getData();
-}, {immediate: true, deep: true});
+}, { immediate: true, deep: true });
 
 </script>
 
 <template>
-    <Table
-        class="flex-1 mt-4"
-        ref="table"
-        max-height="650"
-        :columns="columns"
-        :data="data"
-        :loading="loading"
-    >
+    <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading">
         <template #stt="{ row }">
             {{row?.stt}}
         </template>
 
-        <template #team="{ row }">
-            {{row?.team?.name}}
+        <template #name="{ row }">
+            {{row?.name}}
+        </template>
+
+        <template #status="{ row }">
+            {{row?.status}}
+        </template>
+
+        <template #leader="{ row }">
+            {{ row?.leader?.fullname }}
         </template>
 
         <template #creation_time="{ row }">
             <span>{{ formattedDate(row?.creation_time) }}</span>
         </template>
 
-        <template #recommended="{ row }">
-            <span>{{ row?.recommended ? "Có" : "Không" }}</span>
+        <template #member="{ row }">
+            <span>{{ row?.member?.length || 0 }}</span>
         </template>
 
-        <template #last_chapter="{ row }">
-            <span>{{ row?.last_chapter?.chapter_number || 0 }}</span>
+        <template #total_story="{ row }">
+            <span>{{ row?.statistics?.total_story?.toLocaleString()?.replaceAll('.', ',') || 0 }}</span>
         </template>
 
         <template #total_watched="{ row }">
@@ -166,5 +163,6 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
     </Table>
 
-    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
+    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total
+        @on-change="handleChangePage" />
 </template>
