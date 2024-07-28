@@ -14,22 +14,22 @@ const columns = [
     {
         title: 'SDT',
         key: 'sdt',
-        minWidth: 300,
+        minWidth: 150,
     },
     {
         title: 'Facebook',
-        key: 'facebook',
-        width: 120,
+        key: 'fb',
+        width: 250,
     },
     {
         title: 'Lời nhắn',
         key: 'message',
-        width: 120,
+        width: 250,
     },
     {
         title: "Người báo",
         slot: "owner",
-        width: 270,
+        width: 200,
     },
     {
         title: "Trạng thái",
@@ -97,9 +97,18 @@ const handleChangePage = (value) => {
     });
 };
 
-const handlePreview = (row) => {
+const handledItem = (row) => {
+    console.log('aaa', row)
+};
+
+const falsePositiveItem = (row) => {
 
 };
+
+const viewDetailItem = (row) => {
+
+};
+
 
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
@@ -127,8 +136,8 @@ watch(() => route?.query, (value, oldValue) => {
             {{row?.sdt}}
         </template>
 
-        <template #facebook="{ row }">
-            {{row?.facebook}}
+        <template #fb="{ row }">
+            {{row?.fb}}
         </template>
 
 
@@ -141,7 +150,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #status="{ row }">
-            {{row?.status}}
+            {{row?.status === "init" ? "Khởi tạo" : "Đã xử lý"}}
         </template>
 
         <template #creation_time="{ row }">
@@ -149,7 +158,19 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Icon type="ios-more" size="24" style="cursor: pointer" />
+            <Dropdown trigger="click">
+                <a href="javascript:void(0)">
+                    <Icon type="ios-more" size="24" style="cursor: pointer" />
+                </a>
+                
+                <template #list>
+                    <DropdownMenu>
+                        <DropdownItem @click="handledItem(row)">Đã xử lý</DropdownItem>
+                        <DropdownItem @click="falsePositiveItem(row)">False Positive</DropdownItem>
+                        <DropdownItem @click="viewDetailItem(row)">Xem thông tin</DropdownItem>
+                    </DropdownMenu>
+                </template>
+            </Dropdown>
         </template>
     </Table>
 

@@ -99,7 +99,15 @@ const handleChangePage = (value) => {
     });
 };
 
-const handlePreview = (row) => {
+const handledItem = (row) => {
+    console.log('aaa', row)
+};
+
+const falsePositiveItem = (row) => {
+
+};
+
+const viewDetailItem = (row) => {
 
 };
 
@@ -146,7 +154,19 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Icon type="ios-more" size="24" style="cursor: pointer" />
+            <Dropdown trigger="click">
+                <a href="javascript:void(0)">
+                    <Icon type="ios-more" size="24" style="cursor: pointer" />
+                </a>
+                
+                <template #list>
+                    <DropdownMenu>
+                        <DropdownItem @click="handledItem(row)">Đã xử lý</DropdownItem>
+                        <DropdownItem @click="falsePositiveItem(row)">False Positive</DropdownItem>
+                        <DropdownItem @click="viewDetailItem(row)">Xem thông tin</DropdownItem>
+                    </DropdownMenu>
+                </template>
+            </Dropdown>
         </template>
     </Table>
 

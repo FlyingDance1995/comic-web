@@ -97,7 +97,15 @@ const handleChangePage = (value) => {
     });
 };
 
-const handlePreview = (row) => {
+const removeItem = (row) => {
+    console.log('aaa', row)
+};
+
+const changePassItem = (row) => {
+
+};
+
+const editItem = (row) => {
 
 };
 
@@ -148,7 +156,22 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Icon type="ios-more" size="24" style="cursor: pointer" />
+            <Dropdown trigger="click">
+                <a href="javascript:void(0)">
+                    <Icon type="ios-more" size="24" style="cursor: pointer" />
+                </a>
+                
+                <template #list>
+                    <DropdownMenu>
+                        <DropdownItem @click="removeItem(row)">
+                            <span v-if="row?.is_active" style="color: red">Hủy kích hoạt</span>
+                            <span v-else style="color: blue">Kích hoạt</span>
+                        </DropdownItem>
+                        <DropdownItem @click="changePassItem(row)">Đổi mật khẩu</DropdownItem>
+                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
+                    </DropdownMenu>
+                </template>
+            </Dropdown>
         </template>
     </Table>
 

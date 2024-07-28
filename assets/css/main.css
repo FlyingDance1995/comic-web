@@ -31,3 +31,11 @@
 .ivu-layout-sider.ivu-layout-sider-collapsed {
     min-width: 0 !important;
 }
+
+/* Override dropdown */
+.ivu-dropdown-menu {
+    min-width: 100px;
+    padding-left: 0rem;
+    margin-bottom: 0rem;
+}
+/* Override dropdown */
