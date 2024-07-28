@@ -19,7 +19,11 @@ const handleSearch = _.debounce(() => {
 </script>
 
 <template>
-    <div class="w-100 d-flex flex-wrap gap-4">
+    <div class="w-100 d-flex flex-wrap gap-2 justify-content-between">
+        <h4>
+           Quản lý Affiliate
+        </h4>
+
         <div class="d-flex align-items-center">
             <span class="me-2" style="width: 90px">Tìm kiếm</span>
             <Input
