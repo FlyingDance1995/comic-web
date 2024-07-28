@@ -12,49 +12,34 @@ const columns = [
         width: 80,
     },
     {
-        title: 'Name',
-        key: 'name',
+        title: 'SDT',
+        key: 'sdt',
         minWidth: 300,
     },
     {
-        title: 'Trạng thái',
-        key: 'status',
+        title: 'Facebook',
+        key: 'facebook',
         width: 120,
     },
     {
-        title: 'Loại',
-        key: 'type',
+        title: 'Lời nhắn',
+        key: 'message',
         width: 120,
     },
     {
-        title: "Team",
-        slot: "team",
+        title: "Người báo",
+        slot: "owner",
         width: 270,
     },
     {
-        title: "Thời gian cập nhật",
-        slot: "creation_time",
+        title: "Trạng thái",
+        slot: "status",
         width: 170,
     },
     {
-        title: "Đề cử",
-        slot: "recommended",
-        width: 80,
-    },
-    {
-        title: "Số chương",
-        slot: "last_chapter",
-        width: 110,
-    },
-    {
-        title: "Lượt xem",
-        slot: "total_watched",
-        width: 100,
-    },
-    {
-        title: "Theo dõi",
-        slot: "total_follow",
-        width: 100,
+        title: "Thời điểm tạo",
+        slot: "creation_time",
+        width: 170,
     },
     {
         title: " ",
@@ -138,28 +123,29 @@ watch(() => route?.query, (value, oldValue) => {
             {{row?.stt}}
         </template>
 
-        <template #team="{ row }">
-            {{row?.team?.name}}
+        <template #sdt="{ row }">
+            {{row?.sdt}}
+        </template>
+
+        <template #facebook="{ row }">
+            {{row?.facebook}}
+        </template>
+
+
+        <template #message="{ row }">
+            {{row?.message}}
+        </template>
+
+        <template #owner="{ row }">
+            {{row?.owner.fullname}}
+        </template>
+
+        <template #status="{ row }">
+            {{row?.status}}
         </template>
 
         <template #creation_time="{ row }">
             <span>{{ formattedDate(row?.creation_time) }}</span>
-        </template>
-
-        <template #recommended="{ row }">
-            <span>{{ row?.recommended ? "Có" : "Không" }}</span>
-        </template>
-
-        <template #last_chapter="{ row }">
-            <span>{{ row?.last_chapter?.chapter_number || 0 }}</span>
-        </template>
-
-        <template #total_watched="{ row }">
-            <span>{{ row?.statistics?.total_watched?.toLocaleString()?.replaceAll('.', ',') || 0 }}</span>
-        </template>
-
-        <template #total_follow="{ row }">
-            <span>{{ row?.statistics?.total_follow?.toLocaleString()?.replaceAll('.', ',') || 0 }}</span>
         </template>
 
         <template #action="{ row }">
