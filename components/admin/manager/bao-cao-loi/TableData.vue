@@ -64,7 +64,8 @@ const getData = async () => {
 
         const response = await $api('/admin/report-error', {
             query: {
-                ...query
+                ...query,
+                size: 10
             }
         });
 

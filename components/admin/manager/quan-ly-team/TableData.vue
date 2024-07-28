@@ -74,7 +74,8 @@ const getData = async () => {
 
         const response = await $api('/admin/teams', {
             query: {
-                ...query
+                ...query,
+                size: 10
             }
         });
 

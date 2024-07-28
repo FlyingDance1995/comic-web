@@ -97,6 +97,7 @@ watch(() => route.path, () => {
 }, {deep: true});
 
 watch(token, () => {
+    getNotifyNew();
     getNotify();
 });
 </script>
