@@ -8,6 +8,11 @@ export const timeAgo = (timestamp) => {
     return moment.unix(timestamp).fromNow().replace('tới', 'trước');
 }
 
+export const timeAgo2 = (timestamp) => {
+    if (!timestamp) return "";
+    return moment(timestamp).fromNow().replace('tới', 'trước');
+}
+
 export const formattedDate = (value) => {
     if (!value) return ""
     return moment(value * 1000).format('HH:mm MM/DD/YYYY')
@@ -16,6 +21,11 @@ export const formattedDate = (value) => {
 export const formattedFullDate = (value) => {
     if (!value) return ""
     return moment(value * 1000).format('YYYY-MM-DD HH:mm:ss')
+};
+
+export const formattedTime = (value) => {
+    if (!value) return ""
+    return moment(value).format('HH:mm MM/DD/YYYY')
 };
 
 export const formatTimeVPoster = (data) => {
