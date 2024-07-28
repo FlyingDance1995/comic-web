@@ -79,10 +79,12 @@ watch(token, () => {
             <!--                            <div class="dropdown-divider mb-0"></div>-->
             <!--                        </li>-->
 
-            <!--                        <li><a class="dropdown-item d-flex align-items-center"-->
-            <!--                               href="https://monkeyd.vn/user/tro-thanh-tac-gia"><i-->
-            <!--                            class="bx bx-chevrons-up fs-5"></i><span>Đăng truyện</span></a>-->
-            <!--                        </li>-->
+            <li v-if="user?.role !== 'moderator'">
+                <NuxtLink class="dropdown-item d-flex align-items-center"
+                          to="/user/tro-thanh-tac-gia"><i
+                    class="bx bx-chevrons-up fs-5"></i><span>Đăng truyện</span>
+                </NuxtLink>
+            </li>
 
             <li>
                 <NuxtLink class="dropdown-item d-flex align-items-center"

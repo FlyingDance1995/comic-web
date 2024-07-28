@@ -31,3 +31,7 @@
 .ivu-layout-sider.ivu-layout-sider-collapsed {
     min-width: 0 !important;
 }
+
+.dark-theme .bxs-trash {
+    color: black;
+}
