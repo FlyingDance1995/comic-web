@@ -88,7 +88,7 @@ const getData = async () => {
     try {
         loading.value = true;
         let query = {
-          ordering: '-creation_time',
+          ordering: '-date_joined',
           ...route.query
         }
         if (!query?.search) delete query.search;
