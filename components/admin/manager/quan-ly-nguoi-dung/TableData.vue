@@ -333,8 +333,8 @@ const error = () => {
             <FormItem label="Role">
                 <Select v-model="formItem.role">
                     <Option value="user">User</Option>
+                    <Option value="moderator">Moderator</Option>
                     <Option value="admin">Admin</Option>
-                    <Option value="moderator">moderator</Option>
                 </Select>
             </FormItem>
 
