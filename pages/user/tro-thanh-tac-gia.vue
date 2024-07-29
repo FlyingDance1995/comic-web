@@ -79,12 +79,12 @@ const handleSubmit = async () => {
                     <form v-if="!success" action="" method="POST" @submit.prevent="handleSubmit">
                         <div class="mb-3">
                             <input v-model="form.sdt"
-                                   type="text" name="phone" value="" class="form-control" placeholder="Số điện thoại"
+                                   type="text" name="phone" class="form-control" placeholder="Số điện thoại"
                                    required>
                         </div>
                         <div class="mb-3">
                             <input v-model="form.fb"
-                                   type="text" name="facebook" value="" class="form-control" placeholder="Link Facebook"
+                                   type="text" name="facebook" class="form-control" placeholder="Link Facebook"
                                    required>
                         </div>
                         <div class="mb-4">

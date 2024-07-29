@@ -34,7 +34,7 @@ watch(() => route.path, () => {
         <Layout class="w-100 h-100">
             <Header style="padding: 0; background: #00554A29">
                 <Menu mode="horizontal" theme="light" style="background: transparent">
-                    <NuxtLink to="/admin" :class="$style.layoutLogo">
+                    <NuxtLink to="/" :class="$style.layoutLogo">
                         <img
                             src="/images/logo/Logo-MonkeyD.png"
                             height="100%"
