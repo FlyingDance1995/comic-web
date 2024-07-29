@@ -75,6 +75,7 @@ const formItem = ref({
     category: []
 });
 
+const modalUpdateRef = ref();
 const modalActive = ref(false);
 const loadingActive = ref(false);
 
@@ -199,10 +200,14 @@ const okChangePass = async (row) => {
     }
 };
 
-const editItem = (row) => {
-    modalEdit.value = true;
-    formItem.value = row;
+const editItem = () => {
+    modalUpdateRef.value.open();
 };
+
+// const editItem = (row) => {
+//     modalEdit.value = true;
+//     formItem.value = row;
+// };
 
 const okEditItem = async () => {
     try {
@@ -256,7 +261,15 @@ const error = () => {
     });
 };
 
+onMounted(() => {
+    useNuxtApp().$emitter.on('add-user', () => {
+        getData()
+    });
+});
 
+onUnmounted(() => {
+    useNuxtApp().$emitter.off('add-user');
+});
 </script>
 
 <template>
@@ -355,6 +368,8 @@ const error = () => {
             </FormItem>
         </Form>
     </Modal>
+
+    <AdminManagerQuanLyNguoiDungCreateOrUpdateModal ref="modalUpdateRef"/>
 
     <Modal
         v-model="modalActive"
