@@ -1,4 +1,7 @@
 <script setup>
+import {
+    mappingAffiliateTable, filterAffiliateStatus
+} from "~/utils/mapping.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -25,11 +28,17 @@ const columns = [
         title: 'Trạng thái',
         slot: 'enable',
         width: 150,
+        filters: mappingAffiliateTable,
+        filterMultiple: false,
+        filterMethod(value, row) {
+            return filterAffiliateStatus(value, row);
+        }
     },
     {
         title: "Thời điểm tạo",
         slot: "creation_time",
         width: 170,
+        sortable: true
     },
     {
         title: " ",

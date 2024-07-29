@@ -1,6 +1,6 @@
 <script setup>
 
-import {mappingTeamStatus} from "~/utils/mapping.js";
+import {mappingTeamStatus, mappingTeamStatusTable, filterTeamStatus} from "~/utils/mapping.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -22,6 +22,11 @@ const columns = [
         title: 'Trạng thái',
         slot: 'status',
         width: 150,
+        filters: mappingTeamStatusTable,
+        filterMultiple: false,
+        filterMethod(value, row) {
+            return filterTeamStatus(value, row);
+        }
     },
     {
         title: "Trưởng nhóm",
@@ -32,6 +37,7 @@ const columns = [
         title: "Thời gian tạo",
         slot: "creation_time",
         width: 170,
+        sortable: true
     },
     {
         title: "Thành viên",

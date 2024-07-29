@@ -1,6 +1,9 @@
 <script setup>
 
 import {Notice} from "view-ui-plus";
+import {
+    mappingRequestAuthorTable, filterRequestAuthor
+} from "~/utils/mapping.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -37,11 +40,17 @@ const columns = [
         title: "Trạng thái",
         slot: "status",
         width: 150,
+        filters: mappingRequestAuthorTable,
+        filterMultiple: false,
+        filterMethod(value, row) {
+            return filterRequestAuthor(value, row);
+        }
     },
     {
         title: "Thời điểm tạo",
         slot: "creation_time",
         width: 170,
+        sortable: true
     },
     {
         title: " ",
