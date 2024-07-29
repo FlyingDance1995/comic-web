@@ -234,7 +234,7 @@ defineExpose({
     height: 220px;
     width: 200px;
     overflow: hidden;
-    box-shadow: 1px 5px 10px -5px black;
+    box-shadow: 0 0 8px 0 #757575;
     transition: all .3s ease;
 }
 
