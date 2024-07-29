@@ -54,6 +54,26 @@ const loading = ref(false);
 const page = ref(Number(route.query?.page) || 1);
 const total = ref(0);
 
+const openModal = ref(false);
+const loadingModal = ref(true);
+const formItem = ref({
+    chapter_number: '',
+    story: '',
+    owner: {
+        fullname: ''
+    },
+    category: '',
+    detail: ''
+});
+
+const modalHandled = ref(false);
+const loadingHandled = ref(false);
+
+
+const modalApproval = ref(false);
+const loadingApproval = ref(false);
+
+
 const getData = async () => {
     try {
         loading.value = true;
@@ -99,8 +119,100 @@ const handleChangePage = (value) => {
     });
 };
 
-const handlePreview = (row) => {
+const handledItem = (row) => {
+    modalHandled.value = true;
+    formItem.value = row;
+};
 
+const okHandled = async (row) => {
+    try {
+        loadingHandled.value = true;
+        await useNuxtApp().$api(`admin/report-error/${formItem?.value?.id}`, {
+            method: "PATCH",
+            body: {
+                "status": "finish"
+            }
+        });
+
+        getData();
+        loadingHandled.value = false;
+        modalHandled.value = false;
+        formItem.value = {
+            chapter_number: '',
+            story: '',
+            owner: {
+                fullname: ''
+            },
+            category: '',
+            detail: ''
+        };
+    } catch (e) {
+        console.log("error", e);
+        loadingHandled.value = false;
+    }
+};
+
+const falsePositiveItem = (row) => {
+    modalApproval.value = true;
+    formItem.value = row;
+};
+
+const okApproval = async (row) => {
+    try {
+        loadingApproval.value = true;
+        await useNuxtApp().$api(`admin/report-error/${formItem?.value?.id}`, {
+            method: "PATCH",
+            body: {
+                "status": "error"
+            }
+        });
+
+        getData();
+        loadingApproval.value = false;
+        modalApproval.value = false;
+        formItem.value = {
+            chapter_number: '',
+            story: '',
+            owner: {
+                fullname: ''
+            },
+            category: '',
+            detail: ''
+        }
+    } catch (e) {
+        console.log("error", e);
+        loadingApproval.value = false;
+    }
+};
+
+const viewDetailItem = (row) => {
+    openModal.value = true;
+    formItem.value = row;
+};
+
+const asyncOK = async () => {
+    loadingModal.value = true;
+
+    // await useNuxtApp().$api(`admin/report-error/${formItem?.value?.id}`, {
+    //     method: "PATCH",
+    //     body: {
+    //         "link": formItem?.value?.link,
+    //         "name": formItem?.value?.name,
+    //     }
+    // });
+
+    // getData();
+    openModal.value = false;
+    loadingModal.value = false;
+    formItem.value = {
+        chapter_number: '',
+        story: '',
+        owner: {
+            fullname: ''
+        },
+        category: '',
+        detail: ''
+    };
 };
 
 watch(() => route?.query, (value, oldValue) => {
@@ -146,9 +258,67 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Icon type="ios-more" size="24" style="cursor: pointer" />
+            <Dropdown trigger="click">
+                <a href="javascript:void(0)">
+                    <Icon type="ios-more" size="24" style="cursor: pointer" />
+                </a>
+                
+                <template #list>
+                    <DropdownMenu>
+                        <DropdownItem @click="handledItem(row)">Đã xử lý</DropdownItem>
+                        <DropdownItem @click="falsePositiveItem(row)">False Positive</DropdownItem>
+                        <DropdownItem @click="viewDetailItem(row)">Xem thông tin</DropdownItem>
+                    </DropdownMenu>
+                </template>
+            </Dropdown>
         </template>
     </Table>
+
+    <Modal
+        v-model="openModal"
+        title="Chi tiết Báo cáo lỗi"
+        :loading="loadingModal"
+        @on-ok="openModal = !openModal"
+        width="800px">
+
+        <Form :model="formItem" label-position="top">
+            <FormItem label="Truyện">
+                <Input v-model="formItem.story" placeholder="Truyện"></Input>
+            </FormItem>
+
+            <FormItem label="Chaper">
+                <Input v-model="formItem.chapter_number" placeholder="Chaper"></Input>
+            </FormItem>
+
+            <FormItem label="Phân loại">
+                <Input v-model="formItem.category" placeholder="Phân loại"></Input>
+            </FormItem>
+
+            <FormItem label="Người báo">
+                <Input v-model="formItem.owner.fullname" placeholder="Người báo"></Input>
+            </FormItem>
+
+            <FormItem label="Chi tiết lỗi">
+                <Input v-model="formItem.detail" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Mô tả"></Input>
+            </FormItem>
+        </Form>
+    </Modal>
+
+    <Modal
+        v-model="modalHandled"
+        title="Xác nhận"
+        :loading="loadingHandled"
+        @on-ok="okHandled">
+        <p>Đã xử lý</p>
+    </Modal>
+
+    <Modal
+        v-model="modalApproval"
+        title="Yêu cầu phê duyệt"
+        :loading="loadingApproval"
+        @on-ok="okApproval">
+        <p>False Positive</p>
+    </Modal>
 
     <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
 </template>
