@@ -157,7 +157,8 @@ watch(user, () => {
         </div>
     </div>
 </template>
-<style>
+
+<style scoped>
 .avatar-wrapper {
     position: relative;
     height: 200px;

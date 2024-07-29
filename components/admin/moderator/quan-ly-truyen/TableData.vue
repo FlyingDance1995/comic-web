@@ -72,8 +72,6 @@ const loading = ref(false);
 const page = ref(Number(route.query?.page) || 1);
 const total = ref(0);
 const modalUpdateRef = ref();
-const openModal = ref(false);
-const loadingModal = ref(true);
 const formItem = ref({
     type: "",
     last_chapter: "",
@@ -90,6 +88,7 @@ const getData = async () => {
     try {
         loading.value = true;
         let query = {
+            ordering: '-creation_time',
             ...route.query
         }
         if (!query?.search) delete query.search;
@@ -134,7 +133,7 @@ const removeItem = async (row) => {
     formItem.value = row;
 };
 
-const okRemove = async (row) => {
+const okRemove = async () => {
     try {
         loadingRemove.value = true;
         await useNuxtApp().$api(`moderator/story/${formItem?.value?.slug}`, {
@@ -144,13 +143,6 @@ const okRemove = async (row) => {
         await getData();
         loadingRemove.value = false;
         modalRemove.value = false;
-        formItem.value = {
-            type: "",
-            last_chapter: "",
-            name: "",
-            description: "",
-            category: []
-        };
         Notice.success({
             title: 'Xóa thành công',
         });
