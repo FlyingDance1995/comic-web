@@ -14,7 +14,7 @@ const columns = [
         width: 80,
     },
     {
-        title: 'Name',
+        title: 'Tên truyện',
         key: 'name',
         minWidth: 300,
     },
