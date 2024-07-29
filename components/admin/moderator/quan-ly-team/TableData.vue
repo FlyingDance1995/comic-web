@@ -90,7 +90,7 @@ const getData = async () => {
         }
         if (!query?.search) delete query.search;
 
-        const response = await $api('/admin/teams', {
+        const response = await $api('/moderator/teams', {
             query: {
                 ...query,
                 size: 10
