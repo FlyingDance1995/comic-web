@@ -4,7 +4,7 @@ import {Option, Row, Col, Form, Modal, Button, Notice} from "view-ui-plus";
 
 const openModal = ref(false);
 const loading = ref(false);
-const formRef= ref();
+const formRef = ref();
 const optionsTeam = ref([]);
 const optionsCategory = ref([]);
 const dataEdit = ref(null);
@@ -17,6 +17,39 @@ const formItem = reactive({
     team: "",
     category: []
 });
+const previewImg = ref('');
+
+const validateSelectTeam = (rule, value, callback) => {
+    if (!value) {
+        return callback(new Error('Vui lòng chọn team'));
+    }
+    callback()
+};
+
+const validateSelectCategory = (rule, value, callback) => {
+    if (!value || value?.length === 0) {
+        return callback(new Error('Vui lòng chọn thể loại'));
+    }
+    callback()
+};
+
+const rules = {
+    name: [
+        { required: true, message: 'Vui lòng nhập tên truyện', trigger: 'blur' }
+    ],
+    type: [
+        { required: true, message: 'Vui lòng chọn loại truyện', trigger: 'change' }
+    ],
+    team: [
+        { required: true, validator: validateSelectTeam, trigger: 'change' }
+    ],
+    category: [
+        { required: true, validator: validateSelectCategory, trigger: 'change' }
+    ],
+    author: [
+        { required: true, message: 'Vui lòng nhập tên tác giả', trigger: 'blur' }
+    ],
+};
 
 const getTeam = async () => {
     try {
@@ -26,7 +59,13 @@ const getTeam = async () => {
                 size: 1000,
             }
         });
-        optionsTeam.value = response?.results;
+        optionsTeam.value = response?.results?.map(item => {
+            return {
+                ...item,
+                value: item?.id,
+                label: item?.name
+            }
+        });
     } catch (e) {
         console.log(e?.response);
     }
@@ -40,7 +79,13 @@ const getCategory = async () => {
                 size: 1000,
             }
         });
-        optionsCategory.value = response?.results;
+        optionsCategory.value = response?.results?.map(item => {
+            return {
+                ...item,
+                value: item?.id,
+                label: item?.name
+            }
+        });
     } catch (e) {
         console.log(e?.response);
     }
@@ -58,7 +103,18 @@ const submit = () => {
                 formData.append('category', formItem.category);
                 formData.append('type', formItem.type);
                 formData.append('description', formItem.description);
-                formData.append('avatar', formItem.avatar);
+                if (formItem.avatar && dataEdit.value) {
+                    formData.append('avatar', formItem.avatar);
+                } else if (!dataEdit.value) {
+                    if (!formItem.avatar) {
+                        Notice.error({
+                            title: `Hãy chọn ảnh cho truyện`,
+                        });
+                        return loading.value = false;
+                    } else {
+                        formData.append('avatar', formItem.avatar);
+                    }
+                }
                 await useNuxtApp().$api(dataEdit.value ? `/moderator/story/${dataEdit?.value?.slug}` : '/moderator/story', {
                     method: dataEdit.value ? 'PATCH' : 'POST',
                     body: formData
@@ -83,24 +139,30 @@ const submit = () => {
 const open = async (data = null) => {
     await formRef.value.resetFields();
 
-    if (data) {
-        dataEdit.value = data;
-        formItem.category = data?.category?.map(x => x?.id);
-        formItem.name = data?.name;
-        formItem.author = data?.author;
-        formItem.avatar = data?.avatar;
-        formItem.description = data?.description;
-        formItem.type = data?.type;
-        formItem.team = data?.team?.id;
-    } else {
+    setTimeout(() => {
         const fileUpload = document.querySelector('.file-upload');
         const preview = document.querySelector('.profile-pic');
-        if (preview) preview.src = '/no-image.png';
         if (fileUpload) fileUpload.value = null;
-    }
 
-    loading.value = false;
-    openModal.value = true;
+        if (data) {
+            dataEdit.value = data;
+            formItem.category = data?.category?.map(x => x?.id);
+            formItem.name = data?.name;
+            formItem.author = data?.author;
+            formItem.description = data?.description;
+            formItem.type = data?.type;
+            formItem.team = data?.team?.id;
+            previewImg.value = data?.avatar;
+            if (preview) preview.src = data?.avatar || '/no-image.png';
+        } else {
+            dataEdit.value = null;
+            previewImg.value = '/no-image.png';
+            if (preview) preview.src = '/no-image.png';
+        }
+
+        loading.value = false;
+        openModal.value = true;
+    }, 100);
 };
 
 const close = () => {
@@ -138,11 +200,11 @@ defineExpose({
         v-model="openModal"
         :title="dataEdit ? 'Chỉnh sửa' : 'Tạo mới'"
         width="800px">
-        <Form ref="formRef" :model="formItem" label-position="top">
+        <Form ref="formRef" :model="formItem" :rules="rules" label-position="top">
             <Row :gutter="20">
                 <Col flex="200px">
                     <div class="avatar-wrapper mb-3">
-                        <img class="profile-pic" width="150" :src="formItem?.avatar || ''" alt=""
+                        <img class="profile-pic" width="150" :src="previewImg || ''" alt=""
                              onerror="this.src='/no-image.png'">
                         <div class="upload-button" @click="onUpload">
                             <i class="bx bx-cloud-upload"></i>
@@ -153,7 +215,7 @@ defineExpose({
                 </Col>
 
                 <Col flex="auto">
-                    <FormItem label="Tên truyện" prop="name" required>
+                    <FormItem label="Tên truyện" prop="name">
                         <Input v-model="formItem.name" placeholder="Tên"/>
                     </FormItem>
 
@@ -168,20 +230,20 @@ defineExpose({
 
             <Row :gutter="20">
                 <Col span="10">
-                    <FormItem label="Team" prop="team" required>
+                    <FormItem label="Team" prop="team">
                         <Select v-model="formItem.team"
                                 placeholder="Team" filterable>
                             <Option v-for="item in optionsTeam"
-                                    :value="item.id"
-                                    :key="item.id">
-                                {{ item.name }}
+                                    :value="item.value"
+                                    :key="item.value">
+                                {{ item.label }}
                             </Option>
                         </Select>
                     </FormItem>
                 </Col>
 
                 <Col span="10" offset="4">
-                    <FormItem label="Loại" prop="type" required>
+                    <FormItem label="Loại" prop="type">
                         <Select v-model="formItem.type"
                                 placeholder="Loại">
                             <Option v-for="item in optionsStoryType"
@@ -194,21 +256,21 @@ defineExpose({
                 </Col>
 
                 <Col span="10">
-                    <FormItem label="Tên tác giả" prop="author" required>
+                    <FormItem label="Tên tác giả" prop="author">
                         <Input v-model="formItem.author" placeholder="Tác giả"/>
                     </FormItem>
                 </Col>
 
                 <Col span="10" offset="4">
-                    <FormItem label="Thể loại" prop="category" required>
+                    <FormItem label="Thể loại" prop="category">
                         <Select v-model="formItem.category"
                                 placeholder="Thể loại"
                                 multiple
                                 filterable>
                             <Option v-for="item in optionsCategory"
-                                    :value="item.id"
-                                    :key="item.id">
-                                {{ item.name }}
+                                    :value="item.value"
+                                    :key="item.value">
+                                {{ item.label }}
                             </Option>
                         </Select>
                     </FormItem>
@@ -222,7 +284,7 @@ defineExpose({
             </Button>
 
             <Button type="primary" @click="submit" :loading="loading">
-                {{dataEdit ? 'Cập nhật' : 'Tạo mới'}}
+                {{ dataEdit ? 'Cập nhật' : 'Tạo mới' }}
             </Button>
         </template>
     </Modal>
