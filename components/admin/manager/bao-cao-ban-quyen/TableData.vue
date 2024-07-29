@@ -1,4 +1,5 @@
 <script setup>
+import {mappingReportLicenseTable, filterReportLicense} from "~/utils/mapping.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -35,11 +36,17 @@ const columns = [
         title: "Trạng thái",
         slot: "status",
         width: 150,
+        filters: mappingReportLicenseTable,
+        filterMultiple: false,
+        filterMethod(value, row) {
+            return filterReportLicense(value, row);
+        }
     },
     {
         title: "Thời điểm tạo",
         slot: "creation_time",
         width: 170,
+        sortable: true
     },
     {
         title: " ",

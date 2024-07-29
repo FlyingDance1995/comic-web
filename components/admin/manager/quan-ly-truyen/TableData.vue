@@ -1,6 +1,10 @@
 <script setup>
 
-import {mappingStoryStatus, mappingStoryType} from "~/utils/mapping.js";
+import {
+    mappingStoryStatus, mappingStoryStatusTable, mappingStoryTypeTable,
+    filterStoryStatus, filterStoryType, mappingStoryRecommendedTable,
+    filterStoryRecommended, mappingStoryType
+} from "~/utils/mapping.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -22,11 +26,21 @@ const columns = [
         title: 'Trạng thái',
         slot: 'status',
         width: 150,
+        filters: mappingStoryStatusTable,
+        filterMultiple: false,
+        filterMethod(value, row) {
+            return filterStoryStatus(value, row);
+        }
     },
     {
         title: 'Loại',
         slot: 'type',
         width: 150,
+        filters: mappingStoryTypeTable,
+        filterMultiple: false,
+        filterMethod(value, row) {
+            return filterStoryType(value, row);
+        }
     },
     {
         title: "Team",
@@ -36,12 +50,18 @@ const columns = [
     {
         title: "Thời gian cập nhật",
         slot: "creation_time",
-        width: 170,
+        width: 180,
+        sortable: true
     },
     {
         title: "Đề cử",
         slot: "recommended",
-        width: 80,
+        width: 90,
+        filters: mappingStoryRecommendedTable,
+        filterMultiple: false,
+        filterMethod(value, row) {
+            return filterStoryRecommended(value, row);
+        }
     },
     {
         title: "Số chương",
@@ -89,8 +109,8 @@ const getData = async () => {
     try {
         loading.value = true;
         let query = {
-          ordering: '-creation_time',
-          ...route.query
+            ordering: '-creation_time',
+            ...route.query
         }
         if (!query?.search) delete query.search;
 
@@ -192,34 +212,27 @@ watch(() => route?.query, (value, oldValue) => {
     }
 
     getData();
-}, {immediate: true, deep: true});
+}, { immediate: true, deep: true });
 </script>
 
 <template>
-    <Table
-        class="flex-1 mt-4"
-        ref="table"
-        max-height="650"
-        :columns="columns"
-        :data="data"
-        :loading="loading"
-    >
+    <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading">
         <template #stt="{ row }">
-            {{row?.stt}}
+            {{ row?.stt }}
         </template>
 
         <template #team="{ row }">
-            {{row?.team?.name}}
+            {{ row?.team?.name }}
         </template>
 
         <template #status="{ row }">
-            <span :style="{color: mappingStoryStatus(row?.status).color}">
-                {{mappingStoryStatus(row?.status).title}}
+            <span :style="{ color: mappingStoryStatus(row?.status).color }">
+                {{ mappingStoryStatus(row?.status).title }}
             </span>
         </template>
 
         <template #type="{ row }">
-            {{mappingStoryType(row?.type)}}
+            {{ mappingStoryType(row?.type) }}
         </template>
 
         <template #creation_time="{ row }">
@@ -260,12 +273,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
     </Table>
 
-    <Modal
-        v-model="openModal"
-        title="Chỉnh sửa truyện"
-        :loading="loadingModal"
-        width="800px"
-        @on-ok="asyncOK">
+    <Modal v-model="openModal" title="Chỉnh sửa truyện" :loading="loadingModal" width="800px" @on-ok="asyncOK">
 
         <Form :model="formItem" label-position="top">
             <FormItem label="Loại">
@@ -289,18 +297,16 @@ watch(() => route?.query, (value, oldValue) => {
             </FormItem>
 
             <FormItem label="Nội dung">
-                <Input v-model="formItem.description" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Nội dung"></Input>
+                <Input v-model="formItem.description" type="textarea" :autosize="{ minRows: 3, maxRows: 5 }"
+                    placeholder="Nội dung"></Input>
             </FormItem>
         </Form>
     </Modal>
 
-    <Modal
-        v-model="modalRemove"
-        title="Xác nhận"
-        :loading="loadingRemove"
-        @on-ok="okRemove">
+    <Modal v-model="modalRemove" title="Xác nhận" :loading="loadingRemove" @on-ok="okRemove">
         <p>Bạn có muốn chắc chắn xóa truyện này</p>
     </Modal>
 
-    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
+    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total
+        @on-change="handleChangePage" />
 </template>

@@ -1,6 +1,6 @@
 <script setup>
 
-import {mappingUserStatus} from "~/utils/mapping.js";
+import {mappingUserStatus,mappingManageUserTable,filterManageUserStatus} from "~/utils/mapping.js";
 import {Notice} from "view-ui-plus";
 
 const { $api } = useNuxtApp();
@@ -33,16 +33,23 @@ const columns = [
         title: "Trạng thái",
         slot: "is_active",
         width: 150,
+        filters: mappingManageUserTable,
+        filterMultiple: false,
+        filterMethod(value, row) {
+            return filterManageUserStatus(value, row);
+        }
     },
     {
         title: "Thời điểm tạo",
         slot: "date_joined",
         width: 180,
+        sortable: true
     },
     {
         title: "Lần đăng nhập gần nhất",
         slot: "last_login",
-        width: 200,
+        width: 220,
+        sortable: true
     },
     {
         title: " ",

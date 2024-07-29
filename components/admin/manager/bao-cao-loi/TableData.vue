@@ -1,6 +1,6 @@
 <script setup>
 
-import {mappingReportStatus} from "~/utils/mapping.js";
+import {mappingReportStatus, mappingReportErrTable, filterReportErrStatus} from "~/utils/mapping.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -37,11 +37,17 @@ const columns = [
         title: "Trạng thái",
         slot: "status",
         width: 150,
+        filters: mappingReportErrTable,
+        filterMultiple: false,
+        filterMethod(value, row) {
+            return filterReportErrStatus(value, row);
+        }
     },
     {
         title: "Thời điểm tạo",
         slot: "creation_time",
         width: 170,
+        sortable: true
     },
     {
         title: " ",
