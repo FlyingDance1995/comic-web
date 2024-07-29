@@ -1,6 +1,7 @@
 <script setup>
 
 import {mappingUserStatus} from "~/utils/mapping.js";
+import {Notice} from "view-ui-plus";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -236,13 +237,13 @@ watch(() => route?.query, (value, oldValue) => {
 }, {immediate: true, deep: true});
 
 const success = () => {
-    $Notice.success({
+    Notice.success({
         title: 'Thành công',
     });
 };
 
 const error = () => {
-    $Notice.error({
+    Notice.error({
         title: 'Thất bại',
     });
 };

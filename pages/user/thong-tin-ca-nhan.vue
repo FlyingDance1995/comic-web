@@ -70,8 +70,9 @@ const handleChangeAvatar = async (event) => {
             preview.src = e.target.result;
         };
         reader.readAsDataURL(file);
+
+        form.avatar = file;
     }
-    form.avatar = file;
 };
 
 watch(user, () => {

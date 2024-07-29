@@ -48,5 +48,5 @@ const handleAdd = () => {
         </div>
     </div>
 
-    <AdminModeratorQuanLyTruyenCreateModal ref="modalRef"/>
+    <AdminModeratorQuanLyTruyenCreateOrUpdateModal ref="modalRef"/>
 </template>

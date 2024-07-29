@@ -1,6 +1,7 @@
 <script setup>
 
 import {mappingStoryStatus, mappingStoryType} from "~/utils/mapping.js";
+import {Notice} from "view-ui-plus";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -70,7 +71,7 @@ const data = ref([]);
 const loading = ref(false);
 const page = ref(Number(route.query?.page) || 1);
 const total = ref(0);
-
+const modalUpdateRef = ref();
 const openModal = ref(false);
 const loadingModal = ref(true);
 const formItem = ref({
@@ -136,7 +137,7 @@ const removeItem = async (row) => {
 const okRemove = async (row) => {
     try {
         loadingRemove.value = true;
-        await useNuxtApp().$api(`admin/story/${formItem?.value?.slug}`, {
+        await useNuxtApp().$api(`moderator/story/${formItem?.value?.slug}`, {
             method: "DELETE",
         });
 
@@ -150,40 +151,68 @@ const okRemove = async (row) => {
             description: "",
             category: []
         };
+        Notice.success({
+            title: 'Xóa thành công',
+        });
     } catch (e) {
+        Notice.error({
+            title: 'Xóa thất bại',
+        });
         console.log("error", e);
         loadingRemove.value = false;
     }
 };
 
-const approvalItem = (row) => {
+const approvalItem = async (row) => {
+    try {
+        loading.value = true;
+        await useNuxtApp().$api(`moderator/story/${row?.slug}`, {
+            method: "PATCH",
+            body: {
+                status: 'awaiting'
+            }
+        });
 
+        await getData();
+        loading.value = false;
+        Notice.success({
+            title: 'Yêu cầu phê duyệt thành công',
+        });
+    } catch (e) {
+        Notice.error({
+            title: 'Yêu cầu phê duyệt thất bại',
+        });
+        console.log("error", e);
+        loading.value = false;
+    }
 };
 
-const deputeItem = (row) => {
+const finishItem = async (row) => {
+    try {
+        loading.value = true;
+        await useNuxtApp().$api(`moderator/story/${row?.slug}`, {
+            method: "PATCH",
+            body: {
+                status: 'finish'
+            }
+        });
 
+        await getData();
+        loading.value = false;
+        Notice.success({
+            title: 'Cập nhât thành công',
+        });
+    } catch (e) {
+        Notice.error({
+            title: 'Cập nhật thất bại',
+        });
+        console.log("error", e);
+        loading.value = false;
+    }
 };
 
 const editItem = (row) => {
-    openModal.value = true;
-    formItem.value = row;
-};
-
-const asyncOK = () => {
-    loadingModal.value = true;
-
-
-
-    getData();
-    openModal.value = false;
-    loadingModal.value = false;
-    formItem.value = {
-        type: "",
-        last_chapter: "",
-        name: "",
-        description: "",
-        category: []
-    };
+    modalUpdateRef.value.open(row);
 };
 
 watch(() => route?.query, (value, oldValue) => {
@@ -193,6 +222,16 @@ watch(() => route?.query, (value, oldValue) => {
 
     getData();
 }, {immediate: true, deep: true});
+
+onMounted(() => {
+    useNuxtApp().$emitter.on('add-story', () => {
+        getData()
+    });
+});
+
+onUnmounted(() => {
+    useNuxtApp().$emitter.off('add-story');
+});
 </script>
 
 <template>
@@ -251,8 +290,8 @@ watch(() => route?.query, (value, oldValue) => {
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
-                        <DropdownItem @click="approvalItem(row)"><span style="color: blue">Phê duyệt</span></DropdownItem>
-                        <DropdownItem @click="deputeItem(row)">Đề cử</DropdownItem>
+                        <DropdownItem @click="approvalItem(row)"><span style="color: blue">Yêu cầu phê duyệt</span></DropdownItem>
+                        <DropdownItem @click="finishItem(row)">Hoàn thành</DropdownItem>
                         <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
                     </DropdownMenu>
                 </template>
@@ -260,39 +299,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
     </Table>
 
-    <Modal
-        v-model="openModal"
-        title="Chỉnh sửa truyện"
-        :loading="loadingModal"
-        width="800px"
-        @on-ok="asyncOK">
-
-        <Form :model="formItem" label-position="top">
-            <FormItem label="Loại">
-                <Select v-model="formItem.type">
-                    <div v-for="item in formItem.category" :key="item.id">
-                        <Option :value="item.slug">{{ item.name }}</Option>
-                    </div>
-                </Select>
-            </FormItem>
-
-            <FormItem label="Số chương">
-                <Select v-model="formItem.last_chapter">
-                    <Option value="1">1</Option>
-                    <Option value="2">2</Option>
-                    <Option value="3">3</Option>
-                </Select>
-            </FormItem>
-
-            <FormItem label="Tên">
-                <Input v-model="formItem.name" placeholder="Tên"></Input>
-            </FormItem>
-
-            <FormItem label="Nội dung">
-                <Input v-model="formItem.description" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Nội dung"></Input>
-            </FormItem>
-        </Form>
-    </Modal>
+    <AdminModeratorQuanLyTruyenCreateOrUpdateModal ref="modalUpdateRef"/>
 
     <Modal
         v-model="modalRemove"
