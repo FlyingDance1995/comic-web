@@ -6,10 +6,12 @@ export default defineNuxtRouteMiddleware((to, from) => {
 
         const user = computed(() => userStore.$state.user);
 
-        if (to.path === '/login') return
+        if (to.path === '/login') return;
 
         if (!user.value) {
-            return navigateTo('/login')
+            return navigateTo('/login');
+        } else if (user.value?.role === 'user') {
+            return navigateTo('/');
         }
     }
 });
