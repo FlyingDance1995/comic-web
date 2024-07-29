@@ -1,5 +1,7 @@
 <script setup>
 
+import {Notice} from "view-ui-plus";
+
 const { $api } = useNuxtApp();
 const route = useRoute();
 const router = useRouter();
@@ -123,29 +125,26 @@ const handledItem = (row) => {
     formItem.value = row;
 };
 
-const okHandled = async (row) => {
+const okHandled = async () => {
     try {
         loadingHandled.value = true;
-        await useNuxtApp().$api(`admin/report-user//${formItem?.value?.id}`, {
+        await useNuxtApp().$api(`admin/report-user/${formItem?.value?.id}`, {
             method: "PATCH",
             body: {
                 "status": "finish"
             }
         });
 
-        getData();
+        await getData();
+        Notice.success({
+            title: 'Cập nhật thành công',
+        });
         loadingHandled.value = false;
         modalHandled.value = false;
-        formItem.value = {
-            chapter_number: '',
-            story: '',
-            owner: {
-                fullname: ''
-            },
-            category: '',
-            detail: ''
-        };
     } catch (e) {
+        Notice.error({
+            title: 'Cập nhật thất bại',
+        });
         console.log("error", e);
         loadingHandled.value = false;
     }
@@ -156,29 +155,26 @@ const falsePositiveItem = (row) => {
     formItem.value = row;
 };
 
-const okApproval = async (row) => {
+const okApproval = async () => {
     try {
         loadingApproval.value = true;
-        await useNuxtApp().$api(`admin/report-user//${formItem?.value?.id}`, {
+        await useNuxtApp().$api(`admin/report-user/${formItem?.value?.id}`, {
             method: "PATCH",
             body: {
                 "status": "error"
             }
         });
 
-        getData();
+        await getData();
+        Notice.success({
+            title: 'Cập nhật thành công',
+        });
         loadingApproval.value = false;
         modalApproval.value = false;
-        formItem.value = {
-            chapter_number: '',
-            story: '',
-            owner: {
-                fullname: ''
-            },
-            category: '',
-            detail: ''
-        }
     } catch (e) {
+        Notice.error({
+            title: 'Cập nhật thất bại',
+        });
         console.log("error", e);
         loadingApproval.value = false;
     }
@@ -188,32 +184,6 @@ const viewDetailItem = (row) => {
     openModal.value = true;
     formItem.value = row;
 };
-
-const asyncOK = async () => {
-    loadingModal.value = true;
-
-    // await useNuxtApp().$api(`admin/report-user//${formItem?.value?.id}`, {
-    //     method: "PATCH",
-    //     body: {
-    //         "link": formItem?.value?.link,
-    //         "name": formItem?.value?.name,
-    //     }
-    // });
-
-    // getData();
-    openModal.value = false;
-    loadingModal.value = false;
-    formItem.value = {
-        chapter_number: '',
-        story: '',
-        owner: {
-            fullname: ''
-        },
-        category: '',
-        detail: ''
-    };
-};
-
 
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
@@ -317,7 +287,7 @@ watch(() => route?.query, (value, oldValue) => {
 
     <Modal
         v-model="modalApproval"
-        title="Yêu cầu phê duyệt"
+        title="Xác nhận"
         :loading="loadingApproval"
         @on-ok="okApproval">
         <p>False Positive</p>

@@ -196,7 +196,7 @@ const editItem = (row) => {
     formItem.value = row;
 };
 
-const okEditItem = async (row) => {
+const okEditItem = async () => {
     try {
         loadingEdit.value = true;
         await useNuxtApp().$api(`admin/users/${formItem?.value?.id}`, {
@@ -208,7 +208,7 @@ const okEditItem = async (row) => {
             }
         });
 
-        getData();
+        await getData();
         loadingEdit.value = false;
         loadingEdit.value = false;
         formItem.value = {
@@ -334,6 +334,7 @@ const error = () => {
                 <Select v-model="formItem.role">
                     <Option value="user">User</Option>
                     <Option value="admin">Admin</Option>
+                    <Option value="moderator">moderator</Option>
                 </Select>
             </FormItem>
 
