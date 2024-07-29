@@ -153,7 +153,7 @@ export default defineNuxtConfig({
         '/user/lich-su-doc-truyen': { ssr: false },
         '/user/tro-thanh-tac-gia': { ssr: false },
         '/tim-kiem': { ssr: false },
-        '/admin': { ssr: false },
+        '/dang-truyen/*': { ssr: false },
         '/admin/*': { ssr: false },
     }
 })

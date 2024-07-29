@@ -19,7 +19,7 @@ const columns = [
     {
         title: 'Facebook',
         key: 'fb',
-        width: 250,
+        width: 350,
     },
     {
         title: 'Lời nhắn',

@@ -144,7 +144,7 @@ watch(token, () => {
                         </div>
 
                         <div class="flex-grow-1">
-                            <h6 class="msg-name">Bình luận mới
+                            <h6 class="msg-name">Thông báo mới
                                 <span class="msg-time float-end">{{ timeAgo(item?.creation_time) }}</span>
                             </h6>
                             <p class="msg-info">{{ item?.contents }}</p>

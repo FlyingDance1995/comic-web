@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import {Layout, Header, Menu, MenuItem, Sider, Breadcrumb, BreadcrumbItem, Content, Icon, Poptip} from "view-ui-plus";
 import menu from "@/constants/menu.js";
+import menuModerator from "~/constants/menuModerator";
+import {useUserStore} from "~/store/user";
 
 const {$api} = useNuxtApp();
 const route = useRoute();
 const router = useRouter();
+
+const userStore = useUserStore();
+
+const user = computed(() => userStore.$state.user);
 
 const isCollapsed = ref(false);
 const activeTab = ref(0);
@@ -19,10 +25,17 @@ const handleLogout = async () => {
 
 watch(() => route.path, () => {
     if (route?.path) {
-        menu.forEach((item, index) => {
+        menu.forEach((item) => {
             if (item.path === route.path) {
-                activeTab.value = index;
-                tabName.value = item.title
+                activeTab.value = item.path;
+                tabName.value = item.title;
+            }
+        });
+
+        menuModerator.forEach((item) => {
+            if (item.path === route.path) {
+                activeTab.value = item.path;
+                tabName.value = item.title;
             }
         });
     }
@@ -62,22 +75,31 @@ watch(() => route.path, () => {
                        breakpoint="md"
                        :style="{background: '#F0F1FA', minWidth: '220px', width: '220px'}">
                     <Menu :class="menuitemClasses" :active-name="activeTab" theme="light" width="auto" style="background: #F0F1FA">
-                        <div class="my-3 mx-2">QUẢN TRỊ</div>
-                        <MenuItem v-for="(item, index) in menu"
-                                  :name="index"
-                                  @click="router.push(item.path)">
-                            <Icon :type="item.icon"></Icon>
-                            <span>{{ item.title }}</span>
-                        </MenuItem>
+                        <template v-if="user && user?.role !== 'user'">
+                            <div class="my-2 mx-2">ĐĂNG TRUYỆN</div>
+                            <MenuItem v-for="item in menuModerator"
+                                      :key="item?.path"
+                                      :name="item?.path"
+                                      @click="router.push(item.path)">
+                                <Icon :type="item.icon"></Icon>
+                                <span>{{ item.title }}</span>
+                            </MenuItem>
+                        </template>
+
+                        <template v-if="user && user?.role === 'admin'">
+                            <div class="my-2 mx-2">QUẢN TRỊ</div>
+                            <MenuItem v-for="(item) in menu"
+                                      :key="item?.path"
+                                      :name="item?.path"
+                                      @click="router.push(item.path)">
+                                <Icon :type="item.icon"></Icon>
+                                <span>{{ item.title }}</span>
+                            </MenuItem>
+                        </template>
                     </Menu>
                 </Sider>
 
                 <Layout>
-<!--                    <Breadcrumb :style="{margin: '24px 0'}">-->
-<!--                        <BreadcrumbItem>Trang chủ</BreadcrumbItem>-->
-<!--                        <BreadcrumbItem>{{ tabName }}</BreadcrumbItem>-->
-<!--                    </Breadcrumb>-->
-
                     <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
                         <slot/>
                     </Content>

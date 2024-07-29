@@ -2,7 +2,7 @@ const menu = [
     {
         title: 'Quản lý truyện',
         icon: 'ios-book-outline',
-        path: '/admin'
+        path: '/admin/quan-ly-truyen'
     },
     {
         title: 'Quản lý team',
