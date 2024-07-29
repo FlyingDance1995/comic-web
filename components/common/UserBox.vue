@@ -79,7 +79,14 @@ watch(token, () => {
             <!--                            <div class="dropdown-divider mb-0"></div>-->
             <!--                        </li>-->
 
-            <li v-if="user?.role !== 'moderator'">
+            <li v-if="user?.role === 'moderator' || user?.role === 'admin'">
+                <NuxtLink class="dropdown-item d-flex align-items-center"
+                          to="/dang-truyen/quan-ly-truyen"><i
+                    class="bx bx-book-open fs-5"></i><span>Quản lý truyện</span>
+                </NuxtLink>
+            </li>
+
+            <li v-if="user?.role === 'user'">
                 <NuxtLink class="dropdown-item d-flex align-items-center"
                           to="/user/tro-thanh-tac-gia"><i
                     class="bx bx-chevrons-up fs-5"></i><span>Đăng truyện</span>
