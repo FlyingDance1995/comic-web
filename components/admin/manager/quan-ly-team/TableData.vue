@@ -271,7 +271,7 @@ watch(() => route?.query, (value, oldValue) => {
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
-                        <DropdownItem @click="approvalItem(row)">Yêu cầu phê duyệt</DropdownItem>
+                        <DropdownItem @click="approvalItem(row)">Phê duyệt</DropdownItem>
                         <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
                     </DropdownMenu>
                 </template>
