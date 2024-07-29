@@ -6,13 +6,13 @@ export const mappingStoryStatus  = (value) => {
                 color: '#2D2FFD'
             };
 
-        case 'draff':
+        case 'draft':
             return {
                 title: 'Nháp',
                 color: '#FE3821'
             };
 
-        case 'pending_approval':
+        case 'awaiting':
             return {
                 title: 'Chờ phê duyệt',
                 color: '#FCBD01'
@@ -45,6 +45,28 @@ export const mappingStoryType  = (value) => {
     }
 };
 
+export const mappingTeamStatus  = (value) => {
+    switch (value) {
+        case 'release':
+            return {
+                title: 'Đang phát hành',
+                color: '#2D2FFD'
+            };
+
+        case 'awaiting':
+            return {
+                title: 'Chờ phê duyệt',
+                color: '#FCBD01'
+            };
+
+        default:
+            return {
+                title: '-',
+                color: '#000000'
+            };
+    }
+};
+
 export const mappingUserStatus  = (value) => {
     switch (value) {
         case true:
@@ -57,6 +79,35 @@ export const mappingUserStatus  = (value) => {
             return {
                 title: 'Không kích hoạt',
                 color: '#FE3821'
+            };
+
+        default:
+            return {
+                title: '-',
+                color: '#000000'
+            };
+    }
+};
+
+
+export const mappingReportStatus  = (value) => {
+    switch (value) {
+        case 'init':
+            return {
+                title: 'Khởi tạo',
+                color: '#2D2FFD'
+            };
+
+        case 'error':
+            return {
+                title: 'False Positive',
+                color: '#000000'
+            };
+
+        case 'finish':
+            return {
+                title: 'Đã xử lý',
+                color: '#000000'
             };
 
         default:

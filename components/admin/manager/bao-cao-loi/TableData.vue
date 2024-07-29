@@ -1,5 +1,7 @@
 <script setup>
 
+import {mappingReportStatus} from "~/utils/mapping.js";
+
 const { $api } = useNuxtApp();
 const route = useRoute();
 const router = useRouter();
@@ -34,7 +36,7 @@ const columns = [
     {
         title: "Trạng thái",
         slot: "status",
-        width: 120,
+        width: 150,
     },
     {
         title: "Thời điểm tạo",
@@ -250,7 +252,9 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #status="{ row }">
-            {{row?.status === "init" ? "Khởi tạo" : "Đã xử lý"}}
+            <span :style="{color: mappingReportStatus(row?.status).color}">
+                {{mappingReportStatus(row?.status).title}}
+            </span>
         </template>
 
         <template #creation_time="{ row }">
@@ -276,7 +280,7 @@ watch(() => route?.query, (value, oldValue) => {
 
     <Modal
         v-model="openModal"
-        title="Chi tiết Báo cáo lỗi"
+        title="Báo cáo lỗi"
         :loading="loadingModal"
         @on-ok="openModal = !openModal"
         width="800px">

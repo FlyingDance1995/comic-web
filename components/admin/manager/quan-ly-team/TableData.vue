@@ -1,5 +1,7 @@
 <script setup>
 
+import {mappingTeamStatus} from "~/utils/mapping.js";
+
 const { $api } = useNuxtApp();
 const route = useRoute();
 const router = useRouter();
@@ -18,8 +20,8 @@ const columns = [
     },
     {
         title: 'Trạng thái',
-        key: 'status',
-        width: 120,
+        slot: 'status',
+        width: 150,
     },
     {
         title: "Trưởng nhóm",
@@ -165,7 +167,7 @@ const okApproval = async (row) => {
         await useNuxtApp().$api(`admin/teams/${formItem?.value?.slug}`, {
             method: "PATCH",
             body: {
-                "status": release
+                "status": 'release'
             }
         });
 
@@ -235,7 +237,9 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #status="{ row }">
-            {{row?.status}}
+            <span :style="{color: mappingTeamStatus(row?.status).color}">
+                {{mappingTeamStatus(row?.status).title}}
+            </span>
         </template>
 
         <template #leader="{ row }">

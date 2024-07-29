@@ -24,7 +24,7 @@ const columns = [
     {
         title: 'Trạng thái',
         slot: 'enable',
-        width: 140,
+        width: 150,
     },
     {
         title: "Thời điểm tạo",
