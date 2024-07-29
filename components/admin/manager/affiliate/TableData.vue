@@ -63,6 +63,7 @@ const formItem = ref({
     category: []
 });
 
+const modalUpdateRef = ref();
 const modalRemove = ref(false);
 const loadingRemove = ref(false);
 
@@ -174,8 +175,10 @@ const okApproval = async (row) => {
 };
 
 const editItem = (row) => {
-    openModal.value = true;
-    formItem.value = row;
+    modalUpdateRef.value.open();
+
+    // openModal.value = true;
+    // formItem.value = row;
 };
 
 const asyncOK = async () => {
@@ -208,6 +211,15 @@ watch(() => route?.query, (value, oldValue) => {
     getData();
 }, {immediate: true, deep: true});
 
+onMounted(() => {
+    useNuxtApp().$emitter.on('add-affiliate', () => {
+        getData()
+    });
+});
+
+onUnmounted(() => {
+    useNuxtApp().$emitter.off('add-affiliate');
+});
 </script>
 
 <template>
@@ -282,6 +294,9 @@ watch(() => route?.query, (value, oldValue) => {
             </FormItem>
         </Form>
     </Modal>
+
+
+    <AdminManagerAffiliateCreateOrUpdateModal ref="modalUpdateRef"/>
 
     <Modal
         v-model="modalRemove"
