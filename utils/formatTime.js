@@ -15,7 +15,7 @@ export const timeAgo2 = (timestamp) => {
 
 export const formattedDate = (value) => {
     if (!value) return ""
-    return moment(value * 1000).format('HH:mm MM/DD/YYYY')
+    return moment(value * 1000).format('HH:mm DD/MM/YYYY')
 };
 
 export const formattedFullDate = (value) => {
@@ -25,7 +25,7 @@ export const formattedFullDate = (value) => {
 
 export const formattedTime = (value) => {
     if (!value) return ""
-    return moment(value).format('HH:mm MM/DD/YYYY')
+    return moment(value).format('HH:mm DD/MM/YYYY')
 };
 
 export const formatTimeVPoster = (data) => {
