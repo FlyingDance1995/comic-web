@@ -18,13 +18,13 @@ const columns = [
     },
     {
         title: 'Link',
-        key: 'link',
+        slot: 'link',
         width: 300,
     },
     {
         title: 'Trạng thái',
-        key: 'enable',
-        width: 120,
+        slot: 'enable',
+        width: 140,
     },
     {
         title: "Thời điểm tạo",
@@ -218,12 +218,14 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #link="{ row }">
-            {{row?.link}}
+            <NuxtLink :to="row?.link" target="_blank" external>
+                {{row?.link}}
+            </NuxtLink>
         </template>
 
         <template #enable="{ row }">
-            <span :style="row?.enable ? 'color: red' : 'color: blue'">
-                {{row?.enable ? "Đã kích hoạt" : "Không kích hoạt"}}
+            <span :style="{color: mappingUserStatus(row?.enable).color}">
+                {{ mappingUserStatus(row?.enable).title }}
             </span>
         </template>
 

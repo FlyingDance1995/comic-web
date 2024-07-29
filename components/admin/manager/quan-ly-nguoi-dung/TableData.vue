@@ -1,5 +1,7 @@
 <script setup>
 
+import {mappingUserStatus} from "~/utils/mapping.js";
+
 const { $api } = useNuxtApp();
 const route = useRoute();
 const router = useRouter();
@@ -23,13 +25,13 @@ const columns = [
     },
     {
         title: 'Role',
-        key: 'role',
+        slot: 'role',
         width: 140,
     },
     {
         title: "Trạng thái",
         slot: "is_active",
-        width: 140,
+        width: 150,
     },
     {
         title: "Thời điểm tạo",
@@ -134,7 +136,7 @@ const okActive = async (row) => {
             }
         });
 
-        getData();
+        await getData();
         loadingActive.value = false;
         modalActive.value = false;
         formItem.value = {
@@ -270,11 +272,13 @@ const error = () => {
         </template>
 
         <template #role="{ row }">
-            <span>{{ row?.role }}</span>
+            <span class="text-capitalize">{{ row?.role }}</span>
         </template>
 
         <template #is_active="{ row }">
-            <span>{{ row?.is_active }}</span>
+            <span :style="{color: mappingUserStatus(row?.is_active).color}">
+                {{ mappingUserStatus(row?.is_active).title }}
+            </span>
         </template>
 
         <template #date_joined="{ row }">

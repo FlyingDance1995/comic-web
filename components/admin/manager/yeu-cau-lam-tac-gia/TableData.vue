@@ -18,7 +18,7 @@ const columns = [
     },
     {
         title: 'Facebook',
-        key: 'fb',
+        slot: 'fb',
         width: 350,
     },
     {
@@ -242,9 +242,10 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #fb="{ row }">
-            {{row?.fb}}
+            <NuxtLink :to="row?.fb" target="_blank" external>
+                {{row?.fb}}
+            </NuxtLink>
         </template>
-
 
         <template #message="{ row }">
             {{row?.message}}

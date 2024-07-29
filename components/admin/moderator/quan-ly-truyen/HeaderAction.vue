@@ -4,6 +4,7 @@ import _ from "lodash";
 const route = useRoute();
 const router = useRouter();
 
+const modalRef = ref(null);
 const query = reactive({
     search: route.query?.search || "",
 });
@@ -16,6 +17,10 @@ const handleSearch = _.debounce(() => {
         query: qr
     });
 }, 500);
+
+const handleAdd = () => {
+    modalRef.value.open();
+};
 </script>
 
 <template>
@@ -25,7 +30,7 @@ const handleSearch = _.debounce(() => {
         </h4>
 
         <div class="d-flex align-items-center">
-            <span class="me-2" style="width: 90px">Tìm kiếm</span>
+            <span class="me-2">Tìm kiếm</span>
             <Input
                 v-model="query.search"
                 search
@@ -34,7 +39,14 @@ const handleSearch = _.debounce(() => {
                 class="input-search"
                 @on-clear="handleSearch"
                 @on-change="handleSearch"
+                style="flex: 1"
             />
+
+            <Button type="success" class="ms-3" @click="handleAdd">
+                Tạo mới
+            </Button>
         </div>
     </div>
+
+    <AdminModeratorQuanLyTruyenCreateModal ref="modalRef"/>
 </template>

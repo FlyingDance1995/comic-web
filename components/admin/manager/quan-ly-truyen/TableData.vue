@@ -1,5 +1,7 @@
 <script setup>
 
+import {mappingStoryStatus, mappingStoryType} from "~/utils/mapping.js";
+
 const { $api } = useNuxtApp();
 const route = useRoute();
 const router = useRouter();
@@ -18,13 +20,13 @@ const columns = [
     },
     {
         title: 'Trạng thái',
-        key: 'status',
-        width: 120,
+        slot: 'status',
+        width: 150,
     },
     {
         title: 'Loại',
-        key: 'type',
-        width: 120,
+        slot: 'type',
+        width: 150,
     },
     {
         title: "Team",
@@ -190,25 +192,6 @@ watch(() => route?.query, (value, oldValue) => {
 
     getData();
 }, {immediate: true, deep: true});
-
-const handeStatus = (key) => {
-    switch (key) {
-        case 'processing':
-            return 'Đang phát hành';
-
-        case 'draff':
-            return 'Nháp';
-
-        case 'pending_approval':
-            return 'Chờ phê duyệt';
-
-        case 'finish':
-            return 'Hoàn thành';
-    
-        default:
-            return '-';
-    }
-}
 </script>
 
 <template>
@@ -229,7 +212,13 @@ const handeStatus = (key) => {
         </template>
 
         <template #status="{ row }">
-            {{handeStatus(row?.status)}}
+            <span :style="{color: mappingStoryStatus(row?.status).color}">
+                {{mappingStoryStatus(row?.status).title}}
+            </span>
+        </template>
+
+        <template #type="{ row }">
+            {{mappingStoryType(row?.type)}}
         </template>
 
         <template #creation_time="{ row }">
@@ -257,7 +246,7 @@ const handeStatus = (key) => {
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
-                
+
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>

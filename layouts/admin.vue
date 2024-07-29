@@ -62,7 +62,7 @@ watch(() => route.path, () => {
                         ok-text="Có"
                         cancel-text="Không">
                         <Button type="error">
-                            Logout
+                            Đăng xuất
                         </Button>
                     </Poptip>
                 </Menu>
