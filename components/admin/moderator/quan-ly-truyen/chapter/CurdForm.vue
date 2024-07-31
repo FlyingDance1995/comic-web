@@ -173,7 +173,7 @@ defineExpose({
 <template>
     <div class="w-50 h-100">
         <div class="w-100 d-flex flex-wrap gap-2 justify-content-between align-items-center">
-            <h4>{{ title }}</h4>
+            <h4 class="text-black-50">{{ title }}</h4>
 
             <Dropdown v-if="status === 'detail' || status === 'edit'"
                       trigger="hover">

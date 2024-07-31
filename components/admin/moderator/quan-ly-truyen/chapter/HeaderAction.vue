@@ -33,7 +33,7 @@ const handleAdd = () => {
 
 <template>
     <div class="w-100 d-flex flex-wrap gap-2 justify-content-between">
-        <h4>
+        <h4 class="text-black-50">
            {{story?.name}}
         </h4>
 
