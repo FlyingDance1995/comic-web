@@ -1,10 +1,18 @@
 <script setup>
 import _ from "lodash";
 
+const props = defineProps({
+    story: {
+        type: Object,
+        default: null
+    }
+});
+
+const emit = defineEmits(['onAdd']);
+
 const route = useRoute();
 const router = useRouter();
 
-const modalRef = ref(null);
 const query = reactive({
     search: route.query?.search || "",
 });
@@ -19,29 +27,32 @@ const handleSearch = _.debounce(() => {
 }, 500);
 
 const handleAdd = () => {
-    modalRef.value.open();
+    emit('onAdd');
 };
 </script>
 
 <template>
     <div class="w-100 d-flex flex-wrap gap-2 justify-content-between">
         <h4>
-            Quản lý Team
+           {{story?.name}}
         </h4>
 
         <div class="d-flex align-items-center">
-            <span class="me-2" style="width: 90px">Tìm kiếm</span>
-            <Input v-model="query.search" search clearable
-                   placeholder="Nhập từ khóa tìm kiếm" class="input-search"
-                   @on-clear="handleSearch" @on-change="handleSearch"
-                   style="flex: 1"
-            />
+<!--            <span class="me-2">Tìm kiếm</span>-->
+<!--            <Input-->
+<!--                v-model="query.search"-->
+<!--                search-->
+<!--                clearable-->
+<!--                placeholder="Nhập từ khóa tìm kiếm"-->
+<!--                class="input-search"-->
+<!--                @on-clear="handleSearch"-->
+<!--                @on-change="handleSearch"-->
+<!--                style="flex: 1"-->
+<!--            />-->
 
             <Button type="success" class="ms-3" @click="handleAdd">
                 Tạo mới
             </Button>
         </div>
     </div>
-
-    <AdminModeratorQuanLyTeamCreateOrUpdateModal ref="modalRef"/>
 </template>

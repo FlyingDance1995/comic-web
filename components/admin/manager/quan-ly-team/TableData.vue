@@ -1,6 +1,8 @@
 <script setup>
 
 import {mappingTeamStatus, mappingTeamStatusTable, filterTeamStatus} from "~/utils/mapping.js";
+import {Table} from "view-ui-plus";
+import {optionsTeamStatus} from "~/constants/options.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -22,11 +24,9 @@ const columns = [
         title: 'Trạng thái',
         slot: 'status',
         width: 150,
-        filters: mappingTeamStatusTable,
+        filters: optionsTeamStatus,
         filterMultiple: false,
-        filterMethod(value, row) {
-            return filterTeamStatus(value, row);
-        }
+        filterRemote: value => handleFilter('status', value),
     },
     {
         title: "Trưởng nhóm",
@@ -224,6 +224,46 @@ const asyncOK = async () => {
     };
 };
 
+const handleSort = ({column, order}) => {
+    const type = column.slot || column.key;
+    const query = {
+        ...route.query,
+    };
+
+    if (order === 'normal') {
+        if (query.ordering) {
+            delete query.ordering;
+        }
+    } else if (order === 'asc') {
+        query.ordering = type;
+    } else {
+        query.ordering = `-${type}`;
+    }
+
+    delete query.page;
+    router.push({
+        query,
+    });
+};
+
+const handleFilter = (type, value) => {
+    const query = {
+        ...route.query,
+    };
+
+    if (value.length > 0) {
+        query[type] = value.join(',');
+    } else {
+        delete query[type];
+    }
+
+    delete query.page;
+
+    router.push({
+        query,
+    });
+};
+
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
         page.value = 1;
@@ -234,8 +274,9 @@ watch(() => route?.query, (value, oldValue) => {
 </script>
 
 <template>
-    <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading">
-        <template #stt="{ row }">
+    <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading"
+           @on-sort-change="handleSort">
+    <template #stt="{ row }">
             {{row?.stt}}
         </template>
 

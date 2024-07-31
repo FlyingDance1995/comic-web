@@ -140,6 +140,12 @@ export const mappingTeamStatus  = (value) => {
                 color: '#FCBD01'
             };
 
+        case 'init':
+            return {
+                title: 'Khởi tạo',
+                color: '#000000'
+            };
+
         default:
             return {
                 title: '-',
@@ -364,3 +370,24 @@ export const filterRequestAuthor  = (value, row) => {
     }
 };
 
+export const mappingChapterStatus  = (value) => {
+    switch (value) {
+        case true:
+            return {
+                title: 'Nháp',
+                color: '#FE3821'
+            };
+
+        case false:
+            return {
+                title: 'Đã đăng',
+                color: '#2D2FFD'
+            };
+
+        default:
+            return {
+                title: '-',
+                color: '#000000'
+            };
+    }
+};

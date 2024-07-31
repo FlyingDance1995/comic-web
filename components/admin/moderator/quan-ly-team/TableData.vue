@@ -1,6 +1,8 @@
 <script setup>
 
 import {mappingTeamStatus} from "~/utils/mapping.js";
+import {optionsTeamStatus} from "~/constants/options.js";
+import {Table} from "view-ui-plus";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -22,6 +24,9 @@ const columns = [
         title: 'Trạng thái',
         slot: 'status',
         width: 150,
+        filters: optionsTeamStatus,
+        filterMultiple: false,
+        filterRemote: value => handleFilter('status', value),
     },
     {
         title: "Trưởng nhóm",
@@ -32,6 +37,7 @@ const columns = [
         title: "Thời gian tạo",
         slot: "creation_time",
         width: 170,
+        sortable: true,
     },
     {
         title: "Thành viên",
@@ -67,7 +73,7 @@ const page = ref(Number(route.query?.page) || 1);
 const total = ref(0);
 
 const openModal = ref(false);
-const loadingModal = ref(true);
+const modalUpdateRef = ref();
 const formItem = ref({
     type: "",
     last_chapter: "",
@@ -78,11 +84,8 @@ const formItem = ref({
 
 const modalRemove = ref(false);
 const loadingRemove = ref(false);
-
-
 const modalApproval = ref(false);
 const loadingApproval = ref(false);
-
 
 const getData = async () => {
     try {
@@ -134,23 +137,16 @@ const removeItem = (row) => {
     formItem.value = row;
 };
 
-const okRemove = async (row) => {
+const okRemove = async () => {
     try {
         loadingRemove.value = true;
-        await useNuxtApp().$api(`admin/teams/${formItem?.value?.slug}`, {
+        await useNuxtApp().$api(`moderator/teams/${formItem?.value?.slug}`, {
             method: "DELETE",
         });
 
-        getData();
+        await getData();
         loadingRemove.value = false;
         modalRemove.value = false;
-        formItem.value = {
-            type: "",
-            last_chapter: "",
-            name: "",
-            description: "",
-            category: []
-        };
     } catch (e) {
         console.log("error", e);
         loadingRemove.value = false;
@@ -162,26 +158,19 @@ const approvalItem = (row) => {
     formItem.value = row;
 };
 
-const okApproval = async (row) => {
+const okApproval = async () => {
     try {
         loadingApproval.value = true;
-        await useNuxtApp().$api(`admin/teams/${formItem?.value?.slug}`, {
+        await useNuxtApp().$api(`moderator/teams/${formItem?.value?.slug}`, {
             method: "PATCH",
             body: {
-                "status": release
+                "status": 'release'
             }
         });
 
-        getData();
+        await getData();
         loadingApproval.value = false;
         modalApproval.value = false;
-        formItem.value = {
-            type: "",
-            last_chapter: "",
-            name: "",
-            description: "",
-            category: []
-        };
     } catch (e) {
         console.log("error", e);
         loadingApproval.value = false;
@@ -189,33 +178,47 @@ const okApproval = async (row) => {
 };
 
 const editItem = (row) => {
-    openModal.value = true;
-    formItem.value = row;
+    modalUpdateRef.value.open(row);
 };
 
-const asyncOK = async () => {
-    loadingModal.value = true;
-
-    await useNuxtApp().$api(`admin/teams/${formItem?.value?.slug}`, {
-        method: "PATCH",
-        body: {
-            "avatar": '', // File
-            "name": '',
-            "description": '',
-            "member": '',
-        }
-    });
-
-    getData();
-    openModal.value = false;
-    loadingModal.value = false;
-    formItem.value = {
-        type: "",
-        last_chapter: "",
-        name: "",
-        description: "",
-        category: []
+const handleSort = ({column, order}) => {
+    const type = column.slot || column.key;
+    const query = {
+        ...route.query,
     };
+
+    if (order === 'normal') {
+        if (query.ordering) {
+            delete query.ordering;
+        }
+    } else if (order === 'asc') {
+        query.ordering = type;
+    } else {
+        query.ordering = `-${type}`;
+    }
+
+    delete query.page;
+    router.push({
+        query,
+    });
+};
+
+const handleFilter = (type, value) => {
+    const query = {
+        ...route.query,
+    };
+
+    if (value.length > 0) {
+        query[type] = value.join(',');
+    } else {
+        delete query[type];
+    }
+
+    delete query.page;
+
+    router.push({
+        query,
+    });
 };
 
 watch(() => route?.query, (value, oldValue) => {
@@ -225,10 +228,21 @@ watch(() => route?.query, (value, oldValue) => {
     getData();
 }, { immediate: true, deep: true });
 
+onMounted(() => {
+    useNuxtApp().$emitter.on('add-team', () => {
+        getData()
+    });
+});
+
+onUnmounted(() => {
+    useNuxtApp().$emitter.off('add-team');
+});
+
 </script>
 
 <template>
-    <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading">
+    <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading"
+           @on-sort-change="handleSort">
         <template #stt="{ row }">
             {{row?.stt}}
         </template>
@@ -268,7 +282,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
@@ -284,27 +298,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
     </Table>
 
-    <Modal
-        v-model="openModal"
-        title="Chỉnh sửa Team"
-        :loading="loadingModal"
-        width="800px"
-        @on-ok="asyncOK">
-
-        <Form :model="formItem" label-position="top">
-            <FormItem label="Tên nhóm">
-                <Input v-model="formItem.name" placeholder="Tên"></Input>
-            </FormItem>
-
-            <FormItem label="Thành viên">
-                <Input v-model="formItem.description1" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Thành viên"></Input>
-            </FormItem>
-
-            <FormItem label="Mô tả">
-                <Input v-model="formItem.description" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Mô tả"></Input>
-            </FormItem>
-        </Form>
-    </Modal>
+    <AdminModeratorQuanLyTeamCreateOrUpdateModal ref="modalUpdateRef"/>
 
     <Modal
         v-model="modalRemove"

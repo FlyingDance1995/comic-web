@@ -35,9 +35,7 @@ const columns = [
         width: 150,
         filters: mappingManageUserTable,
         filterMultiple: false,
-        filterMethod(value, row) {
-            return filterManageUserStatus(value, row);
-        }
+        filterRemote: value => handleFilter('is_active', value),
     },
     {
         title: "Thời điểm tạo",
@@ -261,6 +259,47 @@ const error = () => {
     });
 };
 
+const handleSort = ({column, order}) => {
+    const type = column.slot || column.key;
+    const query = {
+        ...route.query,
+    };
+
+    if (order === 'normal') {
+        if (query.ordering) {
+            delete query.ordering;
+        }
+    } else if (order === 'asc') {
+        query.ordering = type;
+    } else {
+        query.ordering = `-${type}`;
+    }
+
+    delete query.page;
+    router.push({
+        query,
+    });
+};
+
+const handleFilter = (type, value) => {
+    const query = {
+        ...route.query,
+    };
+
+    if (value.length > 0) {
+        query[type] = value.join(',');
+    } else {
+        delete query[type];
+    }
+
+    delete query.page;
+
+    router.push({
+        query,
+    });
+};
+
+
 onMounted(() => {
     useNuxtApp().$emitter.on('add-user', () => {
         getData()
@@ -280,6 +319,7 @@ onUnmounted(() => {
         :columns="columns"
         :data="data"
         :loading="loading"
+        @on-sort-change="handleSort"
     >
         <template #stt="{ row }">
             {{row?.stt}}

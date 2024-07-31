@@ -38,9 +38,7 @@ const columns = [
         width: 150,
         filters: mappingReportLicenseTable,
         filterMultiple: false,
-        filterMethod(value, row) {
-            return filterReportLicense(value, row);
-        }
+        filterRemote: value => handleFilter('status', value),
     },
     {
         title: "Thời điểm tạo",
@@ -223,6 +221,46 @@ const asyncOK = async () => {
 };
 
 
+const handleSort = ({column, order}) => {
+    const type = column.slot || column.key;
+    const query = {
+        ...route.query,
+    };
+
+    if (order === 'normal') {
+        if (query.ordering) {
+            delete query.ordering;
+        }
+    } else if (order === 'asc') {
+        query.ordering = type;
+    } else {
+        query.ordering = `-${type}`;
+    }
+
+    delete query.page;
+    router.push({
+        query,
+    });
+};
+
+const handleFilter = (type, value) => {
+    const query = {
+        ...route.query,
+    };
+
+    if (value.length > 0) {
+        query[type] = value.join(',');
+    } else {
+        delete query[type];
+    }
+
+    delete query.page;
+
+    router.push({
+        query,
+    });
+};
+
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
         page.value = 1;
@@ -240,6 +278,7 @@ watch(() => route?.query, (value, oldValue) => {
         :columns="columns"
         :data="data"
         :loading="loading"
+        @on-sort-change="handleSort"
     >
         <template #stt="{ row }">
             {{row?.stt}}

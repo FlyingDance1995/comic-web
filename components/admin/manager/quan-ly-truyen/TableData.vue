@@ -5,6 +5,7 @@ import {
     filterStoryStatus, filterStoryType, mappingStoryRecommendedTable,
     filterStoryRecommended, mappingStoryType
 } from "~/utils/mapping.js";
+import {Table} from "view-ui-plus";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -28,9 +29,7 @@ const columns = [
         width: 150,
         filters: mappingStoryStatusTable,
         filterMultiple: false,
-        filterMethod(value, row) {
-            return filterStoryStatus(value, row);
-        }
+        filterRemote: value => handleFilter('status', value),
     },
     {
         title: 'Loại',
@@ -38,9 +37,7 @@ const columns = [
         width: 150,
         filters: mappingStoryTypeTable,
         filterMultiple: false,
-        filterMethod(value, row) {
-            return filterStoryType(value, row);
-        }
+        filterRemote: value => handleFilter('type', value),
     },
     {
         title: "Team",
@@ -49,9 +46,9 @@ const columns = [
     },
     {
         title: "Thời gian cập nhật",
-        slot: "creation_time",
+        slot: "modification_time",
         width: 180,
-        sortable: true
+        sortable: true,
     },
     {
         title: "Đề cử",
@@ -59,9 +56,7 @@ const columns = [
         width: 90,
         filters: mappingStoryRecommendedTable,
         filterMultiple: false,
-        filterMethod(value, row) {
-            return filterStoryRecommended(value, row);
-        }
+        filterRemote: value => handleFilter('recommended', value),
     },
     {
         title: "Số chương",
@@ -109,7 +104,7 @@ const getData = async () => {
     try {
         loading.value = true;
         let query = {
-            ordering: '-creation_time',
+            ordering: '-modification_time',
             ...route.query
         }
         if (!query?.search) delete query.search;
@@ -206,6 +201,46 @@ const asyncOK = () => {
     };
 };
 
+const handleSort = ({column, order}) => {
+    const type = column.slot || column.key;
+    const query = {
+        ...route.query,
+    };
+
+    if (order === 'normal') {
+        if (query.ordering) {
+            delete query.ordering;
+        }
+    } else if (order === 'asc') {
+        query.ordering = type;
+    } else {
+        query.ordering = `-${type}`;
+    }
+
+    delete query.page;
+    router.push({
+        query,
+    });
+};
+
+const handleFilter = (type, value) => {
+    const query = {
+        ...route.query,
+    };
+
+    if (value.length > 0) {
+        query[type] = value.join(',');
+    } else {
+        delete query[type];
+    }
+
+    delete query.page;
+
+    router.push({
+        query,
+    });
+};
+
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
         page.value = 1;
@@ -216,7 +251,8 @@ watch(() => route?.query, (value, oldValue) => {
 </script>
 
 <template>
-    <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading">
+    <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading"
+           @on-sort-change="handleSort">
         <template #stt="{ row }">
             {{ row?.stt }}
         </template>
@@ -235,8 +271,8 @@ watch(() => route?.query, (value, oldValue) => {
             {{ mappingStoryType(row?.type) }}
         </template>
 
-        <template #creation_time="{ row }">
-            <span>{{ formattedDate(row?.creation_time) }}</span>
+        <template #modification_time="{ row }">
+            <span>{{ formattedDate(row?.modification_time) }}</span>
         </template>
 
         <template #recommended="{ row }">
@@ -256,7 +292,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
@@ -266,7 +302,7 @@ watch(() => route?.query, (value, oldValue) => {
                         <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
                         <DropdownItem @click="approvalItem(row)"><span style="color: blue">Phê duyệt</span></DropdownItem>
                         <DropdownItem @click="deputeItem(row)">Đề cử</DropdownItem>
-                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
+<!--                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>-->
                     </DropdownMenu>
                 </template>
             </Dropdown>

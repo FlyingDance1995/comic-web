@@ -55,3 +55,7 @@
 .dark-theme .bxs-trash {
     color: black;
 }
+
+.ivu-select-not-found {
+    display: none !important;
+}
