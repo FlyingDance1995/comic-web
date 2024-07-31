@@ -1,6 +1,9 @@
 <script setup>
 import {useConfigStore} from "~/store/config.js";
 import { formattedNameChaper } from "~/utils/formatName.js";
+
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
+
 const route = useRoute();
 const configStore = useConfigStore();
 
@@ -66,7 +69,7 @@ const reportError = () => {
                 </p>
 
                 <div class="chapter-content">
-                    <div class="content-container mt-4" id="chapter-content-render"
+                    <div class="content-container mt-4 ql-editor" id="chapter-content-render"
                          style="font-family: Roboto, sans-serif; font-size: 18px; line-height: 140%;"
                          v-html="data?.content">
                     </div>

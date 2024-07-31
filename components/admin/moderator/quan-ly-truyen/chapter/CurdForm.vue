@@ -18,13 +18,18 @@ const props = defineProps({
 const emit = defineEmits(['on-success'])
 
 const toolbarOptions = [
-    ['bold', 'italic', 'underline', 'strike'],
+    ['bold', 'italic', 'underline'],        // toggled buttons
 
-    [{'list': 'ordered'}, {'list': 'bullet'}, {'list': 'check'}],
-    [{'indent': '-1'}, {'indent': '+1'}],
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+    [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
 
-    [{'color': []}],
+    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+    // [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+    [{ 'align': [] }],
 ];
+
 
 const validateChapterNumber = (rule, value, callback) => {
     if (!value && value !== 0) {
