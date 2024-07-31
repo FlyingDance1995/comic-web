@@ -50,9 +50,3 @@ const handleAdd = () => {
 
     <AdminModeratorQuanLyTruyenCreateOrUpdateModal ref="modalRef"/>
 </template>
-
-<style>
-.text-black-50 {
-    color: black !important;
-}
-</style>

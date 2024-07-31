@@ -198,7 +198,8 @@ defineExpose({
         <Form ref="formRef"
               :model="formItem"
               :rules="rules"
-              label-position="top">
+              label-position="top"
+              style="max-height: 500px; overflow-y: auto; overflow-x: hidden">
             <Row :gutter="20">
                 <Col span="10">
                     <FormItem label="Loại" prop="type">
@@ -248,7 +249,7 @@ defineExpose({
                              :toolbar="toolbarOptions"
                              theme="snow"
                              content-type="html"
-                             style="width: 100%; height: 500px; overflow: auto"/>
+                             style="width: 100%; height: 230px; overflow: auto"/>
 
                 <QuillEditor v-else
                              :content="formItem.content"
