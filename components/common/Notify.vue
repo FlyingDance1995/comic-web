@@ -10,9 +10,12 @@ const configStore = useConfigStore();
 const user = computed(() => userStore.$state.user);
 const token = computed(() => userStore.$state.token);
 
+const sentinel = ref();
 const notify = ref();
 const notifyNew = ref();
 const showNotify = ref(false);
+const loading = ref(false);
+const page = ref(1);
 
 const handleClickOutsideNotify = () => {
     if (showNotify.value) showNotify.value = false;
@@ -20,10 +23,25 @@ const handleClickOutsideNotify = () => {
 
 const getNotify = async () => {
     try {
-        const response = await useNuxtApp().$api('/profile/notify');
-        notify.value = response;
+        if (loading.value) return;
+
+        loading.value = true;
+        const response = await useNuxtApp().$api('/profile/notify', {
+            query: {
+                size: 10,
+                page: page.value,
+            }
+        });
+        page.value += 1;
+        const temp = [...(notify.value?.results || []), ...response.results];
+        notify.value = {
+            ...response,
+            results: temp
+        };
+        loading.value = false;
     } catch (error) {
         console.log("error", error);
+        loading.value = false;
     }
 };
 
@@ -31,6 +49,7 @@ const getNotifyNew = async () => {
     try {
         const response = await useNuxtApp().$api('/profile/notify', {
             query: {
+                size: 1,
                 "unread": true
             }
         });
@@ -100,6 +119,17 @@ watch(token, () => {
     getNotifyNew();
     getNotify();
 });
+
+onMounted(() => {
+    const stn = sentinel.value;
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && notify.value?.next) {
+            getNotify();
+        }
+    });
+
+    observer.observe(stn);
+});
 </script>
 
 <template>
@@ -155,6 +185,8 @@ watch(token, () => {
                         <span class="dots"></span>
                     </div>
                 </NuxtLink>
+
+                <div ref="sentinel" class="sentinel"></div>
             </div>
 
             <a v-if="notifyNew?.count" href="javascript:void(0)">
@@ -170,5 +202,9 @@ watch(token, () => {
 <style>
 .ps {
     overflow: auto !important;
+}
+
+.sentinel {
+    height: 1px;
 }
 </style>
