@@ -1,7 +1,7 @@
 <script setup>
 
-import {mappingUserStatus,mappingManageUserTable,filterManageUserStatus} from "~/utils/mapping.js";
-import {Notice} from "view-ui-plus";
+import { mappingUserStatus, mappingManageUserTable, filterManageUserStatus } from "~/utils/mapping.js";
+import { Notice } from "view-ui-plus";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -89,8 +89,8 @@ const getData = async () => {
     try {
         loading.value = true;
         let query = {
-          ordering: '-creation_time',
-          ...route.query
+            ordering: '-date_joined',
+            ...route.query
         }
         if (!query?.search) delete query.search;
 
@@ -245,7 +245,7 @@ watch(() => route?.query, (value, oldValue) => {
         page.value = 1;
     }
     getData();
-}, {immediate: true, deep: true});
+}, { immediate: true, deep: true });
 
 const success = () => {
     Notice.success({
@@ -259,7 +259,7 @@ const error = () => {
     });
 };
 
-const handleSort = ({column, order}) => {
+const handleSort = ({ column, order }) => {
     const type = column.slot || column.key;
     const query = {
         ...route.query,
@@ -312,21 +312,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <Table
-        class="flex-1 mt-4"
-        ref="table"
-        max-height="650"
-        :columns="columns"
-        :data="data"
-        :loading="loading"
-        @on-sort-change="handleSort"
-    >
+    <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading"
+        @on-sort-change="handleSort">
         <template #stt="{ row }">
-            {{row?.stt}}
+            {{ row?.stt }}
         </template>
 
         <template #team="{ row }">
-            {{row?.fullname}}
+            {{ row?.fullname }}
         </template>
 
         <template #email="{ row }">
@@ -338,7 +331,7 @@ onUnmounted(() => {
         </template>
 
         <template #is_active="{ row }">
-            <span :style="{color: mappingUserStatus(row?.is_active).color}">
+            <span :style="{ color: mappingUserStatus(row?.is_active).color }">
                 {{ mappingUserStatus(row?.is_active).title }}
             </span>
         </template>
@@ -346,7 +339,7 @@ onUnmounted(() => {
         <template #date_joined="{ row }">
             <span>{{ formattedTime(row?.date_joined) }}</span>
         </template>
-        
+
         <template #last_login="{ row }">
             <span>{{ timeAgo2(row?.last_login) }}</span>
         </template>
@@ -356,7 +349,7 @@ onUnmounted(() => {
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
-                
+
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="activeItem(row)">
@@ -371,11 +364,7 @@ onUnmounted(() => {
         </template>
     </Table>
 
-    <Modal
-        v-model="modalEdit"
-        title="Chỉnh sửa thông tin người dùng"
-        :loading="loadingEdit"
-        width="800px"
+    <Modal v-model="modalEdit" title="Chỉnh sửa thông tin người dùng" :loading="loadingEdit" width="800px"
         @on-ok="okEditItem">
 
         <Form :model="formItem" label-position="top">
@@ -404,27 +393,20 @@ onUnmounted(() => {
             </FormItem>
 
             <FormItem label="Mô tả">
-                <Input v-model="formItem.description" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Mô tả"></Input>
+                <Input v-model="formItem.description" type="textarea" :autosize="{ minRows: 3, maxRows: 5 }"
+                    placeholder="Mô tả"></Input>
             </FormItem>
         </Form>
     </Modal>
 
-    <AdminManagerQuanLyNguoiDungCreateOrUpdateModal ref="modalUpdateRef"/>
+    <AdminManagerQuanLyNguoiDungCreateOrUpdateModal ref="modalUpdateRef" />
 
-    <Modal
-        v-model="modalActive"
-        title="Xác nhận"
-        :loading="loadingActive"
-        @on-ok="okActive">
+    <Modal v-model="modalActive" title="Xác nhận" :loading="loadingActive" @on-ok="okActive">
         <p>{{ `Bạn có muốn chắc chắn ${formItem?.is_active ? '"Hủy kích hoạt"' : '"Kích hoạt"'} người dùng này` }}</p>
     </Modal>
 
-    <Modal
-        v-model="modalChangePass"
-        title="Đổi mật khẩu"
-        :loading="loadingChangePass"
-        @on-ok="okChangePass">
-        
+    <Modal v-model="modalChangePass" title="Đổi mật khẩu" :loading="loadingChangePass" @on-ok="okChangePass">
+
         <Form :model="formItem" label-position="top">
             <FormItem label="Mật khẩu mới">
                 <Input v-model="formItem.password" placeholder="Password"></Input>
@@ -432,5 +414,6 @@ onUnmounted(() => {
         </Form>
     </Modal>
 
-    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
+    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total
+        @on-change="handleChangePage" />
 </template>

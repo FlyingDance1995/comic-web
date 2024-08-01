@@ -1,8 +1,8 @@
 <script setup>
 
-import {mappingTeamStatus, mappingTeamStatusTable, filterTeamStatus} from "~/utils/mapping.js";
-import {Table} from "view-ui-plus";
-import {optionsTeamStatus} from "~/constants/options.js";
+import { mappingTeamStatus, mappingTeamStatusTable, filterTeamStatus } from "~/utils/mapping.js";
+import { Table } from "view-ui-plus";
+import { optionsTeamStatus } from "~/constants/options.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -94,8 +94,8 @@ const getData = async () => {
     try {
         loading.value = true;
         let query = {
-          ordering: '-date_joined',
-          ...route.query
+            ordering: '-creation_time',
+            ...route.query
         }
         if (!query?.search) delete query.search;
 
@@ -224,7 +224,7 @@ const asyncOK = async () => {
     };
 };
 
-const handleSort = ({column, order}) => {
+const handleSort = ({ column, order }) => {
     const type = column.slot || column.key;
     const query = {
         ...route.query,
@@ -275,18 +275,18 @@ watch(() => route?.query, (value, oldValue) => {
 
 <template>
     <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading"
-           @on-sort-change="handleSort">
-    <template #stt="{ row }">
-            {{row?.stt}}
+        @on-sort-change="handleSort">
+        <template #stt="{ row }">
+            {{ row?.stt }}
         </template>
 
         <template #name="{ row }">
-            {{row?.name}}
+            {{ row?.name }}
         </template>
 
         <template #status="{ row }">
-            <span :style="{color: mappingTeamStatus(row?.status).color}">
-                {{mappingTeamStatus(row?.status).title}}
+            <span :style="{ color: mappingTeamStatus(row?.status).color }">
+                {{ mappingTeamStatus(row?.status).title }}
             </span>
         </template>
 
@@ -319,7 +319,7 @@ watch(() => route?.query, (value, oldValue) => {
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
-                
+
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
@@ -331,12 +331,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
     </Table>
 
-    <Modal
-        v-model="openModal"
-        title="Chỉnh sửa Team"
-        :loading="loadingModal"
-        width="800px"
-        @on-ok="asyncOK">
+    <Modal v-model="openModal" title="Chỉnh sửa Team" :loading="loadingModal" width="800px" @on-ok="asyncOK">
 
         <Form :model="formItem" label-position="top">
             <FormItem label="Tên nhóm">
@@ -344,28 +339,22 @@ watch(() => route?.query, (value, oldValue) => {
             </FormItem>
 
             <FormItem label="Thành viên">
-                <Input v-model="formItem.description1" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Thành viên"></Input>
+                <Input v-model="formItem.description1" type="textarea" :autosize="{ minRows: 3, maxRows: 5 }"
+                    placeholder="Thành viên"></Input>
             </FormItem>
 
             <FormItem label="Mô tả">
-                <Input v-model="formItem.description" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Mô tả"></Input>
+                <Input v-model="formItem.description" type="textarea" :autosize="{ minRows: 3, maxRows: 5 }"
+                    placeholder="Mô tả"></Input>
             </FormItem>
         </Form>
     </Modal>
 
-    <Modal
-        v-model="modalRemove"
-        title="Xác nhận"
-        :loading="loadingRemove"
-        @on-ok="okRemove">
+    <Modal v-model="modalRemove" title="Xác nhận" :loading="loadingRemove" @on-ok="okRemove">
         <p>Bạn có muốn chắc chắn xóa team này</p>
     </Modal>
 
-    <Modal
-        v-model="modalApproval"
-        title="Yêu cầu phê duyệt"
-        :loading="loadingApproval"
-        @on-ok="okApproval">
+    <Modal v-model="modalApproval" title="Yêu cầu phê duyệt" :loading="loadingApproval" @on-ok="okApproval">
         <p>Bạn có muốn phê duyệt team này</p>
     </Modal>
 
