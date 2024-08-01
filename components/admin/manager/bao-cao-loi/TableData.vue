@@ -132,7 +132,7 @@ const handledItem = (row) => {
     formItem.value = row;
 };
 
-const okHandled = async (row) => {
+const okHandled = async () => {
     try {
         loadingHandled.value = true;
         await useNuxtApp().$api(`admin/report-error/${formItem?.value?.id}`, {
@@ -142,18 +142,9 @@ const okHandled = async (row) => {
             }
         });
 
-        getData();
+        await getData();
         loadingHandled.value = false;
         modalHandled.value = false;
-        formItem.value = {
-            chapter_number: '',
-            story: '',
-            owner: {
-                fullname: ''
-            },
-            category: '',
-            detail: ''
-        };
     } catch (e) {
         console.log("error", e);
         loadingHandled.value = false;
@@ -165,7 +156,7 @@ const falsePositiveItem = (row) => {
     formItem.value = row;
 };
 
-const okApproval = async (row) => {
+const okApproval = async () => {
     try {
         loadingApproval.value = true;
         await useNuxtApp().$api(`admin/report-error/${formItem?.value?.id}`, {
@@ -175,18 +166,9 @@ const okApproval = async (row) => {
             }
         });
 
-        getData();
+        await getData();
         loadingApproval.value = false;
         modalApproval.value = false;
-        formItem.value = {
-            chapter_number: '',
-            story: '',
-            owner: {
-                fullname: ''
-            },
-            category: '',
-            detail: ''
-        }
     } catch (e) {
         console.log("error", e);
         loadingApproval.value = false;
@@ -310,7 +292,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
@@ -335,23 +317,23 @@ watch(() => route?.query, (value, oldValue) => {
 
         <Form :model="formItem" label-position="top">
             <FormItem label="Truyện">
-                <Input v-model="formItem.story" placeholder="Truyện"></Input>
+                <Input v-model="formItem.story" placeholder="Truyện" readonly></Input>
             </FormItem>
 
             <FormItem label="Chaper">
-                <Input v-model="formItem.chapter_number" placeholder="Chaper"></Input>
+                <Input v-model="formItem.chapter_number" placeholder="Chaper" readonly></Input>
             </FormItem>
 
             <FormItem label="Phân loại">
-                <Input v-model="formItem.category" placeholder="Phân loại"></Input>
+                <Input v-model="formItem.category" placeholder="Phân loại" readonly></Input>
             </FormItem>
 
             <FormItem label="Người báo">
-                <Input v-model="formItem.owner.fullname" placeholder="Người báo"></Input>
+                <Input v-model="formItem.owner.fullname" placeholder="Người báo" readonly></Input>
             </FormItem>
 
             <FormItem label="Chi tiết lỗi">
-                <Input v-model="formItem.detail" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Mô tả"></Input>
+                <Input v-model="formItem.detail" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Mô tả" readonly></Input>
             </FormItem>
         </Form>
     </Modal>

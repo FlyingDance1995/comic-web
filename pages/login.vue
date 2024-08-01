@@ -51,7 +51,7 @@ const validateField = () => {
 
     if (!form.email) {
         error.value['email'] = 'Email không được để trống';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
         error.value['email'] = 'Email không đúng định dạng';
     }
 

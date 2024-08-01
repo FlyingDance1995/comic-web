@@ -286,7 +286,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
@@ -304,25 +304,25 @@ watch(() => route?.query, (value, oldValue) => {
 
     <Modal
         v-model="openModal"
-        title="Chi tiết: Yêu cầu làm tác giả"
+        title="Yêu cầu làm tác giả"
         :loading="loadingModal"
         @on-ok="openModal = !openModal"
         width="800px">
 
         <Form :model="formItem" label-position="top">
             <FormItem label="SDT">
-                <Input v-model="formItem.sdt" placeholder="Link tác phẩm vi phạm"></Input>
+                <Input v-model="formItem.sdt" placeholder="Link tác phẩm vi phạm" readonly></Input>
             </FormItem>
 
             <FormItem label="Facebook">
-                <Input v-model="formItem.fb" placeholder="Link tác phẩm gốc"></Input>
+                <Input v-model="formItem.fb" placeholder="Link tác phẩm gốc" readonly></Input>
             </FormItem>
             <FormItem label="Lời nhắn">
-                <Input v-model="formItem.message" placeholder="Contact"></Input>
+                <Input v-model="formItem.message" placeholder="Contact" readonly></Input>
             </FormItem>
 
             <FormItem label="Người báo">
-                <Input v-model="formItem.owner.fullname" placeholder="Người báo"></Input>
+                <Input v-model="formItem.owner.fullname" placeholder="Người báo" readonly></Input>
             </FormItem>
         </Form>
     </Modal>

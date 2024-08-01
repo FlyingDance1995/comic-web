@@ -14,6 +14,7 @@ const formItem = reactive({
 });
 const previewImg = ref('');
 const loadingSelect = ref(false);
+const uploadRef = ref();
 
 const rules = {
     name: [
@@ -98,9 +99,8 @@ const open = async (data = null) => {
     await formRef.value.resetFields();
 
     setTimeout(() => {
-        const fileUpload = document.querySelector('.file-upload');
-        const preview = document.querySelector('.profile-pic');
-        if (fileUpload) fileUpload.value = null;
+        const previews = document.querySelectorAll('.profile-pic');
+        if (uploadRef.value) uploadRef.value.value = null;
 
         if (data) {
             dataEdit.value = data;
@@ -115,11 +115,19 @@ const open = async (data = null) => {
             formItem.name = data?.name;
             formItem.description = data?.description;
             previewImg.value = data?.avatar;
-            if (preview) preview.src = data?.avatar || '/no-image.png';
+            if (previews) {
+                previews.forEach(x => {
+                    x.src = data?.avatar || '/no-image.png';
+                })
+            }
         } else {
             dataEdit.value = null;
             previewImg.value = '/no-image.png';
-            if (preview) preview.src = '/no-image.png';
+            if (previews) {
+                previews.forEach(x => {
+                    x.src = data?.avatar || '/no-image.png';
+                })
+            }
         }
 
         loading.value = false;
@@ -132,17 +140,19 @@ const close = () => {
 }
 
 const onUpload = () => {
-    document.querySelector('.file-upload').click();
+    uploadRef.value.click();
 };
 
 const handleChangeAvatar = (event) => {
-    const preview = document.querySelector('.profile-pic');
+    const previews = document.querySelectorAll('.profile-pic');
 
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = (e) => {
-            preview.src = e.target.result;
+            previews.forEach(x => {
+                x.src = e.target.result;
+            })
         };
         reader.readAsDataURL(file);
         formItem.avatar = file;
@@ -169,7 +179,7 @@ defineExpose({
                         <div class="upload-button" @click="onUpload">
                             <i class="bx bx-cloud-upload"></i>
                         </div>
-                        <input class="file-upload" type="file" name="avatar" accept=".jpg, .jpeg, .gif, .png"
+                        <input ref="uploadRef" class="file-upload" type="file" name="avatar" accept=".jpg, .jpeg, .gif, .png"
                                @change="handleChangeAvatar">
                     </div>
                 </Col>

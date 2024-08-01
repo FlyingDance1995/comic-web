@@ -129,7 +129,7 @@ const handledItem = (row) => {
     formItem.value = row;
 };
 
-const okHandled = async (row) => {
+const okHandled = async () => {
     try {
         loadingHandled.value = true;
         await useNuxtApp().$api(`admin/report-license/${formItem?.value?.id}`, {
@@ -139,18 +139,9 @@ const okHandled = async (row) => {
             }
         });
 
-        getData();
+        await getData();
         loadingHandled.value = false;
         modalHandled.value = false;
-        formItem.value = {
-            chapter_number: '',
-            story: '',
-            owner: {
-                fullname: ''
-            },
-            category: '',
-            detail: ''
-        };
     } catch (e) {
         console.log("error", e);
         loadingHandled.value = false;
@@ -162,7 +153,7 @@ const falsePositiveItem = (row) => {
     formItem.value = row;
 };
 
-const okApproval = async (row) => {
+const okApproval = async () => {
     try {
         loadingApproval.value = true;
         await useNuxtApp().$api(`admin/report-license/${formItem?.value?.id}`, {
@@ -172,18 +163,9 @@ const okApproval = async (row) => {
             }
         });
 
-        getData();
+        await getData();
         loadingApproval.value = false;
         modalApproval.value = false;
-        formItem.value = {
-            chapter_number: '',
-            story: '',
-            owner: {
-                fullname: ''
-            },
-            category: '',
-            detail: ''
-        }
     } catch (e) {
         console.log("error", e);
         loadingApproval.value = false;
@@ -311,7 +293,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
@@ -329,25 +311,25 @@ watch(() => route?.query, (value, oldValue) => {
 
     <Modal
         v-model="openModal"
-        title="Chi tiết Báo cáo bản quyền"
+        title="Báo cáo bản quyền"
         :loading="loadingModal"
         @on-ok="openModal = !openModal"
         width="800px">
 
         <Form :model="formItem" label-position="top">
             <FormItem label="Link tác phẩm vi phạm">
-                <Input v-model="formItem.link_violate" placeholder="Link tác phẩm vi phạm"></Input>
+                <Input v-model="formItem.link_violate" placeholder="Link tác phẩm vi phạm" readonly></Input>
             </FormItem>
 
             <FormItem label="Link tác phẩm gốc">
-                <Input v-model="formItem.link_story" placeholder="Link tác phẩm gốc"></Input>
+                <Input v-model="formItem.link_story" placeholder="Link tác phẩm gốc" readonly></Input>
             </FormItem>
             <FormItem label="Contact email">
-                <Input v-model="formItem.contact" placeholder="Contact"></Input>
+                <Input v-model="formItem.contact" placeholder="Contact" readonly></Input>
             </FormItem>
 
             <FormItem label="Người báo">
-                <Input v-model="formItem.owner.fullname" placeholder="Người báo"></Input>
+                <Input v-model="formItem.owner.fullname" placeholder="Người báo" readonly></Input>
             </FormItem>
         </Form>
     </Modal>

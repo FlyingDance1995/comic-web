@@ -164,11 +164,11 @@ const okActive = async (row) => {
 };
 
 const changePassItem = (row) => {
-    modalChangePass.value = true;
     formItem.value = row;
+    modalChangePass.value = true;
 };
 
-const okChangePass = async (row) => {
+const okChangePass = async () => {
     try {
         loadingChangePass.value = true;
         await useNuxtApp().$api(`admin/users/${formItem?.value?.id}`, {
@@ -180,32 +180,17 @@ const okChangePass = async (row) => {
 
         loadingChangePass.value = false;
         modalChangePass.value = false;
-        formItem.value = {
-            fullname: "",
-            avatar: "",
-            role: "",
-            type: "",
-            last_chapter: "",
-            name: "",
-            description: "",
-            category: []
-        };
-        success()
+        success();
     } catch (e) {
         console.log("error", e);
         loadingChangePass.value = false;
-        error()
+        error();
     }
 };
 
-const editItem = () => {
-    modalUpdateRef.value.open();
+const editItem = (row) => {
+    modalUpdateRef.value.open(row);
 };
-
-// const editItem = (row) => {
-//     modalEdit.value = true;
-//     formItem.value = row;
-// };
 
 const okEditItem = async () => {
     try {
@@ -236,7 +221,9 @@ const okEditItem = async () => {
     } catch (e) {
         console.log("error", e);
         loadingEdit.value = false;
-        error()
+        Notice.error({
+            title: 'Vui lòng thử lại với mật khẩu khác mạnh hơn',
+        });
     }
 };
 
@@ -345,7 +332,7 @@ onUnmounted(() => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
@@ -408,8 +395,8 @@ onUnmounted(() => {
     <Modal v-model="modalChangePass" title="Đổi mật khẩu" :loading="loadingChangePass" @on-ok="okChangePass">
 
         <Form :model="formItem" label-position="top">
-            <FormItem label="Mật khẩu mới">
-                <Input v-model="formItem.password" placeholder="Password"></Input>
+            <FormItem label="Mật khẩu mới" >
+                <Input v-model="formItem.password" type="password" password placeholder="Password"></Input>
             </FormItem>
         </Form>
     </Modal>

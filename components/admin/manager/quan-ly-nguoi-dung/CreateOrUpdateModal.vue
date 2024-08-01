@@ -7,14 +7,17 @@ const loading = ref(false);
 const formRef = ref();
 const dataEdit = ref(null);
 const formItem = reactive({
-    name: "",
+    fullname: "",
     email: "",
     contact: "",
     role: "",
     fb: "",
     description: "",
+    avatar: ""
 });
 const previewImg = ref('');
+const previewImgRef = ref();
+const uploadRef = ref();
 
 const validateSelectRole = (rule, value, callback) => {
     if (!value || value?.length === 0) {
@@ -24,20 +27,14 @@ const validateSelectRole = (rule, value, callback) => {
 };
 
 const rules = {
-    name: [
+    fullname: [
         { required: true, message: 'Vui lòng nhập tên người dùng', trigger: 'blur' }
     ],
     email: [
         { required: true, message: 'Vui lòng nhập email', trigger: 'blur' }
     ],
-    contact: [
-        { required: true, message: 'Vui lòng nhập thông tin liên hệ', trigger: 'blur' }
-    ],
     role: [
         { required: true, validator: validateSelectRole, trigger: 'change' }
-    ],
-    fb: [
-        { required: true, message: 'Vui lòng nhập Facebook', trigger: 'blur' }
     ],
 };
 
@@ -47,13 +44,12 @@ const submit = () => {
             try {
                 loading.value = true;
                 const formData = new FormData();
-                formData.append('name', formItem.name);
+                formData.append('fullname', formItem.fullname);
                 formData.append('email', formItem.email);
                 formData.append('contact', formItem.contact);
                 formData.append('role', formItem.role);
                 formData.append('fb', formItem.fb);
                 formData.append('description', formItem.description);
-
                 if (formItem.avatar && dataEdit.value) {
                     formData.append('avatar', formItem.avatar);
                 } else if (!dataEdit.value) {
@@ -66,7 +62,7 @@ const submit = () => {
                         formData.append('avatar', formItem.avatar);
                     }
                 }
-                await useNuxtApp().$api(dataEdit.value ? `/report-user/${dataEdit?.value?.id}` : '/report-user', {
+                await useNuxtApp().$api(dataEdit.value ? `/admin/users/${dataEdit?.value?.id}` : '/admin/users', {
                     method: dataEdit.value ? 'PATCH' : 'POST',
                     body: formData
                 });
@@ -91,24 +87,31 @@ const open = async (data = null) => {
     await formRef.value.resetFields();
 
     setTimeout(() => {
-        const fileUpload = document.querySelector('.file-upload');
-        const preview = document.querySelector('.profile-pic');
-        if (fileUpload) fileUpload.value = null;
+        const previews = document.querySelectorAll('.profile-pic-1');
+        if (uploadRef.value) uploadRef.value.value = null;
 
         if (data) {
             dataEdit.value = data;
-            formItem.name = data?.name;
+            formItem.fullname = data?.fullname;
             formItem.email = data?.email;
             formItem.contact = data?.contact;
             formItem.role = data?.role;
             formItem.fb = data?.fb;
             formItem.description = data?.description;
             previewImg.value = data?.avatar;
-            if (preview) preview.src = data?.avatar || '/no-image.png';
+            if (previews) {
+                previews.forEach(x => {
+                    x.src = data?.avatar || '/no-image.png';
+                })
+            }
         } else {
             dataEdit.value = null;
             previewImg.value = '/no-image.png';
-            if (preview) preview.src = '/no-image.png';
+            if (previews) {
+                previews.forEach(x => {
+                    x.src = data?.avatar || '/no-image.png';
+                })
+            }
         }
 
         loading.value = false;
@@ -121,17 +124,19 @@ const close = () => {
 }
 
 const onUpload = () => {
-    document.querySelector('.file-upload').click();
+    uploadRef.value.click();
 };
 
 const handleChangeAvatar = (event) => {
-    const preview = document.querySelector('.profile-pic');
+    const previews = document.querySelectorAll('.profile-pic-1');
 
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = (e) => {
-            preview.src = e.target.result;
+            previews.forEach(x => {
+                x.src = e.target.result;
+            })
         };
         reader.readAsDataURL(file);
         formItem.avatar = file;
@@ -152,23 +157,24 @@ defineExpose({
             <Row :gutter="20">
                 <Col flex="200px">
                     <div class="avatar-wrapper mb-3">
-                        <img class="profile-pic" width="150" :src="previewImg || ''" alt=""
+                        <img class="profile-pic-1" width="150" :src="previewImg || ''" alt=""
                              onerror="this.src='/no-image.png'">
                         <div class="upload-button" @click="onUpload">
                             <i class="bx bx-cloud-upload"></i>
                         </div>
-                        <input class="file-upload" type="file" name="avatar" accept=".jpg, .jpeg, .gif, .png"
+                        <input ref="uploadRef"
+                               class="file-upload-1" type="file" name="avatar" accept=".jpg, .jpeg, .gif, .png"
                                @change="handleChangeAvatar">
                     </div>
                 </Col>
 
                 <Col flex="auto">
-                    <FormItem label="Tên" prop="name">
-                        <Input v-model="formItem.name" placeholder="Tên"/>
+                    <FormItem label="Tên" prop="fullname">
+                        <Input v-model="formItem.fullname" placeholder="Tên"/>
                     </FormItem>
 
                     <FormItem label="Email" prop="email">
-                        <Input v-model="formItem.email" placeholder="Email"/>
+                        <Input v-model="formItem.email" placeholder="Email" disabled/>
                     </FormItem>
 
                     <FormItem label="Contact" prop="contact">
@@ -228,17 +234,17 @@ defineExpose({
     cursor: pointer;
 }
 
-.avatar-wrapper:hover .profile-pic {
+.avatar-wrapper:hover .profile-pic-1 {
     opacity: .5;
 }
 
-.avatar-wrapper .profile-pic {
+.avatar-wrapper .profile-pic-1 {
     height: 100%;
     width: 100%;
     transition: all .3s ease;
 }
 
-.avatar-wrapper .profile-pic:after {
+.avatar-wrapper .profile-pic-1:after {
     font-family: 'boxicons' !important;
     content: "\e9c9";
     top: 0;

@@ -146,7 +146,7 @@ const approvalItem = (row) => {
     formItem.value = row;
 };
 
-const okApproval = async (row) => {
+const okApproval = async () => {
     try {
         loadingApproval.value = true;
         await useNuxtApp().$api(`admin/affiliate/${formItem?.value?.id}`, {
@@ -156,16 +156,9 @@ const okApproval = async (row) => {
             }
         });
 
-        getData();
+        await getData();
         loadingApproval.value = false;
         modalApproval.value = false;
-        formItem.value = {
-            type: "",
-            last_chapter: "",
-            name: "",
-            description: "",
-            category: []
-        };
     } catch (e) {
         console.log("error", e);
         loadingApproval.value = false;
@@ -173,33 +166,7 @@ const okApproval = async (row) => {
 };
 
 const editItem = (row) => {
-    modalUpdateRef.value.open();
-
-    // openModal.value = true;
-    // formItem.value = row;
-};
-
-const asyncOK = async () => {
-    loadingModal.value = true;
-
-    await useNuxtApp().$api(`admin/affiliate/${formItem?.value?.id}`, {
-        method: "PATCH",
-        body: {
-            "link": formItem?.value?.link,
-            "name": formItem?.value?.name,
-        }
-    });
-
-    getData();
-    openModal.value = false;
-    loadingModal.value = false;
-    formItem.value = {
-        type: "",
-        last_chapter: "",
-        name: "",
-        description: "",
-        category: []
-    };
+    modalUpdateRef.value.open(row);
 };
 
 const handleSort = ({column, order}) => {
@@ -296,7 +263,7 @@ onUnmounted(() => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>

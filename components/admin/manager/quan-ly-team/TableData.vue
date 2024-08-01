@@ -164,11 +164,11 @@ const okRemove = async (row) => {
 };
 
 const approvalItem = (row) => {
-    modalApproval.value = true;
     formItem.value = row;
+    modalApproval.value = true;
 };
 
-const okApproval = async (row) => {
+const okApproval = async () => {
     try {
         loadingApproval.value = true;
         await useNuxtApp().$api(`admin/teams/${formItem?.value?.slug}`, {
@@ -178,16 +178,9 @@ const okApproval = async (row) => {
             }
         });
 
-        getData();
+        await getData();
         loadingApproval.value = false;
         modalApproval.value = false;
-        formItem.value = {
-            type: "",
-            last_chapter: "",
-            name: "",
-            description: "",
-            category: []
-        };
     } catch (e) {
         console.log("error", e);
         loadingApproval.value = false;
@@ -315,7 +308,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
@@ -324,7 +317,7 @@ watch(() => route?.query, (value, oldValue) => {
                     <DropdownMenu>
                         <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
                         <DropdownItem @click="approvalItem(row)">Phê duyệt</DropdownItem>
-                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
+<!--                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>-->
                     </DropdownMenu>
                 </template>
             </Dropdown>

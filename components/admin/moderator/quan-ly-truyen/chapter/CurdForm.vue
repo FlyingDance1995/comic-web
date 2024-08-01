@@ -148,6 +148,7 @@ const submit = async () => {
 watch(status, () => {
     if (status.value === 'add') {
         formRef.value.resetFields();
+        formItem.content = "<p></p>";
         loading.value = false;
     }
 });
@@ -158,7 +159,7 @@ watch(() => props.dataDetail, () => {
 
         formItem.name = props.dataDetail?.name;
         formItem.type = props.dataDetail?.type;
-        formItem.content = props.dataDetail?.content;
+        formItem.content = props.dataDetail?.content || "<p></p>";
         formItem.chapter_number = props.dataDetail?.chapter_number;
     }
 }, {

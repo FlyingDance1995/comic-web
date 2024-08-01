@@ -9,7 +9,6 @@ const formItem = reactive({
     name: "",
     link: "",
 });
-const previewImg = ref('');
 
 const rules = {
     name: [
@@ -25,13 +24,11 @@ const submit = () => {
         if (valid) {
             try {
                 loading.value = true;
-                const formData = new FormData();
-                formData.append('name', formItem.name);
-                formData.append('link', formItem.link);
-
-                await useNuxtApp().$api(dataEdit.value ? `/affiliate/${dataEdit?.value?.id}` : '/affiliate', {
+                await useNuxtApp().$api(dataEdit.value ? `/admin/affiliate/${dataEdit?.value?.id}` : '/admin/affiliate', {
                     method: dataEdit.value ? 'PATCH' : 'POST',
-                    body: formData
+                    body: {
+                        ...formItem
+                    }
                 });
                 useNuxtApp().$emitter.emit('add-affiliate');
                 Notice.success({
@@ -55,6 +52,7 @@ const open = async (data = null) => {
 
     setTimeout(() => {
         if (data) {
+            dataEdit.value = data;
             formItem.name = data?.name;
             formItem.link = data?.link;
         } else {
@@ -83,11 +81,11 @@ defineExpose({
         <Form ref="formRef" :model="formItem" :rules="rules" label-position="top">
             <Row :gutter="20">
                 <Col flex="auto">
-                    <FormItem label="Tên">
+                    <FormItem label="Tên" prop="name">
                         <Input v-model="formItem.name" placeholder="Tên"></Input>
                     </FormItem>
 
-                    <FormItem label="Link">
+                    <FormItem label="Link" prop="link">
                         <Input v-model="formItem.link" placeholder="Link"></Input>
                     </FormItem>
                 </Col>

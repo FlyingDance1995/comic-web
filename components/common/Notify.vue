@@ -122,13 +122,15 @@ watch(token, () => {
 
 onMounted(() => {
     const stn = sentinel.value;
-    const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && notify.value?.next) {
-            getNotify();
-        }
-    });
+    if (stn instanceof Element) {
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && notify.value?.next) {
+                getNotify();
+            }
+        });
 
-    observer.observe(stn);
+        observer.observe(stn);
+    }
 });
 </script>
 
@@ -166,7 +168,7 @@ onMounted(() => {
                 <NuxtLink v-for="item in notify?.results"
                           :key="item?.id"
                           class="dropdown-item position-relative"
-                          :to="`/${item?.target?.story}`"
+                          :to="`/${item?.target?.story || ''}`"
                           @click="handleUnread(item)">
                     <div class="d-flex align-items-center">
                         <div class="user-online">

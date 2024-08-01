@@ -5,7 +5,7 @@ import {
     filterStoryStatus, filterStoryType, mappingStoryRecommendedTable,
     filterStoryRecommended, mappingStoryType
 } from "~/utils/mapping.js";
-import {Table} from "view-ui-plus";
+import {Notice, Table} from "view-ui-plus";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -99,7 +99,6 @@ const formItem = ref({
 const modalRemove = ref(false);
 const loadingRemove = ref(false);
 
-
 const getData = async () => {
     try {
         loading.value = true;
@@ -149,35 +148,66 @@ const removeItem = async (row) => {
     formItem.value = row;
 };
 
-const okRemove = async (row) => {
+const okRemove = async () => {
     try {
         loadingRemove.value = true;
         await useNuxtApp().$api(`admin/story/${formItem?.value?.slug}`, {
             method: "DELETE",
         });
 
-        getData();
+        await getData();
         loadingRemove.value = false;
         modalRemove.value = false;
-        formItem.value = {
-            type: "",
-            last_chapter: "",
-            name: "",
-            description: "",
-            category: []
-        };
     } catch (e) {
         console.log("error", e);
         loadingRemove.value = false;
     }
 };
 
-const approvalItem = (row) => {
+const approvalItem = async (row) => {
+    try {
+        loading.value = true;
+        await useNuxtApp().$api(`admin/story/${row?.slug}`, {
+            method: "PATCH",
+            body: {
+                status: "processing"
+            }
+        });
 
+        await getData();
+        Notice.success({
+            title: 'Phê duyệt thành công',
+        });
+    } catch (e) {
+        loading.value = false;
+        Notice.error({
+            title: 'Phê duyệt thất bại',
+        });
+        console.log("error", e);
+    }
 };
 
-const deputeItem = (row) => {
+const deputeItem = async (row) => {
+    try {
+        loading.value = true;
+        await useNuxtApp().$api(`admin/story/${row?.slug}`, {
+            method: "PATCH",
+            body: {
+                recommended: true
+            }
+        });
 
+        await getData();
+        Notice.success({
+            title: 'Đề cử thành công',
+        });
+    } catch (e) {
+        loading.value = false;
+        Notice.error({
+            title: 'Đề cử thất bại',
+        });
+        console.log("error", e);
+    }
 };
 
 const editItem = (row) => {
@@ -187,7 +217,6 @@ const editItem = (row) => {
 
 const asyncOK = () => {
     loadingModal.value = true;
-
 
     getData();
     openModal.value = false;
@@ -310,7 +339,6 @@ watch(() => route?.query, (value, oldValue) => {
     </Table>
 
     <Modal v-model="openModal" title="Chỉnh sửa truyện" :loading="loadingModal" width="800px" @on-ok="asyncOK">
-
         <Form :model="formItem" label-position="top">
             <FormItem label="Loại">
                 <Select v-model="formItem.type">
