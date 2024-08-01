@@ -1,7 +1,20 @@
 <script setup>
 import {userDarkMode} from "@/composables/state";
+import {useMenuStore} from "~/store/menu.js";
+import {useConfigStore} from "~/store/config.js";
+
+const menuStore = useMenuStore();
+const configStore = useConfigStore();
 
 const {isDarkMode, toggleDarkMode} = userDarkMode();
+
+const handleClickMenu = () => {
+    menuStore.setMenu(true);
+};
+
+const openSearchModal = () => {
+    configStore.setSearchModal(true);
+};
 </script>
 
 <template>
@@ -9,43 +22,43 @@ const {isDarkMode, toggleDarkMode} = userDarkMode();
         <div class="topbar d-flex align-items-center">
             <nav class="navbar navbar-expand gap-3 container">
                 <div class="mobile-toggle-menu d-block d-lg-none" data-bs-toggle="offcanvas"
-                     data-bs-target="#offcanvasNavbar">
+                     data-bs-target="#offcanvasNavbar" @click="handleClickMenu">
                     <i class="bx bx-menu"></i>
                 </div>
 
                 <div class="topbar-logo-header d-flex">
                     <div class="">
-                        <a href="/">
-                            <img src="https://monkeyd.vn/images/logo/Logo-MonkeyD.png" class="logo-icon"
+                        <NuxtLink to="/">
+                            <img src="/images/logo/Logo-MonkeyD.png" class="logo-icon"
                                  alt="MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024"
                                  width="120" height="30">
-                        </a>
+                        </NuxtLink>
                     </div>
                 </div>
 
                 <div class="search-bar d-lg-block d-none">
                     <div class="position-relative popup-search w-100">
-                        <form action="https://monkeyd.vn/tim-kiem" method="GET">
+                        <form action="/tim-kiem" method="GET">
                             <input class="form-control search-input form-control-lg ps-5" type="search"
                                    placeholder="Tìm truyện" name="search" value="" id="searchInputPC"
                                    style="max-height: 40px !important; min-height: inherit !important;">
                             <span
                                 class="position-absolute top-50 search-show ms-3 translate-middle-y start-0 top-50 fs-4">
-                                        <i class="bx bx-search"></i>
-                                    </span>
+                                <i class="bx bx-search"></i>
+                            </span>
                         </form>
 
                         <ul id="search-autocomplete">
                             <li class="d-flex justify-content-start align-items-center mb-2 border-bottom">
-                                <a href="/trang-lan" class="m-2">
+                                <NuxtLink to="/trang-lan" class="m-2">
                                     <img src=""
                                          alt="TRĂNG LẶN"
                                          class="img-search">
-                                </a>
+                                </NuxtLink>
 
-                                <a href="/trang-lan" class="m-2 search-item-title">
+                                <NuxtLink to="/trang-lan" class="m-2 search-item-title">
                                     TRĂNG LẶN
-                                </a>
+                                </NuxtLink>
                             </li>
                         </ul>
                     </div>
@@ -54,7 +67,8 @@ const {isDarkMode, toggleDarkMode} = userDarkMode();
                 <div class="top-menu ms-auto">
                     <ul class="navbar-nav align-items-center gap-1">
                         <li class="nav-item mobile-search-icon d-flex d-lg-none" data-bs-toggle="modal"
-                            data-bs-target="#SearchModal">
+                            data-bs-target="#SearchModal"
+                            @click="openSearchModal">
                             <a class="nav-link" href="javascript:;">
                                 <i class="bx bx-search"></i>
                             </a>
@@ -66,17 +80,18 @@ const {isDarkMode, toggleDarkMode} = userDarkMode();
                                 <i v-else class="bx bx-moon"></i>
                             </a>
                         </li>
+
+                        <ClientOnly>
+                            <CommonNotify/>
+                        </ClientOnly>
                     </ul>
                 </div>
 
-                <div class="d-flex justify-content-between">
-                    <a href="https://monkeyd.vn/login" class="btn btn-sm btn-primary" style="margin-right: 5px">
-                        Đăng nhập</a>
-                    <a href="https://monkeyd.vn/tao-tai-khoan" class="btn btn-sm btn-primary">
-                        Đăng ký
-                    </a>
-                </div>
+                <ClientOnly>
+                    <CommonUserBox/>
+                </ClientOnly>
             </nav>
         </div>
     </header>
 </template>
+

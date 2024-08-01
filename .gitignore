@@ -17,6 +17,10 @@ logs
 .DS_Store
 .fleet
 .idea
+<<<<<<< HEAD
 .vercel
+=======
+package-lock.json
+>>>>>>> d15829fe9ef1089ec21c63ca111492085252cfb1
 # Local env files
 package-lock.json

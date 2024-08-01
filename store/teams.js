@@ -11,8 +11,14 @@ export const useTeamStore = defineStore('teams', {
         async fetchTeams(params) {
             this.loading = true;
             try {
-                const { data: teams } = await useAPI('/teams', params);
-                this.$state.teams = teams.value.results;
+                const { data: teams } = await useAPI('/teams', {
+                    query: {
+                        size: 1000,
+                        ...params
+                    }
+                });
+                
+                this.$state.teams = teams?.value?.results;
             } catch (error) {
                 this.error = error;
             } finally {

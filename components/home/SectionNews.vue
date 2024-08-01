@@ -5,9 +5,10 @@ const storyStore = useStoryStore();
 const storyStore1 = useStoryStore1();
 
 const {storys, total} = storeToRefs(storyStore);
-const {storys1, total1} = storeToRefs(storyStore1);
+const {storys1} = storeToRefs(storyStore1);
 
 const page = 1;
+const size = 20;
 </script>
 
 <template>
@@ -20,14 +21,16 @@ const page = 1;
                         <hr>
                         <div id="new-story">
                             <div class="row product-grid">
-                                <HomeProductItem v-for="(item, index) in storys"
-                                                 :key="index"
-                                                 :item="item"/>
+                                <LazyHomeProductItem v-for="(item, index) in storys"
+                                                     :key="index"
+                                                     :item="item"/>
                             </div>
 
                             <div class="text-center mb-4 pagination justify-content-center">
                                 <!-- Pagination -->
-                                <HomePagination :total="total" :page="page" :size="20"/>
+                                <HomePagination :total="total"
+                                                :page="page"
+                                                :size="size"/>
                                 <!-- Pagination -->
                             </div>
                         </div>
@@ -39,22 +42,22 @@ const page = 1;
                         <div class="total-item-show position-relative">
                             <h5 class="mb-0 text-uppercase">Truyện đã hoàn thành</h5>
                             <hr>
-                            <a href="/truyen-hoan-thanh"
-                               class="read-more-story btn btn-outline-primary radius-30 btn-sm">Xem thêm</a>
+                            <NuxtLink to="/truyen-hoan-thanh"
+                               class="read-more-story btn btn-outline-primary radius-30 btn-sm">Xem thêm</NuxtLink>
                         </div>
 
                         <div id="new-story">
                             <div class="row product-grid">
-                                <HomeProductItem v-for="(item, index) in storys1"
-                                                 :key="index"
-                                                 :item="item"/>
+                                <LazyHomeProductItem v-for="(item, index) in storys1"
+                                                     :key="index"
+                                                     :item="item"/>
                             </div>
 
                             <div class="text-center mb-4 pagination justify-content-center">
-                                <a href="/truyen-hoan-thanh"
+                                <NuxtLink to="/truyen-hoan-thanh"
                                    class="btn btn-sm btn-primary">
                                     Xem thêm
-                                </a>
+                                </NuxtLink>
                             </div>
                         </div>
                     </div>

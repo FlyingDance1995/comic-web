@@ -4,5 +4,5 @@ const config = useRuntimeConfig()
 </script>
 
 <template>
-
+    <FinishStoryContent/>
 </template>

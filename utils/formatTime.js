@@ -1,13 +1,31 @@
 import moment from "moment/moment";
+import 'moment/locale/vi';
+
+moment.locale('vi');
+
+export const timeAgo = (timestamp) => {
+    if (!timestamp) return "";
+    return moment.unix(timestamp).fromNow().replace('tới', 'trước');
+}
+
+export const timeAgo2 = (timestamp) => {
+    if (!timestamp) return "";
+    return moment(timestamp).fromNow().replace('tới', 'trước');
+}
 
 export const formattedDate = (value) => {
     if (!value) return ""
-    return moment(value * 1000).format('hh:mm MM/DD/YYYY')
+    return moment(value * 1000).format('HH:mm DD/MM/YYYY')
 };
 
-export const formattedDateTour = (value) => {
+export const formattedFullDate = (value) => {
     if (!value) return ""
-    return moment(value).format('DD/MM/YYYY HH:mm:ss')
+    return moment(value * 1000).format('YYYY-MM-DD HH:mm:ss')
+};
+
+export const formattedTime = (value) => {
+    if (!value) return ""
+    return moment(value).format('HH:mm DD/MM/YYYY')
 };
 
 export const formatTimeVPoster = (data) => {

@@ -1,4 +1,6 @@
 <script setup>
+import {useMenuStore} from "~/store/menu.js";
+
 useSchemaOrg([
     {
         "@context": "http://schema.org",
@@ -19,32 +21,24 @@ useSchemaOrg([
         "sameAs": ["https://www.facebook.com/fanpage/"],
         "@id": "#organization",
         "name": "MonkeyD",
-        "logo": "https://monkeyd.vn/images/logo/Logo-MonkeyD.png"
+        "logo": "/images/logo/Logo-MonkeyD.png"
     }
-])
-
-import menu from "@/constants/menu.js";
+]);
 
 const route = useRoute();
+const menuStore = useMenuStore();
 
-const tabValue = ref("/");
-
-watch(() => route.path, () => {
-    if (route?.path) {
-        menu.forEach((item) => {
-            if (route.path.includes(item.path)) {
-                tabValue.value = item.path;
-            }
-        });
-    }
-}, {immediate: true, deep: true});
+const openMenu = computed(() => menuStore.$state.open);
 </script>
 
 <template>
     <!--ads-->
-    <CommonAffLayer/>
+    <ClientOnly>
+        <CommonAffLayer/>
+    </ClientOnly>
     <!--wrapper-->
-    <div class="wrapper">
+    <div class="wrapper"
+         :class="openMenu ? 'toggled' : ''">
         <!--start header wrapper-->
         <div class="header-wrapper">
             <!--start header -->
@@ -61,20 +55,30 @@ watch(() => route.path, () => {
                 <slot/>
             </div>
         </div>
-        <!-- search modal -->
-        <CommonSearchModal/>
-        <!-- end search modal -->
-        <!-- Report Modal -->
-        <CommonReportModal/>
-        <!--start overlay-->
-        <CommonOverlay/>
-        <!--end overlay-->
-        <!--Start Back To Top Button-->
-        <CommonBackToTop/>
+        <ClientOnly>
+            <!-- search modal -->
+            <CommonSearchModal/>
+            <!-- end search modal -->
+            <!-- Report License Modal -->
+            <CommonReportLicenseModal/>
+            <!-- Report Error Modal -->
+            <CommonReportErrorModal/>
+            <!--start overlay-->
+            <CommonOverlay/>
+            <!--end overlay-->
+            <!--Start Back To Top Button-->
+            <CommonBackToTop/>
+        </ClientOnly>
         <!--End Back To Top Button-->
         <CommonFooter/>
     </div>
 
-    <!-- loading -->
-    <CommonLoadingModal/>
+    <ClientOnly>
+        <!-- loading -->
+        <CommonLoadingModal/>
+        <!-- swal -->
+        <CommonSwal/>
+        <!-- modal backdrop-->
+        <CommonBackDropModal/>
+    </ClientOnly>
 </template>

@@ -1,9 +1,34 @@
 <script setup>
 import {useStoryStore} from '@/store/storys'
 
-const storyStore = useStoryStore()
+const storyStore = useStoryStore();
 
-const {storys, loading, error} = storeToRefs(storyStore);
+const {storys} = storeToRefs(storyStore);
+const loading = ref(true);
+
+onMounted(() => {
+    $(document).ready(function () {
+        $(".recommendedStory").owlCarousel({
+            items: 2,
+            margin: 40,
+            nav: false,
+            dots: true,
+            autoplay: true,
+            smartSpeed: 500,
+            autoplayTimeout: 3000,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                900: {
+                    items: 2
+                },
+            }
+        });
+        loading.value = false;
+    });
+});
 </script>
 
 <template>
@@ -19,37 +44,23 @@ const {storys, loading, error} = storeToRefs(storyStore);
                     <div class="d-lg-d-flex align-items-center gap-3">
                         <div class="recommendedStory owl-carousel owl-theme owl-loaded owl-drag">
                             <div class="owl-stage-outer">
-                                <div class="owl-stage"
-                                     style="transform: translate3d(0px, 0px, 0px); transition: all 0.25s ease 0s; width: 1956px;">
-                                    <HomeOwlItem :data="storys.slice(0, 3)" active/>
+                                <div v-show="!loading"
+                                     class="owl-stage">
+                                    <HomeOwlItem :data="storys?.slice(0, 3)" active/>
 
-                                    <HomeOwlItem :data="storys.slice(3, 6)" active/>
+                                    <HomeOwlItem :data="storys?.slice(3, 6)" active/>
 
-                                    <HomeOwlItem :data="storys.slice(6, 9)"/>
+                                    <HomeOwlItem :data="storys?.slice(6, 9)"/>
                                 </div>
-                            </div>
-
-                            <div class="owl-nav disabled">
-                                <button type="button" role="presentation" class="owl-prev">
-                                    <span aria-label="Previous">‹</span>
-                                </button>
-                                <button type="button" role="presentation" class="owl-next">
-                                    <span aria-label="Next">›</span>
-                                </button>
-                            </div>
-
-                            <div class="owl-dots">
-                                <button role="button" class="owl-dot active">
-                                    <span></span>
-                                </button>
-                                <button role="button" class="owl-dot">
-                                    <span></span>
-                                </button>
+                                <div v-show="loading" style="text-align: center">
+                                    Loading...
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+<!--        <HomeSectionHotStories/>-->
     </section>
 </template>

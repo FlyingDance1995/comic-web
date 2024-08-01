@@ -5,25 +5,27 @@ export default defineNuxtPlugin(() => {
         baseURL: runtimeConfig.public.apiEndpoint,
         // @ts-ignore
         onRequest({ request, options, error }) {
-            // const access_token = localStorage.getItem('access_token');
-            const access_token = null;
+            let access_token = null;
+            if (!process.server) {
+                access_token = localStorage.getItem('token');
+            }
 
-            if (access_token) {
+            if (access_token && access_token !== 'null') {
                 const headers = options.headers ||= {};
                 if (Array.isArray(headers)) {
-                    headers.push(['Authorization', `${access_token}`]);
+                    headers.push(['Authorization', `Token ${access_token}`]);
                 } else if (headers instanceof Headers) {
-                    headers.set('Authorization', `${access_token}`);
+                    headers.set('Authorization', `Token ${access_token}`);
                 } else {
-                    headers.Authorization = `${access_token}`;
+                    headers.Authorization = `Token ${access_token}`;
                 }
             }
         },
         // @ts-ignore
         async onResponseError({ response }) {
-            if (response.status === 401) {
-                await navigateTo('/login');
-            }
+            // if (response.status === 401) {
+            //     await navigateTo('/login');
+            // }
         }
     })
 

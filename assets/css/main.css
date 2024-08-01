@@ -1,4 +1,5 @@
-@import "app.css";
+/*@import "app.css";*/
+@import "app2.css";
 @import 'boxicons/css/boxicons.min.css';
 
 ::-webkit-scrollbar {
@@ -13,4 +14,48 @@
 
 ::-webkit-scrollbar-track {
     background-color: #ffffff;
+}
+
+.ivu-layout-sider-trigger {
+    background: #F0F1FA;
+}
+
+.ivu-icon-ios-arrow-back:before {
+    color: black;
+}
+
+.ivu-menu-vertical.ivu-menu-light:after, .ivu-menu-horizontal.ivu-menu-light:after {
+    display: none;
+}
+
+.ivu-layout-sider.ivu-layout-sider-collapsed {
+    min-width: 0 !important;
+}
+
+/* Override dropdown */
+.ivu-dropdown-menu {
+    min-width: 100px;
+    padding-left: 0rem;
+    margin-bottom: 0rem;
+}
+
+.ivu-select-dropdown-list {
+    min-width: 100%;
+    list-style: none;
+    padding-left: 0rem;
+    margin-bottom: 0rem;
+}
+
+.ivu-table-filter-list-single {
+    padding-left: 0rem;
+    margin-bottom: 0rem;
+}
+/* Override dropdown */
+
+.dark-theme .bxs-trash {
+    color: black;
+}
+
+.ivu-select-not-found {
+    display: none !important;
 }

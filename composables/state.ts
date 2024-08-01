@@ -5,7 +5,7 @@ export const userDarkMode = () => {
         isDarkMode.value = localStorage.getItem("theme") === "dark-theme"
             || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-        setDarkMode()
+        setDarkMode();
     });
 
     const toggleDarkMode = () => {
