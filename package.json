@@ -10,11 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@css-inline/css-inline": "^0.14.1",
-=======
     "@mahdikhashan/vue3-click-outside": "^0.1.2",
->>>>>>> d15829fe9ef1089ec21c63ca111492085252cfb1
     "@nuxtjs/seo": "^2.0.0-rc.10",
     "@nuxtjs/sitemap": "^5.2.0",
     "@pinia/nuxt": "^0.5.1",
