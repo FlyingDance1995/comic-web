@@ -190,6 +190,8 @@ const okRemove = async () => {
 
 const approvalItem = async (row) => {
     try {
+        if (row?.status !== 'draft') return;
+
         loading.value = true;
         await useNuxtApp().$api(`moderator/story/${row?.slug}`, {
             method: "PATCH",
@@ -214,6 +216,8 @@ const approvalItem = async (row) => {
 
 const finishItem = async (row) => {
     try {
+        if (row?.status !== 'processing') return;
+
         loading.value = true;
         await useNuxtApp().$api(`moderator/story/${row?.slug}`, {
             method: "PATCH",
@@ -363,8 +367,12 @@ onUnmounted(() => {
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
-                        <DropdownItem @click="approvalItem(row)"><span style="color: blue">Yêu cầu phê duyệt</span></DropdownItem>
-                        <DropdownItem @click="finishItem(row)">Hoàn thành</DropdownItem>
+                        <DropdownItem @click="approvalItem(row)"
+                                      :disabled="row?.status !== 'draft'">
+                            <span :style="{color: row?.status === 'draft' && 'blue'}">Yêu cầu phê duyệt</span>
+                        </DropdownItem>
+                        <DropdownItem @click="finishItem(row)"
+                                      :disabled="row?.status !== 'processing'">Hoàn thành</DropdownItem>
                         <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
                     </DropdownMenu>
                 </template>

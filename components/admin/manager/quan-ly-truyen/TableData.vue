@@ -166,6 +166,8 @@ const okRemove = async () => {
 
 const approvalItem = async (row) => {
     try {
+        if (row?.status !== 'awaiting') return;
+
         loading.value = true;
         await useNuxtApp().$api(`admin/story/${row?.slug}`, {
             method: "PATCH",
@@ -193,7 +195,7 @@ const deputeItem = async (row) => {
         await useNuxtApp().$api(`admin/story/${row?.slug}`, {
             method: "PATCH",
             body: {
-                recommended: true
+                recommended: !row?.recommended
             }
         });
 
@@ -270,6 +272,10 @@ const handleFilter = (type, value) => {
     });
 };
 
+const handleClickRow = (row) => {
+    router.push(`/admin/quan-ly-truyen/${row?.slug}`);
+};
+
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
         page.value = 1;
@@ -281,6 +287,8 @@ watch(() => route?.query, (value, oldValue) => {
 
 <template>
     <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading"
+           :row-class-name="() => 'cursor-pointer'"
+           @on-row-click="handleClickRow"
            @on-sort-change="handleSort">
         <template #stt="{ row }">
             {{ row?.stt }}
@@ -329,8 +337,13 @@ watch(() => route?.query, (value, oldValue) => {
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
-                        <DropdownItem @click="approvalItem(row)"><span style="color: blue">Phê duyệt</span></DropdownItem>
-                        <DropdownItem @click="deputeItem(row)">Đề cử</DropdownItem>
+                        <DropdownItem @click="approvalItem(row)"
+                                      :disabled="row?.status !== 'awaiting'">
+                            <span :style="{color: row?.status === 'awaiting' && 'blue'}">Phê duyệt</span>
+                        </DropdownItem>
+                        <DropdownItem @click="deputeItem(row)">
+                            {{row?.recommended ? 'Bỏ đề cử' : 'Đề cử'}}
+                        </DropdownItem>
 <!--                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>-->
                     </DropdownMenu>
                 </template>

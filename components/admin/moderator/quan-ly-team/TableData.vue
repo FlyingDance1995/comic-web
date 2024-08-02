@@ -154,6 +154,8 @@ const okRemove = async () => {
 };
 
 const approvalItem = (row) => {
+    if (row?.status !== 'init') return;
+
     modalApproval.value = true;
     formItem.value = row;
 };
@@ -289,8 +291,11 @@ onUnmounted(() => {
 
                 <template #list>
                     <DropdownMenu>
-                        <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
-                        <DropdownItem @click="approvalItem(row)">Yêu cầu phê duyệt</DropdownItem>
+                        <DropdownItem @click="removeItem(row)">
+                            <span style="color: red">Xóa</span>
+                        </DropdownItem>
+                        <DropdownItem @click="approvalItem(row)"
+                                      :disabled="row?.status !== 'init'">Yêu cầu phê duyệt</DropdownItem>
                         <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
                     </DropdownMenu>
                 </template>
