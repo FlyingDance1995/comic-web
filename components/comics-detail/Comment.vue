@@ -181,7 +181,6 @@ const handleDelete = (item) => {
 
                     if (cmt?.reply_5_comment?.top_comment?.length > 0) {
                         cmt.reply_5_comment.top_comment = cmt.reply_5_comment.top_comment.filter(reply_cmt => reply_cmt?.id !== item?.id);
-                        console.log(cmt)
                     }
 
                     return true;
