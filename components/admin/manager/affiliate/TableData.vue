@@ -1,4 +1,7 @@
 <script setup>
+import {
+    mappingAffiliateTable, filterAffiliateStatus
+} from "~/utils/mapping.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -25,11 +28,15 @@ const columns = [
         title: 'Trạng thái',
         slot: 'enable',
         width: 150,
+        filters: mappingAffiliateTable,
+        filterMultiple: false,
+        filterRemote: value => handleFilter('enable', value),
     },
     {
         title: "Thời điểm tạo",
         slot: "creation_time",
         width: 170,
+        sortable: true
     },
     {
         title: " ",
@@ -54,6 +61,7 @@ const formItem = ref({
     category: []
 });
 
+const modalUpdateRef = ref();
 const modalRemove = ref(false);
 const loadingRemove = ref(false);
 
@@ -138,7 +146,7 @@ const approvalItem = (row) => {
     formItem.value = row;
 };
 
-const okApproval = async (row) => {
+const okApproval = async () => {
     try {
         loadingApproval.value = true;
         await useNuxtApp().$api(`admin/affiliate/${formItem?.value?.id}`, {
@@ -148,16 +156,9 @@ const okApproval = async (row) => {
             }
         });
 
-        getData();
+        await getData();
         loadingApproval.value = false;
         modalApproval.value = false;
-        formItem.value = {
-            type: "",
-            last_chapter: "",
-            name: "",
-            description: "",
-            category: []
-        };
     } catch (e) {
         console.log("error", e);
         loadingApproval.value = false;
@@ -165,32 +166,49 @@ const okApproval = async (row) => {
 };
 
 const editItem = (row) => {
-    openModal.value = true;
-    formItem.value = row;
+    modalUpdateRef.value.open(row);
 };
 
-const asyncOK = async () => {
-    loadingModal.value = true;
-
-    await useNuxtApp().$api(`admin/affiliate/${formItem?.value?.id}`, {
-        method: "PATCH",
-        body: {
-            "link": formItem?.value?.link,
-            "name": formItem?.value?.name,
-        }
-    });
-
-    getData();
-    openModal.value = false;
-    loadingModal.value = false;
-    formItem.value = {
-        type: "",
-        last_chapter: "",
-        name: "",
-        description: "",
-        category: []
+const handleSort = ({column, order}) => {
+    const type = column.slot || column.key;
+    const query = {
+        ...route.query,
     };
+
+    if (order === 'normal') {
+        if (query.ordering) {
+            delete query.ordering;
+        }
+    } else if (order === 'asc') {
+        query.ordering = type;
+    } else {
+        query.ordering = `-${type}`;
+    }
+
+    delete query.page;
+    router.push({
+        query,
+    });
 };
+
+const handleFilter = (type, value) => {
+    const query = {
+        ...route.query,
+    };
+
+    if (value.length > 0) {
+        query[type] = value.join(',');
+    } else {
+        delete query[type];
+    }
+
+    delete query.page;
+
+    router.push({
+        query,
+    });
+};
+
 
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
@@ -199,6 +217,15 @@ watch(() => route?.query, (value, oldValue) => {
     getData();
 }, {immediate: true, deep: true});
 
+onMounted(() => {
+    useNuxtApp().$emitter.on('add-affiliate', () => {
+        getData()
+    });
+});
+
+onUnmounted(() => {
+    useNuxtApp().$emitter.off('add-affiliate');
+});
 </script>
 
 <template>
@@ -209,6 +236,7 @@ watch(() => route?.query, (value, oldValue) => {
         :columns="columns"
         :data="data"
         :loading="loading"
+        @on-sort-change="handleSort"
     >
         <template #stt="{ row }">
             {{row?.stt}}
@@ -235,7 +263,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
@@ -273,6 +301,9 @@ watch(() => route?.query, (value, oldValue) => {
             </FormItem>
         </Form>
     </Modal>
+
+
+    <AdminManagerAffiliateCreateOrUpdateModal ref="modalUpdateRef"/>
 
     <Modal
         v-model="modalRemove"

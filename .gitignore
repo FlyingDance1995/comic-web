@@ -17,5 +17,7 @@ logs
 .DS_Store
 .fleet
 .idea
+.vercel
 package-lock.json
 # Local env files
+package-lock.json

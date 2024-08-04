@@ -1,7 +1,7 @@
 <script setup>
 
-import {mappingUserStatus} from "~/utils/mapping.js";
-import {Notice} from "view-ui-plus";
+import { mappingUserStatus, mappingManageUserTable, filterManageUserStatus } from "~/utils/mapping.js";
+import { Notice } from "view-ui-plus";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -33,16 +33,21 @@ const columns = [
         title: "Trạng thái",
         slot: "is_active",
         width: 150,
+        filters: mappingManageUserTable,
+        filterMultiple: false,
+        filterRemote: value => handleFilter('is_active', value),
     },
     {
         title: "Thời điểm tạo",
         slot: "date_joined",
         width: 180,
+        sortable: true
     },
     {
         title: "Lần đăng nhập gần nhất",
         slot: "last_login",
-        width: 200,
+        width: 220,
+        sortable: true
     },
     {
         title: " ",
@@ -68,6 +73,7 @@ const formItem = ref({
     category: []
 });
 
+const modalUpdateRef = ref();
 const modalActive = ref(false);
 const loadingActive = ref(false);
 
@@ -83,8 +89,8 @@ const getData = async () => {
     try {
         loading.value = true;
         let query = {
-          ordering: '-creation_time',
-          ...route.query
+            ordering: '-date_joined',
+            ...route.query
         }
         if (!query?.search) delete query.search;
 
@@ -158,11 +164,11 @@ const okActive = async (row) => {
 };
 
 const changePassItem = (row) => {
-    modalChangePass.value = true;
     formItem.value = row;
+    modalChangePass.value = true;
 };
 
-const okChangePass = async (row) => {
+const okChangePass = async () => {
     try {
         loadingChangePass.value = true;
         await useNuxtApp().$api(`admin/users/${formItem?.value?.id}`, {
@@ -174,27 +180,16 @@ const okChangePass = async (row) => {
 
         loadingChangePass.value = false;
         modalChangePass.value = false;
-        formItem.value = {
-            fullname: "",
-            avatar: "",
-            role: "",
-            type: "",
-            last_chapter: "",
-            name: "",
-            description: "",
-            category: []
-        };
-        success()
+        success();
     } catch (e) {
         console.log("error", e);
         loadingChangePass.value = false;
-        error()
+        error();
     }
 };
 
 const editItem = (row) => {
-    modalEdit.value = true;
-    formItem.value = row;
+    modalUpdateRef.value.open(row);
 };
 
 const okEditItem = async () => {
@@ -226,7 +221,9 @@ const okEditItem = async () => {
     } catch (e) {
         console.log("error", e);
         loadingEdit.value = false;
-        error()
+        Notice.error({
+            title: 'Vui lòng thử lại với mật khẩu khác mạnh hơn',
+        });
     }
 };
 
@@ -235,7 +232,7 @@ watch(() => route?.query, (value, oldValue) => {
         page.value = 1;
     }
     getData();
-}, {immediate: true, deep: true});
+}, { immediate: true, deep: true });
 
 const success = () => {
     Notice.success({
@@ -249,24 +246,67 @@ const error = () => {
     });
 };
 
+const handleSort = ({ column, order }) => {
+    const type = column.slot || column.key;
+    const query = {
+        ...route.query,
+    };
 
+    if (order === 'normal') {
+        if (query.ordering) {
+            delete query.ordering;
+        }
+    } else if (order === 'asc') {
+        query.ordering = type;
+    } else {
+        query.ordering = `-${type}`;
+    }
+
+    delete query.page;
+    router.push({
+        query,
+    });
+};
+
+const handleFilter = (type, value) => {
+    const query = {
+        ...route.query,
+    };
+
+    if (value.length > 0) {
+        query[type] = value.join(',');
+    } else {
+        delete query[type];
+    }
+
+    delete query.page;
+
+    router.push({
+        query,
+    });
+};
+
+
+onMounted(() => {
+    useNuxtApp().$emitter.on('add-user', () => {
+        getData()
+    });
+});
+
+onUnmounted(() => {
+    useNuxtApp().$emitter.off('add-user');
+});
 </script>
 
 <template>
-    <Table
-        class="flex-1 mt-4"
-        ref="table"
-        max-height="650"
-        :columns="columns"
-        :data="data"
-        :loading="loading"
-    >
+    <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading"
+        @on-sort-change="handleSort">
         <template #stt="{ row }">
-            {{row?.stt}}
+            {{ row?.stt }}
         </template>
 
         <template #team="{ row }">
-            {{row?.fullname}}
+            {{ row?.fullname }}
         </template>
 
         <template #email="{ row }">
@@ -278,7 +318,7 @@ const error = () => {
         </template>
 
         <template #is_active="{ row }">
-            <span :style="{color: mappingUserStatus(row?.is_active).color}">
+            <span :style="{ color: mappingUserStatus(row?.is_active).color }">
                 {{ mappingUserStatus(row?.is_active).title }}
             </span>
         </template>
@@ -286,17 +326,17 @@ const error = () => {
         <template #date_joined="{ row }">
             <span>{{ formattedTime(row?.date_joined) }}</span>
         </template>
-        
+
         <template #last_login="{ row }">
             <span>{{ timeAgo2(row?.last_login) }}</span>
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
-                
+
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="activeItem(row)">
@@ -311,11 +351,7 @@ const error = () => {
         </template>
     </Table>
 
-    <Modal
-        v-model="modalEdit"
-        title="Chỉnh sửa thông tin người dùng"
-        :loading="loadingEdit"
-        width="800px"
+    <Modal v-model="modalEdit" title="Chỉnh sửa thông tin người dùng" :loading="loadingEdit" width="800px"
         @on-ok="okEditItem">
 
         <Form :model="formItem" label-position="top">
@@ -344,31 +380,27 @@ const error = () => {
             </FormItem>
 
             <FormItem label="Mô tả">
-                <Input v-model="formItem.description" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Mô tả"></Input>
+                <Input v-model="formItem.description" type="textarea" :autosize="{ minRows: 3, maxRows: 5 }"
+                    placeholder="Mô tả"></Input>
             </FormItem>
         </Form>
     </Modal>
 
-    <Modal
-        v-model="modalActive"
-        title="Xác nhận"
-        :loading="loadingActive"
-        @on-ok="okActive">
+    <AdminManagerQuanLyNguoiDungCreateOrUpdateModal ref="modalUpdateRef" />
+
+    <Modal v-model="modalActive" title="Xác nhận" :loading="loadingActive" @on-ok="okActive">
         <p>{{ `Bạn có muốn chắc chắn ${formItem?.is_active ? '"Hủy kích hoạt"' : '"Kích hoạt"'} người dùng này` }}</p>
     </Modal>
 
-    <Modal
-        v-model="modalChangePass"
-        title="Đổi mật khẩu"
-        :loading="loadingChangePass"
-        @on-ok="okChangePass">
-        
+    <Modal v-model="modalChangePass" title="Đổi mật khẩu" :loading="loadingChangePass" @on-ok="okChangePass">
+
         <Form :model="formItem" label-position="top">
-            <FormItem label="Mật khẩu mới">
-                <Input v-model="formItem.password" placeholder="Password"></Input>
+            <FormItem label="Mật khẩu mới" >
+                <Input v-model="formItem.password" type="password" password placeholder="Password"></Input>
             </FormItem>
         </Form>
     </Modal>
 
-    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
+    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total
+        @on-change="handleChangePage" />
 </template>

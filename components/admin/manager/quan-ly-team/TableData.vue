@@ -1,6 +1,8 @@
 <script setup>
 
-import {mappingTeamStatus} from "~/utils/mapping.js";
+import { mappingTeamStatus, mappingTeamStatusTable, filterTeamStatus } from "~/utils/mapping.js";
+import { Table } from "view-ui-plus";
+import { optionsTeamStatus } from "~/constants/options.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -22,6 +24,9 @@ const columns = [
         title: 'Trạng thái',
         slot: 'status',
         width: 150,
+        filters: optionsTeamStatus,
+        filterMultiple: false,
+        filterRemote: value => handleFilter('status', value),
     },
     {
         title: "Trưởng nhóm",
@@ -32,6 +37,7 @@ const columns = [
         title: "Thời gian tạo",
         slot: "creation_time",
         width: 170,
+        sortable: true
     },
     {
         title: "Thành viên",
@@ -88,8 +94,8 @@ const getData = async () => {
     try {
         loading.value = true;
         let query = {
-          ordering: '-date_joined',
-          ...route.query
+            ordering: '-creation_time',
+            ...route.query
         }
         if (!query?.search) delete query.search;
 
@@ -158,11 +164,13 @@ const okRemove = async (row) => {
 };
 
 const approvalItem = (row) => {
-    modalApproval.value = true;
+    if (row?.status !== 'awaiting') return;
+
     formItem.value = row;
+    modalApproval.value = true;
 };
 
-const okApproval = async (row) => {
+const okApproval = async () => {
     try {
         loadingApproval.value = true;
         await useNuxtApp().$api(`admin/teams/${formItem?.value?.slug}`, {
@@ -172,16 +180,9 @@ const okApproval = async (row) => {
             }
         });
 
-        getData();
+        await getData();
         loadingApproval.value = false;
         modalApproval.value = false;
-        formItem.value = {
-            type: "",
-            last_chapter: "",
-            name: "",
-            description: "",
-            category: []
-        };
     } catch (e) {
         console.log("error", e);
         loadingApproval.value = false;
@@ -218,6 +219,46 @@ const asyncOK = async () => {
     };
 };
 
+const handleSort = ({ column, order }) => {
+    const type = column.slot || column.key;
+    const query = {
+        ...route.query,
+    };
+
+    if (order === 'normal') {
+        if (query.ordering) {
+            delete query.ordering;
+        }
+    } else if (order === 'asc') {
+        query.ordering = type;
+    } else {
+        query.ordering = `-${type}`;
+    }
+
+    delete query.page;
+    router.push({
+        query,
+    });
+};
+
+const handleFilter = (type, value) => {
+    const query = {
+        ...route.query,
+    };
+
+    if (value.length > 0) {
+        query[type] = value.join(',');
+    } else {
+        delete query[type];
+    }
+
+    delete query.page;
+
+    router.push({
+        query,
+    });
+};
+
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
         page.value = 1;
@@ -228,18 +269,19 @@ watch(() => route?.query, (value, oldValue) => {
 </script>
 
 <template>
-    <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading">
+    <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading"
+        @on-sort-change="handleSort">
         <template #stt="{ row }">
-            {{row?.stt}}
+            {{ row?.stt }}
         </template>
 
         <template #name="{ row }">
-            {{row?.name}}
+            {{ row?.name }}
         </template>
 
         <template #status="{ row }">
-            <span :style="{color: mappingTeamStatus(row?.status).color}">
-                {{mappingTeamStatus(row?.status).title}}
+            <span :style="{ color: mappingTeamStatus(row?.status).color }">
+                {{ mappingTeamStatus(row?.status).title }}
             </span>
         </template>
 
@@ -268,28 +310,24 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
-                
+
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
-                        <DropdownItem @click="approvalItem(row)">Phê duyệt</DropdownItem>
-                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
+                        <DropdownItem @click="approvalItem(row)"
+                                      :disabled="row?.status !== 'awaiting'">Phê duyệt</DropdownItem>
+<!--                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>-->
                     </DropdownMenu>
                 </template>
             </Dropdown>
         </template>
     </Table>
 
-    <Modal
-        v-model="openModal"
-        title="Chỉnh sửa Team"
-        :loading="loadingModal"
-        width="800px"
-        @on-ok="asyncOK">
+    <Modal v-model="openModal" title="Chỉnh sửa Team" :loading="loadingModal" width="800px" @on-ok="asyncOK">
 
         <Form :model="formItem" label-position="top">
             <FormItem label="Tên nhóm">
@@ -297,28 +335,22 @@ watch(() => route?.query, (value, oldValue) => {
             </FormItem>
 
             <FormItem label="Thành viên">
-                <Input v-model="formItem.description1" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Thành viên"></Input>
+                <Input v-model="formItem.description1" type="textarea" :autosize="{ minRows: 3, maxRows: 5 }"
+                    placeholder="Thành viên"></Input>
             </FormItem>
 
             <FormItem label="Mô tả">
-                <Input v-model="formItem.description" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Mô tả"></Input>
+                <Input v-model="formItem.description" type="textarea" :autosize="{ minRows: 3, maxRows: 5 }"
+                    placeholder="Mô tả"></Input>
             </FormItem>
         </Form>
     </Modal>
 
-    <Modal
-        v-model="modalRemove"
-        title="Xác nhận"
-        :loading="loadingRemove"
-        @on-ok="okRemove">
+    <Modal v-model="modalRemove" title="Xác nhận" :loading="loadingRemove" @on-ok="okRemove">
         <p>Bạn có muốn chắc chắn xóa team này</p>
     </Modal>
 
-    <Modal
-        v-model="modalApproval"
-        title="Yêu cầu phê duyệt"
-        :loading="loadingApproval"
-        @on-ok="okApproval">
+    <Modal v-model="modalApproval" title="Yêu cầu phê duyệt" :loading="loadingApproval" @on-ok="okApproval">
         <p>Bạn có muốn phê duyệt team này</p>
     </Modal>
 

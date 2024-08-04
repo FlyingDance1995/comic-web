@@ -1,6 +1,11 @@
 <script setup>
 
-import {mappingStoryStatus, mappingStoryType} from "~/utils/mapping.js";
+import {
+    mappingStoryStatus, mappingStoryStatusTable, mappingStoryTypeTable,
+    filterStoryStatus, filterStoryType, mappingStoryRecommendedTable,
+    filterStoryRecommended, mappingStoryType
+} from "~/utils/mapping.js";
+import {Notice, Table} from "view-ui-plus";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -22,11 +27,17 @@ const columns = [
         title: 'Trạng thái',
         slot: 'status',
         width: 150,
+        filters: mappingStoryStatusTable,
+        filterMultiple: false,
+        filterRemote: value => handleFilter('status', value),
     },
     {
         title: 'Loại',
         slot: 'type',
         width: 150,
+        filters: mappingStoryTypeTable,
+        filterMultiple: false,
+        filterRemote: value => handleFilter('type', value),
     },
     {
         title: "Team",
@@ -35,13 +46,17 @@ const columns = [
     },
     {
         title: "Thời gian cập nhật",
-        slot: "creation_time",
-        width: 170,
+        slot: "modification_time",
+        width: 180,
+        sortable: true,
     },
     {
         title: "Đề cử",
         slot: "recommended",
-        width: 80,
+        width: 90,
+        filters: mappingStoryRecommendedTable,
+        filterMultiple: false,
+        filterRemote: value => handleFilter('recommended', value),
     },
     {
         title: "Số chương",
@@ -84,13 +99,12 @@ const formItem = ref({
 const modalRemove = ref(false);
 const loadingRemove = ref(false);
 
-
 const getData = async () => {
     try {
         loading.value = true;
         let query = {
-          ordering: '-creation_time',
-          ...route.query
+            ordering: '-modification_time',
+            ...route.query
         }
         if (!query?.search) delete query.search;
 
@@ -134,35 +148,68 @@ const removeItem = async (row) => {
     formItem.value = row;
 };
 
-const okRemove = async (row) => {
+const okRemove = async () => {
     try {
         loadingRemove.value = true;
         await useNuxtApp().$api(`admin/story/${formItem?.value?.slug}`, {
             method: "DELETE",
         });
 
-        getData();
+        await getData();
         loadingRemove.value = false;
         modalRemove.value = false;
-        formItem.value = {
-            type: "",
-            last_chapter: "",
-            name: "",
-            description: "",
-            category: []
-        };
     } catch (e) {
         console.log("error", e);
         loadingRemove.value = false;
     }
 };
 
-const approvalItem = (row) => {
+const approvalItem = async (row) => {
+    try {
+        if (row?.status !== 'awaiting') return;
 
+        loading.value = true;
+        await useNuxtApp().$api(`admin/story/${row?.slug}`, {
+            method: "PATCH",
+            body: {
+                status: "processing"
+            }
+        });
+
+        await getData();
+        Notice.success({
+            title: 'Phê duyệt thành công',
+        });
+    } catch (e) {
+        loading.value = false;
+        Notice.error({
+            title: 'Phê duyệt thất bại',
+        });
+        console.log("error", e);
+    }
 };
 
-const deputeItem = (row) => {
+const deputeItem = async (row) => {
+    try {
+        loading.value = true;
+        await useNuxtApp().$api(`admin/story/${row?.slug}`, {
+            method: "PATCH",
+            body: {
+                recommended: !row?.recommended
+            }
+        });
 
+        await getData();
+        Notice.success({
+            title: 'Đề cử thành công',
+        });
+    } catch (e) {
+        loading.value = false;
+        Notice.error({
+            title: 'Đề cử thất bại',
+        });
+        console.log("error", e);
+    }
 };
 
 const editItem = (row) => {
@@ -172,7 +219,6 @@ const editItem = (row) => {
 
 const asyncOK = () => {
     loadingModal.value = true;
-
 
     getData();
     openModal.value = false;
@@ -186,44 +232,84 @@ const asyncOK = () => {
     };
 };
 
+const handleSort = ({column, order}) => {
+    const type = column.slot || column.key;
+    const query = {
+        ...route.query,
+    };
+
+    if (order === 'normal') {
+        if (query.ordering) {
+            delete query.ordering;
+        }
+    } else if (order === 'asc') {
+        query.ordering = type;
+    } else {
+        query.ordering = `-${type}`;
+    }
+
+    delete query.page;
+    router.push({
+        query,
+    });
+};
+
+const handleFilter = (type, value) => {
+    const query = {
+        ...route.query,
+    };
+
+    if (value.length > 0) {
+        query[type] = value.join(',');
+    } else {
+        delete query[type];
+    }
+
+    delete query.page;
+
+    router.push({
+        query,
+    });
+};
+
+const handleClickRow = (row) => {
+    router.push(`/admin/quan-ly-truyen/${row?.slug}`);
+};
+
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
         page.value = 1;
     }
 
     getData();
-}, {immediate: true, deep: true});
+}, { immediate: true, deep: true });
 </script>
 
 <template>
-    <Table
-        class="flex-1 mt-4"
-        ref="table"
-        max-height="650"
-        :columns="columns"
-        :data="data"
-        :loading="loading"
-    >
+    <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading"
+           :row-class-name="() => 'cursor-pointer'"
+           @on-row-click="handleClickRow"
+           @on-sort-change="handleSort">
         <template #stt="{ row }">
-            {{row?.stt}}
+            {{ row?.stt }}
         </template>
 
         <template #team="{ row }">
-            {{row?.team?.name}}
+            {{ row?.team?.name }}
         </template>
 
         <template #status="{ row }">
-            <span :style="{color: mappingStoryStatus(row?.status).color}">
-                {{mappingStoryStatus(row?.status).title}}
+            <span :style="{ color: mappingStoryStatus(row?.status).color }">
+                {{ mappingStoryStatus(row?.status).title }}
             </span>
         </template>
 
         <template #type="{ row }">
-            {{mappingStoryType(row?.type)}}
+            {{ mappingStoryType(row?.type) }}
         </template>
 
-        <template #creation_time="{ row }">
-            <span>{{ formattedDate(row?.creation_time) }}</span>
+        <template #modification_time="{ row }">
+            <span>{{ formattedDate(row?.modification_time) }}</span>
         </template>
 
         <template #recommended="{ row }">
@@ -243,7 +329,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
@@ -251,22 +337,21 @@ watch(() => route?.query, (value, oldValue) => {
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
-                        <DropdownItem @click="approvalItem(row)"><span style="color: blue">Phê duyệt</span></DropdownItem>
-                        <DropdownItem @click="deputeItem(row)">Đề cử</DropdownItem>
-                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
+                        <DropdownItem @click="approvalItem(row)"
+                                      :disabled="row?.status !== 'awaiting'">
+                            <span :style="{color: row?.status === 'awaiting' && 'blue'}">Phê duyệt</span>
+                        </DropdownItem>
+                        <DropdownItem @click="deputeItem(row)">
+                            {{row?.recommended ? 'Bỏ đề cử' : 'Đề cử'}}
+                        </DropdownItem>
+<!--                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>-->
                     </DropdownMenu>
                 </template>
             </Dropdown>
         </template>
     </Table>
 
-    <Modal
-        v-model="openModal"
-        title="Chỉnh sửa truyện"
-        :loading="loadingModal"
-        width="800px"
-        @on-ok="asyncOK">
-
+    <Modal v-model="openModal" title="Chỉnh sửa truyện" :loading="loadingModal" width="800px" @on-ok="asyncOK">
         <Form :model="formItem" label-position="top">
             <FormItem label="Loại">
                 <Select v-model="formItem.type">
@@ -289,18 +374,16 @@ watch(() => route?.query, (value, oldValue) => {
             </FormItem>
 
             <FormItem label="Nội dung">
-                <Input v-model="formItem.description" type="textarea" :autosize="{minRows: 3,maxRows: 5}" placeholder="Nội dung"></Input>
+                <Input v-model="formItem.description" type="textarea" :autosize="{ minRows: 3, maxRows: 5 }"
+                    placeholder="Nội dung"></Input>
             </FormItem>
         </Form>
     </Modal>
 
-    <Modal
-        v-model="modalRemove"
-        title="Xác nhận"
-        :loading="loadingRemove"
-        @on-ok="okRemove">
+    <Modal v-model="modalRemove" title="Xác nhận" :loading="loadingRemove" @on-ok="okRemove">
         <p>Bạn có muốn chắc chắn xóa truyện này</p>
     </Modal>
 
-    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
+    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total
+        @on-change="handleChangePage" />
 </template>

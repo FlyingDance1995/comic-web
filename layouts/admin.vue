@@ -46,25 +46,34 @@ watch(() => route.path, () => {
     <div :class="$style.layout" class="w-100 vh-100">
         <Layout class="w-100 h-100">
             <Header style="padding: 0; background: #00554A29">
-                <Menu mode="horizontal" theme="light" style="background: transparent">
+                <Menu mode="horizontal" theme="light" style="background: transparent; height: 100%; z-index: 999">
                     <NuxtLink to="/" :class="$style.layoutLogo">
                         <img
                             src="/images/logo/Logo-MonkeyD.png"
                             height="100%"
                             alt="">
                     </NuxtLink>
-                    <Poptip
-                        class="float-end me-4"
-                        confirm
-                        title="Bạn có chắc muốn đăng xuất không?"
-                        placement="bottom-end"
-                        @on-ok="handleLogout"
-                        ok-text="Có"
-                        cancel-text="Không">
-                        <Button type="error">
-                            Đăng xuất
-                        </Button>
-                    </Poptip>
+
+<!--                    <Poptip-->
+<!--                        class="float-end me-4"-->
+<!--                        confirm-->
+<!--                        title="Bạn có chắc muốn đăng xuất không?"-->
+<!--                        placement="bottom-end"-->
+<!--                        @on-ok="handleLogout"-->
+<!--                        ok-text="Có"-->
+<!--                        cancel-text="Không">-->
+<!--                        <Button type="error">-->
+<!--                            Đăng xuất-->
+<!--                        </Button>-->
+<!--                    </Poptip>-->
+
+                    <div class="float-end me-4 custom-box d-flex topbar" style="background: #cedddd;">
+                        <div class="top-menu ms-auto">
+                            <CommonNotify/>
+                        </div>
+                        <CommonUserBox/>
+                    </div>
+
                 </Menu>
             </Header>
 
@@ -74,7 +83,8 @@ watch(() => route.path, () => {
                        :collapsed-width="85"
                        breakpoint="md"
                        :style="{background: '#F0F1FA', minWidth: '220px', width: '220px'}">
-                    <Menu :class="menuitemClasses" :active-name="activeTab" theme="light" width="auto" style="background: #F0F1FA">
+                    <Menu :class="menuitemClasses" :active-name="activeTab" theme="light"
+                             width="auto" style="background: #F0F1FA">
                         <template v-if="user && user?.role !== 'user'">
                             <div class="my-2 mx-2">ĐĂNG TRUYỆN</div>
                             <MenuItem v-for="item in menuModerator"

@@ -162,6 +162,40 @@ const getAvatar = (item) => {
     return item?.owner?.avatar?.includes('://') ? item?.owner?.avatar : domain + item?.owner?.avatar;
 };
 
+const handleDelete = (item) => {
+    configStore.setSwal({
+        open: true,
+        title: 'Xóa bình luận',
+        text: 'Bạn muốn xóa bình luận này?',
+        type: 'info',
+        onSubmit: async () => {
+            try {
+                configStore.setLoadingModal(true);
+                await useNuxtApp().$api(`/story/${route?.params?.slug}/comment/${item?.id}`, {
+                    method: "DELETE",
+                });
+                data.value.results = data.value.results.filter(cmt => {
+                    if (cmt?.id === item?.id) {
+                        return false;
+                    }
+
+                    if (cmt?.reply_5_comment?.top_comment?.length > 0) {
+                        cmt.reply_5_comment.top_comment = cmt.reply_5_comment.top_comment.filter(reply_cmt => reply_cmt?.id !== item?.id);
+                    }
+
+                    return true;
+                });
+                configStore.setLoadingModal(false);
+                return 'Đã xóa bình luận này';
+            } catch (e) {
+                configStore.setLoadingModal(false);
+                console.log("error", e?.response);
+                return null;
+            }
+        }
+    });
+};
+
 watch(() => route?.params, () => {
     if (route?.params?.slug) getData();
 }, {immediate: true, deep: true})
@@ -205,10 +239,19 @@ watch(() => route?.params, () => {
                                 <div class="post-comments">
                                     <p>{{ item?.contents }}</p>
                                     <p class="meta-2">
-                                        <a href="javascript:void(0)"><abbr
-                                            title="Thành viên">{{ item?.owner?.fullname }}</abbr></a>
-                                        <small class="pull-right">{{ timeAgo(item?.creation_time) }} · <a
-                                            href="javascript:void(0)" @click="openReply(item)">Trả lời</a></small>
+                                        <a href="javascript:void(0)">
+                                            <abbr title="Thành viên">{{ item?.owner?.fullname }}</abbr>
+                                        </a>
+
+                                        <small class="pull-right">
+                                            {{ timeAgo(item?.creation_time) }}
+                                            ·
+                                            <a href="javascript:void(0)" @click="openReply(item)">Trả lời</a>
+                                            <template v-if="item?.is_edit">
+                                                ·
+                                                <a href="javascript:void(0)" @click="handleDelete(item)">Xóa</a>
+                                            </template>
+                                        </small>
                                     </p>
                                 </div>
 
@@ -220,7 +263,6 @@ watch(() => route?.params, () => {
                                                  alt=""
                                                  onerror="this.src='/images/avata.png'">
                                         </div>
-                                        <!--                                        {{`${window.location}${i?.owner?.avatar}`}}-->
                                         <div class="post-comments">
                                             <p>{{ i?.contents }}</p>
                                             <p class="meta-2">
@@ -228,7 +270,12 @@ watch(() => route?.params, () => {
                                                     title="Thành viên">{{ i?.owner?.fullname }}</abbr></a>
                                                 <small class="pull-right">{{ timeAgo(i?.creation_time) }} · <a
                                                     href="javascript:void(0)" @click="openReply(item)">Trả
-                                                    lời</a></small>
+                                                    lời</a>
+                                                    <template v-if="i?.is_edit">
+                                                        ·
+                                                        <a href="javascript:void(0)" @click="handleDelete(i)">Xóa</a>
+                                                    </template>
+                                                </small>
                                             </p>
                                         </div>
                                     </li>

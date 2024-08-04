@@ -1,93 +1,53 @@
 <script setup>
-import {optionsStoryType} from "~/constants/options.js";
 import {Option, Row, Col, Form, Modal, Button, Notice} from "view-ui-plus";
 
 const openModal = ref(false);
 const loading = ref(false);
 const formRef = ref();
-const optionsTeam = ref([]);
-const optionsCategory = ref([]);
+const optionsUser = ref([]);
 const dataEdit = ref(null);
 const formItem = reactive({
     name: "",
     description: "",
-    type: "",
+    member: [],
     avatar: "",
-    author: "",
-    team: "",
-    category: []
 });
 const previewImg = ref('');
+const loadingSelect = ref(false);
 const uploadRef = ref();
-
-const validateSelectTeam = (rule, value, callback) => {
-    if (!value) {
-        return callback(new Error('Vui lòng chọn team'));
-    }
-    callback()
-};
-
-const validateSelectCategory = (rule, value, callback) => {
-    if (!value || value?.length === 0) {
-        return callback(new Error('Vui lòng chọn thể loại'));
-    }
-    callback()
-};
 
 const rules = {
     name: [
-        { required: true, message: 'Vui lòng nhập tên truyện', trigger: 'blur' }
-    ],
-    type: [
-        { required: true, message: 'Vui lòng chọn loại truyện', trigger: 'change' }
-    ],
-    team: [
-        { required: true, validator: validateSelectTeam, trigger: 'change' }
-    ],
-    category: [
-        { required: true, validator: validateSelectCategory, trigger: 'change' }
-    ],
-    author: [
-        { required: true, message: 'Vui lòng nhập tên tác giả', trigger: 'blur' }
+        { required: true, message: 'Vui lòng nhập tên team', trigger: 'blur' }
     ],
 };
 
-const getTeam = async () => {
+const getUser = async (search) => {
     try {
-        const response = await useNuxtApp().$api('/moderator/teams', {
-            method: "GET",
-            query: {
-                size: 1000,
-            }
-        });
-        optionsTeam.value = response?.results?.map(item => {
-            return {
-                ...item,
-                value: item?.id,
-                label: item?.name
-            }
-        });
-    } catch (e) {
-        console.log(e?.response);
-    }
-};
+        const query = {
+            search: search
+        }
 
-const getCategory = async () => {
-    try {
-        const response = await useNuxtApp().$api('/category', {
+        if (!query.search) delete query.search;
+
+        loadingSelect.value = true;
+        const response = await useNuxtApp().$api('/moderator/user', {
             method: "GET",
             query: {
-                size: 1000,
+                size: 100,
+                ...query
             }
         });
-        optionsCategory.value = response?.results?.map(item => {
+        optionsUser.value = response?.results?.map(item => {
             return {
                 ...item,
                 value: item?.id,
-                label: item?.name
+                label: item?.fullname
             }
         });
+        loadingSelect.value = false;
     } catch (e) {
+        loadingSelect.value = false;
         console.log(e?.response);
     }
 };
@@ -99,28 +59,25 @@ const submit = () => {
                 loading.value = true;
                 const formData = new FormData();
                 formData.append('name', formItem.name);
-                formData.append('author', formItem.author);
-                formData.append('team', formItem.team);
-                formData.append('category', formItem.category);
-                formData.append('type', formItem.type);
+                formData.append('member', formItem.member);
                 formData.append('description', formItem.description);
                 if (formItem.avatar && dataEdit.value) {
                     formData.append('avatar', formItem.avatar);
                 } else if (!dataEdit.value) {
                     if (!formItem.avatar) {
                         Notice.error({
-                            title: `Hãy chọn ảnh cho truyện`,
+                            title: `Hãy chọn ảnh cho team`,
                         });
                         return loading.value = false;
                     } else {
                         formData.append('avatar', formItem.avatar);
                     }
                 }
-                await useNuxtApp().$api(dataEdit.value ? `/moderator/story/${dataEdit?.value?.slug}` : '/moderator/story', {
+                await useNuxtApp().$api(dataEdit.value ? `/moderator/teams/${dataEdit?.value?.slug}` : '/moderator/teams', {
                     method: dataEdit.value ? 'PATCH' : 'POST',
                     body: formData
                 });
-                useNuxtApp().$emitter.emit('add-story');
+                useNuxtApp().$emitter.emit('add-team');
                 Notice.success({
                     title: `${dataEdit.value ? 'Cập nhật' : 'Tạo mới'} thành công`,
                 });
@@ -138,6 +95,7 @@ const submit = () => {
 };
 
 const open = async (data = null) => {
+    getUser();
     await formRef.value.resetFields();
 
     setTimeout(() => {
@@ -146,12 +104,16 @@ const open = async (data = null) => {
 
         if (data) {
             dataEdit.value = data;
-            formItem.category = data?.category?.map(x => x?.id);
+            optionsUser.value = uniqByKeepFirst([...data?.member?.map(x => {
+                return {
+                    ...x,
+                    value: x?.id,
+                    label: x?.fullname
+                }
+            }), ...optionsUser.value], (i) => i?.id);
+            formItem.member = data?.member?.map(x => x?.id);
             formItem.name = data?.name;
-            formItem.author = data?.author;
             formItem.description = data?.description;
-            formItem.type = data?.type;
-            formItem.team = data?.team?.id;
             previewImg.value = data?.avatar;
             if (previews) {
                 previews.forEach(x => {
@@ -197,8 +159,6 @@ const handleChangeAvatar = (event) => {
     }
 };
 
-getTeam();
-getCategory();
 
 defineExpose({
     open
@@ -225,64 +185,34 @@ defineExpose({
                 </Col>
 
                 <Col flex="auto">
-                    <FormItem label="Tên truyện" prop="name">
+                    <FormItem label="Tên team" prop="name">
                         <Input v-model="formItem.name" placeholder="Tên"/>
+                    </FormItem>
+
+                    <FormItem label="Thành viên" prop="member">
+                        <Select v-model="formItem.member"
+                                placeholder="Thành viên"
+                                filterable
+                                multiple
+                                @on-query-change="getUser"
+                                :loading="loadingSelect"
+                                :not-found-text="''">
+                            <template v-if="!loadingSelect">
+                                <Option v-for="item in optionsUser"
+                                        :value="item.id"
+                                        :label="item.fullname"
+                                        :key="item.fullname">
+                                    {{ item.label }}
+                                </Option>
+                            </template>
+                        </Select>
                     </FormItem>
 
                     <FormItem label="Mô tả" prop="description">
                         <Input v-model="formItem.description"
                                type="textarea"
-                               :autosize="{minRows: 5,maxRows: 5}"
+                               :autosize="{minRows: 3,maxRows: 3}"
                                placeholder="Mô tả"/>
-                    </FormItem>
-                </Col>
-            </Row>
-
-            <Row :gutter="20">
-                <Col span="10">
-                    <FormItem label="Team" prop="team">
-                        <Select v-model="formItem.team"
-                                placeholder="Team" filterable>
-                            <Option v-for="item in optionsTeam"
-                                    :value="item.value"
-                                    :key="item.value">
-                                {{ item.label }}
-                            </Option>
-                        </Select>
-                    </FormItem>
-                </Col>
-
-                <Col span="10" offset="4">
-                    <FormItem label="Loại" prop="type">
-                        <Select v-model="formItem.type"
-                                placeholder="Loại">
-                            <Option v-for="item in optionsStoryType"
-                                    :value="item.value"
-                                    :key="item.value">
-                                {{ item.label }}
-                            </Option>
-                        </Select>
-                    </FormItem>
-                </Col>
-
-                <Col span="10">
-                    <FormItem label="Tên tác giả" prop="author">
-                        <Input v-model="formItem.author" placeholder="Tác giả"/>
-                    </FormItem>
-                </Col>
-
-                <Col span="10" offset="4">
-                    <FormItem label="Thể loại" prop="category">
-                        <Select v-model="formItem.category"
-                                placeholder="Thể loại"
-                                multiple
-                                filterable>
-                            <Option v-for="item in optionsCategory"
-                                    :value="item.value"
-                                    :key="item.value">
-                                {{ item.label }}
-                            </Option>
-                        </Select>
                     </FormItem>
                 </Col>
             </Row>

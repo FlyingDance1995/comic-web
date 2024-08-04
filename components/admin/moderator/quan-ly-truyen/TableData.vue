@@ -1,11 +1,35 @@
 <script setup>
 
 import {mappingStoryStatus, mappingStoryType} from "~/utils/mapping.js";
-import {Notice} from "view-ui-plus";
+import {Notice, Table} from "view-ui-plus";
+import {optionsStoryStatus, optionsStoryType} from "~/constants/options.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
 const router = useRouter();
+
+const optionsTeam = ref([]);
+const getTeam = async () => {
+    try {
+        const response = await useNuxtApp().$api('/moderator/teams', {
+            method: "GET",
+            query: {
+                size: 1000,
+            }
+        });
+        optionsTeam.value = response?.results?.map(item => {
+            return {
+                ...item,
+                value: item?.id,
+                label: item?.name
+            }
+        });
+    } catch (e) {
+        console.log(e?.response);
+    }
+};
+
+await getTeam();
 
 const columns = [
     {
@@ -23,21 +47,31 @@ const columns = [
         title: 'Trạng thái',
         slot: 'status',
         width: 150,
+        filters: optionsStoryStatus,
+        filterMultiple: false,
+        filterRemote: value => handleFilter('status', value),
     },
     {
         title: 'Loại',
         slot: 'type',
         width: 150,
+        filters: optionsStoryType,
+        filterMultiple: false,
+        filterRemote: value => handleFilter('type', value),
     },
     {
         title: "Team",
         slot: "team",
         width: 270,
+        filters: optionsTeam.value,
+        filterMultiple: false,
+        filterRemote: value => handleFilter('team', value),
     },
     {
         title: "Thời gian cập nhật",
-        slot: "creation_time",
-        width: 170,
+        slot: "modification_time",
+        width: 180,
+        sortable: true,
     },
     {
         title: "Đề cử",
@@ -83,12 +117,11 @@ const formItem = ref({
 const modalRemove = ref(false);
 const loadingRemove = ref(false);
 
-
 const getData = async () => {
     try {
         loading.value = true;
         let query = {
-            ordering: '-creation_time',
+            ordering: '-modification_time',
             ...route.query
         }
         if (!query?.search) delete query.search;
@@ -157,6 +190,8 @@ const okRemove = async () => {
 
 const approvalItem = async (row) => {
     try {
+        if (row?.status !== 'draft') return;
+
         loading.value = true;
         await useNuxtApp().$api(`moderator/story/${row?.slug}`, {
             method: "PATCH",
@@ -181,6 +216,8 @@ const approvalItem = async (row) => {
 
 const finishItem = async (row) => {
     try {
+        if (row?.status !== 'processing') return;
+
         loading.value = true;
         await useNuxtApp().$api(`moderator/story/${row?.slug}`, {
             method: "PATCH",
@@ -207,6 +244,50 @@ const editItem = (row) => {
     modalUpdateRef.value.open(row);
 };
 
+const handleClickRow = (row) => {
+    router.push(`/dang-truyen/quan-ly-truyen/${row?.slug}`);
+};
+
+const handleSort = ({column, order}) => {
+    const type = column.slot || column.key;
+    const query = {
+        ...route.query,
+    };
+
+    if (order === 'normal') {
+        if (query.ordering) {
+            delete query.ordering;
+        }
+    } else if (order === 'asc') {
+        query.ordering = type;
+    } else {
+        query.ordering = `-${type}`;
+    }
+
+    delete query.page;
+    router.push({
+        query,
+    });
+};
+
+const handleFilter = (type, value) => {
+    const query = {
+        ...route.query,
+    };
+
+    if (value.length > 0) {
+        query[type] = value.join(',');
+    } else {
+        delete query[type];
+    }
+
+    delete query.page;
+
+    router.push({
+        query,
+    });
+};
+
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
         page.value = 1;
@@ -224,6 +305,7 @@ onMounted(() => {
 onUnmounted(() => {
     useNuxtApp().$emitter.off('add-story');
 });
+
 </script>
 
 <template>
@@ -234,6 +316,9 @@ onUnmounted(() => {
         :columns="columns"
         :data="data"
         :loading="loading"
+        :row-class-name="() => 'cursor-pointer'"
+        @on-row-click="handleClickRow"
+        @on-sort-change="handleSort"
     >
         <template #stt="{ row }">
             {{row?.stt}}
@@ -253,8 +338,8 @@ onUnmounted(() => {
             {{mappingStoryType(row?.type)}}
         </template>
 
-        <template #creation_time="{ row }">
-            <span>{{ formattedDate(row?.creation_time) }}</span>
+        <template #modification_time="{ row }">
+            <span>{{ formattedDate(row?.modification_time) }}</span>
         </template>
 
         <template #recommended="{ row }">
@@ -274,7 +359,7 @@ onUnmounted(() => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
@@ -282,8 +367,12 @@ onUnmounted(() => {
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
-                        <DropdownItem @click="approvalItem(row)"><span style="color: blue">Yêu cầu phê duyệt</span></DropdownItem>
-                        <DropdownItem @click="finishItem(row)">Hoàn thành</DropdownItem>
+                        <DropdownItem @click="approvalItem(row)"
+                                      :disabled="row?.status !== 'draft'">
+                            <span :style="{color: row?.status === 'draft' && 'blue'}">Yêu cầu phê duyệt</span>
+                        </DropdownItem>
+                        <DropdownItem @click="finishItem(row)"
+                                      :disabled="row?.status !== 'processing'">Hoàn thành</DropdownItem>
                         <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
                     </DropdownMenu>
                 </template>
@@ -303,3 +392,9 @@ onUnmounted(() => {
 
     <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
 </template>
+
+<style>
+.cursor-pointer {
+    cursor: pointer;
+}
+</style>

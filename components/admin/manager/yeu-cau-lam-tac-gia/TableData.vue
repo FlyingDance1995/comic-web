@@ -1,6 +1,9 @@
 <script setup>
 
 import {Notice} from "view-ui-plus";
+import {
+    mappingRequestAuthorTable, filterRequestAuthor
+} from "~/utils/mapping.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -37,11 +40,15 @@ const columns = [
         title: "Trạng thái",
         slot: "status",
         width: 150,
+        filters: mappingRequestAuthorTable,
+        filterMultiple: false,
+        filterRemote: value => handleFilter('status', value),
     },
     {
         title: "Thời điểm tạo",
         slot: "creation_time",
         width: 170,
+        sortable: true
     },
     {
         title: " ",
@@ -186,6 +193,47 @@ const viewDetailItem = (row) => {
     formItem.value = row;
 };
 
+const handleSort = ({column, order}) => {
+    const type = column.slot || column.key;
+    const query = {
+        ...route.query,
+    };
+
+    if (order === 'normal') {
+        if (query.ordering) {
+            delete query.ordering;
+        }
+    } else if (order === 'asc') {
+        query.ordering = type;
+    } else {
+        query.ordering = `-${type}`;
+    }
+
+    delete query.page;
+    router.push({
+        query,
+    });
+};
+
+const handleFilter = (type, value) => {
+    const query = {
+        ...route.query,
+    };
+
+    if (value.length > 0) {
+        query[type] = value.join(',');
+    } else {
+        delete query[type];
+    }
+
+    delete query.page;
+
+    router.push({
+        query,
+    });
+};
+
+
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
         page.value = 1;
@@ -203,6 +251,7 @@ watch(() => route?.query, (value, oldValue) => {
         :columns="columns"
         :data="data"
         :loading="loading"
+        @on-sort-change="handleSort"
     >
         <template #stt="{ row }">
             {{row?.stt}}
@@ -237,7 +286,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
@@ -255,25 +304,25 @@ watch(() => route?.query, (value, oldValue) => {
 
     <Modal
         v-model="openModal"
-        title="Chi tiết: Yêu cầu làm tác giả"
+        title="Yêu cầu làm tác giả"
         :loading="loadingModal"
         @on-ok="openModal = !openModal"
         width="800px">
 
         <Form :model="formItem" label-position="top">
             <FormItem label="SDT">
-                <Input v-model="formItem.sdt" placeholder="Link tác phẩm vi phạm"></Input>
+                <Input v-model="formItem.sdt" placeholder="Link tác phẩm vi phạm" readonly></Input>
             </FormItem>
 
             <FormItem label="Facebook">
-                <Input v-model="formItem.fb" placeholder="Link tác phẩm gốc"></Input>
+                <Input v-model="formItem.fb" placeholder="Link tác phẩm gốc" readonly></Input>
             </FormItem>
             <FormItem label="Lời nhắn">
-                <Input v-model="formItem.message" placeholder="Contact"></Input>
+                <Input v-model="formItem.message" placeholder="Contact" readonly></Input>
             </FormItem>
 
             <FormItem label="Người báo">
-                <Input v-model="formItem.owner.fullname" placeholder="Người báo"></Input>
+                <Input v-model="formItem.owner.fullname" placeholder="Người báo" readonly></Input>
             </FormItem>
         </Form>
     </Modal>

@@ -1,4 +1,5 @@
 <script setup>
+import {mappingReportLicenseTable, filterReportLicense} from "~/utils/mapping.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -35,11 +36,15 @@ const columns = [
         title: "Trạng thái",
         slot: "status",
         width: 150,
+        filters: mappingReportLicenseTable,
+        filterMultiple: false,
+        filterRemote: value => handleFilter('status', value),
     },
     {
         title: "Thời điểm tạo",
         slot: "creation_time",
         width: 170,
+        sortable: true
     },
     {
         title: " ",
@@ -124,7 +129,7 @@ const handledItem = (row) => {
     formItem.value = row;
 };
 
-const okHandled = async (row) => {
+const okHandled = async () => {
     try {
         loadingHandled.value = true;
         await useNuxtApp().$api(`admin/report-license/${formItem?.value?.id}`, {
@@ -134,18 +139,9 @@ const okHandled = async (row) => {
             }
         });
 
-        getData();
+        await getData();
         loadingHandled.value = false;
         modalHandled.value = false;
-        formItem.value = {
-            chapter_number: '',
-            story: '',
-            owner: {
-                fullname: ''
-            },
-            category: '',
-            detail: ''
-        };
     } catch (e) {
         console.log("error", e);
         loadingHandled.value = false;
@@ -157,7 +153,7 @@ const falsePositiveItem = (row) => {
     formItem.value = row;
 };
 
-const okApproval = async (row) => {
+const okApproval = async () => {
     try {
         loadingApproval.value = true;
         await useNuxtApp().$api(`admin/report-license/${formItem?.value?.id}`, {
@@ -167,18 +163,9 @@ const okApproval = async (row) => {
             }
         });
 
-        getData();
+        await getData();
         loadingApproval.value = false;
         modalApproval.value = false;
-        formItem.value = {
-            chapter_number: '',
-            story: '',
-            owner: {
-                fullname: ''
-            },
-            category: '',
-            detail: ''
-        }
     } catch (e) {
         console.log("error", e);
         loadingApproval.value = false;
@@ -216,6 +203,46 @@ const asyncOK = async () => {
 };
 
 
+const handleSort = ({column, order}) => {
+    const type = column.slot || column.key;
+    const query = {
+        ...route.query,
+    };
+
+    if (order === 'normal') {
+        if (query.ordering) {
+            delete query.ordering;
+        }
+    } else if (order === 'asc') {
+        query.ordering = type;
+    } else {
+        query.ordering = `-${type}`;
+    }
+
+    delete query.page;
+    router.push({
+        query,
+    });
+};
+
+const handleFilter = (type, value) => {
+    const query = {
+        ...route.query,
+    };
+
+    if (value.length > 0) {
+        query[type] = value.join(',');
+    } else {
+        delete query[type];
+    }
+
+    delete query.page;
+
+    router.push({
+        query,
+    });
+};
+
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
         page.value = 1;
@@ -233,6 +260,7 @@ watch(() => route?.query, (value, oldValue) => {
         :columns="columns"
         :data="data"
         :loading="loading"
+        @on-sort-change="handleSort"
     >
         <template #stt="{ row }">
             {{row?.stt}}
@@ -265,7 +293,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown trigger="click">
+            <Dropdown trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
@@ -283,25 +311,25 @@ watch(() => route?.query, (value, oldValue) => {
 
     <Modal
         v-model="openModal"
-        title="Chi tiết Báo cáo bản quyền"
+        title="Báo cáo bản quyền"
         :loading="loadingModal"
         @on-ok="openModal = !openModal"
         width="800px">
 
         <Form :model="formItem" label-position="top">
             <FormItem label="Link tác phẩm vi phạm">
-                <Input v-model="formItem.link_violate" placeholder="Link tác phẩm vi phạm"></Input>
+                <Input v-model="formItem.link_violate" placeholder="Link tác phẩm vi phạm" readonly></Input>
             </FormItem>
 
             <FormItem label="Link tác phẩm gốc">
-                <Input v-model="formItem.link_story" placeholder="Link tác phẩm gốc"></Input>
+                <Input v-model="formItem.link_story" placeholder="Link tác phẩm gốc" readonly></Input>
             </FormItem>
             <FormItem label="Contact email">
-                <Input v-model="formItem.contact" placeholder="Contact"></Input>
+                <Input v-model="formItem.contact" placeholder="Contact" readonly></Input>
             </FormItem>
 
             <FormItem label="Người báo">
-                <Input v-model="formItem.owner.fullname" placeholder="Người báo"></Input>
+                <Input v-model="formItem.owner.fullname" placeholder="Người báo" readonly></Input>
             </FormItem>
         </Form>
     </Modal>
