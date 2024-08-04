@@ -10,12 +10,12 @@ export default defineNuxtConfig({
             },
             charset: 'utf-8',
             viewport: 'width=device-width,initial-scale=1',
-            title: "MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024",
+            title: "Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024",
             meta: [
                 {charset: 'utf-8'},
                 {
                     name: 'title',
-                    content: 'MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
+                    content: 'Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
                 },
                 {name: 'msapplication-TileColor', content: '#ffffff'},
                 {name: 'msapplication-TileImage', content: '/images/favicon/ms-icon-144x144.png'},
@@ -23,28 +23,28 @@ export default defineNuxtConfig({
                 {property: 'og:type', content: 'website'},
                 {
                     name: 'description',
-                    content: 'MonkeyD nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
+                    content: 'Phê Truyện nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
                 },
                 {name: 'image', content: '/images/seo/seo-image.png'},
                 {
                     property: 'og:title',
-                    content: 'MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
+                    content: 'Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
                 },
                 {property: 'og:image', content: '/images/seo/seo-image.png'},
                 {
                     property: 'og:description',
-                    content: 'MonkeyD nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
+                    content: 'Phê Truyện nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024'
                 },
-                {name: 'author', content: 'MonkeyD'},
-                {name: 'copyright', content: 'Copyright©2024 MonkeyD. All Right Reserved.'},
+                {name: 'author', content: 'Phê Truyện'},
+                {name: 'copyright', content: 'Copyright©2024 Phê Truyện. All Right Reserved.'},
                 {property: 'og:url', content: process.env.NUXT_PUBLIC_SITE_URL},
                 {property: 'og:locale', content: 'vi_VN'},
-                {property: 'og:site_name', content: 'MonkeyD'},
+                {property: 'og:site_name', content: 'Phê Truyện'},
                 {property: 'rating', content: 'general'},
                 {property: 'distribution', content: 'global'},
                 {
                     name: 'keywords',
-                    content: 'monkeyd, truyện ngắn, ngôn tình, tiểu thuyết, trọng sinh, truyện chữ, tổng tài, đoản văn'
+                    content: 'Phê Truyện, truyện ngắn, ngôn tình, tiểu thuyết, trọng sinh, truyện chữ, tổng tài, đoản văn'
                 },
             ],
             link: [
@@ -87,11 +87,11 @@ export default defineNuxtConfig({
                         "@context": "https://schema.org",
                         "@type": "WebSite",
                         "@id": "#website",
-                        "name": "MonkeyD",
+                        "name": "Phê Truyện",
                         "url": process.env.NUXT_PUBLIC_SITE_URL,
-                        "description": "MonkeyD nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024",
-                        "keywords": 'monkeyd, truyện ngắn, ngôn tình, tiểu thuyết, trọng sinh, truyện chữ, tổng tài, đoản văn',
-                        "alternateName": "MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024",
+                        "description": "Phê Truyện nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024",
+                        "keywords": 'Phê Truyện, truyện ngắn, ngôn tình, tiểu thuyết, trọng sinh, truyện chữ, tổng tài, đoản văn',
+                        "alternateName": "Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024",
                         "potentialAction": {
                             "@type": "SearchAction",
                             "target": `${process.env.NUXT_PUBLIC_SITE_URL}?s={search_term_string}`,
@@ -116,9 +116,9 @@ export default defineNuxtConfig({
 
     site: {
         url: process.env.NUXT_PUBLIC_SITE_URL,
-        name: 'MonkeyD',
+        name: 'Phê Truyện',
         SITE_URL: process.env.NUXT_PUBLIC_SITE_URL,
-        description: "MonkeyD nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024",
+        description: "Phê Truyện nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024",
         defaultLocale: "vi"
     },
 
