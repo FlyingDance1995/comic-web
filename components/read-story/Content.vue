@@ -77,7 +77,7 @@ const reportError = () => {
 
                 <!--                <div class="my-3 mx-lg-4 mx-2">-->
                 <!--                    <a href="https://goeco.mobi/lUtqaGcJ" target="_blank">-->
-                <!--                        <img src="https://monkeyd.vn/images/banner/lazada-1.jpg" alt="" style="width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 5px;">-->
+                <!--                        <img src="https://Phê Truyện.vn/images/banner/lazada-1.jpg" alt="" style="width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 5px;">-->
                 <!--                    </a>-->
                 <!--                </div>-->
 

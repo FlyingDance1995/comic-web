@@ -57,7 +57,7 @@ export default defineNuxtConfig({
                 // {
                 //     rel: 'stylesheet',
                 //     type: 'text/css',
-                //     href: 'https://monkeyd.vn/assets/app.min.css?ver=2.0.10'
+                //     href: 'https://Phê Truyện.vn/assets/app.min.css?ver=2.0.10'
                 // },
                 {rel: 'dns-prefetch', href: '//fonts.googleapis.com'},
                 {rel: 'dns-prefetch', href: '//googleads.g.doubleclick.net'},
