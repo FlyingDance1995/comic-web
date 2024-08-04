@@ -29,8 +29,8 @@ const openSearchModal = () => {
                 <div class="topbar-logo-header d-flex">
                     <div class="">
                         <NuxtLink to="/">
-                            <img src="/images/logo/Logo-MonkeyD.png" class="logo-icon"
-                                 alt="MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024"
+                            <img src="/images/logo/Logo.png" class="logo-icon"
+                                 alt="Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024"
                                  width="120" height="30">
                         </NuxtLink>
                     </div>

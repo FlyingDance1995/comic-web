@@ -10,7 +10,7 @@ useSchemaOrg([
         "founders": [
             {
                 "@type": "Person",
-                "name": "MonkeyD"
+                "name": "Phê Truyện"
             }],
         "contactPoint": {
             "@type": "ContactPoint",
@@ -20,8 +20,8 @@ useSchemaOrg([
         },
         "sameAs": ["https://www.facebook.com/fanpage/"],
         "@id": "#organization",
-        "name": "MonkeyD",
-        "logo": "/images/logo/Logo-MonkeyD.png"
+        "name": "Phê Truyện",
+        "logo": "/images/logo/Logo.png"
     }
 ]);
 
