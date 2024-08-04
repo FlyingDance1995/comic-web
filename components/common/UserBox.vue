@@ -79,10 +79,26 @@ watch(token, () => {
             <!--                            <div class="dropdown-divider mb-0"></div>-->
             <!--                        </li>-->
 
-            <!--                        <li><a class="dropdown-item d-flex align-items-center"-->
-            <!--                               href="https://monkeyd.vn/user/tro-thanh-tac-gia"><i-->
-            <!--                            class="bx bx-chevrons-up fs-5"></i><span>Đăng truyện</span></a>-->
-            <!--                        </li>-->
+            <li v-if="route.path.includes('/dang-truyen') || route.path.includes('/admin')">
+                <NuxtLink class="dropdown-item d-flex align-items-center"
+                          to="/"><i
+                    class="bx bx-home-alt fs-5"></i><span>Trang chủ</span>
+                </NuxtLink>
+            </li>
+
+            <li v-else-if="user?.role === 'moderator' || user?.role === 'admin'">
+                <NuxtLink class="dropdown-item d-flex align-items-center"
+                          to="/dang-truyen/quan-ly-truyen"><i
+                    class="bx bx-book-open fs-5"></i><span>Quản lý truyện</span>
+                </NuxtLink>
+            </li>
+
+            <li v-if="user?.role === 'user'">
+                <NuxtLink class="dropdown-item d-flex align-items-center"
+                          to="/user/tro-thanh-tac-gia"><i
+                    class="bx bx-chevrons-up fs-5"></i><span>Đăng truyện</span>
+                </NuxtLink>
+            </li>
 
             <li>
                 <NuxtLink class="dropdown-item d-flex align-items-center"

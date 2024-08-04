@@ -21,9 +21,10 @@ if (slug) await getData();
 </script>
 
 <template>
-  <Head>
-    <Title>{{data?.name}}</Title>
-  </Head>
+    <Head>
+        <Title>{{data?.name}}</Title>
+    </Head>
+
     <div class="container page-comics-detail">
         <!--breadcrumb-->
         <CommonBreadCrumb :name="data?.name"/>

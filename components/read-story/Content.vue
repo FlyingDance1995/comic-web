@@ -1,5 +1,8 @@
 <script setup>
 import {useConfigStore} from "~/store/config.js";
+import { formattedNameChaper } from "~/utils/formatName.js";
+
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 const route = useRoute();
 const configStore = useConfigStore();
@@ -44,11 +47,12 @@ const reportError = () => {
 
 <template>
     <Head>
-    <Title>{{data?.name}} - Chương {{data?.chapter_number}}</Title>
+        <Title>{{data?.name || data?.story?.name}} - {{ formattedNameChaper(data?.type) }} {{data?.chapter_number || ''}}: {{data?.name || ''}}</Title>
     </Head>
+
     <div class="container page-chapter-detail">
         <!--breadcrumb-->
-        <CommonBreadCrumb :name="`Chương ${data?.chapter_number || ''}`">
+        <CommonBreadCrumb :name="`${formattedNameChaper(data?.type)} ${data?.chapter_number || ''}: ${data?.name || ''}`">
             <li class="breadcrumb-item">
                 <NuxtLink :to="`/${data?.story?.slug}`">{{data?.story?.name}}</NuxtLink>
             </li>
@@ -57,16 +61,15 @@ const reportError = () => {
 
         <div class="card">
             <div class="card-body">
-                <h1 class="card-title">{{data?.name}} - Chương {{data?.chapter_number}}</h1>
+                <h1 class="card-title">{{data?.story?.name}} - {{ formattedNameChaper(data?.type) }} {{data?.chapter_number || ''}}: {{data?.name || ''}}</h1>
 
                 <p class="bg-light-info p-3 radius-10 mt-3">
                     Cập nhật lúc: {{ formattedFullDate(data?.list_chapter?.find(x => x?.chapter_number === data?.chapter_number)?.modification_time)}}<br>
-                    Lượt xem: 54
+                    Lượt xem: {{data?.count_watched}}
                 </p>
 
-
                 <div class="chapter-content">
-                    <div class="content-container mt-4" id="chapter-content-render"
+                    <div class="content-container mt-4 ql-editor" id="chapter-content-render"
                          style="font-family: Roboto, sans-serif; font-size: 18px; line-height: 140%;"
                          v-html="data?.content">
                     </div>

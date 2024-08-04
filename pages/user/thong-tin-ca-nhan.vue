@@ -70,8 +70,9 @@ const handleChangeAvatar = async (event) => {
             preview.src = e.target.result;
         };
         reader.readAsDataURL(file);
+
+        form.avatar = file;
     }
-    form.avatar = file;
 };
 
 watch(user, () => {
@@ -85,8 +86,9 @@ watch(user, () => {
 
 <template>
     <Head>
-      <Title>Thông tin tài khoản</Title>
+        <Title>Thông tin tài khoản</Title>
     </Head>
+
     <div class="row">
         <div class="col-xl-6 mx-auto">
             <h6 class="mb-0 text-uppercase">Thông tin tài khoản</h6>
@@ -155,7 +157,8 @@ watch(user, () => {
         </div>
     </div>
 </template>
-<style>
+
+<style scoped>
 .avatar-wrapper {
     position: relative;
     height: 200px;

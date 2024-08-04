@@ -4,8 +4,9 @@
 
 <template>
     <Head>
-      <Title>Chính sách và quy định chung</Title>
+        <Title>Chính sách và quy định chung</Title>
     </Head>
+
     <div class="container">
         <h1 class="mb-0 text-uppercase">Chính sách và quy định chung</h1>
         <hr>

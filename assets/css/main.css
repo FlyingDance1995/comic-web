@@ -15,3 +15,73 @@
 ::-webkit-scrollbar-track {
     background-color: #ffffff;
 }
+
+.ivu-layout-sider-trigger {
+    background: #F0F1FA;
+}
+
+.ivu-icon-ios-arrow-back:before {
+    color: black;
+}
+
+.ivu-menu-vertical.ivu-menu-light:after, .ivu-menu-horizontal.ivu-menu-light:after {
+    display: none;
+}
+
+.ivu-layout-sider.ivu-layout-sider-collapsed {
+    min-width: 0 !important;
+}
+
+/* Override dropdown */
+.ivu-dropdown-menu {
+    min-width: 100px;
+    padding-left: 0rem;
+    margin-bottom: 0rem;
+}
+
+.ivu-select-dropdown-list {
+    min-width: 100%;
+    list-style: none;
+    padding-left: 0rem;
+    margin-bottom: 0rem;
+}
+
+.ivu-table-filter-list-single {
+    padding-left: 0rem;
+    margin-bottom: 0rem;
+}
+/* Override dropdown */
+
+.dark-theme .bxs-trash {
+    color: black;
+}
+
+.ivu-select-not-found {
+    display: none !important;
+}
+
+.custom-box .nav-link {
+    font-size: 22px;
+    padding: 0 0.75rem;
+}
+
+.custom-box .alert-count {
+    top: 8px;
+}
+
+.custom-box .user-box .dropdown-toggle-nocaret {
+    line-height: 100%;
+}
+
+.custom-box .dropdown-menu a {
+    line-height: normal;
+}
+
+.custom-box .user-box #drop-menu li {
+    line-height: normal;
+    height: auto;
+}
+
+.custom-box.topbar {
+    height: 100%;
+}

@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: {enabled: false},
-    css: ['~/assets/css/main.css'],
+    css: ['view-ui-plus/dist/styles/viewuiplus.css', '~/assets/css/main.css'],
 
     app: {
         head: {
@@ -140,7 +140,8 @@ export default defineNuxtConfig({
 
     plugins: [
         {src: '~/plugins/jquery', mode: 'client'},
-        {src: '~/plugins/owl-carousel', mode: 'client'}
+        {src: '~/plugins/owl-carousel', mode: 'client'},
+        {src: '~/plugins/view-ui-plus', mode: 'client'},
     ],
 
     compatibilityDate: '2024-07-17',
@@ -150,6 +151,11 @@ export default defineNuxtConfig({
         '/user/truyen-da-luu': { ssr: false },
         '/user/dich-gia-dang-theo-doi': { ssr: false },
         '/user/lich-su-doc-truyen': { ssr: false },
+        '/user/tro-thanh-tac-gia': { ssr: false },
         '/tim-kiem': { ssr: false },
+        '/dang-truyen/*': { ssr: false },
+        '/dang-truyen/quan-ly-truyen/*': { ssr: false },
+        '/admin/*': { ssr: false },
+        '/admin/quan-ly-truyen/*': { ssr: false },
     }
 })
