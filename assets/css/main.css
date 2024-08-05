@@ -127,3 +127,28 @@
 .custom-box .dropdown-menu .msg-header-title {
     color: #212529 !important;
 }
+
+.dark-theme .list-chapters .item .episode-title a:visited {
+    color: #656f7b;
+}
+
+.dark-theme .post-comments {
+    background: #212529;
+    border-color: #ffffff57;
+}
+
+.dark-theme .blog-comment ul li {
+    border-color: #212529;
+}
+
+.dark-theme .post-comments p {
+    color: #e4e5e6 !important;
+}
+
+.dark-theme .post-comments a {
+    color: #fff !important;
+}
+
+.dark-theme .form-group i {
+    color: #fff !important;
+}
