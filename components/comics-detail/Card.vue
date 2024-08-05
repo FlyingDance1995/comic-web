@@ -11,6 +11,7 @@ const props = defineProps({
 const configStore = useConfigStore();
 
 const listChaptersRef = ref();
+const expanded = ref(false);
 
 const handleFollow = () => {
     const user = JSON.parse(localStorage.getItem('user') || null);
@@ -191,9 +192,16 @@ const reportError = () => {
                     </div>
 
                     <div class="mt-3 card-text fs-6 story-description">
-                        <div class="ql-editor inner" style="height: auto">
+                        <div class="ql-editor inner"
+                             :class="{'expanded': expanded}"
+                        >
                             <p>{{ data?.description }}</p>
                         </div>
+
+                        <span class="more cursor-pointer text-primary"
+                              @click="expanded = !expanded">
+                            {{expanded ? 'Thu gọn' : 'Xem thêm'}}
+                        </span>
                     </div>
 
                     <!-- <div class="mt-3 mx-lg-4 mx-0">
