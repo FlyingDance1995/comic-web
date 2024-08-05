@@ -149,6 +149,10 @@
     color: #fff !important;
 }
 
+.dark-theme .form-group button {
+    color: #fff !important;
+}
+
 .dark-theme .form-group i {
     color: #fff !important;
 }
