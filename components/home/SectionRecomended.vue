@@ -11,6 +11,7 @@ onMounted(() => {
         $(".recommendedStory").owlCarousel({
             items: 2,
             margin: 40,
+            loop: true,
             nav: false,
             dots: true,
             autoplay: true,

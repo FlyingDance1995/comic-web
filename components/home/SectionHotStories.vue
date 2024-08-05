@@ -16,6 +16,7 @@ onMounted(() => {
         $(".top-story-slider").owlCarousel({
             items: 5,
             margin: 20,
+            loop: true,
             nav: false,
             dots: false,
             autoplay: true,

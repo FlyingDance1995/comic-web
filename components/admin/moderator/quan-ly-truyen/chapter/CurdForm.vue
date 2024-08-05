@@ -1,5 +1,5 @@
 <script setup>
-import { Form, Notice, Col, Row, InputNumber, Select, Option, Input, Button } from "view-ui-plus";
+import {Form, Notice, Col, Row, InputNumber, Select, Option, Input, Button, Space} from "view-ui-plus";
 import { optionsChapterType } from "~/constants/options.js";
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
@@ -94,6 +94,8 @@ const handleDelete = async () => {
 
 const handlePost = async () => {
     try {
+        if (!props.dataDetail?.draft) return;
+
         await useNuxtApp().$api(`moderator/story/${props?.story?.slug}/chapter/${props?.dataDetail?.slug}`, {
             method: "PATCH",
             body: {
@@ -114,7 +116,7 @@ const handlePost = async () => {
     }
 };
 
-const submit = async () => {
+const submit = async (draft) => {
     formRef.value.validate(async valid => {
         if (valid) {
             try {
@@ -125,7 +127,8 @@ const submit = async () => {
                     : `moderator/story/${props?.story?.slug}/chapter`, {
                     method: status.value === 'edit' ? 'PATCH' : 'POST',
                     body: {
-                        ...formItem
+                        ...formItem,
+                        draft: draft
                     }
                 });
                 Notice.success({
@@ -186,8 +189,8 @@ defineExpose({
                         <DropdownItem @click="handleDelete">
                             <span style="color: red">Xóa</span>
                         </DropdownItem>
-                        <DropdownItem @click="handlePost">
-                            <span style="color: blue">Đăng bài</span>
+                        <DropdownItem @click="handlePost" :disabled="!dataDetail?.draft">
+                            <span :style="{color: dataDetail?.draft && 'blue'}">Đăng bài</span>
                         </DropdownItem>
                         <DropdownItem @click="status = 'edit'">Chỉnh sửa</DropdownItem>
                     </DropdownMenu>
@@ -242,10 +245,22 @@ defineExpose({
             </FormItem>
         </Form>
 
-        <div v-if="status === 'add' || status === 'edit'" class="mt-4" style="text-align: right">
-            <Button type="primary" @click="submit" :loading="loading">
-                {{ status === 'edit' ? 'Cập nhật' : 'Tạo mới' }}
-            </Button>
+        <div class="mt-4" style="text-align: right">
+            <Space>
+                <Button @click="$emit('on-success')">
+                    Đóng
+                </Button>
+
+                <template v-if="status === 'add' || status === 'edit'" >
+                    <Button type="primary" @click="submit(true)" :loading="loading">
+                        Lưu
+                    </Button>
+
+                    <Button type="primary" @click="submit(false)" :loading="loading">
+                        Lưu và đăng
+                    </Button>
+                </template>
+            </Space>
         </div>
     </div>
 </template>

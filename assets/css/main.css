@@ -85,3 +85,45 @@
 .custom-box.topbar {
     height: 100%;
 }
+
+.custom-box .user-name {
+    color: #212529 !important;
+}
+
+.custom-box .designattion {
+    color: #a9a8a8 !important;
+}
+
+.custom-box .dropdown-menu {
+    background: white !important;
+}
+
+.custom-box .dropdown-menu .dropdown-item {
+    color: #212529 !important;
+    border-color: #ededed !important;
+}
+
+.custom-box .dropdown-menu .msg-header {
+    color: #212529 !important;
+    border-color: #ededed !important;
+}
+
+.custom-box .dropdown-menu .msg-footer {
+    border-color: #ededed !important;
+}
+
+.custom-box .dropdown-menu .dropdown-item:hover {
+    background: #f8f9fa !important;
+}
+
+.custom-box .dropdown-menu .msg-name {
+    color: #212529 !important;
+}
+
+.custom-box .dropdown-menu .msg-info {
+    color: #212529 !important;
+}
+
+.custom-box .dropdown-menu .msg-header-title {
+    color: #212529 !important;
+}

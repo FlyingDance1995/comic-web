@@ -1,5 +1,5 @@
 <script setup>
-import { Form, Notice, Col, Row, InputNumber, Select, Option, Input, Button } from "view-ui-plus";
+import {Form, Notice, Col, Row, InputNumber, Select, Option, Input, Button, Space} from "view-ui-plus";
 import { optionsChapterType } from "~/constants/options.js";
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
@@ -242,10 +242,18 @@ defineExpose({
             </FormItem>
         </Form>
 
-        <div v-if="status === 'add' || status === 'edit'" class="mt-4" style="text-align: right">
-            <Button type="primary" @click="submit" :loading="loading">
-                {{ status === 'edit' ? 'Cập nhật' : 'Tạo mới' }}
-            </Button>
+        <div class="mt-4" style="text-align: right">
+            <Space>
+                <Button @click="$emit('on-success')">
+                    Đóng
+                </Button>
+
+                <template v-if="status === 'add' || status === 'edit'" >
+                    <Button type="primary" @click="submit" :loading="loading">
+                        {{ status === 'edit' ? 'Cập nhật' : 'Tạo mới' }}
+                    </Button>
+                </template>
+            </Space>
         </div>
     </div>
 </template>
