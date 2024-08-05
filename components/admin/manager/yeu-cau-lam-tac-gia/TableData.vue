@@ -322,7 +322,7 @@ watch(() => route?.query, (value, oldValue) => {
             </FormItem>
 
             <FormItem label="Người báo">
-                <Input v-model="formItem.owner.fullname" placeholder="Người báo" readonly></Input>
+                <Input v-model="formItem.owner.email" placeholder="Người báo" readonly></Input>
             </FormItem>
         </Form>
     </Modal>
