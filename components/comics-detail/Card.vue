@@ -192,7 +192,7 @@ const reportError = () => {
                     </div>
 
                     <div class="mt-3 card-text fs-6 story-description">
-                        <div class="ql-editor inner"
+                        <div class="ql-editor inner p-0"
                              :class="{'expanded': expanded}"
                         >
                             <p>{{ data?.description }}</p>
