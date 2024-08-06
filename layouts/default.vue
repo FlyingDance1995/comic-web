@@ -59,6 +59,8 @@ const openMenu = computed(() => menuStore.$state.open);
             <!-- search modal -->
             <CommonSearchModal/>
             <!-- end search modal -->
+            <!-- Donate Modal -->
+            <CommonDonateModal/>
             <!-- Report License Modal -->
             <CommonReportLicenseModal/>
             <!-- Report Error Modal -->

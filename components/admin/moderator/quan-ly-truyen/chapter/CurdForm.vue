@@ -94,6 +94,9 @@ const handleDelete = async () => {
 
 const handlePost = async () => {
     try {
+        if (!props?.dataDetail?.draft) {
+            return ;
+        }
         await useNuxtApp().$api(`moderator/story/${props?.story?.slug}/chapter/${props?.dataDetail?.slug}`, {
             method: "PATCH",
             body: {
@@ -108,24 +111,24 @@ const handlePost = async () => {
         });
     } catch (e) {
         console.log("error", e);
-        Notice.success({
+        Notice.error({
             title: `Đăng bài thất bại`,
         });
     }
 };
 
-const submit = async () => {
+const submit = async (draft = true) => {
     formRef.value.validate(async valid => {
         if (valid) {
             try {
-                console.log(status.value)
                 loading.value = true;
                 await useNuxtApp().$api(status.value === 'edit'
                     ? `moderator/story/${props?.story?.slug}/chapter/${props?.dataDetail?.slug}`
                     : `moderator/story/${props?.story?.slug}/chapter`, {
                     method: status.value === 'edit' ? 'PATCH' : 'POST',
                     body: {
-                        ...formItem
+                        ...formItem,
+                        draft: draft
                     }
                 });
                 Notice.success({
@@ -166,6 +169,10 @@ watch(() => props.dataDetail, () => {
     deep: true
 });
 
+const close = () => {
+    emit('on-success');
+}
+
 defineExpose({
     status
 });
@@ -186,8 +193,8 @@ defineExpose({
                         <DropdownItem @click="handleDelete">
                             <span style="color: red">Xóa</span>
                         </DropdownItem>
-                        <DropdownItem @click="handlePost">
-                            <span style="color: blue">Đăng bài</span>
+                        <DropdownItem @click="handlePost" :disabled="!dataDetail?.draft">
+                            <span :style="{color: dataDetail.draft && 'blue'}">Đăng bài</span>
                         </DropdownItem>
                         <DropdownItem @click="status = 'edit'">Chỉnh sửa</DropdownItem>
                     </DropdownMenu>
@@ -242,10 +249,23 @@ defineExpose({
             </FormItem>
         </Form>
 
-        <div v-if="status === 'add' || status === 'edit'" class="mt-4" style="text-align: right">
-            <Button type="primary" @click="submit" :loading="loading">
-                {{ status === 'edit' ? 'Cập nhật' : 'Tạo mới' }}
-            </Button>
+        <div class="d-flex gap-2 justify-content-end">
+            <div class="mt-4" style="text-align: right">
+                <Button @click="close" :loading="loading">
+                    Đóng
+                </Button>
+            </div>
+            <div v-if="status === 'add' || status === 'edit'" class="mt-4" style="text-align: right">
+                <Button type="primary" @click="submit(true)" :loading="loading">
+                    Lưu
+                </Button>
+            </div>
+
+            <div v-if="(status === 'add' || status === 'edit')" class="mt-4" style="text-align: right">
+                <Button type="primary" @click="submit(false)" :loading="loading">
+                    Lưu và đăng bài
+                </Button>
+            </div>
         </div>
     </div>
 </template>
@@ -255,4 +275,5 @@ defineExpose({
     font-size: 14px !important;
     font-family: Roboto, sans-serif;
 }
+
 </style>

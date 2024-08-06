@@ -4,6 +4,8 @@ import _ from "lodash";
 const route = useRoute();
 const router = useRouter();
 
+const modalRef = ref(null);
+
 const query = reactive({
     search: route.query?.search || "",
 });
@@ -31,4 +33,6 @@ const handleSearch = _.debounce(() => {
                 @on-clear="handleSearch" @on-change="handleSearch" />
         </div>
     </div>
+
+    <AdminManagerQuanLyTeamCreateOrUpdateModal ref="modalRef"/>
 </template>

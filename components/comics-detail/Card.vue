@@ -64,6 +64,20 @@ const report = () => {
     setTimeout(() => configStore.setReportModal(true), 100)
 };
 
+const donate = () => {
+    const user = localStorage.getItem('user');
+    if (!user) {
+        return configStore.setSwal({
+            open: true,
+            title: 'Oops...',
+            text: 'Bạn cần đăng nhập để có donate.',
+            type: 'error'
+        });
+    }
+
+    setTimeout(() => configStore.setDonateModal(true), 100)
+};
+
 const reportError = () => {
     const user = localStorage.getItem('user');
     if (!user) {
@@ -78,6 +92,15 @@ const reportError = () => {
     configStore.setStoryReportError(listChaptersRef.value?.data);
     setTimeout(() => configStore.setReportErrorModal(true), 100);
 };
+
+const isExpanded = ref(false);
+
+const toggleDescription = () => {
+    const styleExpanded = document.querySelector('.ql-editor')
+    styleExpanded.style.height = (!isExpanded.value ? 'auto' : '')
+    styleExpanded.style.display = (!isExpanded.value ? 'block' : '')
+    isExpanded.value = !isExpanded.value;
+}
 </script>
 
 <template>
@@ -164,7 +187,7 @@ const reportError = () => {
                     <!--social_single_news-->
 
                     <div class="d-flex gap-3 mt-3 flex-wrap">
-                        <button class="btn btn-sm btn-danger px-3 radius-30" onclick="donate()">
+                        <button class="btn btn-sm btn-danger px-3 radius-30" @click="donate">
                             <i class="bx bx-dollar-circle"></i>Donate
                         </button>
                         <NuxtLink :to="`/${data?.slug}/${data?.first_chapter?.slug}`"
@@ -191,9 +214,13 @@ const reportError = () => {
                     </div>
 
                     <div class="mt-3 card-text fs-6 story-description">
-                        <div class="ql-editor inner" style="height: auto">
-                            <p>{{ data?.description }}</p>
+                        <div class="ql-editor inner">
+                            <p>{{data?.description}}</p>
                         </div>
+
+                        <button @click="toggleDescription" class="button-expanded">
+                            {{ isExpanded ? 'Thu gọn' : 'Xem thêm' }}
+                        </button>
                     </div>
 
                     <!-- <div class="mt-3 mx-lg-4 mx-0">
@@ -219,3 +246,12 @@ const reportError = () => {
         </div>
     </div>
 </template>
+<style scoped lang="css">
+.button-expanded{
+    border: none;
+    color: #008cff;
+    font-weight: 700;
+    text-decoration: underline;
+    background: transparent;
+}
+</style>

@@ -118,7 +118,6 @@ const submit = async () => {
     formRef.value.validate(async valid => {
         if (valid) {
             try {
-                console.log(status.value)
                 loading.value = true;
                 await useNuxtApp().$api(status.value === 'edit'
                     ? `admin/story/${props?.story?.slug}/chapter/${props?.dataDetail?.slug}`
@@ -189,7 +188,7 @@ defineExpose({
 <!--                        <DropdownItem @click="handlePost">-->
 <!--                            <span style="color: blue">Đăng bài</span>-->
 <!--                        </DropdownItem>-->
-<!--                        <DropdownItem @click="status = 'edit'">Chỉnh sửa</DropdownItem>-->
+                        <DropdownItem @click="status = 'edit'">Chỉnh sửa</DropdownItem>
                     </DropdownMenu>
                 </template>
             </Dropdown>

@@ -84,8 +84,7 @@ const formItem = ref({
 
 const modalRemove = ref(false);
 const loadingRemove = ref(false);
-
-
+const modalUpdateRef = ref();
 const modalApproval = ref(false);
 const loadingApproval = ref(false);
 
@@ -133,6 +132,10 @@ const handleChangePage = (value) => {
     router.push({
         query: query
     });
+};
+
+const editItem = (row) => {
+    modalUpdateRef.value.open(row);
 };
 
 const removeItem = (row) => {
@@ -187,11 +190,6 @@ const okApproval = async () => {
         console.log("error", e);
         loadingApproval.value = false;
     }
-};
-
-const editItem = (row) => {
-    openModal.value = true;
-    formItem.value = row;
 };
 
 const asyncOK = async () => {
@@ -266,6 +264,15 @@ watch(() => route?.query, (value, oldValue) => {
     getData();
 }, { immediate: true, deep: true });
 
+onMounted(() => {
+    useNuxtApp().$emitter.on('add-team', () => {
+        getData()
+    });
+});
+
+onUnmounted(() => {
+    useNuxtApp().$emitter.off('add-team');
+});
 </script>
 
 <template>
@@ -320,7 +327,7 @@ watch(() => route?.query, (value, oldValue) => {
                         <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
                         <DropdownItem @click="approvalItem(row)"
                                       :disabled="row?.status !== 'awaiting'">Phê duyệt</DropdownItem>
-<!--                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>-->
+                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
                     </DropdownMenu>
                 </template>
             </Dropdown>
@@ -345,6 +352,8 @@ watch(() => route?.query, (value, oldValue) => {
             </FormItem>
         </Form>
     </Modal>
+
+    <AdminManagerQuanLyTeamCreateOrUpdateModal ref="modalUpdateRef" />
 
     <Modal v-model="modalRemove" title="Xác nhận" :loading="loadingRemove" @on-ok="okRemove">
         <p>Bạn có muốn chắc chắn xóa team này</p>

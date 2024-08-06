@@ -85,7 +85,7 @@ const data = ref([]);
 const loading = ref(false);
 const page = ref(Number(route.query?.page) || 1);
 const total = ref(0);
-
+const modalUpdateRef = ref();
 const openModal = ref(false);
 const loadingModal = ref(true);
 const formItem = ref({
@@ -213,8 +213,7 @@ const deputeItem = async (row) => {
 };
 
 const editItem = (row) => {
-    openModal.value = true;
-    formItem.value = row;
+    modalUpdateRef.value.open(row);
 };
 
 const asyncOK = () => {
@@ -283,6 +282,16 @@ watch(() => route?.query, (value, oldValue) => {
 
     getData();
 }, { immediate: true, deep: true });
+
+onMounted(() => {
+    useNuxtApp().$emitter.on('add-story', () => {
+        getData()
+    });
+});
+
+onUnmounted(() => {
+    useNuxtApp().$emitter.off('add-story');
+});
 </script>
 
 <template>
@@ -344,7 +353,7 @@ watch(() => route?.query, (value, oldValue) => {
                         <DropdownItem @click="deputeItem(row)">
                             {{row?.recommended ? 'Bỏ đề cử' : 'Đề cử'}}
                         </DropdownItem>
-<!--                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>-->
+                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
                     </DropdownMenu>
                 </template>
             </Dropdown>
@@ -386,4 +395,6 @@ watch(() => route?.query, (value, oldValue) => {
 
     <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total
         @on-change="handleChangePage" />
+
+    <AdminManagerQuanLyTruyenCreateOrUpdateModal ref="modalUpdateRef"/>
 </template>

@@ -17,6 +17,7 @@ onMounted(() => {
             smartSpeed: 500,
             autoplayTimeout: 3000,
             responsiveClass: true,
+            loop: true,
             responsive: {
                 0: {
                     items: 1
