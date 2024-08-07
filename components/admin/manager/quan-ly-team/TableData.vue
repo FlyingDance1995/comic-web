@@ -286,9 +286,9 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #leader="{ row }">
-            <NuxtLink :to="`/admin/quan-ly-nguoi-dung?search=${row?.leader?.email || ''}`">
+<!--            <NuxtLink :to="`/admin/quan-ly-nguoi-dung?search=${row?.leader?.email || ''}`">-->
                 {{ row?.leader?.fullname }}
-            </NuxtLink>
+<!--            </NuxtLink>-->
         </template>
 
         <template #creation_time="{ row }">
