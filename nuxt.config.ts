@@ -150,5 +150,9 @@ export default defineNuxtConfig({
         '/dang-truyen/quan-ly-truyen/*': { ssr: false },
         '/admin/*': { ssr: false },
         '/admin/quan-ly-truyen/*': { ssr: false },
-    }
+    },
+
+    experimental: {
+        viewTransition: true
+    },
 })

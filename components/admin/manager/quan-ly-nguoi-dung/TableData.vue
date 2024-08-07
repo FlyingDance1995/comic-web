@@ -1,6 +1,11 @@
 <script setup>
 
-import { mappingUserStatus, mappingManageUserTable, filterManageUserStatus } from "~/utils/mapping.js";
+import {
+    mappingUserStatus,
+    mappingManageUserTable,
+    filterManageUserStatus,
+    mappingStoryRecommendedTable
+} from "~/utils/mapping.js";
 import { Notice } from "view-ui-plus";
 
 const { $api } = useNuxtApp();
@@ -28,6 +33,14 @@ const columns = [
         title: 'Role',
         slot: 'role',
         width: 140,
+    },
+    {
+        title: 'VIP',
+        slot: 'is_vip',
+        width: 120,
+        filters: mappingStoryRecommendedTable,
+        filterMultiple: false,
+        filterRemote: value => handleFilter('is_vip', value),
     },
     {
         title: "Trạng thái",
@@ -286,6 +299,25 @@ const handleFilter = (type, value) => {
     });
 };
 
+const formatVip = (row) => {
+    if (row?.is_vip) {
+        const now = new Date().getTime();
+        if (row?.vip_expiry === -1 || row?.vip_expiry > now) {
+            return {
+                text: "Có",
+                color: "#2D2FFD"
+            };
+        }
+        return {
+            text: "Có - Hết hạn",
+            color: "#FE3821"
+        };
+    }
+    return {
+        text: "Không",
+        color: ""
+    };
+};
 
 onMounted(() => {
     useNuxtApp().$emitter.on('add-user', () => {
@@ -320,6 +352,12 @@ onUnmounted(() => {
         <template #is_active="{ row }">
             <span :style="{ color: mappingUserStatus(row?.is_active).color }">
                 {{ mappingUserStatus(row?.is_active).title }}
+            </span>
+        </template>
+
+        <template #is_vip="{ row }">
+            <span :style="{ color: formatVip(row).color }">
+                {{ formatVip(row).text }}
             </span>
         </template>
 

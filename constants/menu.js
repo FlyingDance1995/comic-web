@@ -34,6 +34,11 @@ const menu = [
         icon: 'md-git-pull-request',
         path: '/admin/yeu-cau-lam-tac-gia'
     },
+    {
+        title: 'Yêu cầu làm VIP',
+        icon: 'md-star',
+        path: '/admin/yeu-cau-lam-vip'
+    },
 ]
 
 export default menu

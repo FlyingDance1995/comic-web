@@ -1,6 +1,7 @@
 <script setup>
 import { formattedNameChaper } from "~/utils/formatName.js";
 import {useConfigStore} from "~/store/config.js";
+import {useUserStore} from "~/store/user.js";
 
 const props = defineProps({
     slug: {
@@ -25,12 +26,26 @@ const props = defineProps({
 
 const configStore = useConfigStore();
 
+const user = ref();
+
 const handleChange = (e) => {
     window.location.href = e.target.value;
 };
 
 const openSetting = () => {
     configStore.setSettingModal(true);
+};
+
+if (process.client) {
+    const userStore = useUserStore();
+    user.value = userStore.$state.user;
+}
+
+const checkCreationTime = (value) => {
+    const currentTime = new Date();
+    const timeDifference = currentTime - new Date(value * 1000);
+    const hoursDifference = timeDifference / (1000 * 60 * 60);
+    return hoursDifference >= 24;
 };
 </script>
 
@@ -58,12 +73,14 @@ const openSetting = () => {
                     id="selected_chapter"
                     class="form-select"
                     @change="handleChange">
-                <option v-for="item in listChapter"
-                        :key="item?.id"
-                        :value="item?.slug"
-                        :selected="item?.slug === chapter">
-                    {{ formattedNameChaper(item?.type) }} {{item?.chapter_number || ''}}
-                </option>
+                <template v-for="item in listChapter"
+                          :key="item?.id">
+                    <option v-if="user?.is_vip || checkCreationTime(item?.creation_time)"
+                            :value="item?.slug"
+                            :selected="item?.slug === chapter">
+                        {{ formattedNameChaper(item?.type) }} {{item?.chapter_number || ''}}
+                    </option>
+                </template>
             </select>
 
             <NuxtLink :to="chapter === listChapter[0]?.slug ? 'javascript:void(0)' : `/${slug}/${listChapter?.find(x => x?.chapter_number === chapter_number + 1)?.slug}`"

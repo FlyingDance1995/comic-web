@@ -1,6 +1,6 @@
 <script setup>
 import {optionsUserRole} from "~/constants/options.js";
-import {Option, Row, Col, Form, Modal, Button, Notice} from "view-ui-plus";
+import {Button, Col, DatePicker, Form, Input, Modal, Notice, Option, Row, Switch} from "view-ui-plus";
 
 const openModal = ref(false);
 const loading = ref(false);
@@ -13,10 +13,11 @@ const formItem = reactive({
     role: "",
     fb: "",
     description: "",
-    avatar: ""
+    avatar: "",
+    is_vip: false,
+    vip_expiry: null
 });
 const previewImg = ref('');
-const previewImgRef = ref();
 const uploadRef = ref();
 
 const validateSelectRole = (rule, value, callback) => {
@@ -28,15 +29,52 @@ const validateSelectRole = (rule, value, callback) => {
 
 const rules = {
     fullname: [
-        { required: true, message: 'Vui lòng nhập tên người dùng', trigger: 'blur' }
+        {required: true, message: 'Vui lòng nhập tên người dùng', trigger: 'blur'}
     ],
     email: [
-        { required: true, message: 'Vui lòng nhập email', trigger: 'blur' }
+        {required: true, message: 'Vui lòng nhập email', trigger: 'blur'}
     ],
     role: [
-        { required: true, validator: validateSelectRole, trigger: 'change' }
+        {required: true, validator: validateSelectRole, trigger: 'change'}
     ],
 };
+
+const options2 = {
+    shortcuts: [
+        {
+            text: '1 tháng',
+            value() {
+                const date = new Date();
+                date.setTime(date.getTime() + 3600 * 1000 * 24 * 30);
+                return date;
+            }
+        },
+        {
+            text: '3 tháng',
+            value() {
+                const date = new Date();
+                date.setTime(date.getTime() + 3600 * 1000 * 24 * 90);
+                return date;
+            }
+        },
+        {
+            text: '6 tháng',
+            value() {
+                const date = new Date();
+                date.setTime(date.getTime() + 3600 * 1000 * 24 * 180);
+                return date;
+            }
+        },
+        {
+            text: '1 năm',
+            value() {
+                const date = new Date();
+                date.setTime(date.getTime() + 3600 * 1000 * 24 * 360);
+                return date;
+            }
+        },
+    ]
+}
 
 const submit = () => {
     formRef.value.validate(async valid => {
@@ -50,6 +88,8 @@ const submit = () => {
                 formData.append('role', formItem.role);
                 formData.append('fb', formItem.fb);
                 formData.append('description', formItem.description);
+                formData.append('is_vip', formItem.is_vip);
+                formData.append('vip_expiry', formItem.vip_expiry?.getTime());
                 if (formItem.avatar && dataEdit.value) {
                     formData.append('avatar', formItem.avatar);
                 } else if (!dataEdit.value) {
@@ -98,6 +138,16 @@ const open = async (data = null) => {
             formItem.role = data?.role;
             formItem.fb = data?.fb;
             formItem.description = data?.description;
+            formItem.is_vip = data?.is_vip;
+            if (data?.vip_expiry !== -1) {
+                if (data?.vip_expiry === 0) {
+                    formItem.vip_expiry = null;
+                } else {
+                    formItem.vip_expiry = new Date(data?.vip_expiry);
+                }
+            } else {
+                formItem.vip_expiry = data?.vip_expiry;
+            }
             previewImg.value = data?.avatar;
             if (previews) {
                 previews.forEach(x => {
@@ -121,7 +171,7 @@ const open = async (data = null) => {
 
 const close = () => {
     openModal.value = false;
-}
+};
 
 const onUpload = () => {
     uploadRef.value.click();
@@ -180,7 +230,11 @@ defineExpose({
                     <FormItem label="Contact" prop="contact">
                         <Input v-model="formItem.contact" placeholder="Contact"/>
                     </FormItem>
+                </Col>
+            </Row>
 
+            <Row :gutter="20">
+                <Col span="10">
                     <FormItem label="Role" prop="role">
                         <Select v-model="formItem.role"
                                 placeholder="Role">
@@ -191,9 +245,33 @@ defineExpose({
                             </Option>
                         </Select>
                     </FormItem>
+                </Col>
 
+                <Col span="10" offset="4">
                     <FormItem label="Facebook" prop="fb">
                         <Input v-model="formItem.fb" placeholder="Facebook"/>
+                    </FormItem>
+                </Col>
+            </Row>
+
+            <Row :gutter="20">
+                <Col span="10">
+                    <FormItem label="VIP" prop="is_vip">
+                        <Switch v-model="formItem.is_vip"/>
+                    </FormItem>
+                </Col>
+
+                <Col span="10" offset="4">
+                    <FormItem label="Ngày hết hạn" prop="vip_expiry">
+                        <DatePicker v-if="formItem.vip_expiry !== -1"
+                                    v-model="formItem.vip_expiry"
+                                    type="date"
+                                    format="dd/MM/yyyy"
+                                    :options="options2"
+                                    placement="bottom-end"
+                                    placeholder="Chọn ngày"
+                                    style="width: 100%"/>
+                        <Input v-else :model-value="'Unlimited'" readonly/>
                     </FormItem>
                 </Col>
             </Row>
@@ -201,9 +279,9 @@ defineExpose({
             <div>
                 <FormItem label="Mô tả" prop="description">
                     <Input v-model="formItem.description"
-                            type="textarea"
-                            :autosize="{minRows: 5,maxRows: 5}"
-                            placeholder="Mô tả"/>
+                           type="textarea"
+                           :autosize="{minRows: 5,maxRows: 5}"
+                           placeholder="Mô tả"/>
                 </FormItem>
             </div>
         </Form>

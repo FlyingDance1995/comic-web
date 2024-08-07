@@ -161,6 +161,16 @@ if (process.client) {
                                     <div class="menu-title d-flex align-items-center">Chính sách</div>
                                 </NuxtLink>
                             </li>
+
+                            <li v-if="!user?.is_vip"
+                                class="nav-item">
+                                <NuxtLink class="nav-link" to="/user/mua-vip">
+                                    <div class="parent-icon">
+                                        <i class="bx bx-star"></i>
+                                    </div>
+                                    <div class="menu-title d-flex align-items-center">Premium</div>
+                                </NuxtLink>
+                            </li>
                         </ul>
                     </div>
                 </div>

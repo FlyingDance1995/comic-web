@@ -69,6 +69,9 @@ body {
 
 .custom-box .nav-link {
     font-size: 22px;
+}
+
+.custom-box li > .nav-link {
     padding: 0 0.75rem;
 }
 
