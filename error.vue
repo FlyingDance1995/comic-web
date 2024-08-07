@@ -6,7 +6,6 @@ const props = defineProps({
 
 <template>
     <NuxtLayout>
-        <NuxtLoadingIndicator color="#0d6efd"/>
         <div id="wrapper_container_fix" class="clear">
             <div class="container clear">
                 <div class="body-container border-group clear">

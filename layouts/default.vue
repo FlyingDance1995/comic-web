@@ -32,6 +32,7 @@ const openMenu = computed(() => menuStore.$state.open);
 </script>
 
 <template>
+    <NuxtLoadingIndicator color="#0d6efd"/>
     <!--ads-->
     <ClientOnly>
         <CommonAffLayer/>
@@ -63,11 +64,13 @@ const openMenu = computed(() => menuStore.$state.open);
             <CommonReportLicenseModal/>
             <!-- Report Error Modal -->
             <CommonReportErrorModal/>
+            <!-- Setting Modal -->
+            <CommonSettingModal/>
             <!--start overlay-->
             <CommonOverlay/>
             <!--end overlay-->
             <!--Start Back To Top Button-->
-            <CommonBackToTop/>
+            <!--<CommonBackToTop/>-->
         </ClientOnly>
         <!--End Back To Top Button-->
         <CommonFooter/>

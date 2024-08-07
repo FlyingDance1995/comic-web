@@ -5,13 +5,16 @@ const configStore = useConfigStore();
 
 const reportModal = computed(() => configStore.$state.reportModal);
 const reportErrorModal = computed(() => configStore.$state.reportErrorModal);
+const settingModal = computed(() => configStore.$state.settingModal);
 
 const handleClick = () => {
     configStore.setReportModal(false);
+    configStore.setSettingModal(false);
     configStore.setReportErrorModal(false);
 };
 </script>
 
 <template>
-    <div v-if="reportModal || reportErrorModal" class="modal-backdrop fade show" @click="handleClick"></div>
+    <div v-if="reportModal || reportErrorModal || settingModal"
+         class="modal-backdrop fade show" @click="handleClick"></div>
 </template>

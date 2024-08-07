@@ -10,7 +10,14 @@ const configStore = useConfigStore();
 const slug = route?.params?.slug;
 const chapter = route?.params?.chapter || '';
 
+const initStyle = {
+    'font-family': 'Roboto, sans-serif',
+    'font-size': '18px',
+    'line-height': '140%',
+}
+
 const data = ref(null);
+const styles = reactive(initStyle);
 
 const getData = async () => {
     const { data: story } = await useAPI(`/story/${slug}/chapter/${chapter}`);
@@ -43,6 +50,35 @@ const reportError = () => {
     });
     setTimeout(() => configStore.setReportErrorModal(true), 100);
 };
+
+onMounted(() => {
+    try {
+        const settingFont = localStorage.getItem('settingFont');
+        if (settingFont) {
+            const parseSettingFont = JSON.parse(settingFont);
+            styles['font-family'] = parseSettingFont?.fontFamily || 'Roboto, sans-serif';
+            styles['font-size'] = parseSettingFont?.fontSize + 'px' || '18px';
+            styles['line-height'] = parseSettingFont?.lineHeight + '%' || '140%';
+        }
+    } catch (e) {
+        Object.assign(styles, {
+            ...initStyle
+        });
+        console.log(e);
+    }
+
+    window.addEventListener('localStorageChanged', (e) => {
+        if (e?.detail?.key === 'settingFont') {
+            styles['font-family'] = e?.detail?.form.fontFamily || 'Roboto, sans-serif';
+            styles['font-size'] = e?.detail?.form.fontSize + 'px' || '18px';
+            styles['line-height'] = e?.detail?.form.lineHeight + '%' || '140%';
+        }
+    });
+});
+
+onUnmounted(() => {
+    window.removeEventListener('localStorageChanged');
+});
 </script>
 
 <template>
@@ -70,7 +106,7 @@ const reportError = () => {
 
                 <div class="chapter-content">
                     <div class="content-container mt-4 ql-editor" id="chapter-content-render"
-                         style="font-family: Roboto, sans-serif; font-size: 18px; line-height: 140%;"
+                         :style="styles"
                          v-html="data?.content">
                     </div>
                 </div>

@@ -15,6 +15,21 @@ const handleAffLayerClick = () => {
 };
 
 aff.value = sessionStorage.getItem('aff') !== null;
+
+const checkSessionStorage = () => {
+    sessionStorage.removeItem('aff')
+    aff.value = false;
+};
+
+let intervalId;
+
+onMounted(() => {
+    intervalId = setInterval(checkSessionStorage, 300000);
+});
+
+onUnmounted(() => {
+    clearInterval(intervalId);
+});
 </script>
 
 <template>

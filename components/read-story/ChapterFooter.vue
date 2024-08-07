@@ -1,5 +1,7 @@
 <script setup>
 import { formattedNameChaper } from "~/utils/formatName.js";
+import {useConfigStore} from "~/store/config.js";
+
 const props = defineProps({
     slug: {
         type: {
@@ -21,17 +23,25 @@ const props = defineProps({
     }
 });
 
+const configStore = useConfigStore();
+
 const handleChange = (e) => {
     window.location.href = e.target.value;
+};
+
+const openSetting = () => {
+    configStore.setSettingModal(true);
 };
 </script>
 
 <template>
     <div class="chapter-footer bg-dark p-1">
         <div class="d-flex justify-content-center">
-            <!--            <a href="javascript:void(0)" onclick="if (!window.__cfRLUnblockHandlers) return false; openSetting()" class="btn btn-sm btn-white m-2">-->
-            <!--                <i class="bx bx-font-family mr-0"></i>-->
-            <!--            </a>-->
+            <a href="javascript:void(0)"
+               class="btn btn-sm btn-white m-2"
+               @click.stop="openSetting">
+                <i class="bx bx-font-family mr-0"></i>
+            </a>
 
             <NuxtLink :to="`/${slug}`" class="btn btn-sm btn-white m-2">
                 <i class="bx bx-list-ol mr-0"></i>

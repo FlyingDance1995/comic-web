@@ -137,7 +137,6 @@ export default defineNuxtConfig({
         }
     },
 
-
     plugins: [
         {src: '~/plugins/jquery', mode: 'client'},
         {src: '~/plugins/owl-carousel', mode: 'client'},
