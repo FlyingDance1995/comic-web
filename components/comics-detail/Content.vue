@@ -4,8 +4,8 @@ const route = useRoute();
 const slug = route?.params?.slug;
 
 const data = ref(null);
-const description = ref(null);
-const title = ref('Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất');
+// const description = ref(null);
+// const title = ref('Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất');
 const getData = async () => {
     const {data: story} = await useAPI(`/story/${slug}`);
     data.value = story?.value;
@@ -16,21 +16,21 @@ const getData = async () => {
             statusMessage: 'Page Not Found'
         });
     }
-    description = story?.description
-    title = story?.title
+    // description = story?.description
+    // title = story?.title
     
 };
 
 if (slug) await getData();
 
-if (description){
-    useHead({
-        title,
-        meta: [
-            { name: 'description', content: description }
-        ],
-    })
-}
+// if (description){
+//     useHead({
+//         title,
+//         meta: [
+//             { name: 'description', content: description }
+//         ],
+//     })
+// }
 </script>
 
 <template>
