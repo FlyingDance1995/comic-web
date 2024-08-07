@@ -87,10 +87,5 @@ const openMenu = computed(() => menuStore.$state.open);
 </template>
 
 <style scoped>
-body {
-    -webkit-user-select: none;  /* Safari */
-    -moz-user-select: none;     /* Firefox */
-    -ms-user-select: none;      /* Internet Explorer/Edge */
-    user-select: none;          /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
-}
+
 </style>
