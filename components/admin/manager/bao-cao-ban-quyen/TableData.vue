@@ -14,13 +14,13 @@ const columns = [
     },
     {
         title: 'Link tác phẩm vi phạm',
-        key: 'link_violate',
+        slot: 'link_violate',
         minWidth: 300,
     },
     {
         title: 'Link tác phẩm gốc',
-        key: 'link_story',
-        width: 300,
+        slot: 'link_story',
+        minWidth: 300,
     },
     {
         title: 'Email liên hệ',
@@ -267,11 +267,15 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #link_violate="{ row }">
-            {{row?.link_violate}}
+            <NuxtLink :to="row?.link_violate" target="_blank" external>
+                {{row?.link_violate}}
+            </NuxtLink>
         </template>
 
         <template #link_story="{ row }">
-            {{row?.link_story}}
+            <NuxtLink :to="row?.link_story" target="_blank" external>
+                {{row?.link_story}}
+            </NuxtLink>
         </template>
 
         <template #contact="{ row }">

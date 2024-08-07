@@ -260,9 +260,7 @@ onUnmounted(() => {
         </template>
 
         <template #leader="{ row }">
-<!--            <NuxtLink :to="`/admin/quan-ly-nguoi-dung?search=${row?.leader?.email || ''}`">-->
-                {{ row?.leader?.fullname }}
-<!--            </NuxtLink>-->
+            {{ row?.leader?.fullname }}
         </template>
 
         <template #creation_time="{ row }">

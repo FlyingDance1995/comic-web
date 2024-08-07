@@ -54,11 +54,6 @@ export default defineNuxtConfig({
                 {rel: 'icon', type: 'image/x-icon', href: '/images/favicon/android-icon-192x192.png'},
                 {rel: 'shortcut icon', href: '/images/favicon/android-icon-192x192.png'},
                 {rel: 'canonical', href: process.env.NUXT_PUBLIC_SITE_URL},
-                // {
-                //     rel: 'stylesheet',
-                //     type: 'text/css',
-                //     href: 'https://Phê Truyện.vn/assets/app.min.css?ver=2.0.10'
-                // },
                 {rel: 'dns-prefetch', href: '//fonts.googleapis.com'},
                 {rel: 'dns-prefetch', href: '//googleads.g.doubleclick.net'},
                 {rel: 'dns-prefetch', href: '//pagead2.googlesyndication.com'},
@@ -71,14 +66,13 @@ export default defineNuxtConfig({
                 {href: process.env.NUXT_PUBLIC_SITE_URL},
             ],
             script: [
-                {src: 'https://www.googletagmanager.com/gtag/js?id=__ID__', async: true},
-
+                {src: `https://www.googletagmanager.com/gtag/js?id=${process.env.NUXT_PUBLIC_GOOGLE_TAG_ID}`, async: true},
                 {
                     innerHTML: `
                     window.dataLayer = window.dataLayer || [];
                     function gtag() { dataLayer.push(arguments); }
                     gtag('js', new Date());
-                    gtag('config', '__ID__');
+                    gtag('config', '${process.env.NUXT_PUBLIC_GOOGLE_TAG_ID}');
                   `,
                     type: 'text/javascript'
                 },

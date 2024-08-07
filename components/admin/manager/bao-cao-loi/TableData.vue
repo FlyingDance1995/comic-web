@@ -22,12 +22,12 @@ const columns = [
     {
         title: 'Chapter',
         key: 'chapter_number',
-        width: 250,
+        width: 150,
     },
     {
         title: 'Phân loại',
         key: 'category',
-        width: 220,
+        width: 300,
     },
     {
         title: "Người báo",

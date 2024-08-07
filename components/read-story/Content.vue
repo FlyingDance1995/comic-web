@@ -1,6 +1,6 @@
 <script setup>
 import {useConfigStore} from "~/store/config.js";
-import { formattedNameChaper } from "~/utils/formatName.js";
+import {formattedNameChaper, getMax250Chars} from "~/utils/formatName.js";
 
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
@@ -51,6 +51,14 @@ const reportError = () => {
     setTimeout(() => configStore.setReportErrorModal(true), 100);
 };
 
+const handleChangeSetting = (e) => {
+    if (e?.detail?.key === 'settingFont') {
+        styles['font-family'] = e?.detail?.form.fontFamily || 'Roboto, sans-serif';
+        styles['font-size'] = e?.detail?.form.fontSize + 'px' || '18px';
+        styles['line-height'] = e?.detail?.form.lineHeight + '%' || '140%';
+    }
+};
+
 onMounted(() => {
     try {
         const settingFont = localStorage.getItem('settingFont');
@@ -67,17 +75,33 @@ onMounted(() => {
         console.log(e);
     }
 
-    window.addEventListener('localStorageChanged', (e) => {
-        if (e?.detail?.key === 'settingFont') {
-            styles['font-family'] = e?.detail?.form.fontFamily || 'Roboto, sans-serif';
-            styles['font-size'] = e?.detail?.form.fontSize + 'px' || '18px';
-            styles['line-height'] = e?.detail?.form.lineHeight + '%' || '140%';
-        }
-    });
+    window.addEventListener('localStorageChanged', handleChangeSetting);
 });
 
 onUnmounted(() => {
-    window.removeEventListener('localStorageChanged');
+    window.removeEventListener('localStorageChanged', handleChangeSetting);
+});
+
+
+useHead({
+    title: `${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
+    meta: [
+        {
+            name: 'title',
+            content:  `${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''} | Phê truyện`
+        },
+        {
+            name: 'description',
+            content: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`)
+        },
+    ],
+});
+
+useSeoMeta({
+    description: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
+    ogDescription: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
+    ogImage: data.value?.avatar,
+    twitterCard: 'summary_large_image',
 });
 </script>
 
