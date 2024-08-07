@@ -30,7 +30,7 @@ const openSearchModal = () => {
                     <div class="">
                         <NuxtLink to="/">
                             <img src="/images/logo/Logo.png" class="logo-icon"
-                                 alt="Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024"
+                                 alt="Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất"
                                  width="120" height="30">
                         </NuxtLink>
                     </div>
