@@ -272,7 +272,9 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #owner="{ row }">
-            {{row?.owner.fullname}}
+            <NuxtLink :to="`/admin/quan-ly-nguoi-dung?search=${row?.owner?.email || ''}`">
+                {{row?.owner?.fullname}}
+            </NuxtLink>
         </template>
 
         <template #status="{ row }">
