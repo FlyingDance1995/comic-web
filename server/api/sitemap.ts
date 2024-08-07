@@ -4,8 +4,8 @@ export default defineSitemapEventHandler(async () => {
     try {
         const { data } = await axios.get(`${process.env.NUXT_PUBLIC_API_URL}/story`, {
             params: {
-                limit: 100,
-                offset: 0
+                size: 100,
+                page: 1
             }
         });
 
