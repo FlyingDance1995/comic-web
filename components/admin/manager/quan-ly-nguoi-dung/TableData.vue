@@ -302,7 +302,7 @@ const handleFilter = (type, value) => {
 const formatVip = (row) => {
     if (row?.is_vip) {
         const now = new Date().getTime();
-        if (row?.vip_expiry === -1 || row?.vip_expiry > now) {
+        if (row?.vip_expiry === -1 || row?.vip_expiry * 1000 > now) {
             return {
                 text: "Có",
                 color: "#2D2FFD"

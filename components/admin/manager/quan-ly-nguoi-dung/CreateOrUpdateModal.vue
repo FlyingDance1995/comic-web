@@ -89,7 +89,7 @@ const submit = () => {
                 formData.append('fb', formItem.fb);
                 formData.append('description', formItem.description);
                 formData.append('is_vip', formItem.is_vip);
-                formData.append('vip_expiry', formItem.vip_expiry?.getTime());
+                formData.append('vip_expiry', Math.floor(formItem.vip_expiry?.getTime() / 1000));
                 if (formItem.avatar && dataEdit.value) {
                     formData.append('avatar', formItem.avatar);
                 } else if (!dataEdit.value) {
@@ -143,7 +143,7 @@ const open = async (data = null) => {
                 if (data?.vip_expiry === 0) {
                     formItem.vip_expiry = null;
                 } else {
-                    formItem.vip_expiry = new Date(data?.vip_expiry);
+                    formItem.vip_expiry = new Date(data?.vip_expiry * 1000);
                 }
             } else {
                 formItem.vip_expiry = data?.vip_expiry;
@@ -270,7 +270,8 @@ defineExpose({
                                     :options="options2"
                                     placement="bottom-end"
                                     placeholder="Chọn ngày"
-                                    style="width: 100%"/>
+                                    transfer-class-name="text-black"
+                                    style="width: 100%; color: black"/>
                         <Input v-else :model-value="'Unlimited'" readonly/>
                     </FormItem>
                 </Col>

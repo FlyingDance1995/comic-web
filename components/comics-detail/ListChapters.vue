@@ -52,7 +52,7 @@ defineExpose({
                  :class="{
                     visited: item?.watched
                  }">
-                <NuxtLink :to="`/${slug}/${item?.slug}`">
+                <NuxtLink :to="!user?.is_vip && checkCreationTime(item?.creation_time) ? '' : `/${slug}/${item?.slug}`">
                     {{ formattedNameChaper(item?.type) }} {{ item?.chapter_number }}: {{ item?.name }}
                 </NuxtLink>
             </div>

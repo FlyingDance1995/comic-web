@@ -24,12 +24,15 @@ const props = defineProps({
     }
 });
 
+const router = useRouter();
 const configStore = useConfigStore();
 
 const user = ref();
+const indexCurrentChapter = computed(() => props.listChapter.findIndex(o => o?.slug === props.chapter));
 
 const handleChange = (e) => {
-    window.location.href = e.target.value;
+    // window.location.href = e.target.value;
+    router.push(e.target.value)
 };
 
 const openSetting = () => {
@@ -62,7 +65,9 @@ const checkCreationTime = (value) => {
                 <i class="bx bx-list-ol mr-0"></i>
             </NuxtLink>
 
-            <NuxtLink :to="chapter === listChapter[listChapter.length - 1]?.slug ? 'javascript:void(0)' : `/${slug}/${listChapter?.find(x => x?.chapter_number === chapter_number - 1)?.slug}`"
+            <NuxtLink :to="chapter === listChapter[listChapter.length - 1]?.slug
+                        ? 'javascript:void(0)'
+                        : `/${slug}/${listChapter?.find((_, index) => indexCurrentChapter === index - 1)?.slug}`"
                :class="chapter === listChapter[listChapter.length - 1]?.slug ? `btn-secondary` : 'btn-white'"
                class="btn btn-sm"
                style="margin: 0.3rem;">
@@ -83,7 +88,9 @@ const checkCreationTime = (value) => {
                 </template>
             </select>
 
-            <NuxtLink :to="chapter === listChapter[0]?.slug ? 'javascript:void(0)' : `/${slug}/${listChapter?.find(x => x?.chapter_number === chapter_number + 1)?.slug}`"
+            <NuxtLink :to="chapter === listChapter[0]?.slug
+                        ? 'javascript:void(0)'
+                        : `/${slug}/${listChapter?.find((_, index) => indexCurrentChapter === index + 1)?.slug}`"
                :class="chapter === listChapter[0]?.slug ? `btn-secondary` : 'btn-white'"
                class="btn btn-sm"
                style="margin: 0.3rem;">
