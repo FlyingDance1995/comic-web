@@ -84,12 +84,16 @@ const submit = () => {
                 const formData = new FormData();
                 formData.append('fullname', formItem.fullname);
                 formData.append('email', formItem.email);
-                formData.append('contact', formItem.contact);
+                formData.append('contact', formItem.contact || '');
                 formData.append('role', formItem.role);
-                formData.append('fb', formItem.fb);
-                formData.append('description', formItem.description);
+                formData.append('fb', formItem.fb || '');
+                formData.append('description', formItem.description || '');
                 formData.append('is_vip', formItem.is_vip);
-                formData.append('vip_expiry', Math.floor(formItem.vip_expiry?.getTime() / 1000));
+                if (!formItem?.vip_expiry) {
+                    formData.append('vip_expiry', 0);
+                } else if (formItem?.vip_expiry && formItem?.vip_expiry !== -1) {
+                    formData.append('vip_expiry', Math.floor(formItem?.vip_expiry?.getTime() / 1000));
+                }
                 if (formItem.avatar && dataEdit.value) {
                     formData.append('avatar', formItem.avatar);
                 } else if (!dataEdit.value) {
@@ -117,7 +121,7 @@ const submit = () => {
                     title: `${dataEdit.value ? 'Cập nhật' : 'Tạo mới'} thất bại`,
                 });
                 loading.value = false;
-                console.log(e?.response);
+                console.log(e?.reponse);
             }
         }
     });

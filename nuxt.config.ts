@@ -128,6 +128,7 @@ export default defineNuxtConfig({
             apiEndpoint: process.env.NUXT_PUBLIC_API_URL,
             email: process.env.NUXT_PUBLIC_EMAIL,
             contactFb: process.env.NUXT_PUBLIC_CONTACT_FB,
+            unlockTime: process.env.NUXT_PUBLIC_UNLOCK_TIME
         }
     },
 
@@ -145,6 +146,7 @@ export default defineNuxtConfig({
         '/user/dich-gia-dang-theo-doi': { ssr: false },
         '/user/lich-su-doc-truyen': { ssr: false },
         '/user/tro-thanh-tac-gia': { ssr: false },
+        '/user/mua-vip': { ssr: false },
         '/tim-kiem': { ssr: false },
         '/dang-truyen/*': { ssr: false },
         '/dang-truyen/quan-ly-truyen/*': { ssr: false },

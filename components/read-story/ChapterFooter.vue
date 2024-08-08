@@ -26,6 +26,7 @@ const props = defineProps({
 
 const router = useRouter();
 const configStore = useConfigStore();
+const runtimeConfig = useRuntimeConfig();
 
 const user = ref();
 const indexCurrentChapter = computed(() => props.listChapter.findIndex(o => o?.slug === props.chapter));
@@ -48,7 +49,7 @@ const checkCreationTime = (value) => {
     const currentTime = new Date();
     const timeDifference = currentTime - new Date(value * 1000);
     const hoursDifference = timeDifference / (1000 * 60 * 60);
-    return hoursDifference >= 24;
+    return hoursDifference >= (Number(runtimeConfig.public?.unlockTime) || 24);
 };
 </script>
 

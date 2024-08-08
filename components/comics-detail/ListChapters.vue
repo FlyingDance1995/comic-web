@@ -6,6 +6,8 @@ import {useUserStore} from "~/store/user.js";
 
 const route = useRoute();
 const userStore = useUserStore();
+const runtimeConfig = useRuntimeConfig();
+
 const slug = route?.params?.slug;
 
 const query = {
@@ -18,10 +20,10 @@ const user = computed(() => userStore.$state.user);
 
 const getData = async () => {
     try {
-        const { data: story } = await useAPI(`/story/${slug}/chapter`, {
+        const response = await useNuxtApp().$api(`/story/${slug}/chapter`, {
             query: query
         });
-        data.value = story?.value;
+        data.value = response;
     } catch (error) {
         console.log("error", error);
     }
@@ -31,7 +33,7 @@ const checkCreationTime = (value) => {
     const currentTime = new Date();
     const timeDifference = currentTime - new Date(value * 1000);
     const hoursDifference = timeDifference / (1000 * 60 * 60);
-    return hoursDifference < 24;
+    return hoursDifference < (Number(runtimeConfig.public?.unlockTime) || 24);
 };
 
 getData();
