@@ -19,12 +19,15 @@ const closeMenu = () => {
 
 let userStore = null;
 const user = ref();
+const checkVIP = ref(false);
 if (process.client) {
     userStore = useUserStore();
     const userComputed = computed(() => userStore.$state.user);
+    const checkVIPComputed = computed(() => userStore.checkVIP());
 
     watch(userComputed, () => {
         user.value = userComputed.value;
+        checkVIP.value = checkVIPComputed.value;
     }, {immediate: true, deep: true});
 }
 </script>
@@ -155,20 +158,20 @@ if (process.client) {
                                 </ul>
                             </li>
 
-                            <li v-if="user"
-                                class="nav-item">
-                                <NuxtLink class="nav-link" to="/page/chinh-sach-va-quy-dinh-chung">
-                                    <div class="menu-title d-flex align-items-center">Chính sách</div>
-                                </NuxtLink>
-                            </li>
-
-                            <li v-if="!user?.is_vip"
+                            <li v-if="!checkVIP"
                                 class="nav-item">
                                 <NuxtLink class="nav-link" to="/user/mua-vip">
                                     <div class="parent-icon">
                                         <i class="bx bx-star"></i>
                                     </div>
                                     <div class="menu-title d-flex align-items-center">Premium</div>
+                                </NuxtLink>
+                            </li>
+
+                            <li v-if="user"
+                                class="nav-item">
+                                <NuxtLink class="nav-link" to="/page/chinh-sach-va-quy-dinh-chung">
+                                    <div class="menu-title d-flex align-items-center">Chính sách</div>
                                 </NuxtLink>
                             </li>
                         </ul>

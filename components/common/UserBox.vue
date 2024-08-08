@@ -10,6 +10,7 @@ const configStore = useConfigStore();
 
 const user = computed(() => userStore.$state.user);
 const token = computed(() => userStore.$state.token);
+const checkVIP = computed(() => userStore.checkVIP());
 const openMenu = ref(false);
 const notify = ref();
 
@@ -62,7 +63,7 @@ watch(token, () => {
            @click.prevent="openMenu = !openMenu">
             <img :src="user?.avatar || ''" onerror="this.src='/images/avata.png'" class="user-img"
                  alt="">
-            <img v-if="user?.is_vip"
+            <img v-if="checkVIP"
                  src="/images/khung-vip.png" class="frame-user-img"
                  alt="">
             <div class="user-info">

@@ -120,7 +120,7 @@ const validateField = () => {
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6 text-end">
+                                        <div class="col-md-12 text-end">
                                             <NuxtLink to="/quen-mat-khau">
                                                 Quên mật khẩu?
                                             </NuxtLink>

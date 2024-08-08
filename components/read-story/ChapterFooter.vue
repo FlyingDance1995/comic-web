@@ -29,6 +29,8 @@ const configStore = useConfigStore();
 const runtimeConfig = useRuntimeConfig();
 
 const user = ref();
+const checkVIP = ref(false);
+
 const indexCurrentChapter = computed(() => props.listChapter.findIndex(o => o?.slug === props.chapter));
 
 const handleChange = (e) => {
@@ -43,6 +45,8 @@ const openSetting = () => {
 if (process.client) {
     const userStore = useUserStore();
     user.value = userStore.$state.user;
+    checkVIP.value = userStore.checkVIP();
+
 }
 
 const checkCreationTime = (value) => {
@@ -81,7 +85,7 @@ const checkCreationTime = (value) => {
                     @change="handleChange">
                 <template v-for="item in listChapter"
                           :key="item?.id">
-                    <option v-if="user?.is_vip || checkCreationTime(item?.creation_time)"
+                    <option v-if="checkVIP || checkCreationTime(item?.creation_time)"
                             :value="item?.slug"
                             :selected="item?.slug === chapter">
                         {{ formattedNameChaper(item?.type) }} {{item?.chapter_number || ''}}

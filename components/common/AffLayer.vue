@@ -1,4 +1,12 @@
 <script setup>
+
+import {useUserStore} from "~/store/user.js";
+
+const userStore = useUserStore();
+
+const user = computed(() => userStore.$state.user);
+const checkVIP = computed(() => userStore.checkVIP());
+
 const aff = ref();
 const linkAds = ref();
 
@@ -24,7 +32,7 @@ const checkSessionStorage = () => {
 let intervalId;
 
 onMounted(() => {
-    intervalId = setInterval(checkSessionStorage, 300000);
+    intervalId = setInterval(checkSessionStorage, 5 * 60000);
 });
 
 onUnmounted(() => {
@@ -33,7 +41,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <a v-if="!aff"
+    <a v-if="!aff && !checkVIP"
        id="affLayer"
        class="transparent-layer"
        :href="linkAds"

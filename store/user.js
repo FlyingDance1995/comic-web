@@ -1,4 +1,3 @@
-// store/user.ts
 import { defineStore } from 'pinia'
 
 export const useUserStore = defineStore({
@@ -51,5 +50,15 @@ export const useUserStore = defineStore({
                 localStorage.setItem('expiry', value);
             }
         },
+        checkVIP() {
+            if (this.$state.user?.is_vip) {
+                const now = new Date().getTime();
+                if (this.$state.user?.vip_expiry === -1 || this.$state.user?.vip_expiry * 1000 > now) {
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
     },
 });

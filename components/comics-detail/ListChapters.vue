@@ -16,7 +16,9 @@ const query = {
 };
 
 const data = ref(null);
+
 const user = computed(() => userStore.$state.user);
+const checkVIP = computed(() => userStore.checkVIP());
 
 const getData = async () => {
     try {
@@ -49,7 +51,9 @@ defineExpose({
                  :class="{
                     visited: item?.watched
                  }">
-                <NuxtLink :to="!user?.is_vip && checkCreationTime(item?.creation_time) ? '/user/mua-vip' : `/${slug}/${item?.slug}`">
+                <NuxtLink :to="!checkVIP && checkCreationTime(item?.creation_time)
+                        ? '/user/mua-vip'
+                        : `/${slug}/${item?.slug}`">
                     {{ formattedNameChaper(item?.type) }} {{ item?.chapter_number }}: {{ item?.name }}
                 </NuxtLink>
             </div>
