@@ -218,7 +218,9 @@ const reportError = () => {
         <div class="card-body  mt-4 ">
             <h5 class="mb-0 text-uppercase text-primary">Danh sách chương</h5>
             <hr>
-            <ComicsDetailListChapters ref="listChaptersRef"/>
+            <ClientOnly>
+                <ComicsDetailListChapters ref="listChaptersRef"/>
+            </ClientOnly>
             <h5 class="mb-0 text-uppercase mt-5 text-primary">Bình luận</h5>
             <hr>
             <ClientOnly>

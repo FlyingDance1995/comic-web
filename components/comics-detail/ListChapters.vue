@@ -5,7 +5,7 @@ import {Tooltip} from "view-ui-plus";
 import {useUserStore} from "~/store/user.js";
 
 const route = useRoute();
-
+const userStore = useUserStore();
 const slug = route?.params?.slug;
 
 const query = {
@@ -14,7 +14,7 @@ const query = {
 };
 
 const data = ref(null);
-const user = ref();
+const user = computed(() => userStore.$state.user);
 
 const getData = async () => {
     try {
@@ -34,12 +34,7 @@ const checkCreationTime = (value) => {
     return hoursDifference < 24;
 };
 
-if (slug) getData();
-
-if (process.client) {
-    const userStore = useUserStore();
-    user.value = userStore.$state.user;
-}
+getData();
 
 defineExpose({
     data
