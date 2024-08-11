@@ -1,5 +1,5 @@
 <script setup>
-import {Form, Notice, Col, Row, InputNumber, Select, Option, Input, Button, Space} from "view-ui-plus";
+import { Form, Notice, Col, Row, InputNumber, Select, Option, Input, Button, Space } from "view-ui-plus";
 import { optionsChapterType } from "~/constants/options.js";
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
@@ -190,7 +190,7 @@ defineExpose({
                             <span style="color: red">Xóa</span>
                         </DropdownItem>
                         <DropdownItem @click="handlePost" :disabled="!dataDetail?.draft">
-                            <span :style="{color: dataDetail?.draft && 'blue'}">Đăng bài</span>
+                            <span :style="{ color: dataDetail?.draft && 'blue' }">Đăng bài</span>
                         </DropdownItem>
                         <DropdownItem @click="status = 'edit'">Chỉnh sửa</DropdownItem>
                     </DropdownMenu>
@@ -232,7 +232,7 @@ defineExpose({
                     :readonly="status === 'detail'" />
 
                 <span v-else>
-                    {{ formItem.chapter_number }}
+                    {{ formItem.name }}
                 </span>
             </FormItem>
 
@@ -251,7 +251,7 @@ defineExpose({
                     Đóng
                 </Button>
 
-                <template v-if="status === 'add' || status === 'edit'" >
+                <template v-if="status === 'add' || status === 'edit'">
                     <Button type="primary" @click="submit(true)" :loading="loading">
                         Lưu
                     </Button>
