@@ -126,7 +126,7 @@ const validateField = () => {
                         <div class="card-body">
                             <div class="p-4">
                                 <div class="mb-3 text-center">
-                                    <img src="/images/logo/Logo-MonkeyD.png" width="120" alt="">
+                                    <img src="/images/logo/Logo.png" width="120" alt="">
                                 </div>
 
                                 <div class="text-center mb-4">

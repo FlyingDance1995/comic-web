@@ -18,6 +18,7 @@ onMounted(() => {
         $(".creative-stories-slider").owlCarousel({
             items: 5,
             margin: 20,
+            loop: true,
             nav: false,
             dots: true,
             autoplay: true,

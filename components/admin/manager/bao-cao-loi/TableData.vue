@@ -22,12 +22,12 @@ const columns = [
     {
         title: 'Chapter',
         key: 'chapter_number',
-        width: 250,
+        width: 150,
     },
     {
         title: 'Phân loại',
         key: 'category',
-        width: 220,
+        width: 300,
     },
     {
         title: "Người báo",
@@ -278,7 +278,9 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #owner="{ row }">
-            {{row?.owner?.fullname}}
+            <NuxtLink :to="`/admin/quan-ly-nguoi-dung?search=${row?.owner?.email || ''}`">
+                {{row?.owner?.fullname}}
+            </NuxtLink>
         </template>
 
         <template #status="{ row }">
@@ -354,5 +356,5 @@ watch(() => route?.query, (value, oldValue) => {
         <p>False Positive</p>
     </Modal>
 
-    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
+    <Page class="mt-4 text-black" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
 </template>

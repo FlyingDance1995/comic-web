@@ -1,5 +1,9 @@
 <script setup>
-import {mappingReportLicenseTable, filterReportLicense} from "~/utils/mapping.js";
+
+import {Notice} from "view-ui-plus";
+import {
+    mappingRequestAuthorTable, filterRequestAuthor
+} from "~/utils/mapping.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -13,19 +17,19 @@ const columns = [
         width: 80,
     },
     {
-        title: 'Link tác phẩm vi phạm',
-        slot: 'link_violate',
-        minWidth: 300,
+        title: 'SDT',
+        key: 'sdt',
+        minWidth: 150,
     },
     {
-        title: 'Link tác phẩm gốc',
-        slot: 'link_story',
-        minWidth: 300,
+        title: 'Facebook',
+        slot: 'fb',
+        width: 350,
     },
     {
-        title: 'Email liên hệ',
-        key: 'contact',
-        width: 200,
+        title: 'Lời nhắn',
+        key: 'message',
+        width: 250,
     },
     {
         title: "Người báo",
@@ -36,7 +40,7 @@ const columns = [
         title: "Trạng thái",
         slot: "status",
         width: 150,
-        filters: mappingReportLicenseTable,
+        filters: mappingRequestAuthorTable,
         filterMultiple: false,
         filterRemote: value => handleFilter('status', value),
     },
@@ -88,7 +92,7 @@ const getData = async () => {
         }
         if (!query?.search) delete query.search;
 
-        const response = await $api('/admin/report-license', {
+        const response = await $api('/admin/report-vip', {
             query: {
                 ...query,
                 size: 10
@@ -132,7 +136,7 @@ const handledItem = (row) => {
 const okHandled = async () => {
     try {
         loadingHandled.value = true;
-        await useNuxtApp().$api(`admin/report-license/${formItem?.value?.id}`, {
+        await useNuxtApp().$api(`admin/report-vip/${formItem?.value?.id}`, {
             method: "PATCH",
             body: {
                 "status": "finish"
@@ -140,9 +144,15 @@ const okHandled = async () => {
         });
 
         await getData();
+        Notice.success({
+            title: 'Cập nhật thành công',
+        });
         loadingHandled.value = false;
         modalHandled.value = false;
     } catch (e) {
+        Notice.error({
+            title: 'Cập nhật thất bại',
+        });
         console.log("error", e);
         loadingHandled.value = false;
     }
@@ -156,7 +166,7 @@ const falsePositiveItem = (row) => {
 const okApproval = async () => {
     try {
         loadingApproval.value = true;
-        await useNuxtApp().$api(`admin/report-license/${formItem?.value?.id}`, {
+        await useNuxtApp().$api(`admin/report-vip/${formItem?.value?.id}`, {
             method: "PATCH",
             body: {
                 "status": "error"
@@ -164,9 +174,15 @@ const okApproval = async () => {
         });
 
         await getData();
+        Notice.success({
+            title: 'Cập nhật thành công',
+        });
         loadingApproval.value = false;
         modalApproval.value = false;
     } catch (e) {
+        Notice.error({
+            title: 'Cập nhật thất bại',
+        });
         console.log("error", e);
         loadingApproval.value = false;
     }
@@ -176,32 +192,6 @@ const viewDetailItem = (row) => {
     openModal.value = true;
     formItem.value = row;
 };
-
-const asyncOK = async () => {
-    loadingModal.value = true;
-
-    // await useNuxtApp().$api(`admin/report-license/${formItem?.value?.id}`, {
-    //     method: "PATCH",
-    //     body: {
-    //         "link": formItem?.value?.link,
-    //         "name": formItem?.value?.name,
-    //     }
-    // });
-
-    // getData();
-    openModal.value = false;
-    loadingModal.value = false;
-    formItem.value = {
-        chapter_number: '',
-        story: '',
-        owner: {
-            fullname: ''
-        },
-        category: '',
-        detail: ''
-    };
-};
-
 
 const handleSort = ({column, order}) => {
     const type = column.slot || column.key;
@@ -243,6 +233,7 @@ const handleFilter = (type, value) => {
     });
 };
 
+
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
         page.value = 1;
@@ -266,22 +257,20 @@ watch(() => route?.query, (value, oldValue) => {
             {{row?.stt}}
         </template>
 
-        <template #link_violate="{ row }">
-            <NuxtLink :to="row?.link_violate" target="_blank" external>
-                {{row?.link_violate}}
+        <template #sdt="{ row }">
+            {{row?.sdt}}
+        </template>
+
+        <template #fb="{ row }">
+            <NuxtLink :to="row?.fb" target="_blank" external>
+                {{row?.fb}}
             </NuxtLink>
         </template>
 
-        <template #link_story="{ row }">
-            <NuxtLink :to="row?.link_story" target="_blank" external>
-                {{row?.link_story}}
-            </NuxtLink>
+        <template #message="{ row }">
+            {{row?.message}}
         </template>
 
-        <template #contact="{ row }">
-            {{row?.contact}}
-        </template>
-        
         <template #owner="{ row }">
             <NuxtLink :to="`/admin/quan-ly-nguoi-dung?search=${row?.owner?.email || ''}`">
                 {{row?.owner?.fullname}}
@@ -317,25 +306,25 @@ watch(() => route?.query, (value, oldValue) => {
 
     <Modal
         v-model="openModal"
-        title="Báo cáo bản quyền"
+        title="Yêu cầu làm tác giả"
         :loading="loadingModal"
         @on-ok="openModal = !openModal"
         width="800px">
 
         <Form :model="formItem" label-position="top">
-            <FormItem label="Link tác phẩm vi phạm">
-                <Input v-model="formItem.link_violate" placeholder="Link tác phẩm vi phạm" readonly></Input>
+            <FormItem label="SDT">
+                <Input v-model="formItem.sdt" placeholder="Link tác phẩm vi phạm" readonly></Input>
             </FormItem>
 
-            <FormItem label="Link tác phẩm gốc">
-                <Input v-model="formItem.link_story" placeholder="Link tác phẩm gốc" readonly></Input>
+            <FormItem label="Facebook">
+                <Input v-model="formItem.fb" placeholder="Link tác phẩm gốc" readonly></Input>
             </FormItem>
-            <FormItem label="Contact email">
-                <Input v-model="formItem.contact" placeholder="Contact" readonly></Input>
+            <FormItem label="Lời nhắn">
+                <Input v-model="formItem.message" placeholder="Contact" readonly></Input>
             </FormItem>
 
             <FormItem label="Người báo">
-                <Input v-model="formItem.owner.fullname" placeholder="Người báo" readonly></Input>
+                <Input v-model="formItem.owner.email" placeholder="Người báo" readonly></Input>
             </FormItem>
         </Form>
     </Modal>
@@ -350,7 +339,7 @@ watch(() => route?.query, (value, oldValue) => {
 
     <Modal
         v-model="modalApproval"
-        title="Yêu cầu phê duyệt"
+        title="Xác nhận"
         :loading="loadingApproval"
         @on-ok="okApproval">
         <p>False Positive</p>

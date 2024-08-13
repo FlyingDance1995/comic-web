@@ -313,6 +313,6 @@ onUnmounted(() => {
         <p>Bạn có muốn phê duyệt team này</p>
     </Modal>
 
-    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total
+    <Page class="mt-4 text-black" style="text-align: right" :modelValue="page" :total="total" show-total
         @on-change="handleChangePage" />
 </template>

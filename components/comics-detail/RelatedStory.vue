@@ -26,6 +26,7 @@ try {
             $(".top-story-slider").owlCarousel({
                 items: 6,
                 margin: 20,
+                loop: true,
                 nav: false,
                 dots: false,
                 autoplay: true,

@@ -27,8 +27,8 @@ const report = () => {
                 <div class="col-md-6">
                     <div class="footer-logo text-center">
                         <NuxtLink to="/">
-                            <img src="/images/logo/Logo-MonkeyD.png"
-                                 alt="MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024"
+                            <img src="/images/logo/Logo.png"
+                                 alt="Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất"
                                  width="300" height="80">
                         </NuxtLink>
                     </div>
@@ -45,11 +45,11 @@ const report = () => {
                 </div>
                 <div class="col-md-6">
                     <div class="footer-privacy">
-                        <p>Mọi thông tin và hình ảnh trên website đều được bên thứ ba đăng tải, MonkeyD miễn trừ mọi
+                        <p>Mọi thông tin và hình ảnh trên website đều được bên thứ ba đăng tải, Phê Truyện miễn trừ mọi
                             trách nhiệm liên quan đến các nội dung trên website này. Nếu làm ảnh hưởng đến cá nhân
                             hay tổ chức nào, khi được yêu cầu, chúng tôi sẽ xem xét và gỡ bỏ ngay lập tức. Các vấn
                             đề liên quan đến bản quyền hoặc thắc mắc khác, vui lòng liên hệ fanpage: <a
-                                :href="`${runtimeConfig.public?.contactFb}`" target="_blank">MonkeyD</a>
+                                :href="`${runtimeConfig.public?.contactFb}`" target="_blank">Phê Truyện</a>
                         </p>
                     </div>
                 </div>

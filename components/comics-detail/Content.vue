@@ -1,4 +1,6 @@
 <script setup>
+import {getMax250Chars} from "~/utils/formatName.js";
+
 const route = useRoute();
 
 const slug = route?.params?.slug;
@@ -18,13 +20,30 @@ const getData = async () => {
 };
 
 if (slug) await getData();
+
+useHead({
+    title: `${data.value?.name}`,
+    meta: [
+        {
+            name: 'title',
+            content: `${data.value?.name} | Phê truyện`
+        },
+        {
+            name: 'description',
+            content: getMax250Chars(data.value?.description)
+        },
+    ],
+});
+
+useSeoMeta({
+    description: getMax250Chars(data.value?.description),
+    ogDescription: getMax250Chars(data.value?.description),
+    ogImage: data.value?.avatar,
+    twitterCard: 'summary_large_image',
+});
 </script>
 
 <template>
-    <Head>
-        <Title>{{data?.name}}</Title>
-    </Head>
-
     <div class="container page-comics-detail">
         <!--breadcrumb-->
         <CommonBreadCrumb :name="data?.name"/>

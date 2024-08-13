@@ -1,11 +1,14 @@
 <script setup>
 import {useConfigStore} from "~/store/config.js";
 import {useUserStore} from "~/store/user.js";
+import {useCheckVIP} from "@/composables/checkVIP.ts";
 
 const route = useRoute();
 const userStore = useUserStore();
 
 const user = computed(() => userStore.$state.user);
+const checkVIP = computed(() => userStore.checkVIP());
+
 const configStore = useConfigStore();
 
 const data = ref();
@@ -230,10 +233,13 @@ watch(() => route?.params, () => {
                         <ul class="comments">
                             <li v-for="item in data?.results"
                                 :key="item?.id">
-                                <div class="avt_user">
+                                <div class="avt_user position-relative">
                                     <img :src="item?.owner?.avatar || ''"
                                          alt=""
                                          onerror="this.src='/images/avata.png'">
+                                    <img v-if="useCheckVIP(item?.owner)"
+                                         src="/images/khung-vip.png" class="frame-user-img"
+                                         alt="">
                                 </div>
 
                                 <div class="post-comments">
@@ -258,10 +264,13 @@ watch(() => route?.params, () => {
                                 <ul v-if="item?.reply_5_comment">
                                     <li v-for="i in item?.reply_5_comment?.top_comment"
                                         :key="i?.id">
-                                        <div class="avt_user">
+                                        <div class="avt_user position-relative">
                                             <img :src="getAvatar(i)"
                                                  alt=""
                                                  onerror="this.src='/images/avata.png'">
+                                            <img v-if="useCheckVIP(i?.owner)"
+                                                 src="/images/khung-vip.png" class="frame-user-img"
+                                                 alt="">
                                         </div>
                                         <div class="post-comments">
                                             <p>{{ i?.contents }}</p>
@@ -291,11 +300,14 @@ watch(() => route?.params, () => {
                                 <ul v-if="item['open_reply']"
                                     class="reply2">
                                     <li class="clearfix">
-                                        <div class="avt_user">
+                                        <div class="avt_user position-relative">
                                             <img :src="user?.avatar || ''"
                                                  class="avatar"
                                                  width="32" alt=""
                                                  onerror="this.src='/images/avata.png'">
+                                            <img v-if="checkVIP"
+                                                 src="/images/khung-vip.png" class="frame-user-img"
+                                                 alt="">
                                         </div>
 
                                         <div class="post-comments">
@@ -331,3 +343,25 @@ watch(() => route?.params, () => {
         </div>
     </div>
 </template>
+
+<style>
+.blog-comment .frame-user-img {
+    position: absolute;
+    z-index: 1;
+    width: 76px !important;
+    top: -13px;
+    left: -13px;
+    height: auto !important;
+}
+
+@media screen and (max-width: 767px) {
+    .blog-comment .frame-user-img {
+        position: absolute;
+        z-index: 1;
+        width: 42px !important;
+        top: -8px;
+        left: -9px;
+        height: auto !important;
+    }
+}
+</style>

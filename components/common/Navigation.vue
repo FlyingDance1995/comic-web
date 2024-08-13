@@ -19,12 +19,15 @@ const closeMenu = () => {
 
 let userStore = null;
 const user = ref();
+const checkVIP = ref(false);
 if (process.client) {
     userStore = useUserStore();
     const userComputed = computed(() => userStore.$state.user);
+    const checkVIPComputed = computed(() => userStore.checkVIP());
 
     watch(userComputed, () => {
         user.value = userComputed.value;
+        checkVIP.value = checkVIPComputed.value;
     }, {immediate: true, deep: true});
 }
 </script>
@@ -42,8 +45,8 @@ if (process.client) {
                         <div class="d-flex align-items-center">
                             <div class="">
                                 <NuxtLink to="/">
-                                    <img src="/images/logo/Logo-MonkeyD.png" class="logo-icon"
-                                         alt="MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024">
+                                    <img src="/images/logo/Logo.png" class="logo-icon"
+                                         alt="Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất">
                                 </NuxtLink>
                             </div>
                         </div>
@@ -153,6 +156,16 @@ if (process.client) {
                                         </NuxtLink>
                                     </li>
                                 </ul>
+                            </li>
+
+                            <li v-if="!checkVIP"
+                                class="nav-item">
+                                <NuxtLink class="nav-link" to="/user/mua-vip">
+                                    <div class="parent-icon">
+                                        <i class="bx bx-star"></i>
+                                    </div>
+                                    <div class="menu-title d-flex align-items-center">Premium</div>
+                                </NuxtLink>
                             </li>
 
                             <li v-if="user"

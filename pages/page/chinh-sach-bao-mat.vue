@@ -70,7 +70,7 @@
 
                         <p><strong>4. CÁC CÁ NHÂN, TỔ CHỨC CÓ THỂ TIẾP CẬN THÔNG TIN</strong></p>
 
-                        <p>Đối với các thông tin do MonkeyD thu thập từ khách hàng thông qua website https://monkeyd.vn,
+                        <p>Đối với các thông tin do Phê Truyện thu thập từ khách hàng thông qua website https://monkeyd.vn,
                             chỉ có các cá nhân, tổ chức sau có quyền tiếp cận thông tin:</p>
 
                         <p>Chủ sở hữu website website https://monkeyd.vn</p>
@@ -93,7 +93,7 @@
                         <p><strong>7. CAM KẾT BẢO MẬT THÔNG TIN CÁ NHÂN KHÁCH HÀNG</strong></p>
 
                         <p>Thông tin cá nhân của khách hàng được ban quản trị website cam kết bảo mật tuyệt
-                            đối theo chính sách bảo vệ thông tin cá nhân của MonkeyD. Việc thu thập và sử
+                            đối theo chính sách bảo vệ thông tin cá nhân của Phê Truyện. Việc thu thập và sử
                             dụng thông tin của mỗi khách hàng chỉ được thực hiện khi có sự đồng ý của
                             khách hàng đó trừ những trường hợp pháp luật có quy định khác.</p>
 
@@ -102,14 +102,14 @@
                             hàng.</p>
 
                         <p>Trong những trường hợp đặc biệt chúng tôi được phép cung cấp thông tin của Quý khách hàng cho
-                            cơ quan pháp luật, trường hợp mà thông tin của này là quyền lợi chính đáng của MonkeyD trước
+                            cơ quan pháp luật, trường hợp mà thông tin của này là quyền lợi chính đáng của Phê Truyện trước
                             pháp luật, và các tình huống nhằm đảm bảo quyền và sự an toàn cho những cá nhân khác.</p>
 
                         <p><em>Phần đối với trang web có đăng ký tài khoản:</em></p>
 
                         <p>Bảo mật tuyệt đối mọi thông tin giao dịch trực tuyến của khách hàng bao gồm thông
                             tin hóa đơn kế toán chứng từ số hóa tại khu vực dữ liệu trung tâm an toàn cấp
-                            1 của MonkeyD.</p>
+                            1 của Phê Truyện.</p>
 
                         <p>Trong trường hợp máy chủ lưu trữ thông tin bị hacker tấn công dẫn đến mất mát
                             dữ liệu cá nhân khách hàng, ban quản trị trang website sẽ có trách nhiệm thông báo
@@ -119,7 +119,7 @@
                         <p>Ban quản trị website yêu cầu các cá nhân khi đăng ký/đăng tin là thành viên
                             website, phải cung cấp đầy đủ thông tin cá nhân có liên quan như: Họ và tên,
                             địa chỉ liên lạc, email, điện thoại, ...., và chịu trách nhiệm về tính pháp lý
-                            của những thông tin trên. Ban quản trị MonkeyD không chịu trách nhiệm cũng như
+                            của những thông tin trên. Ban quản trị Phê Truyện không chịu trách nhiệm cũng như
                             không giải quyết mọi khiếu nại có liên quan đến quyền lợi của Thành viên đó
                             nếu xét thấy tất cả thông tin cá nhân của thành viên đó cung cấp khi đăng ký
                             ban đầu là không chính xác.</p>
@@ -133,19 +133,19 @@
 
                         <p>Trường hợp khách hàng phát hiện thông tin cá nhân cung cấp trên trang web https://monkeyd.vn
                             có dấu hiệu bị rò rỉ, bị sử dụng vào những mục đích khác với mục 1 hoặc có vi phạm pháp
-                            luật, vui lòng báo ngay cho MonkeyD qua email monkeyd.contact@gmail.com.</p>
+                            luật, vui lòng báo ngay cho Phê Truyện qua email monkeyd.contact@gmail.com.</p>
 
-                        <p>MonkeyD sẽ tiến hành kiểm tra, rà soát lại việc lưu trữ và sử dụng thông tin trong thời gian
-                            ngắn nhất. Ngay khi có kết luận, MonkeyD sẽ thông báo lại cho khách hàng. Nếu phát hiện có
-                            vi phạm hoặc thông tin bị rò rỉ, MonkeyD sẽ khắc phục trong phạm vi quyền hạn và trách nhiệm
-                            của mình. Trường hợp sự việc nằm ngoài khả năng của MonkeyD, MonkeyD sẽ cùng khách hàng làm
+                        <p>Phê Truyện sẽ tiến hành kiểm tra, rà soát lại việc lưu trữ và sử dụng thông tin trong thời gian
+                            ngắn nhất. Ngay khi có kết luận, Phê Truyện sẽ thông báo lại cho khách hàng. Nếu phát hiện có
+                            vi phạm hoặc thông tin bị rò rỉ, Phê Truyện sẽ khắc phục trong phạm vi quyền hạn và trách nhiệm
+                            của mình. Trường hợp sự việc nằm ngoài khả năng của Phê Truyện, Phê Truyện sẽ cùng khách hàng làm
                             việc với các cơ quan chức năng để giải quyết.</p>
 
-                        <p>Trường hợp khách hàng không hài lòng với kết luận xử lý khiếu nại của MonkeyD, hai bên sẽ
+                        <p>Trường hợp khách hàng không hài lòng với kết luận xử lý khiếu nại của Phê Truyện, hai bên sẽ
                             cùng thương lượng để giải quyết. Trường hợp không thể thương lượng thì sự việc sẽ được đưa
                             ra các cơ quan chức năng để giải quyết theo quy định của pháp luật.</p>
 
-                        <p>Quý khách hàng vui lòng đọc kỹ các chính sách trên trang web MonkeyD để hiểu và đảm bảo đầy
+                        <p>Quý khách hàng vui lòng đọc kỹ các chính sách trên trang web Phê Truyện để hiểu và đảm bảo đầy
                             đủ quyền lợi theo pháp luật của mình khi thực hiện giao dịch.</p>
 
                         <p>Chúng tôi luôn hoan nghênh các ý kiến đóng góp, liên hệ và phản hồi thông tin từ bạn về

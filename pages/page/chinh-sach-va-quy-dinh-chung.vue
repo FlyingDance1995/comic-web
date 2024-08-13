@@ -16,20 +16,20 @@
                     <div class="card-body">
                         <div class="my-3 text-center">
                             <div class="mb-2">
-                                <img src="/images/logo/Logo-MonkeyD.png" alt="MonkeyD" width="300px">
+                                <img src="/images/logo/Logo.png" alt="Phê Truyện" width="300px">
                             </div>
                             <h5><b>Thoả sức sáng tạo</b></h5>
                         </div>
                         <p><strong>GIỚI THIỆU</strong></p>
 
-                        <p>MonkeyD là nền tảng được sáng lập vào tháng 1/1/2024 bởi Khỉ - một coder đồng thời là fan của
+                        <p>Phê Truyện là nền tảng được sáng lập vào tháng 1/1/2024 bởi Khỉ - một coder đồng thời là fan của
                             các tác giả, dịch giả.</p>
 
-                        <p>Tên và tên miền của MonkeyD lấy cảm hứng từ một nhân vật truyện tranh trong bộ truyện nổi
+                        <p>Tên và tên miền của Phê Truyện lấy cảm hứng từ một nhân vật truyện tranh trong bộ truyện nổi
                             tiếng One Piece. Điều đó chứng tỏ cậu ta là một Wibu chúa, luôn đắm mình vào thế giới ảo
                             mộng của các bộ truyện tranh, truyện chữ.</p>
 
-                        <p>Cậu ấy tạo ra MonkeyD nhằm mục đích cùng mọi người đọc truyện, giao lưu với các dịch giả, tác
+                        <p>Cậu ấy tạo ra Phê Truyện nhằm mục đích cùng mọi người đọc truyện, giao lưu với các dịch giả, tác
                             giả và hỗ trợ họ phần nào trên con đường mà họ đam mê. Hi vọng dịch giả, tác giả không chùn
                             bước mỗi khi gõ chữ đến còng lưng, gõ chữ đến mờ mắt, gõ chữ đến mức phải dùng Tottri…</p>
 
@@ -37,13 +37,13 @@
 
                         <p><strong>QUY ĐỊNH ĐỐI VỚI ĐỘC GIẢ</strong></p>
 
-                        <p>Rất chào mừng các bạn đến với MonkeyD để cùng Khỉ thưởng thức vô vàn các nội dung khác nhau
-                            trên nền tảng. Tuy nhiên, MonkeyD sẽ không chấp nhận các comment mang tính phỉ báng, xâm hại
+                        <p>Rất chào mừng các bạn đến với Phê Truyện để cùng Khỉ thưởng thức vô vàn các nội dung khác nhau
+                            trên nền tảng. Tuy nhiên, Phê Truyện sẽ không chấp nhận các comment mang tính phỉ báng, xâm hại
                             đến cá nhân, tổ chức cũng như dẫn link sang nền tảng khác. Nếu xuất hiện các comment,
-                            MonkeyD xin được áp dụng việc nhắc nhở, xóa bỏ comment, thậm chí ban nick và cấm vĩnh viễn.
+                            Phê Truyện xin được áp dụng việc nhắc nhở, xóa bỏ comment, thậm chí ban nick và cấm vĩnh viễn.
                         </p>
 
-                        <p>Cảm ơn vì đã đồng hành và dõi theo MonkeyD!</p>
+                        <p>Cảm ơn vì đã đồng hành và dõi theo Phê Truyện!</p>
                     </div>
                 </div>
             </div>

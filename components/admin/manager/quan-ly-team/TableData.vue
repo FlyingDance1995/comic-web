@@ -293,7 +293,9 @@ onUnmounted(() => {
         </template>
 
         <template #leader="{ row }">
-            {{ row?.leader?.fullname }}
+            <NuxtLink :to="`/admin/quan-ly-nguoi-dung?search=${row?.leader?.email || ''}`">
+                {{ row?.leader?.fullname }}
+            </NuxtLink>
         </template>
 
         <template #creation_time="{ row }">
@@ -363,6 +365,6 @@ onUnmounted(() => {
         <p>Bạn có muốn phê duyệt team này</p>
     </Modal>
 
-    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total
+    <Page class="mt-4 text-black" style="text-align: right" :modelValue="page" :total="total" show-total
         @on-change="handleChangePage" />
 </template>

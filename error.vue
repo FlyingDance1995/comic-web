@@ -6,13 +6,13 @@ const props = defineProps({
 
 <template>
     <NuxtLayout>
-        <NuxtLoadingIndicator color="#0d6efd"/>
         <div id="wrapper_container_fix" class="clear">
             <div class="container clear">
                 <div class="body-container border-group clear">
                     <section id="section" class="section clear">
                         <div class="group-section-wrap clear row">
                             <div class="col-xs-12 col-sm-7 col-lg-7">
+<!--                                <pre>{{error}}</pre>-->
                                 <!-- Info -->
                                 <div class="info">
                                     <h1>Oppps!</h1>

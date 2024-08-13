@@ -1,6 +1,6 @@
 <script setup>
 import {useConfigStore} from "~/store/config.js";
-import { formattedNameChaper } from "~/utils/formatName.js";
+import {formattedNameChaper, getMax250Chars} from "~/utils/formatName.js";
 
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
@@ -10,7 +10,14 @@ const configStore = useConfigStore();
 const slug = route?.params?.slug;
 const chapter = route?.params?.chapter || '';
 
+const initStyle = {
+    'font-family': 'Roboto, sans-serif',
+    'font-size': '18px',
+    'line-height': '140%',
+}
+
 const data = ref(null);
+const styles = reactive(initStyle);
 
 const getData = async () => {
     const { data: story } = await useAPI(`/story/${slug}/chapter/${chapter}`);
@@ -43,6 +50,59 @@ const reportError = () => {
     });
     setTimeout(() => configStore.setReportErrorModal(true), 100);
 };
+
+const handleChangeSetting = (e) => {
+    if (e?.detail?.key === 'settingFont') {
+        styles['font-family'] = e?.detail?.form.fontFamily || 'Roboto, sans-serif';
+        styles['font-size'] = e?.detail?.form.fontSize + 'px' || '18px';
+        styles['line-height'] = e?.detail?.form.lineHeight + '%' || '140%';
+    }
+};
+
+onMounted(() => {
+    try {
+        const settingFont = localStorage.getItem('settingFont');
+        if (settingFont) {
+            const parseSettingFont = JSON.parse(settingFont);
+            styles['font-family'] = parseSettingFont?.fontFamily || 'Roboto, sans-serif';
+            styles['font-size'] = parseSettingFont?.fontSize + 'px' || '18px';
+            styles['line-height'] = parseSettingFont?.lineHeight + '%' || '140%';
+        }
+    } catch (e) {
+        Object.assign(styles, {
+            ...initStyle
+        });
+        console.log(e);
+    }
+
+    window.addEventListener('localStorageChanged', handleChangeSetting);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('localStorageChanged', handleChangeSetting);
+});
+
+
+useHead({
+    title: `${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
+    meta: [
+        {
+            name: 'title',
+            content:  `${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''} | Phê truyện`
+        },
+        {
+            name: 'description',
+            content: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`)
+        },
+    ],
+});
+
+useSeoMeta({
+    description: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
+    ogDescription: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
+    ogImage: data.value?.avatar,
+    twitterCard: 'summary_large_image',
+});
 </script>
 
 <template>
@@ -70,14 +130,14 @@ const reportError = () => {
 
                 <div class="chapter-content">
                     <div class="content-container mt-4 ql-editor" id="chapter-content-render"
-                         style="font-family: Roboto, sans-serif; font-size: 18px; line-height: 140%;"
+                         :style="styles"
                          v-html="data?.content">
                     </div>
                 </div>
 
                 <!--                <div class="my-3 mx-lg-4 mx-2">-->
                 <!--                    <a href="https://goeco.mobi/lUtqaGcJ" target="_blank">-->
-                <!--                        <img src="https://monkeyd.vn/images/banner/lazada-1.jpg" alt="" style="width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 5px;">-->
+                <!--                        <img src="https://Phê Truyện.vn/images/banner/lazada-1.jpg" alt="" style="width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 5px;">-->
                 <!--                    </a>-->
                 <!--                </div>-->
 

@@ -33,7 +33,7 @@ const handleSubmit = async () => {
             configStore.setSwal({
                 open: true,
                 title: 'Báo cáo thành công',
-                text: 'Cảm ơn bạn đã gửi báo cáo vi phạm bản quyền đến MonkeyD. Team sẽ xem xét và liên hệ bạn trong thời gian sớm nhất!',
+                text: 'Cảm ơn bạn đã gửi báo cáo vi phạm bản quyền đến Phê Truyện. Team sẽ xem xét và liên hệ bạn trong thời gian sớm nhất!',
                 type: 'success'
             });
         }, 150);

@@ -272,7 +272,9 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #owner="{ row }">
-            {{row?.owner.fullname}}
+            <NuxtLink :to="`/admin/quan-ly-nguoi-dung?search=${row?.owner?.email || ''}`">
+                {{row?.owner?.fullname}}
+            </NuxtLink>
         </template>
 
         <template #status="{ row }">
@@ -322,7 +324,7 @@ watch(() => route?.query, (value, oldValue) => {
             </FormItem>
 
             <FormItem label="Người báo">
-                <Input v-model="formItem.owner.fullname" placeholder="Người báo" readonly></Input>
+                <Input v-model="formItem.owner.email" placeholder="Người báo" readonly></Input>
             </FormItem>
         </Form>
     </Modal>
@@ -343,5 +345,5 @@ watch(() => route?.query, (value, oldValue) => {
         <p>False Positive</p>
     </Modal>
 
-    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
+    <Page class="mt-4 text-black" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
 </template>

@@ -10,6 +10,7 @@ const configStore = useConfigStore();
 
 const user = computed(() => userStore.$state.user);
 const token = computed(() => userStore.$state.token);
+const checkVIP = computed(() => userStore.checkVIP());
 const openMenu = ref(false);
 const notify = ref();
 
@@ -53,7 +54,7 @@ watch(token, () => {
     <div v-if="user?.id" class="user-box dropdown px-2"
          v-click-out-side="handleClickOutside"
     >
-        <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
+        <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret position-relative"
            :class="openMenu ? 'show' : ''"
            href="#"
            role="button"
@@ -61,7 +62,10 @@ watch(token, () => {
            :aria-expanded="openMenu"
            @click.prevent="openMenu = !openMenu">
             <img :src="user?.avatar || ''" onerror="this.src='/images/avata.png'" class="user-img"
-                 alt="test">
+                 alt="">
+            <img v-if="checkVIP"
+                 src="/images/khung-vip.png" class="frame-user-img"
+                 alt="">
             <div class="user-info">
                 <p class="user-name mb-0">{{ user?.fullname }}</p>
                 <p class="designattion mb-0">{{ user?.email }}</p>
@@ -160,3 +164,16 @@ watch(token, () => {
         </NuxtLink>
     </div>
 </template>
+
+<style>
+.user-box .frame-user-img {
+    position: absolute;
+    z-index: 1;
+    /*width: 65px;*/
+    //top: -2px;
+    //left: -3px;
+    width: 70px;
+    top: -13px;
+    left: -14px;
+}
+</style>

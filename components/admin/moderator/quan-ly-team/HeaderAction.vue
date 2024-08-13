@@ -30,7 +30,7 @@ const handleAdd = () => {
         </h4>
 
         <div class="d-flex align-items-center">
-            <span class="me-2" style="width: 90px">Tìm kiếm</span>
+            <span class="me-2 text-black">Tìm kiếm</span>
             <Input v-model="query.search" search clearable
                    placeholder="Nhập từ khóa tìm kiếm" class="input-search"
                    @on-clear="handleSearch" @on-change="handleSearch"

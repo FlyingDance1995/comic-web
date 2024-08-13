@@ -2,8 +2,6 @@
 import {useConfigStore} from "~/store/config.js";
 import {useUserStore} from "~/store/user.js";
 
-const runtimeConfig = useRuntimeConfig();
-
 const userStore = useUserStore();
 const configStore = useConfigStore();
 
@@ -27,7 +25,7 @@ const handleSubmit = async () => {
         }
 
         configStore.setLoadingModal(true);
-        await useNuxtApp().$api('/report-user', {
+        await useNuxtApp().$api('/report-vip', {
             method: 'POST',
             body: {
                 ...form
@@ -56,22 +54,14 @@ const handleSubmit = async () => {
 <template>
     <div class="row">
         <div class="col-xl-6 mx-auto">
-            <h6 class="mb-0 text-uppercase">Đóng góp cùng Phê Truyện</h6>
+            <h6 class="mb-0 text-uppercase">Nâng cấp Premium</h6>
             <hr>
             <div class="card">
                 <div class="card-body">
                     <div class="card bg-warning text-center">
                         <div class="card-body">
                             <div class="p-2 text-dark rounded">
-                                Trở thành tác giả/nhóm dịch cùng đóng góp truyện với Phê Truyện <br>
-                                Tác giả/Nhóm dịch không được phép đăng truyện 18+, truyện 16+ có nội dung ướt át, truyện
-                                re-up và đặc biệt là truyện có bản quyền.<br>
-                                Phê Truyện xin được phép xử lý mạnh tay khi phát hiện <b>team</b> cố tình đăng các loại
-                                truyện đã được cảnh báo.
-                                <br>
-                                Sau khi gửi yêu cầu đóng góp vui lòng gửi tin nhắn đến <a
-                                :href="runtimeConfig.public.contactFb" target="_blank">Fanpage Phê Truyện</a> để xác
-                                thực tài khoản.
+                                Nâng cấp Premium bạn sẽ đọc truyện mà không có quảng cáo và được đọc truyện mới nhất
                             </div>
                         </div>
                     </div>
@@ -99,7 +89,7 @@ const handleSubmit = async () => {
 
                     <template v-if="success">
                         <div class="mgt-10  alert alert-success alert-dismissible" role="alert">
-                            Cảm ơn bạn đã gửi yêu cầu đóng góp và trở thành một phần của Phê Truyện. Team sẽ xem xét và duyệt
+                            Cảm ơn bạn đã gửi yêu cầu nâng cấp Premium. Team sẽ xem xét và duyệt
                             yêu cầu của bạn trong thời gian sớm nhất!
                         </div>
 
@@ -107,7 +97,7 @@ const handleSubmit = async () => {
                             <div class="card-body">
                                 <div class="p-2 text-dark rounded">
                                     <p class="mb-2">
-                                        Bạn đã gửi yêu cầu đăng ký cho Phê Truyện, vui lòng chờ team xem xét và duyệt yêu cầu
+                                        Bạn đã gửi yêu cầu nâng cấp Premium, vui lòng chờ team xem xét và duyệt yêu cầu
                                         của bạn!
                                     </p>
                                 </div>

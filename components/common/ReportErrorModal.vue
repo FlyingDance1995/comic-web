@@ -42,7 +42,7 @@ const handleSubmit = async () => {
             configStore.setSwal({
                 open: true,
                 title: 'Thành công',
-                text: 'Cảm ơn bạn đã báo cáo lỗi với MonkeyD - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất 2024. Team sẽ xem xét báo cáo và sửa lỗi trong thời gian sớm nhất.',
+                text: 'Cảm ơn bạn đã báo cáo lỗi với Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất. Team sẽ xem xét báo cáo và sửa lỗi trong thời gian sớm nhất.',
                 type: 'success'
             });
         }, 150);

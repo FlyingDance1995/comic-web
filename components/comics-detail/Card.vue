@@ -11,6 +11,7 @@ const props = defineProps({
 const configStore = useConfigStore();
 
 const listChaptersRef = ref();
+const expanded = ref(false);
 
 const handleFollow = () => {
     const user = JSON.parse(localStorage.getItem('user') || null);
@@ -64,20 +65,6 @@ const report = () => {
     setTimeout(() => configStore.setReportModal(true), 100)
 };
 
-const donate = () => {
-    const user = localStorage.getItem('user');
-    if (!user) {
-        return configStore.setSwal({
-            open: true,
-            title: 'Oops...',
-            text: 'Bạn cần đăng nhập để có donate.',
-            type: 'error'
-        });
-    }
-
-    setTimeout(() => configStore.setDonateModal(true), 100)
-};
-
 const reportError = () => {
     const user = localStorage.getItem('user');
     if (!user) {
@@ -92,15 +79,6 @@ const reportError = () => {
     configStore.setStoryReportError(listChaptersRef.value?.data);
     setTimeout(() => configStore.setReportErrorModal(true), 100);
 };
-
-const isExpanded = ref(false);
-
-const toggleDescription = () => {
-    const styleExpanded = document.querySelector('.ql-editor')
-    styleExpanded.style.height = (!isExpanded.value ? 'auto' : '')
-    styleExpanded.style.display = (!isExpanded.value ? 'block' : '')
-    isExpanded.value = !isExpanded.value;
-}
 </script>
 
 <template>
@@ -169,16 +147,16 @@ const toggleDescription = () => {
                     <!-- <li class="fb_btn fb-like-tbn" style="list-style-type: none"> -->
                     <!-- Your like button code -->
 
-                    <!-- <div class="fb-like fb_iframe_widget" data-href="https://monkeyd.vn/dong-chi.html" -->
+                    <!-- <div class="fb-like fb_iframe_widget" data-href="https://Phê Truyện.vn/dong-chi.html" -->
                     <!-- data-width="" data-layout="standard" data-action="like" data-size="small" -->
                     <!-- data-share="true" fb-xfbml-state="rendered" -->
-                    <!-- fb-iframe-plugin-query="action=like&amp;app_id=439215208546321&amp;container_width=805&amp;href=https%3A%2F%2Fmonkeyd.vn%2Fdong-chi.html&amp;layout=standard&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;size=small&amp;width="> -->
+                    <!-- fb-iframe-plugin-query="action=like&amp;app_id=439215208546321&amp;container_width=805&amp;href=https%3A%2F%2FPhê Truyện.vn%2Fdong-chi.html&amp;layout=standard&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;size=small&amp;width="> -->
                     <!-- <span style="vertical-align: bottom; width: 450px; height: 28px;"><iframe -->
                     <!-- name="fdf041c52b2f23840" width="1000px" height="1000px" -->
                     <!-- data-testid="fb:like Facebook Social Plugin" -->
                     <!-- title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" -->
                     <!-- allowfullscreen="true" scrolling="no" allow="encrypted-media" -->
-                    <!-- src="https://www.facebook.com/v9.0/plugins/like.php?action=like&amp;app_id=439215208546321&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Dff7bfd502d0eb1205%26domain%3Dmonkeyd.vn%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fmonkeyd.vn%252Ff8494ddd5c0a6b3e4%26relation%3Dparent.parent&amp;container_width=805&amp;href=https%3A%2F%2Fmonkeyd.vn%2Fdong-chi.html&amp;layout=standard&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;size=small&amp;width=" -->
+                    <!-- src="https://www.facebook.com/v9.0/plugins/like.php?action=like&amp;app_id=439215208546321&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Dff7bfd502d0eb1205%26domain%3DPhê Truyện.vn%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252FPhê Truyện.vn%252Ff8494ddd5c0a6b3e4%26relation%3Dparent.parent&amp;container_width=805&amp;href=https%3A%2F%2FPhê Truyện.vn%2Fdong-chi.html&amp;layout=standard&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;size=small&amp;width=" -->
                     <!-- style="border: none; visibility: visible; width: 450px; height: 28px;" -->
                     <!-- class=""></iframe></span></div> -->
                     <!-- </li> -->
@@ -187,7 +165,7 @@ const toggleDescription = () => {
                     <!--social_single_news-->
 
                     <div class="d-flex gap-3 mt-3 flex-wrap">
-                        <button class="btn btn-sm btn-danger px-3 radius-30" @click="donate">
+                        <button class="btn btn-sm btn-danger px-3 radius-30" onclick="donate()">
                             <i class="bx bx-dollar-circle"></i>Donate
                         </button>
                         <NuxtLink :to="`/${data?.slug}/${data?.first_chapter?.slug}`"
@@ -214,18 +192,21 @@ const toggleDescription = () => {
                     </div>
 
                     <div class="mt-3 card-text fs-6 story-description">
-                        <div class="ql-editor inner">
-                            <p>{{data?.description}}</p>
+                        <div class="ql-editor inner p-0"
+                             :class="{'expanded': expanded}"
+                        >
+                            <p>{{ data?.description }}</p>
                         </div>
 
-                        <button @click="toggleDescription" class="button-expanded">
-                            {{ isExpanded ? 'Thu gọn' : 'Xem thêm' }}
-                        </button>
+                        <span class="more cursor-pointer text-primary"
+                              @click="expanded = !expanded">
+                            {{expanded ? 'Thu gọn' : 'Xem thêm'}}
+                        </span>
                     </div>
 
                     <!-- <div class="mt-3 mx-lg-4 mx-0">
                         <a href="https://goeco.mobi/lUtqaGcJ" target="_blank">
-                            <img src="https://monkeyd.vn/images/banner/lazada-1.jpg" alt=""
+                            <img src="https://Phê Truyện.vn/images/banner/lazada-1.jpg" alt=""
                                  style="width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 5px;">
                         </a>
                     </div> -->
@@ -237,7 +218,9 @@ const toggleDescription = () => {
         <div class="card-body  mt-4 ">
             <h5 class="mb-0 text-uppercase text-primary">Danh sách chương</h5>
             <hr>
-            <ComicsDetailListChapters ref="listChaptersRef"/>
+            <ClientOnly>
+                <ComicsDetailListChapters ref="listChaptersRef"/>
+            </ClientOnly>
             <h5 class="mb-0 text-uppercase mt-5 text-primary">Bình luận</h5>
             <hr>
             <ClientOnly>
@@ -246,12 +229,3 @@ const toggleDescription = () => {
         </div>
     </div>
 </template>
-<style scoped lang="css">
-.button-expanded{
-    border: none;
-    color: #008cff;
-    font-weight: 700;
-    text-decoration: underline;
-    background: transparent;
-}
-</style>

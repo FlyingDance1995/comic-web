@@ -202,3 +202,13 @@ const validateField = () => {
         </div>
     </div>
 </template>
+
+<style>
+.dark-theme .auth-cover-right {
+    background: #16191b;
+}
+
+.dark-theme .auth-cover-left {
+    background: #16191b;
+}
+</style>

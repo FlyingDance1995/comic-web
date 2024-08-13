@@ -1,5 +1,8 @@
 <script setup>
 import { formattedNameChaper } from "~/utils/formatName.js";
+import {useConfigStore} from "~/store/config.js";
+import {useUserStore} from "~/store/user.js";
+
 const props = defineProps({
     slug: {
         type: {
@@ -21,23 +24,55 @@ const props = defineProps({
     }
 });
 
+const router = useRouter();
+const configStore = useConfigStore();
+const runtimeConfig = useRuntimeConfig();
+
+const user = ref();
+const checkVIP = ref(false);
+
+const indexCurrentChapter = computed(() => props.listChapter.findIndex(o => o?.slug === props.chapter));
+
 const handleChange = (e) => {
-    window.location.href = e.target.value;
+    // window.location.href = e.target.value;
+    router.push(e.target.value)
+};
+
+const openSetting = () => {
+    configStore.setSettingModal(true);
+};
+
+if (process.client) {
+    const userStore = useUserStore();
+    user.value = userStore.$state.user;
+    checkVIP.value = userStore.checkVIP();
+
+}
+
+const checkCreationTime = (value) => {
+    const currentTime = new Date();
+    const timeDifference = currentTime - new Date(value * 1000);
+    const hoursDifference = timeDifference / (1000 * 60 * 60);
+    return hoursDifference >= (Number(runtimeConfig.public?.unlockTime) || 24);
 };
 </script>
 
 <template>
     <div class="chapter-footer bg-dark p-1">
         <div class="d-flex justify-content-center">
-            <!--            <a href="javascript:void(0)" onclick="if (!window.__cfRLUnblockHandlers) return false; openSetting()" class="btn btn-sm btn-white m-2">-->
-            <!--                <i class="bx bx-font-family mr-0"></i>-->
-            <!--            </a>-->
+            <a href="javascript:void(0)"
+               class="btn btn-sm btn-white m-2"
+               @click.stop="openSetting">
+                <i class="bx bx-font-family mr-0"></i>
+            </a>
 
             <NuxtLink :to="`/${slug}`" class="btn btn-sm btn-white m-2">
                 <i class="bx bx-list-ol mr-0"></i>
             </NuxtLink>
 
-            <NuxtLink :to="chapter === listChapter[listChapter.length - 1]?.slug ? 'javascript:void(0)' : `/${slug}/${listChapter?.find(x => x?.chapter_number === chapter_number - 1)?.slug}`"
+            <NuxtLink :to="chapter === listChapter[listChapter.length - 1]?.slug
+                        ? 'javascript:void(0)'
+                        : `/${slug}/${listChapter?.find((_, index) => indexCurrentChapter === index - 1)?.slug}`"
                :class="chapter === listChapter[listChapter.length - 1]?.slug ? `btn-secondary` : 'btn-white'"
                class="btn btn-sm"
                style="margin: 0.3rem;">
@@ -48,15 +83,19 @@ const handleChange = (e) => {
                     id="selected_chapter"
                     class="form-select"
                     @change="handleChange">
-                <option v-for="item in listChapter"
-                        :key="item?.id"
-                        :value="item?.slug"
-                        :selected="item?.slug === chapter">
-                    {{ formattedNameChaper(item?.type) }} {{item?.chapter_number || ''}}
-                </option>
+                <template v-for="item in listChapter"
+                          :key="item?.id">
+                    <option v-if="checkVIP || checkCreationTime(item?.creation_time)"
+                            :value="item?.slug"
+                            :selected="item?.slug === chapter">
+                        {{ formattedNameChaper(item?.type) }} {{item?.chapter_number || ''}}
+                    </option>
+                </template>
             </select>
 
-            <NuxtLink :to="chapter === listChapter[0]?.slug ? 'javascript:void(0)' : `/${slug}/${listChapter?.find(x => x?.chapter_number === chapter_number + 1)?.slug}`"
+            <NuxtLink :to="chapter === listChapter[0]?.slug
+                        ? 'javascript:void(0)'
+                        : `/${slug}/${listChapter?.find((_, index) => indexCurrentChapter === index + 1)?.slug}`"
                :class="chapter === listChapter[0]?.slug ? `btn-secondary` : 'btn-white'"
                class="btn btn-sm"
                style="margin: 0.3rem;">

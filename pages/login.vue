@@ -76,7 +76,7 @@ const validateField = () => {
                         <div class="card-body">
                             <div class="p-4">
                                 <div class="mb-3 text-center">
-                                    <img src="/images/logo/Logo-MonkeyD.png" width="220" alt="">
+                                    <img src="/images/logo/Logo.png" width="220" alt="">
                                 </div>
 
                                 <div class="text-center mb-4">
@@ -120,7 +120,7 @@ const validateField = () => {
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6 text-end">
+                                        <div class="col-md-12 text-end">
                                             <NuxtLink to="/quen-mat-khau">
                                                 Quên mật khẩu?
                                             </NuxtLink>

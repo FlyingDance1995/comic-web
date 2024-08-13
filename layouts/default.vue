@@ -10,7 +10,7 @@ useSchemaOrg([
         "founders": [
             {
                 "@type": "Person",
-                "name": "MonkeyD"
+                "name": "Phê Truyện"
             }],
         "contactPoint": {
             "@type": "ContactPoint",
@@ -20,8 +20,8 @@ useSchemaOrg([
         },
         "sameAs": ["https://www.facebook.com/fanpage/"],
         "@id": "#organization",
-        "name": "MonkeyD",
-        "logo": "/images/logo/Logo-MonkeyD.png"
+        "name": "Phê Truyện",
+        "logo": "/images/logo/Logo.png"
     }
 ]);
 
@@ -32,6 +32,7 @@ const openMenu = computed(() => menuStore.$state.open);
 </script>
 
 <template>
+    <NuxtLoadingIndicator color="#0d6efd"/>
     <!--ads-->
     <ClientOnly>
         <CommonAffLayer/>
@@ -65,11 +66,13 @@ const openMenu = computed(() => menuStore.$state.open);
             <CommonReportLicenseModal/>
             <!-- Report Error Modal -->
             <CommonReportErrorModal/>
+            <!-- Setting Modal -->
+            <CommonSettingModal/>
             <!--start overlay-->
             <CommonOverlay/>
             <!--end overlay-->
             <!--Start Back To Top Button-->
-            <CommonBackToTop/>
+            <!--<CommonBackToTop/>-->
         </ClientOnly>
         <!--End Back To Top Button-->
         <CommonFooter/>
@@ -84,3 +87,7 @@ const openMenu = computed(() => menuStore.$state.open);
         <CommonBackDropModal/>
     </ClientOnly>
 </template>
+
+<style scoped>
+
+</style>

@@ -390,7 +390,7 @@ onUnmounted(() => {
         <p>Bạn có muốn chắc chắn xóa truyện này</p>
     </Modal>
 
-    <Page class="mt-4" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
+    <Page class="mt-4 text-black" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>
 </template>
 
 <style>

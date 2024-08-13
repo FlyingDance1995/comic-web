@@ -16,7 +16,7 @@ export const useConfigStore = defineStore({
             reportModal: false,
             reportErrorModal: false,
             storyReportError: null,
-            donateModal: false,
+            settingModal: false,
         }
     },
     actions: {
@@ -41,8 +41,8 @@ export const useConfigStore = defineStore({
         setStoryReportError(value) {
             this.$state.storyReportError = value;
         },
-        setDonateModal(value) {
-            this.$state.donateModal = value;
-        }
+        setSettingModal(value) {
+            this.$state.settingModal = value;
+        },
     },
 });
