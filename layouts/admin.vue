@@ -67,7 +67,7 @@ watch(() => route.path, () => {
 <!--                        </Button>-->
 <!--                    </Poptip>-->
 
-                    <div class="float-end me-4 custom-box d-flex topbar">
+                    <div class="float-end me-4 custom-box d-flex topbar" style="background: #cedddd;">
                         <div class="top-menu ms-auto">
                             <CommonNotify/>
                         </div>
@@ -83,7 +83,8 @@ watch(() => route.path, () => {
                        :collapsed-width="85"
                        breakpoint="md"
                        :style="{background: '#F0F1FA', minWidth: '220px', width: '220px'}">
-                    <Menu :class="menuitemClasses" :active-name="activeTab" theme="light" width="auto" style="background: #F0F1FA">
+                    <Menu :class="menuitemClasses" :active-name="activeTab" theme="light"
+                             width="auto" style="background: #F0F1FA">
                         <template v-if="user && user?.role !== 'user'">
                             <div class="my-2 mx-2">ĐĂNG TRUYỆN</div>
                             <MenuItem v-for="item in menuModerator"
