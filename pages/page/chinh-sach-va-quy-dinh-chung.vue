@@ -16,13 +16,13 @@
                     <div class="card-body">
                         <div class="my-3 text-center">
                             <div class="mb-2">
-                                <img src="/images/logo/Logo.png" alt="Phê Truyện" width="300px">
+                                <img src="/images/logo/Logo.svg" alt="Phê Truyện" width="300px">
                             </div>
                             <h5><b>Thoả sức sáng tạo</b></h5>
                         </div>
                         <p><strong>GIỚI THIỆU</strong></p>
 
-                        <p>Phê Truyện là nền tảng được sáng lập vào tháng 1/1/2024 bởi Khỉ - một coder đồng thời là fan của
+                        <p>Phê Truyện là nền tảng được sáng lập vào tháng 1/1/2024 bởi một coder đồng thời là fan của
                             các tác giả, dịch giả.</p>
 
                         <p>Tên và tên miền của Phê Truyện lấy cảm hứng từ một nhân vật truyện tranh trong bộ truyện nổi
@@ -37,7 +37,7 @@
 
                         <p><strong>QUY ĐỊNH ĐỐI VỚI ĐỘC GIẢ</strong></p>
 
-                        <p>Rất chào mừng các bạn đến với Phê Truyện để cùng Khỉ thưởng thức vô vàn các nội dung khác nhau
+                        <p>Rất chào mừng các bạn đến với Phê Truyện để cùng mình thưởng thức vô vàn các nội dung khác nhau
                             trên nền tảng. Tuy nhiên, Phê Truyện sẽ không chấp nhận các comment mang tính phỉ báng, xâm hại
                             đến cá nhân, tổ chức cũng như dẫn link sang nền tảng khác. Nếu xuất hiện các comment,
                             Phê Truyện xin được áp dụng việc nhắc nhở, xóa bỏ comment, thậm chí ban nick và cấm vĩnh viễn.

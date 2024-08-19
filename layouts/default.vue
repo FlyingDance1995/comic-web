@@ -5,7 +5,7 @@ useSchemaOrg([
     {
         "@context": "http://schema.org",
         "@type": "Organization",
-        "url": "https://monkeyd.vn",
+        "url": "https://phetruyenn.com",
         "foundingDate": "2024",
         "founders": [
             {
@@ -15,13 +15,12 @@ useSchemaOrg([
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer support",
-            "telephone": "[0938 71 7000]",
-            "email": "monkeyd.contact@gmail.com"
+            "email": "phetruyenn@gmail.com"
         },
         "sameAs": ["https://www.facebook.com/fanpage/"],
         "@id": "#organization",
         "name": "Phê Truyện",
-        "logo": "/images/logo/Logo.png"
+        "logo": "/images/logo/Logo.svg"
     }
 ]);
 

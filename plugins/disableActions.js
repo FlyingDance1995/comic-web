@@ -17,6 +17,10 @@ export default defineNuxtPlugin(() => {
             if (e.ctrlKey && e.shiftKey && e.key === 'J') {
                 e.preventDefault();
             }
+            // Ctrl+Shift+C
+            if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+            }
             // Ctrl+U
             if (e.ctrlKey && e.key === 'U') {
                 e.preventDefault();

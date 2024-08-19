@@ -18,7 +18,7 @@ export default defineNuxtConfig({
                     content: 'Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất'
                 },
                 {name: 'msapplication-TileColor', content: '#ffffff'},
-                {name: 'msapplication-TileImage', content: '/images/favicon/ms-icon-144x144.png'},
+                {name: 'msapplication-TileImage', content: '/images/favicon/logo.png'},
                 {name: 'theme-color', content: '#ffffff'},
                 {property: 'og:type', content: 'website'},
                 {
@@ -51,8 +51,8 @@ export default defineNuxtConfig({
                 // {rel: 'stylesheet', href: '/owlcarousel/assets/owl.carousel.min.css'},
                 // {rel: 'stylesheet', href: '/owlcarousel/assets/owl.theme.default.min.css'},
                 {rel: 'index', href: process.env.NUXT_PUBLIC_SITE_URL},
-                {rel: 'icon', type: 'image/x-icon', href: '/images/favicon/android-icon-192x192.png'},
-                {rel: 'shortcut icon', href: '/images/favicon/android-icon-192x192.png'},
+                {rel: 'icon', type: 'image/x-icon', href: '/images/favicon/logo.png'},
+                {rel: 'shortcut icon', href: '/images/favicon/logo.png'},
                 {rel: 'canonical', href: process.env.NUXT_PUBLIC_SITE_URL},
                 {rel: 'dns-prefetch', href: '//fonts.googleapis.com'},
                 {rel: 'dns-prefetch', href: '//googleads.g.doubleclick.net'},

@@ -83,14 +83,14 @@ watch(reportModal, () => {
                             <label for="violate_link" class="d-block"><b>Link tác phẩm vi phạm</b></label>
                             <input v-model="form.link_story"
                                    type="text" class="form-control" name="violate_link" id="violate_link"
-                                   placeholder="Ex: https://monkeyd.vn/tac-pham-vi-pham.1/" required="">
+                                   placeholder="Ex: https://phetruyenn.com/tac-pham-vi-pham.1/" required="">
                         </div>
 
                         <div class="mb-3">
                             <label for="original_link" class="d-block"><b>Link tác phẩm gốc</b></label>
                             <input v-model="form.link_violate"
                                    type="text" class="form-control" name="original_link" id="original_link"
-                                   placeholder="Ex: https://example.net/tac-pham-goc.1/" required="">
+                                   placeholder="Ex: https://phetruyenn.com/tac-pham-goc.1/" required="">
                         </div>
 
                         <div class="mb-3">

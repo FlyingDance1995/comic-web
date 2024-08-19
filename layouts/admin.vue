@@ -49,7 +49,7 @@ watch(() => route.path, () => {
                 <Menu mode="horizontal" theme="light" style="background: transparent; height: 100%; z-index: 999">
                     <NuxtLink to="/" :class="$style.layoutLogo">
                         <img
-                            src="/images/logo/Logo.png"
+                            src="/images/logo/Logo.svg"
                             height="100%"
                             alt="">
                     </NuxtLink>

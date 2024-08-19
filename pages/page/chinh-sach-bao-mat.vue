@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <p><strong>CHÍNH SÁCH BẢO MẬT</strong></p>
 
-                        <p>Khi sử dụng trang web https://monkeyd.vn, bạn đang chấp nhận những điều được mô tả trong
+                        <p>Khi sử dụng trang web https://phetruyenn.com, bạn đang chấp nhận những điều được mô tả trong
                             chính sách bảo mật. Quý khách vui lòng đọc bản “Chính sách bảo mật thông tin cá nhân” dưới
                             đây để hiểu hơn những cam kết mà chúng tôi thực hiện, nhằm tôn trọng và bảo vệ quyền lợi của
                             người truy cập.</p>
@@ -25,7 +25,7 @@
 
                         <p><strong>1.1 Mục đích thu thập thông tin</strong></p>
 
-                        <p>Các thông tin thu thập thông qua website https://monkeyd.vn sẽ giúp chúng tôi:</p>
+                        <p>Các thông tin thu thập thông qua website https://phetruyenn.com sẽ giúp chúng tôi:</p>
 
                         <p>Hỗ trợ Quý khách khi có nhu cầu cụ thể</p>
 
@@ -41,7 +41,7 @@
 
                         <p><strong>1.2 Phạm vi thu thập thông tin</strong></p>
 
-                        <p>Để truy cập và sử dụng một số dịch vụ tại MONKEYD, quý khách có thể sẽ được yêu cầu đăng ký
+                        <p>Để truy cập và sử dụng một số dịch vụ tại PHETRUYENN, quý khách có thể sẽ được yêu cầu đăng ký
                             với chúng tôi thông tin cá nhân (Email, Họ tên, Số ĐT liên lạc…). Mọi thông tin khai báo
                             phải đảm bảo tính chính xác và hợp pháp. Chúng tôi không chịu mọi trách nhiệm liên quan đến
                             pháp luật của thông tin khai báo.</p>
@@ -49,12 +49,12 @@
                         <p>Chúng tôi cũng có thể thu thập thông tin về số lần viếng thăm, bao gồm số trang quý khách
                             xem, số links (liên kết) bạn click và những thông tin khác liên quan đến việc kết nối đến
                             website. Chúng tôi cũng thu thập các thông tin mà trình duyệt Web (Browser) quý khách sử
-                            dụng mỗi khi truy cập vào website https://monkeyd.vn, bao gồm: địa chỉ IP, loại Browser,
+                            dụng mỗi khi truy cập vào website https://phetruyenn.com, bao gồm: địa chỉ IP, loại Browser,
                             ngôn ngữ sử dụng, thời gian và những địa chỉ mà Browser truy xuất đến.</p>
 
                         <p><strong>2. PHẠM VI SỬ DỤNG THÔNG TIN</strong></p>
 
-                        <p>Website https://monkeyd.vn thu thập và sử dụng thông tin cá nhân quý khách với mục đích phù
+                        <p>Website https://phetruyenn.com thu thập và sử dụng thông tin cá nhân quý khách với mục đích phù
                             hợp và hoàn toàn tuân thủ nội dung của “Chính sách bảo mật thông tin cá nhân” này.</p>
 
                         <p>Khi cần thiết, chúng tôi có thể sử dụng những thông tin này để liên hệ trực tiếp với bạn dưới
@@ -65,15 +65,15 @@
                         <p><strong>3. THỜI GIAN LƯU TRỮ THÔNG TIN</strong></p>
 
                         <p>Đối với nội dung tư vấn miễn phí qua Email và kiến thức chung thì thời gian lưu trữ tại
-                            https://monkeyd.vn không giới hạn. Đối với nội dung tư vấn qua tổng đài điện thoại thì yêu
+                            https://phetruyenn.com không giới hạn. Đối với nội dung tư vấn qua tổng đài điện thoại thì yêu
                             cầu và tương tác với người liên hệ được lưu trữ tối đa 06 (sáu) tháng.</p>
 
                         <p><strong>4. CÁC CÁ NHÂN, TỔ CHỨC CÓ THỂ TIẾP CẬN THÔNG TIN</strong></p>
 
-                        <p>Đối với các thông tin do Phê Truyện thu thập từ khách hàng thông qua website https://monkeyd.vn,
+                        <p>Đối với các thông tin do Phê Truyện thu thập từ khách hàng thông qua website https://phetruyenn.com,
                             chỉ có các cá nhân, tổ chức sau có quyền tiếp cận thông tin:</p>
 
-                        <p>Chủ sở hữu website website https://monkeyd.vn</p>
+                        <p>Chủ sở hữu website website https://phetruyenn.com</p>
 
                         <p>Khách hàng là chủ sở hữu của thông tin đã cung cấp</p>
 
@@ -87,7 +87,7 @@
                             lúc nào.</p>
 
                         <p>Người dùng, quý khách hàng có thể chỉnh sửa, thay đổi thông tin đã gửi đề nghị tư vấn bằng
-                            hình thức gửi mail trực tiếp đến hòm thư monkeyd.contact@gmail.com hoặc sử dụng phương thức
+                            hình thức gửi mail trực tiếp đến hòm thư phetruyenn@gmail.com hoặc sử dụng phương thức
                             khác tùy theo thỏa thuận để đề nghị thay đổi.</p>
 
                         <p><strong>7. CAM KẾT BẢO MẬT THÔNG TIN CÁ NHÂN KHÁCH HÀNG</strong></p>
@@ -125,15 +125,15 @@
                             ban đầu là không chính xác.</p>
 
                         <p>Thành viên không được hành động gây mất uy tín của trang
-                            website&nbsp;https://monkeyd.vn dưới mọi hình thức như gây mất đoàn kết giữa các
+                            website&nbsp;https://phetruyenn.com dưới mọi hình thức như gây mất đoàn kết giữa các
                             thành viên bằng cách sử dụng tên đăng ký thứ hai, thông qua một bên thứ ba
                             hoặc tuyên truyền, phổ biến những thông tin không có lợi cho uy tín website.</p>
 
                         <p><strong>8. CƠ CHẾ TIẾP CẬN VÀ GIẢI QUYẾT KHIẾU NẠI CỦA KHÁCH HÀNG</strong></p>
 
-                        <p>Trường hợp khách hàng phát hiện thông tin cá nhân cung cấp trên trang web https://monkeyd.vn
+                        <p>Trường hợp khách hàng phát hiện thông tin cá nhân cung cấp trên trang web https://phetruyenn.com
                             có dấu hiệu bị rò rỉ, bị sử dụng vào những mục đích khác với mục 1 hoặc có vi phạm pháp
-                            luật, vui lòng báo ngay cho Phê Truyện qua email monkeyd.contact@gmail.com.</p>
+                            luật, vui lòng báo ngay cho Phê Truyện qua email phetruyenn@gmail.com.</p>
 
                         <p>Phê Truyện sẽ tiến hành kiểm tra, rà soát lại việc lưu trữ và sử dụng thông tin trong thời gian
                             ngắn nhất. Ngay khi có kết luận, Phê Truyện sẽ thông báo lại cho khách hàng. Nếu phát hiện có
@@ -150,7 +150,7 @@
 
                         <p>Chúng tôi luôn hoan nghênh các ý kiến đóng góp, liên hệ và phản hồi thông tin từ bạn về
                             “Chính sách bảo mật” này. Nếu bạn có những thắc mắc liên quan xin vui lòng liên hệ qua email
-                            monkeyd.contact@gmail.com</p>
+                            phetruyenn@gmail.com</p>
                     </div>
                 </div>
             </div>
