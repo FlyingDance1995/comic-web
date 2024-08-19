@@ -128,7 +128,8 @@ export default defineNuxtConfig({
             apiEndpoint: process.env.NUXT_PUBLIC_API_URL,
             email: process.env.NUXT_PUBLIC_EMAIL,
             contactFb: process.env.NUXT_PUBLIC_CONTACT_FB,
-            unlockTime: process.env.NUXT_PUBLIC_UNLOCK_TIME
+            unlockTime: process.env.NUXT_PUBLIC_UNLOCK_TIME,
+            setTimeAff: process.env.NUXT_PUBLIC_SET_TIME_AFF,
         }
     },
 

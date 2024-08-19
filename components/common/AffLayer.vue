@@ -3,36 +3,40 @@
 import {useUserStore} from "~/store/user.js";
 
 const userStore = useUserStore();
+const {setTimeAff} = useRuntimeConfig().public;
 
 const user = computed(() => userStore.$state.user);
 const checkVIP = computed(() => userStore.checkVIP());
 
 const aff = ref();
-const linkAds = ref();
+const listAff = ref([]);
+const currentIndex = ref(0);
+const isAff = ref(sessionStorage.getItem('aff') !== null);
 
 try {
-    const ads = await useNuxtApp().$api('/affiliate');
-    linkAds.value = ads[Math.floor(Math.random() * ads.length)] || [];
+    listAff.value = await useNuxtApp().$api('/affiliate');
+    aff.value = listAff.value[currentIndex.value];
+    currentIndex.value = (currentIndex.value + 1) % listAff.value.length;
 } catch (error) {
     console.log(error);
 }
 
-const handleAffLayerClick = () => {
-    sessionStorage.setItem('aff', 'true');
-    aff.value = true;
+const checkSessionStorage = () => {
+    aff.value = listAff.value[Math.floor(Math.random() * listAff.value.length)];
+    currentIndex.value = (currentIndex.value + 1) % listAff.value.length;
+    sessionStorage.removeItem('aff');
+    isAff.value = false;
 };
 
-aff.value = sessionStorage.getItem('aff') !== null;
-
-const checkSessionStorage = () => {
-    sessionStorage.removeItem('aff')
-    aff.value = false;
+const handleAffLayerClick = () => {
+    sessionStorage.setItem('aff', 'true');
+    isAff.value = true;
 };
 
 let intervalId;
 
 onMounted(() => {
-    intervalId = setInterval(checkSessionStorage, 5 * 60000);
+    intervalId = setInterval(checkSessionStorage, setTimeAff * 1000);
 });
 
 onUnmounted(() => {
@@ -41,10 +45,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <a v-if="!aff && !checkVIP"
+    <a v-if="aff && !isAff && !checkVIP"
        id="affLayer"
        class="transparent-layer"
-       :href="linkAds"
+       :href="aff"
        target="_blank"
        @click="handleAffLayerClick"/>
 </template>

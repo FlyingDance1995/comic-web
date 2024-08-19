@@ -58,6 +58,9 @@ defineExpose({
                 </NuxtLink>
             </div>
 
+            <span v-if="!user?.is_vip && checkCreationTime(item?.creation_time)"
+                  class="cursor-pointer me-1 text-primary">Mua</span>
+
             <Tooltip v-if="!user?.is_vip && checkCreationTime(item?.creation_time)"
                      placement="bottom-end">
                 <span class="me-2 icon-lock cursor-pointer">

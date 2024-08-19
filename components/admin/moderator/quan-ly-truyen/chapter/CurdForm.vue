@@ -1,5 +1,5 @@
 <script setup>
-import { Form, Notice, Col, Row, InputNumber, Select, Option, Input, Button, Space } from "view-ui-plus";
+import {Form, Notice, Col, Row, InputNumber, Select, Option, Input, Button, Space, Switch} from "view-ui-plus";
 import { optionsChapterType } from "~/constants/options.js";
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
@@ -60,7 +60,9 @@ const formItem = reactive({
     name: null,
     chapter_number: null,
     type: "",
-    content: ""
+    content: "",
+    is_lock: false,
+    price: null,
 });
 
 const title = computed(() => {
@@ -175,7 +177,7 @@ defineExpose({
 </script>
 
 <template>
-    <div class="w-50 h-100">
+    <div class="w-50 h-100 flex-column" :class="{'d-flex': dataDetail}">
         <div class="w-100 d-flex flex-wrap gap-2 justify-content-between align-items-center">
             <h4 class="text-black-50">{{ title }}</h4>
 
@@ -199,7 +201,7 @@ defineExpose({
         </div>
 
         <Form ref="formRef" :model="formItem" :rules="rules" label-position="top"
-            style="max-height: 500px; overflow-y: auto; overflow-x: hidden">
+            style="flex: 1; overflow-y: auto; overflow-x: hidden">
             <Row :gutter="20">
                 <Col span="10">
                 <FormItem label="Loại" prop="type">
@@ -236,9 +238,28 @@ defineExpose({
                 </span>
             </FormItem>
 
+            <Row :gutter="20">
+                <Col span="10">
+                    <FormItem label="Khóa">
+                        <Switch v-model="formItem.is_lock" :disabled="status === 'detail'"/>
+                    </FormItem>
+                </Col>
+
+                <Col v-if="formItem.is_lock" span="10" offset="4">
+                    <FormItem label="Giá">
+                        <InputNumber v-if="status !== 'detail'" v-model="formItem.price" placeholder="Số tiền"
+                                     class="w-100" :min="0" :readonly="status === 'detail'" />
+
+                        <span v-else>
+                            {{ formItem.price }}
+                        </span>
+                    </FormItem>
+                </Col>
+            </Row>
+
             <FormItem label="Nội dung" prop="content">
                 <QuillEditor v-if="status !== 'detail'" v-model:content="formItem.content" :toolbar="toolbarOptions"
-                    theme="snow" content-type="html" style="width: 100%; height: 230px; overflow: auto" />
+                    theme="snow" content-type="html" style="width: 100%; height: 370px; overflow: auto" />
 
                 <QuillEditor v-else :content="formItem.content" theme="bubble" content-type="html" read-only
                     :enable="false" class="custom-quill" style="width: 100%; overflow: auto" />

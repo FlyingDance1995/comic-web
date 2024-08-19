@@ -77,7 +77,7 @@ watch(() => route.path, () => {
                 </Menu>
             </Header>
 
-            <Layout>
+            <Layout style="height: calc(100dvh - 64px)">
                 <Sider v-model="isCollapsed"
                        collapsible
                        :collapsed-width="85"
