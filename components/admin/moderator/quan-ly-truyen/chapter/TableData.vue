@@ -221,9 +221,13 @@ onUnmounted(() => {
             </template>
 
             <template #draft="{ row }">
-            <span :style="{color: mappingChapterStatus(row?.draft).color}">
-                {{ mappingChapterStatus(row?.draft).title }}
-            </span>
+                <span :style="{color: mappingChapterStatus(row?.draft).color}">
+                    {{ mappingChapterStatus(row?.draft).title }}
+                </span>
+
+                <span v-if="row?.is_lock" class="mx-1 cursor-pointer" style="font-size: 16px;">
+                    <i class="bx bxs-lock"></i>
+                </span>
             </template>
 
             <template #creation_time="{ row }">

@@ -95,3 +95,14 @@ const openSearchModal = () => {
     </header>
 </template>
 
+<style scoped>
+.logo-icon {
+    width: 150px;
+}
+
+@media screen and (max-width: 768px) {
+    .logo-icon {
+        width: 120px;
+    }
+}
+</style>

@@ -1,5 +1,4 @@
 <script setup>
-
 import {useUserStore} from "~/store/user.js";
 
 const userStore = useUserStore();
@@ -22,6 +21,8 @@ try {
 }
 
 const checkSessionStorage = () => {
+    if (!isAff.value) return;
+
     aff.value = listAff.value[Math.floor(Math.random() * listAff.value.length)];
     currentIndex.value = (currentIndex.value + 1) % listAff.value.length;
     sessionStorage.removeItem('aff');

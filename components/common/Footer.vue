@@ -33,7 +33,11 @@ const report = () => {
                     </div>
                     <div class="footer-content my-3">
                         <p>Email: {{ runtimeConfig.public?.email }}</p>
-                        <p>Liên hệ hỗ trợ: {{ runtimeConfig.public?.contactFb }}</p>
+                        <p>Liên hệ hỗ trợ:
+                            <NuxtLink :to="runtimeConfig.public?.contactFb" external target="_blank">
+                                {{ runtimeConfig.public?.contactFb }}
+                            </NuxtLink>
+                        </p>
                         <button type="button" class="btn btn-sm btn-danger radius-30 px-3" @click.prevent="report">
                             Báo cáo vi phạm bản quyền
                         </button>

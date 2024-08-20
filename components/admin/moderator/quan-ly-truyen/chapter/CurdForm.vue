@@ -62,7 +62,7 @@ const formItem = reactive({
     type: "",
     content: "",
     is_lock: false,
-    price: null,
+    coin: 0,
 });
 
 const title = computed(() => {
@@ -166,6 +166,8 @@ watch(() => props.dataDetail, () => {
         formItem.type = props.dataDetail?.type;
         formItem.content = props.dataDetail?.content || "<p></p>";
         formItem.chapter_number = props.dataDetail?.chapter_number;
+        formItem.is_lock = props.dataDetail?.is_lock;
+        formItem.coin = props.dataDetail?.coin || 0;
     }
 }, {
     deep: true
@@ -247,11 +249,11 @@ defineExpose({
 
                 <Col v-if="formItem.is_lock" span="10" offset="4">
                     <FormItem label="Giá">
-                        <InputNumber v-if="status !== 'detail'" v-model="formItem.price" placeholder="Số tiền"
+                        <InputNumber v-if="status !== 'detail'" v-model="formItem.coin" placeholder="Số tiền"
                                      class="w-100" :min="0" :readonly="status === 'detail'" />
 
                         <span v-else>
-                            {{ formItem.price }}
+                            {{ formItem.coin }}
                         </span>
                     </FormItem>
                 </Col>

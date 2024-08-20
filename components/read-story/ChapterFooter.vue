@@ -85,7 +85,7 @@ const checkCreationTime = (value) => {
                     @change="handleChange">
                 <template v-for="item in listChapter"
                           :key="item?.id">
-                    <option v-if="checkVIP || checkCreationTime(item?.creation_time)"
+                    <option v-if="checkVIP || (checkCreationTime(item?.creation_time) && !item?.is_lock)"
                             :value="item?.slug"
                             :selected="item?.slug === chapter">
                         {{ formattedNameChaper(item?.type) }} {{item?.chapter_number || ''}}

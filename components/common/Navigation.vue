@@ -181,3 +181,11 @@ if (process.client) {
         </nav>
     </div>
 </template>
+
+<style scoped>
+@media screen and (max-width: 768px) {
+    .logo-icon {
+        width: 120px;
+    }
+}
+</style>
