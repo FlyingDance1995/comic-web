@@ -48,13 +48,6 @@ if (process.client) {
     checkVIP.value = userStore.checkVIP();
 
 }
-
-const checkCreationTime = (value) => {
-    const currentTime = new Date();
-    const timeDifference = currentTime - new Date(value * 1000);
-    const hoursDifference = timeDifference / (1000 * 60 * 60);
-    return hoursDifference >= (Number(runtimeConfig.public?.unlockTime) || 24);
-};
 </script>
 
 <template>
@@ -85,7 +78,7 @@ const checkCreationTime = (value) => {
                     @change="handleChange">
                 <template v-for="item in listChapter"
                           :key="item?.id">
-                    <option v-if="checkVIP || (checkCreationTime(item?.creation_time) && !item?.is_lock)"
+                    <option v-if="checkVIP || !item?.is_lock"
                             :value="item?.slug"
                             :selected="item?.slug === chapter">
                         {{ formattedNameChaper(item?.type) }} {{item?.chapter_number || ''}}

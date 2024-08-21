@@ -31,13 +31,6 @@ const getData = async () => {
     }
 };
 
-const checkCreationTime = (value) => {
-    const currentTime = new Date();
-    const timeDifference = currentTime - new Date(value * 1000);
-    const hoursDifference = timeDifference / (1000 * 60 * 60);
-    return hoursDifference < (Number(runtimeConfig.public?.unlockTime) || 24);
-};
-
 getData();
 
 defineExpose({
@@ -51,18 +44,18 @@ defineExpose({
                  :class="{
                     visited: item?.watched
                  }">
-                <NuxtLink :to="!checkVIP && (checkCreationTime(item?.creation_time) || item?.is_lock)
+                <NuxtLink :to="!checkVIP && item?.is_lock
                         ? '/user/mua-vip'
                         : `/${slug}/${item?.slug}`">
                     {{ formattedNameChaper(item?.type) }} {{ item?.chapter_number }}: {{ item?.name }}
                 </NuxtLink>
             </div>
 
-            <NuxtLink v-if="!checkVIP && (checkCreationTime(item?.creation_time) || item?.is_lock)"
+            <NuxtLink v-if="!checkVIP && item?.is_lock"
                       to="/user/mua-vip"
                       class="cursor-pointer me-1 text-primary">Mua</NuxtLink>
 
-            <Tooltip v-if="!checkVIP && (checkCreationTime(item?.creation_time) || item?.is_lock)"
+            <Tooltip v-if="!checkVIP && item?.is_lock"
                      placement="bottom-end">
                 <span class="me-2 icon-lock cursor-pointer">
                     <i class="bx bxs-lock"></i>
