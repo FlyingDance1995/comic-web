@@ -29,7 +29,7 @@
                         <p>Cậu ấy tạo ra Phê Truyện nhằm mục đích cùng mọi người đọc truyện, giao lưu với các dịch giả,
                             tác
                             giả và hỗ trợ họ phần nào trên con đường mà họ đam mê. Hi vọng dịch giả, tác giả không chùn
-                            bước mỗi khi gõ chữ đến còng lưng, gõ chữ đến mờ mắt, gõ chữ đến mức phải dùng Tottri…</p>
+                            bước mỗi khi gõ chữ đến còng lưng, gõ chữ đến mờ mắt</p>
 
                         <p>&nbsp;</p>
 
