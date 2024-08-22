@@ -36,7 +36,6 @@ const handleAffLayerClick = () => {
 
 const handleVisibilityChange = () => {
     if (document.visibilityState === 'visible') {
-        checkSessionStorage();
     }
 };
 
