@@ -11,6 +11,7 @@ const aff = ref();
 const listAff = ref([]);
 const currentIndex = ref(0);
 const isAff = ref(sessionStorage.getItem('aff') !== null);
+const isClick = ref(false);
 
 try {
     listAff.value = await useNuxtApp().$api('/affiliate');
@@ -32,10 +33,13 @@ const checkSessionStorage = () => {
 const handleAffLayerClick = () => {
     sessionStorage.setItem('aff', 'true');
     isAff.value = true;
+    isClick.value = true;
 };
 
 const handleVisibilityChange = () => {
     if (document.visibilityState === 'visible') {
+        if(!isClick.value) checkSessionStorage();
+        isClick.value = false;
     }
 };
 
