@@ -32,6 +32,10 @@ useHead({
             name: 'description',
             content: getMax250Chars(data.value?.description)
         },
+        {
+            name: "image",
+            content: data.value?.avatar
+        }
     ],
 });
 

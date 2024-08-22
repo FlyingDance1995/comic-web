@@ -94,6 +94,10 @@ useHead({
             name: 'description',
             content: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`)
         },
+        {
+            name: "image",
+            content: data.value?.avatar
+        }
     ],
 });
 

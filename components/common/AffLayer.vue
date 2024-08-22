@@ -34,14 +34,22 @@ const handleAffLayerClick = () => {
     isAff.value = true;
 };
 
+const handleVisibilityChange = () => {
+    if (document.visibilityState === 'visible') {
+        checkSessionStorage();
+    }
+};
+
 let intervalId;
 
 onMounted(() => {
     intervalId = setInterval(checkSessionStorage, setTimeAff * 1000);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 });
 
 onUnmounted(() => {
     clearInterval(intervalId);
+    document.removeEventListener('visibilitychange', handleVisibilityChange);
 });
 </script>
 
