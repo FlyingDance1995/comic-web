@@ -3,6 +3,7 @@
 </script>
 
 <template>
+
     <Head>
         <Title>Chính sách và quy định chung</Title>
     </Head>
@@ -22,18 +23,13 @@
                         </div>
                         <p><strong>GIỚI THIỆU</strong></p>
 
-                        <p>Phê Truyện là nền tảng được sáng lập vào tháng 1/1/2024 bởi một coder đồng thời là fan của
+                        <p>Phê Truyện là nền tảng được sáng lập vào năm 2024 bởi một Wibu đồng thời là fan của
                             các tác giả, dịch giả.</p>
 
-                        <p>Tên và tên miền của Phê Truyện lấy cảm hứng từ tình yêu đối với việc đọc truyện và mong muốn
-                            tạo ra một không gian trực tuyến, nơi người đọc có thể 'phê' với những câu chuyện cuốn hút,
-                            hấp dẫn. Cái tên này không chỉ dễ nhớ mà còn gợi lên cảm giác thăng hoa, thoả mãn khi đắm
-                            chìm trong những trang sách, biến việc đọc truyện trở thành một trải nghiệm không thể bỏ
-                            qua.</p>
-
                         <p>Cậu ấy tạo ra Phê Truyện nhằm mục đích cùng mọi người đọc truyện, giao lưu với các dịch giả,
-                            tác giả và hỗ trợ họ phần nào trên con đường mà họ đam mê. Hi vọng dịch giả, tác giả không chùn
-                            bước mỗi khi gõ chữ đến còng lưng, gõ chữ đến mờ mắt, gõ chữ đến mức phải dùng Tottri…</p>
+                            tác
+                            giả và hỗ trợ họ phần nào trên con đường mà họ đam mê. Hi vọng dịch giả, tác giả không chùn
+                            bước mỗi khi gõ chữ đến còng lưng, gõ chữ đến mờ mắt</p>
 
                         <p>&nbsp;</p>
 
@@ -53,7 +49,7 @@
                 </div>
             </div>
 
-            <HomeWidgetFanpage/>
+            <HomeWidgetFanpage />
         </div>
     </div>
 </template>
