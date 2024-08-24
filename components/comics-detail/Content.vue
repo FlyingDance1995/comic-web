@@ -8,7 +8,11 @@ const slug = route?.params?.slug;
 const data = ref(null);
 
 const getData = async () => {
-    const {data: story} = await useAPI(`/story/${slug}`);
+    const {data: story} = await useAPI(`/story/${slug}`, {
+        headers: {
+            'Cache-Control': 's-maxage=60, stale-while-revalidate',
+        },
+    });
     data.value = story?.value;
     if (story.value === null) {
         throw createError({

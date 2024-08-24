@@ -20,7 +20,11 @@ const data = ref(null);
 const styles = reactive(initStyle);
 
 const getData = async () => {
-    const { data: story } = await useAPI(`/story/${slug}/chapter/${chapter}`);
+    const { data: story } = await useAPI(`/story/${slug}/chapter/${chapter}`, {
+        headers: {
+            'Cache-Control': 's-maxage=60, stale-while-revalidate',
+        },
+    });
     data.value = story?.value;
     if (story.value === null) {
         throw createError({

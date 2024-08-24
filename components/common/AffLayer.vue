@@ -47,12 +47,12 @@ let intervalId;
 
 onMounted(() => {
     intervalId = setInterval(checkSessionStorage, setTimeAff * 1000);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+    // document.addEventListener('visibilitychange', handleVisibilityChange);
 });
 
 onUnmounted(() => {
     clearInterval(intervalId);
-    document.removeEventListener('visibilitychange', handleVisibilityChange);
+    // document.removeEventListener('visibilitychange', handleVisibilityChange);
 });
 </script>
 
