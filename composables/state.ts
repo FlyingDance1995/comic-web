@@ -2,8 +2,7 @@ export const userDarkMode = () => {
     const isDarkMode = useState("darkMode", () => false);
 
     onMounted(() => {
-        isDarkMode.value = localStorage.getItem("theme") === "dark-theme"
-            || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        isDarkMode.value = localStorage.getItem("theme") === "dark-theme";
 
         setDarkMode();
     });
@@ -16,10 +15,14 @@ export const userDarkMode = () => {
 
     const setDarkMode = () => {
         const theme = localStorage.getItem("theme");
-        if (theme === 'dark-theme' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (theme === 'dark-theme') {
             document.documentElement.classList.add('dark-theme');
+            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#212529');
+            document.querySelector('meta[name="msapplication-TileColor"]')?.setAttribute('content', '#212529');
         } else {
             document.documentElement.classList.remove('dark-theme');
+            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#ffffff');
+            document.querySelector('meta[name="msapplication-TileColor"]')?.setAttribute('content', '#ffffff');
         }
     };
 
