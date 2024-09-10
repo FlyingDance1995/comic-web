@@ -9,5 +9,5 @@
 
     <HomeSectionNews/>
 
-    <HomeSectionCategories/>
+<!--    <HomeSectionCategories/>-->
 </template>

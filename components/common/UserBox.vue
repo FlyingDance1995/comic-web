@@ -38,7 +38,7 @@ const getInfo = async () => {
 };
 
 if (user.value) {
-    await getInfo();
+    getInfo();
 }
 
 watch(() => route.path, () => {
@@ -51,9 +51,7 @@ watch(token, () => {
 </script>
 
 <template>
-    <div v-if="user?.id" class="user-box dropdown px-2"
-         v-click-out-side="handleClickOutside"
-    >
+    <div class="user-box dropdown px-2" v-click-out-side="handleClickOutside">
         <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret position-relative"
            :class="openMenu ? 'show' : ''"
            href="#"
@@ -66,13 +64,11 @@ watch(token, () => {
             <img v-if="checkVIP"
                  src="/images/khung-vip.png" class="frame-user-img"
                  alt="">
-            <div class="user-info">
-                <p class="user-name mb-0">{{ user?.fullname }}</p>
-                <p class="designattion mb-0">{{ user?.email }}</p>
-            </div>
         </a>
 
-        <ul id="drop-menu" class="dropdown-menu dropdown-menu-end"
+        <ul v-if="user?.id"
+            id="drop-menu"
+            class="dropdown-menu dropdown-menu-end"
             :class="openMenu ? 'show' : ''">
             <!--                        <li>-->
             <!--                            <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">-->
@@ -153,15 +149,26 @@ watch(token, () => {
                 </a>
             </li>
         </ul>
-    </div>
 
-    <div v-if="!user" class="d-flex justify-content-between">
-        <NuxtLink to="/login" class="btn btn-sm btn-primary" style="margin-right: 5px">
-            Đăng nhập
-        </NuxtLink>
-        <NuxtLink to="/tao-tai-khoan" class="btn btn-sm btn-primary">
-            Đăng ký
-        </NuxtLink>
+        <ul v-else
+            id="drop-menu"
+            class="dropdown-menu dropdown-menu-end"
+            :class="openMenu ? 'show' : ''">
+            <li>
+                <NuxtLink class="dropdown-item d-flex align-items-center"
+                          to="/login">
+                    <i class='bx bx-log-in-circle'></i><span>Đăng nhập</span>
+                </NuxtLink>
+            </li>
+
+            <li>
+                <NuxtLink
+                    class="dropdown-item d-flex align-items-center"
+                    to="/tao-tai-khoan">
+                    <i class='bx bx-edit'></i><span>Đăng ký</span>
+                </NuxtLink>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -175,5 +182,9 @@ watch(token, () => {
     width: 70px;
     top: -13px;
     left: -14px;
+}
+
+.user-box {
+    border: none;
 }
 </style>

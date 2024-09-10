@@ -31,7 +31,7 @@ const openMenu = computed(() => menuStore.$state.open);
 </script>
 
 <template>
-    <NuxtLoadingIndicator color="#0d6efd"/>
+    <NuxtLoadingIndicator color="#bb85be"/>
     <!--ads-->
     <ClientOnly>
         <CommonAffLayer/>

@@ -52,7 +52,10 @@ onMounted(() => {
             <div class="top-ten-stories-area">
                 <div class="slider-recommend-right background-primary">
                     <div class="total-item-show position-relative">
-                        <h5 class="mb-0 text-uppercase"><i class="bx bx-star"></i> Truyện Sáng Tác </h5>
+                        <h5 class="mb-0 text-uppercase">
+                            <i class='bx bx-book-open text-primary'></i>
+                            Truyện Sáng Tác
+                        </h5>
                         <hr>
                         <NuxtLink to="/truyen-sang-tac"
                            class="read-more-story btn btn-outline-primary radius-30 btn-sm">Xem thêm</NuxtLink>

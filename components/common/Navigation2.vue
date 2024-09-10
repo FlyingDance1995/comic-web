@@ -11,7 +11,6 @@ await categoryStore.fetchCategory();
 const {category, loading, error} = storeToRefs(categoryStore);
 const openMenu = computed(() => menuStore.$state.open);
 const openSubMenu = ref(false);
-const openSubMenu1 = ref(false);
 const openSubMenu2 = ref(false);
 
 const category1 = [
@@ -130,7 +129,7 @@ if (process.client) {
                                     <li v-for="(item, index) in category" :key="index">
                                         <NuxtLink class="dropdown-item"
                                                   :to="`/the-loai/${item.slug}`" @click="closeMenu">
-                                            <i class="bx bx-chevron-right"></i>{{ item.name }}
+                                            {{ item.name }}
                                         </NuxtLink>
                                     </li>
                                 </ul>
@@ -169,9 +168,27 @@ if (process.client) {
     }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (max-width: 991px) {
     .primary-menu {
         display: none;
     }
+}
+
+.topbar .navbar {
+    height: 59px;
+}
+
+.primary-menu .navbar {
+    box-shadow: none !important;
+    padding: 0;
+    border-bottom: none !important;
+}
+
+.primary-menu .container {
+    padding: 0;
+}
+
+.topbar .navbar .navbar-nav .nav-link {
+    width: auto;
 }
 </style>

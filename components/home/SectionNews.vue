@@ -17,7 +17,10 @@ const size = 20;
             <div class="row">
                 <div class="col-lg-9 col-md-9 col-12">
                     <div id="news" class="">
-                        <h5 class="mb-0 text-uppercase">Truyện mới cập nhật</h5>
+                        <h5 class="mb-0 text-uppercase">
+                            <i class='bx bx-book-open text-primary'></i>
+                            Truyện mới cập nhật
+                        </h5>
                         <hr>
                         <div id="new-story">
                             <div class="row product-grid">
@@ -40,7 +43,10 @@ const size = 20;
 
                     <div id="news" class="mt-5">
                         <div class="total-item-show position-relative">
-                            <h5 class="mb-0 text-uppercase">Truyện đã hoàn thành</h5>
+                            <h5 class="mb-0 text-uppercase">
+                                <i class='bx bx-book-open text-primary'></i>
+                                Truyện đã hoàn thành
+                            </h5>
                             <hr>
                             <NuxtLink to="/truyen-hoan-thanh"
                                class="read-more-story btn btn-outline-primary radius-30 btn-sm">Xem thêm</NuxtLink>

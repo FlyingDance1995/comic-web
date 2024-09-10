@@ -48,7 +48,10 @@ onMounted(() => {
         <div class="container">
             <div class="top-ten-stories-area slider-recommend-right background-primary">
                 <div class="total-item-show position-relative">
-                    <h5 class="mb-0 text-uppercase"> Truyện HOT </h5>
+                    <h5 class="mb-0 text-uppercase">
+                        <i class='bx bx-book-open text-primary'></i>
+                        Truyện HOT
+                    </h5>
                     <hr>
                 </div>
 

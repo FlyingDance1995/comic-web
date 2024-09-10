@@ -62,7 +62,7 @@ defineExpose({
                 </span>
 
                 <template #content>
-                    Nâng cấp Premium để được đọc
+                    Nâng cấp VIP để được đọc
                     <br>
                     truyện mới nhất
                 </template>

@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="col-md-3 col-4">
+    <div class="col-lg-3 col-md-4 col-6">
         <div class="card">
             <div class="position-relative">
                 <NuxtLink :to="`/${item?.slug}`">

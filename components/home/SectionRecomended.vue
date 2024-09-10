@@ -9,7 +9,6 @@ const loading = ref(true);
 onMounted(() => {
     $(document).ready(function () {
         $(".recommendedStory").owlCarousel({
-            items: 2,
             margin: 40,
             loop: true,
             nav: false,
@@ -36,8 +35,11 @@ onMounted(() => {
     <section class="recommendedStories-section mt-2">
         <div class="container">
             <div class="total-item-show">
-                <h5 class="mb-0 text-uppercase">Đề cử hôm nay</h5>
-                <hr>
+                <h5 class="mb-0 text-uppercase">
+                    <i class='bx bx-book-open text-primary'></i>
+                    Hôm nay đọc gì?
+                </h5>
+                <br>
             </div>
 
             <div class="card">
@@ -47,12 +49,12 @@ onMounted(() => {
                             <div class="owl-stage-outer">
                                 <div v-show="!loading"
                                      class="owl-stage">
-                                    <HomeOwlItem :data="storys?.slice(0, 3)" active/>
-
-                                    <HomeOwlItem :data="storys?.slice(3, 6)" active/>
-
-                                    <HomeOwlItem :data="storys?.slice(6, 9)"/>
+                                    <template v-for="(item, index) in storys"
+                                              :key="index">
+                                        <HomeOwlItem :data="[item]" :active="index === 0"/>
+                                    </template>
                                 </div>
+
                                 <div v-show="loading" style="text-align: center">
                                     Loading...
                                 </div>
@@ -62,6 +64,5 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-<!--        <HomeSectionHotStories/>-->
     </section>
 </template>

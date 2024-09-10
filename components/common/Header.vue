@@ -36,6 +36,8 @@ const openSearchModal = () => {
                     </div>
                 </div>
 
+                <CommonNavigation2/>
+
                 <div class="search-bar d-lg-block d-none">
                     <div class="position-relative popup-search w-100">
                         <form action="/tim-kiem" method="GET">
@@ -47,20 +49,6 @@ const openSearchModal = () => {
                                 <i class="bx bx-search"></i>
                             </span>
                         </form>
-
-                        <ul id="search-autocomplete">
-                            <li class="d-flex justify-content-start align-items-center mb-2 border-bottom">
-                                <NuxtLink to="/trang-lan" class="m-2">
-                                    <img src=""
-                                         alt="TRĂNG LẶN"
-                                         class="img-search">
-                                </NuxtLink>
-
-                                <NuxtLink to="/trang-lan" class="m-2 search-item-title">
-                                    TRĂNG LẶN
-                                </NuxtLink>
-                            </li>
-                        </ul>
                     </div>
                 </div>
 
@@ -75,7 +63,8 @@ const openSearchModal = () => {
                         </li>
 
                         <li class="nav-item dark-mode d-flex">
-                            <a class="nav-link dark-mode-icon" href="javascript:;" @click="toggleDarkMode">
+                            <a class="nav-link dark-mode-icon" href="javascript:;"
+                               @click="toggleDarkMode">
                                 <i v-if="isDarkMode" class="bx bx-sun"></i>
                                 <i v-else class="bx bx-moon"></i>
                             </a>
@@ -98,6 +87,41 @@ const openSearchModal = () => {
 <style scoped>
 .logo-icon {
     width: 150px;
+}
+
+.topbar-logo-header {
+    border-right: none;
+}
+
+input::placeholder {
+    color: #4c5258 !important;
+    opacity: 1 !important
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #f2b3f5;
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid #f7ebeb;
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+
+.form-control:focus {
+    color: var(--bs-body-color);
+    /*background-color: var(--bs-body-bg);*/
+    border-color: rgb(243 229 243);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgb(243 229 243 / 25%);
 }
 
 @media screen and (max-width: 768px) {

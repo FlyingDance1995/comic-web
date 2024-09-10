@@ -13095,7 +13095,7 @@ function bookmark(t, e) {
             icon: "question",
             showCancelButton: !0,
             cancelButtonText: "Huá»·",
-            confirmButtonColor: "#0d6efd",
+            confirmButtonColor: "#bb85be",
             confirmButtonText: "OK"
         }).then((n => {
             if (n.isConfirmed) {
@@ -13110,7 +13110,7 @@ function bookmark(t, e) {
                             text: "LÆ°u truyá»‡n thĂ nh cĂ´ng",
                             icon: "success",
                             showCancelButton: !1,
-                            confirmButtonColor: "#0d6efd",
+                            confirmButtonColor: "#bb85be",
                             confirmButtonText: "OK"
                         }).then((t => {
                             t.isConfirmed
@@ -13130,7 +13130,7 @@ function removeBookmark(t, e) {
             icon: "question",
             showCancelButton: !0,
             cancelButtonText: "Huá»·",
-            confirmButtonColor: "#0d6efd",
+            confirmButtonColor: "#bb85be",
             confirmButtonText: "OK"
         }).then((n => {
             if (n.isConfirmed) {
@@ -13145,7 +13145,7 @@ function removeBookmark(t, e) {
                             text: "ÄĂ£ bá» lÆ°u truyá»‡n nĂ y",
                             icon: "success",
                             showCancelButton: !1,
-                            confirmButtonColor: "#0d6efd",
+                            confirmButtonColor: "#bb85be",
                             confirmButtonText: "OK"
                         }).then((t => {
                             t.isConfirmed
@@ -13166,7 +13166,7 @@ function followAuthor(t) {
             icon: "question",
             showCancelButton: !0,
             cancelButtonText: "Huá»·",
-            confirmButtonColor: "#0d6efd",
+            confirmButtonColor: "#bb85be",
             confirmButtonText: "OK"
         }).then((i => {
             if (i.isConfirmed) {
@@ -13181,7 +13181,7 @@ function followAuthor(t) {
                             text: t.message,
                             icon: "success",
                             showCancelButton: !1,
-                            confirmButtonColor: "#0d6efd",
+                            confirmButtonColor: "#bb85be",
                             confirmButtonText: "OK"
                         }).then((t => {
                             t.isConfirmed
@@ -13201,7 +13201,7 @@ function unfollowAuthor(t) {
             icon: "question",
             showCancelButton: !0,
             cancelButtonText: "Huá»·",
-            confirmButtonColor: "#0d6efd",
+            confirmButtonColor: "#bb85be",
             confirmButtonText: "OK"
         }).then((i => {
             if (i.isConfirmed) {
@@ -13216,7 +13216,7 @@ function unfollowAuthor(t) {
                             text: t.message,
                             icon: "success",
                             showCancelButton: !1,
-                            confirmButtonColor: "#0d6efd",
+                            confirmButtonColor: "#bb85be",
                             confirmButtonText: "OK"
                         }).then((t => {
                             t.isConfirmed && location.reload()
@@ -13268,7 +13268,7 @@ function reportError() {
                         text: e.message,
                         icon: "success",
                         showCancelButton: !1,
-                        confirmButtonColor: "#0d6efd",
+                        confirmButtonColor: "#bb85be",
                         confirmButtonText: "OK"
                     }).then((e => {
                         e.isConfirmed && t("#reportModal").modal("hide")
@@ -13312,7 +13312,7 @@ function processDonate() {
                         text: e.message,
                         icon: "success",
                         showCancelButton: !1,
-                        confirmButtonColor: "#0d6efd",
+                        confirmButtonColor: "#bb85be",
                         confirmButtonText: "OK"
                     }).then((e => {
                         e.isConfirmed && t("#donateModal").modal("hide")
@@ -13339,7 +13339,7 @@ function processDonateAuthor() {
                         text: e.message,
                         icon: "success",
                         showCancelButton: !1,
-                        confirmButtonColor: "#0d6efd",
+                        confirmButtonColor: "#bb85be",
                         confirmButtonText: "OK"
                     }).then((e => {
                         e.isConfirmed && t("#donateModal").modal("hide")
@@ -13464,7 +13464,7 @@ function buyChapter(t, e) {
             icon: "question",
             showCancelButton: !0,
             cancelButtonText: "Huá»·",
-            confirmButtonColor: "#0d6efd",
+            confirmButtonColor: "#bb85be",
             confirmButtonText: "OK"
         }).then((n => {
             if (n.isConfirmed) {
@@ -13478,7 +13478,7 @@ function buyChapter(t, e) {
                             text: t.message,
                             icon: "success",
                             showCancelButton: !1,
-                            confirmButtonColor: "#0d6efd",
+                            confirmButtonColor: "#bb85be",
                             confirmButtonText: "OK"
                         }).then((t => {
                             t.isConfirmed && window.location.reload()
@@ -13488,7 +13488,7 @@ function buyChapter(t, e) {
                             icon: "error",
                             showCancelButton: !0,
                             cancelButtonText: "OK",
-                            confirmButtonColor: "#0d6efd",
+                            confirmButtonColor: "#bb85be",
                             confirmButtonText: "Náº¡p ngay"
                         }).then((t => {
                             t.isConfirmed && (window.location.href = site + "/user/nap-tien")
@@ -13523,7 +13523,7 @@ function deleteHistoryItem(t) {
         icon: "question",
         showCancelButton: !0,
         cancelButtonText: "Huá»·",
-        confirmButtonColor: "#0d6efd",
+        confirmButtonColor: "#bb85be",
         confirmButtonText: "OK"
     }).then((e => {
         if (e.isConfirmed) if ("undefined" != typeof Storage) {
@@ -17247,7 +17247,7 @@ jvm.$ = jQuery, Array.prototype.indexOf || (Array.prototype.indexOf = function (
                     text: t.message,
                     title: "BĂ¡o cĂ¡o thĂ nh cĂ´ng",
                     showCancelButton: !1,
-                    confirmButtonColor: "#0d6efd",
+                    confirmButtonColor: "#bb85be",
                     confirmButtonText: "OK"
                 }) : Swal.fire({icon: "error", title: t.message, showConfirmButton: !1, timer: 500})
             }

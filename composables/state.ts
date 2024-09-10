@@ -21,8 +21,8 @@ export const userDarkMode = () => {
             document.querySelector('meta[name="msapplication-TileColor"]')?.setAttribute('content', '#212529');
         } else {
             document.documentElement.classList.remove('dark-theme');
-            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#ffffff');
-            document.querySelector('meta[name="msapplication-TileColor"]')?.setAttribute('content', '#ffffff');
+            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#f7f7ff');
+            document.querySelector('meta[name="msapplication-TileColor"]')?.setAttribute('content', '#f7f7ff');
         }
     };
 

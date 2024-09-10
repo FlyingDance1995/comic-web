@@ -31,6 +31,7 @@ const report = () => {
                                  width="300" height="80">
                         </NuxtLink>
                     </div>
+
                     <div class="footer-content my-3">
                         <p>Email: {{ runtimeConfig.public?.email }}</p>
                         <p>Liên hệ hỗ trợ:
@@ -38,14 +39,12 @@ const report = () => {
                                 {{ runtimeConfig.public?.contactFb }}
                             </NuxtLink>
                         </p>
-                        <button type="button" class="btn btn-sm btn-danger radius-30 px-3" @click.prevent="report">
-                            Báo cáo vi phạm bản quyền
-                        </button>
-                    </div>
-                    <div class="footer-contact">
-
+<!--                        <button type="button" class="btn btn-sm btn-danger radius-30 px-3" @click.prevent="report">-->
+<!--                            Báo cáo vi phạm bản quyền-->
+<!--                        </button>-->
                     </div>
                 </div>
+
                 <div class="col-md-6">
                     <div class="footer-privacy">
                         <p>Mọi thông tin và hình ảnh trên website đều được bên thứ ba đăng tải, Phê Truyện miễn trừ mọi
