@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <div class="my-3 text-center">
                             <div class="mb-2">
-                                <img src="/images/logo/Logo.svg" alt="Phê Truyện" width="300px">
+                                <img src="/images/logo/Logo.png" alt="Phê Truyện" width="300px">
                             </div>
                             <h5><b>Thoả sức sáng tạo</b></h5>
                         </div>

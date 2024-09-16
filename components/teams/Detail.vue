@@ -1,5 +1,6 @@
 <script setup>
 import {useConfigStore} from "~/store/config.js";
+import {getMax250Chars} from "~/utils/formatName.js";
 
 const route = useRoute();
 const configStore = useConfigStore();
@@ -85,6 +86,33 @@ const handleFollow = () => {
         }
     });
 };
+
+useHead({
+    title: `${data.value?.name}`,
+    meta: [
+        {
+            name: 'title',
+            content: `${data.value?.name} | Phê truyện`
+        },
+        {
+            name: 'description',
+            content: getMax250Chars(data.value?.description)
+        },
+        {
+            name: "image",
+            content: data.value?.avatar?.replace("http://", "https://")
+        }
+    ],
+});
+
+useSeoMeta({
+    title: `${data.value?.name}`,
+    ogTitle: `${data.value?.name}`,
+    description: getMax250Chars(data.value?.description),
+    ogDescription: getMax250Chars(data.value?.description),
+    ogImage: data.value?.avatar?.replace("http://", "https://"),
+    twitterCard: 'summary_large_image',
+});
 </script>
 
 <template>

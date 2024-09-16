@@ -100,15 +100,17 @@ useHead({
         },
         {
             name: "image",
-            content: data.value?.avatar
+            content: data.value?.story?.avatar?.replace("http://", "https://")
         }
     ],
 });
 
 useSeoMeta({
+    title: `${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
+    ogTitle: `${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
     description: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
     ogDescription: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
-    ogImage: data.value?.avatar,
+    ogImage: data.value?.story?.avatar?.replace("http://", "https://"),
     twitterCard: 'summary_large_image',
 });
 </script>

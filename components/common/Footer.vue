@@ -26,7 +26,7 @@ const report = () => {
                 <div class="col-md-6">
                     <div class="footer-logo text-center">
                         <NuxtLink to="/">
-                            <img src="/images/logo/Logo.svg"
+                            <img src="/images/logo/Logo.png"
                                  alt="Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất"
                                  width="300" height="80">
                         </NuxtLink>

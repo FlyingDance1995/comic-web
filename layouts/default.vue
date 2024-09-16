@@ -1,6 +1,20 @@
 <script setup>
 import {useMenuStore} from "~/store/menu.js";
 
+useHead({
+    meta: [
+        {
+            name: "image",
+            content: "/images/logo/Logo.png"
+        }
+    ],
+});
+
+useSeoMeta({
+    ogImage: "/images/logo/Logo.png",
+    twitterCard: 'summary_large_image',
+});
+
 useSchemaOrg([
     {
         "@context": "http://schema.org",
@@ -17,10 +31,10 @@ useSchemaOrg([
             "contactType": "customer support",
             "email": "phetruyenn@gmail.com"
         },
-        "sameAs": ["https://www.facebook.com/fanpage/"],
+        "sameAs": ["https://www.facebook.com/fanpage"],
         "@id": "#organization",
         "name": "Phê Truyện",
-        "logo": "/images/logo/Logo.svg"
+        "logo": "/images/logo/Logo.png"
     }
 ]);
 

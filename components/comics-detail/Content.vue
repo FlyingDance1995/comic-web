@@ -38,15 +38,17 @@ useHead({
         },
         {
             name: "image",
-            content: data.value?.avatar
+            content: data.value?.avatar?.replace("http://", "https://")
         }
     ],
 });
 
 useSeoMeta({
+    title: `${data.value?.name}`,
+    ogTitle: `${data.value?.name}`,
     description: getMax250Chars(data.value?.description),
     ogDescription: getMax250Chars(data.value?.description),
-    ogImage: data.value?.avatar,
+    ogImage: data.value?.avatar?.replace("http://", "https://"),
     twitterCard: 'summary_large_image',
 });
 </script>

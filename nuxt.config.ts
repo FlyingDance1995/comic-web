@@ -25,12 +25,12 @@ export default defineNuxtConfig({
                     name: 'description',
                     content: 'Phê Truyện nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất'
                 },
-                {name: 'image', content: '/images/logo/Logo.svg'},
+                {name: 'image', content: '/images/logo/Logo.png'},
                 {
                     property: 'og:title',
                     content: 'Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất'
                 },
-                {property: 'og:image', content: '/images/logo/Logo.svg'},
+                {property: 'og:image', content: '/images/logo/Logo.png'},
                 {
                     property: 'og:description',
                     content: 'Phê Truyện nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất'
