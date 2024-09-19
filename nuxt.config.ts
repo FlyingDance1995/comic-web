@@ -126,7 +126,7 @@ export default defineNuxtConfig({
 
     seo: {
         redirectToCanonicalSiteUrl: true,
-        automaticDefaults: false
+        // automaticDefaults: false
     },
 
     runtimeConfig: {
