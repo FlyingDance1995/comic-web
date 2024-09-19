@@ -315,10 +315,10 @@ onUnmounted(() => {
 
     <Modal
         v-model="modalApproval"
-        title="Yêu cầu phê duyệt"
+        title="Xác nhận"
         :loading="loadingApproval"
         @on-ok="okApproval">
-        <p>{{ `Bạn có chắc chắn ${formItem?.is_active ? '"Hủy kích hoạt"' : '"Kích hoạt"'} "Affiliate" này` }}</p>
+        <p>{{ `Bạn có chắc chắn ${formItem?.enable ? '"Hủy kích hoạt"' : '"Kích hoạt"'} Affiliate này?` }}</p>
     </Modal>
 
     <Page class="mt-4 text-black" style="text-align: right" :modelValue="page" :total="total" show-total @on-change="handleChangePage"/>

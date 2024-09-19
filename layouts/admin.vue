@@ -68,7 +68,7 @@ watch(() => route.path, () => {
 <!--                    </Poptip>-->
 
                     <div class="float-end me-4 custom-box d-flex topbar" style="background: #cedddd;">
-                        <div class="top-menu ms-auto">
+                        <div class="top-menu ms-auto" :class="$style.customNoti">
                             <CommonNotify/>
                         </div>
                         <CommonUserBox/>
@@ -133,7 +133,7 @@ watch(() => route.path, () => {
     float: left;
     position: relative;
     left: 20px;
-    top: 0;
+    top: -3px;
     margin: auto 0;
 }
 
@@ -168,5 +168,9 @@ watch(() => route.path, () => {
         vertical-align: middle;
         font-size: 22px;
     }
+}
+
+.customNoti {
+
 }
 </style>

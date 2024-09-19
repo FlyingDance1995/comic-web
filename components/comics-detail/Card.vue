@@ -214,6 +214,9 @@ const reportError = () => {
             </div>
         </div>
 
+        <ClientOnly>
+            <CommonAffHorizontal :location="3" style="margin: 15px"/>
+        </ClientOnly>
 
         <div class="card-body  mt-4 ">
             <h5 class="mb-0 text-uppercase text-primary">Danh sách chương</h5>

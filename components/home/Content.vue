@@ -5,6 +5,10 @@
 <template>
     <HomeSectionRecomended/>
 
+    <ClientOnly>
+        <CommonAffHorizontal :location="2" class="container"/>
+    </ClientOnly>
+
     <HomeSectionHotStories/>
 
     <HomeSectionNews/>

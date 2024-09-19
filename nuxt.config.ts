@@ -47,7 +47,7 @@ export default defineNuxtConfig({
                 {property: 'distribution', content: 'global'},
                 {
                     name: 'keywords',
-                    content: 'Phê Truyện, truyện ngắn, ngôn tình, tiểu thuyết, trọng sinh, truyện chữ, tổng tài, đoản văn'
+                    content: 'Phê Truyện, truyện ngắn, ngôn tình, tiểu thuyết, trọng sinh, truyện chữ, tổng tài, đoản văn, phetruyen, phetruyenn, phe truyen'
                 },
             ],
             script: [
@@ -149,8 +149,8 @@ export default defineNuxtConfig({
 
     nitro: {
         routeRules: {
-            '/': { prerender: true },
-            '/**': { swr: 3600 },
+            // '/': { prerender: true },
+            // '/**': { swr: 3600 },
             '/user/thong-tin-ca-nhan': { ssr: false },
             '/user/truyen-da-luu': { ssr: false },
             '/user/dich-gia-dang-theo-doi': { ssr: false },

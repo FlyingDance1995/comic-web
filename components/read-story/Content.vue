@@ -20,11 +20,7 @@ const data = ref(null);
 const styles = reactive(initStyle);
 
 const getData = async () => {
-    const { data: story } = await useAPI(`/story/${slug}/chapter/${chapter}`, {
-        headers: {
-            'Cache-Control': 's-maxage=60, stale-while-revalidate',
-        },
-    });
+    const { data: story } = await useAPI(`/story/${slug}/chapter/${chapter}`);
     data.value = story?.value;
     if (story.value === null) {
         throw createError({
@@ -145,11 +141,9 @@ useSeoMeta({
                     </div>
                 </div>
 
-                <!--                <div class="my-3 mx-lg-4 mx-2">-->
-                <!--                    <a href="https://goeco.mobi/lUtqaGcJ" target="_blank">-->
-                <!--                        <img src="https://Phê Truyện.vn/images/banner/lazada-1.jpg" alt="" style="width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 5px;">-->
-                <!--                    </a>-->
-                <!--                </div>-->
+                <ClientOnly>
+                    <CommonAffHorizontal :location="4" style="margin: 0"/>
+                </ClientOnly>
 
                 <div class="my-3 text-center">
                     <button type="button" class="btn btn-danger"

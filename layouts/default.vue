@@ -1,5 +1,6 @@
 <script setup>
 import {useMenuStore} from "~/store/menu.js";
+import {useConfigStore} from "~/store/config.js";
 
 useHead({
     meta: [
@@ -40,8 +41,18 @@ useSchemaOrg([
 
 const route = useRoute();
 const menuStore = useMenuStore();
+const configStore = useConfigStore();
 
 const openMenu = computed(() => menuStore.$state.open);
+
+if (process.client) {
+    try {
+        const response = await useNuxtApp().$api('/affiliate');
+        configStore.setAffList(response?.results);
+    } catch (e) {
+        console.log(e);
+    }
+}
 </script>
 
 <template>
@@ -49,6 +60,7 @@ const openMenu = computed(() => menuStore.$state.open);
     <!--ads-->
     <ClientOnly>
 <!--        <CommonAffLayer/>-->
+        <CommonAffLayerModal/>
     </ClientOnly>
     <!--wrapper-->
     <div class="wrapper"

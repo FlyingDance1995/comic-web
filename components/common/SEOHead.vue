@@ -40,7 +40,7 @@ const description = getMax250Chars(info?.description || '');
         <Meta property="og:image" :content="defaultImage" />
 
         <Meta name="twitter:card" content="summary_large_image" />
-        <Meta name="twitter:title" :content="info.name" />
+        <Meta name="twitter:title" :content="`${info.name} | Phê Truyện`" />
         <Meta name="twitter:description" :content="description" />
         <Meta name="twitter:image" :content="twitterImage" />
         <Meta name="twitter:url" :content="canonical" />

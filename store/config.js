@@ -17,6 +17,8 @@ export const useConfigStore = defineStore({
             reportErrorModal: false,
             storyReportError: null,
             settingModal: false,
+            affModal: false,
+            affList: [],
         }
     },
     actions: {
@@ -44,5 +46,11 @@ export const useConfigStore = defineStore({
         setSettingModal(value) {
             this.$state.settingModal = value;
         },
+        setAffModal(value) {
+            this.$state.affModal = value;
+        },
+        setAffList(value) {
+            this.$state.affList = value;
+        }
     },
 });

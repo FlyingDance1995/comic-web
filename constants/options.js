@@ -26,3 +26,10 @@ export const optionsUserRole = [
     {value: 'moderator', label: 'Moderator'},
     {value: 'admin', label: 'Admin'},
 ];
+
+export const optionsLocation = [
+    {value: 1, label: 'Popup'},
+    {value: 2, label: 'Trang chủ'},
+    {value: 3, label: 'Trang thông tin truyện'},
+    {value: 4, label: 'Trang đọc truyện'},
+];
