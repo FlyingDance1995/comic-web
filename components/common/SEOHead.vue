@@ -25,31 +25,31 @@ const defaultImage = getFullImageURL(defaultImageSrc);
 const twitterImage = getFullImageURL(twitterImageSrc);
 const description = getMax250Chars(info?.description || '');
 
-useHead({
-    title: `${info?.name}`,
-    meta: [
-        {
-            name: 'title',
-            content: `${info?.name} | Phê truyện`
-        },
-        {
-            name: 'description',
-            content: getMax250Chars(info?.description)
-        },
-        {
-            name: "image",
-            content: defaultImage
-        }
-    ],
-});
-
-useSeoMeta({
-    title: `${info?.name}`,
-    ogTitle: `${info?.name}`,
-    description: getMax250Chars(info?.description),
-    ogDescription: getMax250Chars(info?.description),
-    ogImage: defaultImage,
-});
+// useHead({
+//     title: `${info?.name}`,
+//     meta: [
+//         {
+//             name: 'title',
+//             content: `${info?.name} | Phê truyện`
+//         },
+//         {
+//             name: 'description',
+//             content: getMax250Chars(info?.description)
+//         },
+//         {
+//             name: "image",
+//             content: defaultImage
+//         }
+//     ],
+// });
+//
+// useSeoMeta({
+//     title: `${info?.name}`,
+//     ogTitle: `${info?.name}`,
+//     description: getMax250Chars(info?.description),
+//     ogDescription: getMax250Chars(info?.description),
+//     ogImage: defaultImage,
+// });
 </script>
 
 <template>
