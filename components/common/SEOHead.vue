@@ -50,6 +50,7 @@ const description = getMax250Chars(info?.description || '');
 //     ogDescription: getMax250Chars(info?.description),
 //     ogImage: defaultImage,
 // });
+
 </script>
 
 <template>
