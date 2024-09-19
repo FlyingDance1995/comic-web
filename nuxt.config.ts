@@ -28,12 +28,12 @@ export default defineNuxtConfig({
                     name: 'description',
                     content: 'Phê Truyện nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất'
                 },
-                {name: 'image', content: '/images/logo/Logo.png'},
+                {name: 'image', content: '/images/seo/seo-image.png'},
                 {
                     property: 'og:title',
                     content: 'Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất'
                 },
-                {property: 'og:image', content: '/images/logo/Logo.png'},
+                {property: 'og:image', content: '/images/seo/seo-image.png'},
                 {
                     property: 'og:description',
                     content: 'Phê Truyện nơi đọc truyện và cập nhập các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất'
@@ -101,6 +101,7 @@ export default defineNuxtConfig({
                 {rel: 'dns-prefetch', href: '//static.xx.fbcdn.net'},
                 {href: process.env.NUXT_PUBLIC_SITE_URL?.replace("http://", "https://")},
                 {rel: 'stylesheet', href: 'https://unpkg.com/view-ui-plus/dist/styles/viewuiplus.css'},
+                {rel: 'stylesheet', href: '/css/owl.carousel.css'},
                 {rel: 'stylesheet', href: '/css/main.css'},
                 {rel: 'stylesheet', href: 'https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'},
             ],
@@ -126,7 +127,6 @@ export default defineNuxtConfig({
 
     seo: {
         redirectToCanonicalSiteUrl: true,
-        // automaticDefaults: false
     },
 
     runtimeConfig: {
@@ -147,39 +147,7 @@ export default defineNuxtConfig({
 
     compatibilityDate: '2024-07-17',
 
-    // routeRules: {
-    //     '/': { prerender: true },
-    //     '/**': { swr: 3600 },
-    //     '/user/thong-tin-ca-nhan': { ssr: false },
-    //     '/user/truyen-da-luu': { ssr: false },
-    //     '/user/dich-gia-dang-theo-doi': { ssr: false },
-    //     '/user/lich-su-doc-truyen': { ssr: false },
-    //     '/user/tro-thanh-tac-gia': { ssr: false },
-    //     '/user/mua-vip': { ssr: false },
-    //     '/tim-kiem': { ssr: false },
-    //     '/dang-truyen/*': { ssr: false },
-    //     '/dang-truyen/quan-ly-truyen/*': { ssr: false },
-    //     '/admin/*': { ssr: false },
-    //     '/admin/quan-ly-truyen/*': { ssr: false },
-    // },
-
-    experimental: {
-        sharedPrerenderData: true,
-        buildCache: true,
-        defaults: {
-            nuxtLink: {
-                prefetch: true,
-                prefetchOn: { visibility: false },
-            },
-        },
-    },
-
     nitro: {
-        prerender: {
-            concurrency: 10,
-            interval: 1000,
-            failOnError: false,
-        },
         routeRules: {
             '/': { prerender: true },
             '/**': { swr: 3600 },

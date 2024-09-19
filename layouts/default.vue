@@ -5,13 +5,13 @@ useHead({
     meta: [
         {
             name: "image",
-            content: "/images/logo/Logo.png"
+            content: "/images/seo/seo-image.png"
         }
     ],
 });
 
 useSeoMeta({
-    ogImage: "/images/logo/Logo.png",
+    ogImage: "/images/seo/seo-image.png",
     twitterCard: 'summary_large_image',
 });
 
@@ -34,7 +34,7 @@ useSchemaOrg([
         "sameAs": ["https://www.facebook.com/fanpage"],
         "@id": "#organization",
         "name": "Phê Truyện",
-        "logo": "/images/logo/Logo.png"
+        "logo": "/images/seo/seo-image.png"
     }
 ]);
 
