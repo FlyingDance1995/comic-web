@@ -1,0 +1,166 @@
+@import "app2.css";
+
+body {
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* Internet Explorer/Edge */
+    user-select: none;          /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+
+.ivu-layout-sider-trigger {
+    background: #F0F1FA !important;
+}
+
+.ivu-icon-ios-arrow-back:before {
+    color: black !important;
+}
+
+.ivu-menu-vertical.ivu-menu-light:after, .ivu-menu-horizontal.ivu-menu-light:after {
+    display: none !important;
+}
+
+.ivu-layout-sider.ivu-layout-sider-collapsed {
+    min-width: 0 !important;
+}
+
+/* Override dropdown */
+.ivu-dropdown-menu {
+    min-width: 100px !important;
+    padding-left: 0rem !important;
+    margin-bottom: 0rem !important;
+}
+
+.ivu-select-dropdown-list {
+    min-width: 100% !important;
+    list-style: none !important;
+    padding-left: 0rem !important;
+    margin-bottom: 0rem !important;
+}
+
+.ivu-table-filter-list-single {
+    padding-left: 0rem !important;
+    margin-bottom: 0rem !important;
+}
+/* Override dropdown */
+
+.dark-theme .bxs-trash {
+    color: black;
+}
+
+.ivu-select-not-found {
+    display: none !important;
+}
+
+.custom-box .nav-link {
+    font-size: 22px;
+}
+
+.custom-box li > .nav-link {
+    padding: 0 0.75rem;
+}
+
+.custom-box .alert-count {
+    top: 8px;
+}
+
+.custom-box .user-box .dropdown-toggle-nocaret {
+    line-height: 100%;
+}
+
+.custom-box .dropdown-menu a {
+    line-height: normal;
+}
+
+.custom-box .user-box #drop-menu li {
+    line-height: normal;
+    height: auto;
+}
+
+.custom-box.topbar {
+    height: 100%;
+}
+
+.custom-box .user-name {
+    color: #212529 !important;
+}
+
+.custom-box .designattion {
+    color: #a9a8a8 !important;
+}
+
+.custom-box .dropdown-menu {
+    background: white !important;
+}
+
+.custom-box .dropdown-menu .dropdown-item {
+    color: #212529 !important;
+    border-color: #ededed !important;
+}
+
+.custom-box .dropdown-menu .msg-header {
+    color: #212529 !important;
+    border-color: #ededed !important;
+}
+
+.custom-box .dropdown-menu .msg-footer {
+    border-color: #ededed !important;
+}
+
+.custom-box .dropdown-menu .dropdown-item:hover {
+    background: #f8f9fa !important;
+}
+
+.custom-box .dropdown-menu .msg-name {
+    color: #212529 !important;
+}
+
+.custom-box .dropdown-menu .msg-info {
+    color: #212529 !important;
+}
+
+.custom-box .dropdown-menu .msg-header-title {
+    color: #212529 !important;
+}
+
+.dark-theme .list-chapters .item .episode-title a:visited {
+    color: #656f7b;
+}
+
+.dark-theme .post-comments {
+    background: #212529;
+    border-color: #ffffff57;
+}
+
+.dark-theme .blog-comment ul li {
+    border-color: #212529;
+}
+
+.dark-theme .post-comments p {
+    color: #e4e5e6 !important;
+}
+
+.dark-theme .post-comments a {
+    color: #fff !important;
+}
+
+.dark-theme .form-group button {
+    color: #fff !important;
+}
+
+.dark-theme .form-group i {
+    color: #fff !important;
+}

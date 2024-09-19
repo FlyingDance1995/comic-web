@@ -50,25 +50,6 @@ export default defineNuxtConfig({
                     content: 'Phê Truyện, truyện ngắn, ngôn tình, tiểu thuyết, trọng sinh, truyện chữ, tổng tài, đoản văn'
                 },
             ],
-            link: [
-                // {rel: 'stylesheet', href: '/owlcarousel/assets/owl.carousel.min.css'},
-                // {rel: 'stylesheet', href: '/owlcarousel/assets/owl.theme.default.min.css'},
-                {rel: 'index', href: process.env.NUXT_PUBLIC_SITE_URL?.replace("http://", "https://")},
-                {rel: 'icon', type: 'image/x-icon', href: '/images/favicon/android-icon-192x192.png', sizes: "192x192"},
-                {rel: 'icon', type: 'image/x-icon', href: '/images/favicon/android-icon-48x48.png', sizes: "48x48"},
-                {rel: 'shortcut icon', href: '/images/favicon/android-icon-192x192.png'},
-                {rel: 'canonical', href: process.env.NUXT_PUBLIC_SITE_URL?.replace("http://", "https://")},
-                {rel: 'dns-prefetch', href: '//fonts.googleapis.com'},
-                {rel: 'dns-prefetch', href: '//googleads.g.doubleclick.net'},
-                {rel: 'dns-prefetch', href: '//pagead2.googlesyndication.com'},
-                {rel: 'dns-prefetch', href: '//www.google-analytics.com'},
-                {rel: 'dns-prefetch', href: '//www.googletagservices.com'},
-                {rel: 'dns-prefetch', href: '//www.facebook.com'},
-                {rel: 'dns-prefetch', href: '//connect.facebook.net'},
-                {rel: 'dns-prefetch', href: '//apis.google.com'},
-                {rel: 'dns-prefetch', href: '//static.xx.fbcdn.net'},
-                {href: process.env.NUXT_PUBLIC_SITE_URL?.replace("http://", "https://")},
-            ],
             script: [
                 {src: `https://www.googletagmanager.com/gtag/js?id=${process.env.NUXT_PUBLIC_GOOGLE_TAG_ID}`, async: true},
                 {
@@ -103,6 +84,26 @@ export default defineNuxtConfig({
                 'gtag-inline-script': ['innerHTML'],
                 'json-ld-script': ['innerHTML']
             },
+            link: [
+                {rel: 'index', href: process.env.NUXT_PUBLIC_SITE_URL?.replace("http://", "https://")},
+                {rel: 'icon', type: 'image/x-icon', href: '/images/favicon/android-icon-192x192.png', sizes: "192x192"},
+                {rel: 'icon', type: 'image/x-icon', href: '/images/favicon/android-icon-48x48.png', sizes: "48x48"},
+                {rel: 'shortcut icon', href: '/images/favicon/android-icon-192x192.png'},
+                {rel: 'canonical', href: process.env.NUXT_PUBLIC_SITE_URL?.replace("http://", "https://")},
+                {rel: 'dns-prefetch', href: '//fonts.googleapis.com'},
+                {rel: 'dns-prefetch', href: '//googleads.g.doubleclick.net'},
+                {rel: 'dns-prefetch', href: '//pagead2.googlesyndication.com'},
+                {rel: 'dns-prefetch', href: '//www.google-analytics.com'},
+                {rel: 'dns-prefetch', href: '//www.googletagservices.com'},
+                {rel: 'dns-prefetch', href: '//www.facebook.com'},
+                {rel: 'dns-prefetch', href: '//connect.facebook.net'},
+                {rel: 'dns-prefetch', href: '//apis.google.com'},
+                {rel: 'dns-prefetch', href: '//static.xx.fbcdn.net'},
+                {href: process.env.NUXT_PUBLIC_SITE_URL?.replace("http://", "https://")},
+                {rel: 'stylesheet', href: 'https://unpkg.com/view-ui-plus/dist/styles/viewuiplus.css'},
+                {rel: 'stylesheet', href: '/css/main.css'},
+                {rel: 'stylesheet', href: 'https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'},
+            ],
         }
     },
 
@@ -196,6 +197,5 @@ export default defineNuxtConfig({
         },
     },
 
-
-    css: ['view-ui-plus/dist/styles/viewuiplus.css', '~/assets/css/main.css'],
+    // css: ['view-ui-plus/dist/styles/viewuiplus.css', '~/assets/css/main.css'],
 })
