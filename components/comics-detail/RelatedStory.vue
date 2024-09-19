@@ -7,7 +7,7 @@ const loading = ref(true);
 const stories = ref([]);
 
 const query = {
-    size: 15,
+    size: 10,
     page: 1,
     ordering: 'recommended',
 };
@@ -74,22 +74,16 @@ try {
                         <div class="card">
                             <div class="card-body">
                                 <div class="top-story-slider owl-carousel owl-loaded owl-drag"
-                                     id="completed-comics-slider">
+                                    id="completed-comics-slider">
                                     <div class="owl-stage-outer">
-                                        <div v-show="!loading"
-                                             class="owl-stage">
-                                            <div v-for="item in stories?.results"
-                                                 :key="item?.id"
-                                                 class="owl-item">
+                                        <div v-show="!loading" class="owl-stage">
+                                            <div v-for="item in stories?.results" :key="item?.id" class="owl-item">
                                                 <div class="single-story-block">
                                                     <div class="single-story-wrap">
                                                         <div class="single-story-img">
                                                             <NuxtLink :to="`/${item?.slug}`">
-                                                                <img
-                                                                    :src="item?.avatar || ''"
-                                                                    class="lazyload"
-                                                                    :data-src="item?.avatar"
-                                                                    :alt="item?.name"
+                                                                <img :src="item?.avatar || ''" class="lazyload"
+                                                                    :data-src="item?.avatar" :alt="item?.name"
                                                                     width="200" height="260"
                                                                     onerror="this.src='/no-image.png'">
                                                             </NuxtLink>
@@ -99,7 +93,7 @@ try {
                                                     <div class="single-story-details">
                                                         <h3>
                                                             <NuxtLink :to="`/${item?.slug}`">
-                                                                {{item?.name}}
+                                                                {{ item?.name }}
                                                             </NuxtLink>
                                                         </h3>
                                                     </div>
