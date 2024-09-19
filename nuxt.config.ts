@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: {enabled: false},
-    css: ['view-ui-plus/dist/styles/viewuiplus.css', '~/assets/css/main.css'],
 
     future: {
         compatibilityVersion: 4,
@@ -196,4 +195,7 @@ export default defineNuxtConfig({
             '/admin/quan-ly-truyen/*': { ssr: false },
         },
     },
+
+
+    css: ['view-ui-plus/dist/styles/viewuiplus.css', '~/assets/css/main.css'],
 })
