@@ -12,16 +12,28 @@ const checkVIP = computed(() => userStore.checkVIP());
 const isOpen = ref(false);
 const isBlock = ref(false);
 
+configStore.setAffModal(true);
+
 const handleClickOutside = () => {
-    if (affModal.value) configStore.setAffModal(false);
+    configStore.setAffModal(false);
+    setTimeout(() => {
+        configStore.setAffModal(true);
+    }, 10000);
 };
 
 const handleAffLayerClick = () => {
-    sessionStorage.setItem('aff', 'true');
     configStore.setAffModal(false);
+    setTimeout(() => {
+        configStore.setAffModal(true);
+    }, 600000);
 };
 
-configStore.setAffModal(!sessionStorage.getItem('aff'));
+const checkSessionStorage = () => {
+    if (affModal.value) return;
+
+    configStore.setAffModal(true);
+};
+
 
 watch([checkVIP, aff], () => {
     if (checkVIP.value || !aff.value) {
@@ -32,9 +44,9 @@ watch([checkVIP, aff], () => {
 watch(affModal, () => {
     if (affModal.value) {
         isBlock.value = true;
-        document.body.style.overflow = 'hidden';
         setTimeout(() => {
             isOpen.value = true;
+            document.body.style.overflow = 'hidden';
         }, 150);
     } else {
         isOpen.value = false;
@@ -52,7 +64,7 @@ watch(affModal, () => {
          id="reportModal" tabindex="-1" role="dialog"
          :aria-modal="affModal" :aria-hidden="!affModal"
          :style="{display: isBlock ? 'block' : 'none'}">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" role="document" style="margin-top: 30px">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="btn-close" @click="handleClickOutside"
@@ -63,7 +75,7 @@ watch(affModal, () => {
                     <p>
                         Để có kinh phí và năng lượng tiếp tục dịch và ra mắt các bộ truyện hay.
                         <br>
-                        <b>Phê Truyện</b> rất mong mọi người có thể <b>Click</b> vào hình ảnh bên dưới để ủng hộ <b>Phê Truyện</b>.
+                        <b>Phê Truyện</b> rất mong mọi người có thể <b>Click</b> vào link hoặc hình ảnh bên dưới để ủng hộ <b>Phê Truyện</b>.
                         <br>
                     </p>
                     <p>
@@ -74,6 +86,14 @@ watch(affModal, () => {
                         </a>
                     </p>
                     <p>
+                        <a :href="aff?.link" target="_blank" class="text-primary"
+                           @click="handleAffLayerClick">
+                            <b>{{aff?.link}}</b>
+                        </a>
+                    </p>
+                    <p>
+                        Quảng cáo sẽ được tắt một khoảng thời gian sau khi <b>Click</b>.
+                        <br>
                         <b>Phê Truyện</b> xin chân thành cảm ơn!
                     </p>
                 </div>

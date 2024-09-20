@@ -2,7 +2,7 @@
 import {getMax250Chars} from "~/utils/formatName.js";
 
 const { path } = useRoute();
-const { info } = defineProps({ info: { type: Object, required: true } });
+const { info } = defineProps({ info: { required: true } });
 
 const runtimeConfig = useRuntimeConfig();
 

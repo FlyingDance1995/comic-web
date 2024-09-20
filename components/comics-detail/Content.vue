@@ -3,7 +3,7 @@ const route = useRoute();
 
 const slug = route?.params?.slug;
 
-const { data } = defineProps({ data: { type: Object, required: true } });
+const { data } = defineProps({ data: { required: true } });
 </script>
 
 <template>
