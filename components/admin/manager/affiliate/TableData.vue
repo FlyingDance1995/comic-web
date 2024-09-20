@@ -2,6 +2,7 @@
 import {
     mappingAffiliateTable, filterAffiliateStatus
 } from "~/utils/mapping.js";
+import {optionsLocation} from "../../../../constants/options.js";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -23,6 +24,11 @@ const columns = [
         title: 'Link',
         slot: 'link',
         width: 300,
+    },
+    {
+        title: 'Vị trí',
+        slot: 'location',
+        width: 200
     },
     {
         title: 'Trạng thái',
@@ -250,6 +256,10 @@ onUnmounted(() => {
             <NuxtLink :to="row?.link" target="_blank" external>
                 {{row?.link}}
             </NuxtLink>
+        </template>
+
+        <template #location="{ row }">
+            {{optionsLocation?.find(x => x?.value === row?.location)?.label || ''}}
         </template>
 
         <template #enable="{ row }">
