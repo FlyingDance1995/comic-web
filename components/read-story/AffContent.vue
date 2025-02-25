@@ -5,7 +5,7 @@ const emit = defineEmits(['on-click-aff-chuong'])
 
 const configStore = useConfigStore();
 
-const aff = computed(() => configStore.$state.affList?.find(x => x?.location === 1));
+const aff = computed(() => configStore.$state.affList?.find(x => x?.location === 3));
 
 const handleAffClick = (link) => {
     sessionStorage.setItem('aff-chuong', link)
@@ -28,7 +28,7 @@ const handleAffClick = (link) => {
         </p>
         <div
             style="display: flex; flex-direction: row; align-items: center; justify-content: center; margin-bottom: 20px; margin-top: 20px;">
-            <img style="width: 40% !important;" fetchpriority="high" loading="lazy" decoding="async" :src="aff?.banner"
+            <img class="width-img-chuong" fetchpriority="high" loading="lazy" decoding="async" :src="aff?.banner"
                 alt="" width="427" height="427">
         </div>
         <p style="text-align: center;">Lưu ý: Nội dung trên chỉ xuất hiện 1 lần trong ngày, mong Quý độc
@@ -38,3 +38,15 @@ const handleAffClick = (link) => {
         <p>&nbsp;</p>
     </div>
 </template>
+
+<style>
+.width-img-chuong {
+    width: 80% !important;
+}
+
+@media (min-width: 1200px) {
+    .width-img-chuong {
+    width: 40% !important;
+}
+}
+</style>
