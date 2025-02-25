@@ -1,6 +1,7 @@
 <script setup>
-import {useConfigStore} from "~/store/config.js";
-import {formattedNameChaper, getMax250Chars} from "~/utils/formatName.js";
+import { useConfigStore } from "~/store/config.js";
+import { formattedNameChaper, getMax250Chars } from "~/utils/formatName.js";
+import { useUserStore } from "~/store/user.js";
 
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
@@ -17,6 +18,7 @@ const initStyle = {
 }
 
 const data = ref(null);
+const stateAffClick = ref(false);
 const styles = reactive(initStyle);
 
 const getData = async () => {
@@ -51,6 +53,10 @@ const reportError = () => {
     setTimeout(() => configStore.setReportErrorModal(true), 100);
 };
 
+const handleAffClick = () => {
+    stateAffClick.value = true;
+};
+
 const handleChangeSetting = (e) => {
     if (e?.detail?.key === 'settingFont') {
         styles['font-family'] = e?.detail?.form.fontFamily || 'Roboto, sans-serif';
@@ -76,6 +82,10 @@ onMounted(() => {
     }
 
     window.addEventListener('localStorageChanged', handleChangeSetting);
+
+    if(sessionStorage.getItem('aff-chuong')) {
+        stateAffClick.value = true;
+    }
 });
 
 onUnmounted(() => {
@@ -84,15 +94,15 @@ onUnmounted(() => {
 
 
 useHead({
-    title: `${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
+    title: `${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
     meta: [
         {
             name: 'title',
-            content:  `${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''} | Phê truyện`
+            content: `${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''} | Phê truyện`
         },
         {
             name: 'description',
-            content: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`)
+            content: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`)
         },
         {
             name: "image",
@@ -102,52 +112,60 @@ useHead({
 });
 
 useSeoMeta({
-    title: `${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
-    ogTitle: `${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
-    description: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
-    ogDescription: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${ formattedNameChaper(data.value?.type) } ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
+    title: `${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
+    ogTitle: `${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
+    description: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
+    ogDescription: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
     ogImage: data.value?.story?.avatar?.replace("http://", "https://"),
     twitterCard: 'summary_large_image',
 });
 </script>
 
 <template>
+
     <Head>
-        <Title>{{data?.name || data?.story?.name}} - {{ formattedNameChaper(data?.type) }} {{data?.chapter_number || ''}}: {{data?.name || ''}}</Title>
+        <Title>{{ data?.name || data?.story?.name }} - {{ formattedNameChaper(data?.type) }} {{ data?.chapter_number ||
+            '' }}: {{ data?.name || '' }}</Title>
     </Head>
 
     <div class="container page-chapter-detail">
         <!--breadcrumb-->
-        <CommonBreadCrumb :name="`${formattedNameChaper(data?.type)} ${data?.chapter_number || ''}: ${data?.name || ''}`">
+        <CommonBreadCrumb
+            :name="`${formattedNameChaper(data?.type)} ${data?.chapter_number || ''}: ${data?.name || ''}`">
             <li class="breadcrumb-item">
-                <NuxtLink :to="`/${data?.story?.slug}`">{{data?.story?.name}}</NuxtLink>
+                <NuxtLink :to="`/${data?.story?.slug}`">{{ data?.story?.name }}</NuxtLink>
             </li>
         </CommonBreadCrumb>
         <!--end breadcrumb-->
 
         <div class="card">
             <div class="card-body">
-                <h1 class="card-title">{{data?.story?.name}} - {{ formattedNameChaper(data?.type) }} {{data?.chapter_number || ''}}: {{data?.name || ''}}</h1>
+                <h1 class="card-title">{{ data?.story?.name }} - {{ formattedNameChaper(data?.type) }}
+                    {{ data?.chapter_number || '' }}: {{ data?.name || '' }}</h1>
 
                 <p class="bg-light-info p-3 radius-10 mt-3">
-                    Cập nhật lúc: {{ formattedFullDate(data?.list_chapter?.find(x => x?.chapter_number === data?.chapter_number)?.modification_time)}}<br>
-                    Lượt xem: {{data?.count_watched}}
+                    Cập nhật lúc: {{formattedFullDate(data?.list_chapter?.find(x => x?.chapter_number ===
+                        data?.chapter_number)?.modification_time)}}<br>
+                    Lượt xem: {{ data?.count_watched }}
                 </p>
 
                 <div class="chapter-content">
-                    <div class="content-container mt-4 ql-editor" id="chapter-content-render"
+                    <div v-if="stateAffClick" class="content-container mt-4 ql-editor" id="chapter-content-render"
                          :style="styles"
                          v-html="data?.content">
                     </div>
+
+                    <ClientOnly v-else>
+                        <ReadStoryAffContent @on-click-aff-chuong="handleAffClick"/>
+                    </ClientOnly>
                 </div>
 
                 <ClientOnly>
-                    <CommonAffHorizontal :location="4" style="margin: 0"/>
+                    <CommonAffHorizontal :location="4" style="margin: 0" />
                 </ClientOnly>
 
                 <div class="my-3 text-center">
-                    <button type="button" class="btn btn-danger"
-                            @click.prevent="reportError">
+                    <button type="button" class="btn btn-danger" @click.prevent="reportError">
                         Báo cáo nội dung vi phạm
                     </button>
                 </div>
@@ -165,5 +183,6 @@ useSeoMeta({
         </div>
     </div>
 
-    <ReadStoryChapterFooter :chapter="chapter" :list-chapter="data?.list_chapter" :slug="slug" :chapter_number="data?.chapter_number || 1"/>
+    <ReadStoryChapterFooter :chapter="chapter" :list-chapter="data?.list_chapter" :slug="slug"
+        :chapter_number="data?.chapter_number || 1" />
 </template>
