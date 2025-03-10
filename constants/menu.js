@@ -39,6 +39,11 @@ const menu = [
         icon: 'md-star',
         path: '/admin/yeu-cau-lam-vip'
     },
+    {
+        title: 'Quản lý giao dịch',
+        icon: 'ios-book-outline',
+        path: '/admin/quan-ly-giao-dich'
+    },
 ]
 
 export default menu

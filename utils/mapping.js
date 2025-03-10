@@ -51,6 +51,21 @@ export const mappingStoryStatusTable  = [
     },
 ];
 
+export const mappingTransactionStatusTable  = [
+    {
+        label: 'Thành công',
+        value: 'success'
+    },
+    {
+        label: 'Thất bại',
+        value: 'failed'
+    },
+    {
+        label: 'Khởi tạo',
+        value: 'init'
+    }
+];
+
 export const filterStoryStatus  = (value, row) => {
     switch (value) {
         case 'processing':
@@ -137,6 +152,34 @@ export const mappingTeamStatus  = (value) => {
         case 'awaiting':
             return {
                 title: 'Chờ phê duyệt',
+                color: '#FCBD01'
+            };
+
+        case 'init':
+            return {
+                title: 'Khởi tạo',
+                color: '#000000'
+            };
+
+        default:
+            return {
+                title: '-',
+                color: '#000000'
+            };
+    }
+};
+
+export const mappingTransactionStatus  = (value) => {
+    switch (value) {
+        case 'success':
+            return {
+                title: 'Thành công',
+                color: '#2D2FFD'
+            };
+
+        case 'failed':
+            return {
+                title: 'Thất bại',
                 color: '#FCBD01'
             };
 

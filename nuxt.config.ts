@@ -162,6 +162,7 @@ export default defineNuxtConfig({
             '/dang-truyen/quan-ly-truyen/*': { ssr: false },
             '/admin/*': { ssr: false },
             '/admin/quan-ly-truyen/*': { ssr: false },
+            '/admin/quan-ly-giao-dich/*': { ssr: false },
         },
     },
 
