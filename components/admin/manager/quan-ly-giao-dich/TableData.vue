@@ -22,17 +22,17 @@ const columns = [
         title: 'Người dùng',
         key: 'user',
         slot: 'user',
-        minWidth: 300,
+        minWidth: 250,
     },
     {
         title: 'Số tiền',
-        key: 'amount',
-        minWidth: 120,
+        slot: 'amount',
+        minWidth: 200,
     },
     {
         title: 'Code',
         key: 'code',
-        minWidth: 120,
+        minWidth: 140,
     },
     {
         title: 'Trạng thái',
@@ -191,7 +191,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #user="{ row }">
-            {{ row?.user?.fullname }}
+            {{ row?.user?.email }}
         </template>
 
         <template #status="{ row }">
@@ -206,6 +206,10 @@ watch(() => route?.query, (value, oldValue) => {
         
         <template #modification_time="{ row }">
             <span>{{ formattedDate(row?.modification_time) }}</span>
+        </template>
+
+        <template #amount="{ row }">
+            {{Number(row?.amount)?.toLocaleString()?.replaceAll('.', ',')}} VNĐ
         </template>
 
         <template #action="{ row }">

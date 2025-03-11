@@ -5,6 +5,8 @@ import {useUserStore} from "~/store/user.js";
 const userStore = useUserStore();
 const configStore = useConfigStore();
 
+const router = useRouter();
+
 const user = computed(() => userStore.$state.user);
 const form = reactive({
     amount: "",
@@ -63,7 +65,7 @@ const handleSubmit = async () => {
 const handleVerify = async () => {
     try {
         configStore.setLoadingModal(true);
-        await useNuxtApp().$api(`/api/profile/transaction/${data.value?.transaction?.id}`, {
+        await useNuxtApp().$api(`/profile/transaction/${data.value?.transaction?.id}`, {
             method: 'PUT',
             body: {
                 status: 'pending'
@@ -75,7 +77,8 @@ const handleVerify = async () => {
                 open: true,
                 title: 'Thành công',
                 text: '',
-                type: 'success'
+                type: 'success',
+                onSubmit: async () => await router.push('/user/lich-su-giao-dich')
             });
         }, 150);
     } catch (e) {
@@ -85,7 +88,7 @@ const handleVerify = async () => {
                 open: true,
                 title: 'Oops...',
                 text: 'Có lỗi xảy ra, vui lòng thử lại sau!',
-                type: 'error'
+                type: 'error',
             });
         }, 150);
         console.log(e);
