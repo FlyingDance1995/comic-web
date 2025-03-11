@@ -221,10 +221,10 @@ watch(() => route?.query, (value, oldValue) => {
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="handleStatusTransactionItem(row, 'success')">
-                            <span style="color: green">Thành công</span>
+                            <span style="color: #15ca20">Thành công</span>
                         </DropdownItem>
                         <DropdownItem @click="handleStatusTransactionItem(row, 'failed')">
-                            <span style="color: red">Thất bại</span>
+                            <span style="color: #fd3550">Thất bại</span>
                         </DropdownItem>
                     </DropdownMenu>
                 </template>

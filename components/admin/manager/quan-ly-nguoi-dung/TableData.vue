@@ -378,7 +378,7 @@ onUnmounted(() => {
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="activeItem(row)">
-                            <span v-if="row?.is_active" style="color: red">Hủy kích hoạt</span>
+                            <span v-if="row?.is_active" style="color: #fd3550">Hủy kích hoạt</span>
                             <span v-else style="color: blue">Kích hoạt</span>
                         </DropdownItem>
                         <DropdownItem @click="changePassItem(row)">Đổi mật khẩu</DropdownItem>

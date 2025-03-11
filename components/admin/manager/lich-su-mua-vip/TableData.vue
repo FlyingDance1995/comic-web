@@ -25,22 +25,19 @@ const columns = [
         minWidth: 250,
     },
     {
+        title: 'Tên gói',
+        slot: 'name',
+        minWidth: 120,
+    },
+    {
+        title: 'Hạn sử dụng',
+        slot: 'expiry',
+        minWidth: 160,
+    },
+    {
         title: 'Số tiền',
-        slot: 'amount',
-        minWidth: 200,
-    },
-    {
-        title: 'Code',
-        key: 'code',
-        minWidth: 140,
-    },
-    {
-        title: 'Trạng thái',
-        slot: 'status',
-        width: 150,
-        filters: mappingTransactionStatusTable,
-        filterMultiple: false,
-        filterRemote: value => handleFilter('status', value),
+        slot: 'price',
+        minWidth: 170,
     },
     {
         title: "Thời gian tạo",
@@ -48,18 +45,6 @@ const columns = [
         width: 180,
         sortable: true,
     },
-    {
-        title: "Thời gian cập nhật",
-        slot: "modification_time",
-        width: 180,
-        sortable: true,
-    },
-    {
-        title: " ",
-        slot: "action",
-        width: 60,
-        fixed: 'right'
-    }
 ];
 
 const data = ref([]);
@@ -156,22 +141,11 @@ const handleSort = ({column, order}) => {
     });
 };
 
-const handleFilter = (type, value) => {
-    const query = {
-        ...route.query,
-    };
-
-    if (value.length > 0) {
-        query[type] = value.join(',');
-    } else {
-        delete query[type];
-    }
-
-    delete query.page;
-
-    router.push({
-        query,
-    });
+const getColor = (endDate) => {
+    if (!endDate) return '';
+    const currentDate = new Date();
+    const expiryDate = new Date(endDate);
+    return expiryDate > currentDate ? 'text-success' : 'text-danger';
 };
 
 watch(() => route?.query, (value, oldValue) => {
@@ -194,41 +168,20 @@ watch(() => route?.query, (value, oldValue) => {
             {{ row?.user?.email }}
         </template>
 
-        <template #status="{ row }">
-            <span :style="{ color: mappingTransactionStatus(row?.status).color }">
-                {{ mappingTransactionStatus(row?.status).title }}
-            </span>
-        </template>
-
         <template #creation_time="{ row }">
             <span>{{ formattedDate(row?.creation_time) }}</span>
         </template>
         
-        <template #modification_time="{ row }">
-            <span>{{ formattedDate(row?.modification_time) }}</span>
+        <template #name="{ row }">
+            <span>{{ row?.package?.name }}</span>
         </template>
 
-        <template #amount="{ row }">
-            {{Number(row?.amount)?.toLocaleString()?.replaceAll('.', ',')}} VNĐ
+        <template #expiry="{ row }">
+            <span :class="getColor(row?.end_date)">{{ formattedTime(row?.end_date) }}</span>
         </template>
 
-        <template #action="{ row }">
-            <Dropdown trigger="hover">
-                <a href="javascript:void(0)">
-                    <Icon type="ios-more" size="24" style="cursor: pointer" />
-                </a>
-
-                <template #list>
-                    <DropdownMenu>
-                        <DropdownItem @click="handleStatusTransactionItem(row, 'success')">
-                            <span style="color: green">Thành công</span>
-                        </DropdownItem>
-                        <DropdownItem @click="handleStatusTransactionItem(row, 'failed')">
-                            <span style="color: red">Thất bại</span>
-                        </DropdownItem>
-                    </DropdownMenu>
-                </template>
-            </Dropdown>
+        <template #price="{ row }">
+            {{Number(row?.package?.price)?.toLocaleString()?.replaceAll('.', ',')}} VNĐ
         </template>
     </Table>
 

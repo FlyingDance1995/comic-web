@@ -21,7 +21,7 @@ export const mappingStoryStatus  = (value) => {
         case 'finish':
             return {
                 title: 'Hoàn thành',
-                color: 'green'
+                color: '#15ca20'
             };
 
         default:
@@ -178,7 +178,7 @@ export const mappingTransactionStatus  = (value) => {
         case 'success':
             return {
                 title: 'Thành công',
-                color: 'green'
+                color: '#15ca20'
             };
 
         case 'pending':

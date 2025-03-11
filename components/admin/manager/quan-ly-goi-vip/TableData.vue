@@ -181,8 +181,8 @@ onUnmounted(() => {
         </template>
 
         <template #enable="{ row }">
-            <span :style="{ color: row?.enable ? '#2D2FFD' : '#e4e5e6' }">
-                {{ row?.enable ? 'Active' : 'InActive' }}
+            <span :style="{ color: row?.enable ? '#2D2FFD' : '#fd3550' }">
+                {{ row?.enable ? 'Active' : 'Inactive' }}
             </span>
         </template>
 
@@ -210,7 +210,7 @@ onUnmounted(() => {
                             <span>Cập nhật</span>
                         </DropdownItem>
                         <DropdownItem @click="handleStatusPackageVipItem(row, 'delete')">
-                            <span style="color: red">Xóa</span>
+                            <span style="color: #fd3550">Xóa</span>
                         </DropdownItem>
                     </DropdownMenu>
                 </template>

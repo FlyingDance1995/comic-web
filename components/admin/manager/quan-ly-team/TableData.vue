@@ -319,7 +319,7 @@ watch(() => route?.query, (value, oldValue) => {
 
                 <template #list>
                     <DropdownMenu>
-                        <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
+                        <DropdownItem @click="removeItem(row)"><span style="color: #fd3550">Xóa</span></DropdownItem>
                         <DropdownItem @click="approvalItem(row)"
                                       :disabled="row?.status !== 'awaiting'">Phê duyệt</DropdownItem>
 <!--                        <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>-->

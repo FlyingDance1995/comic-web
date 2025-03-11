@@ -188,7 +188,7 @@ defineExpose({
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="handleDelete">
-                            <span style="color: red">Xóa</span>
+                            <span style="color: #fd3550">Xóa</span>
                         </DropdownItem>
 <!--                        <DropdownItem @click="handlePost">-->
 <!--                            <span style="color: blue">Đăng bài</span>-->

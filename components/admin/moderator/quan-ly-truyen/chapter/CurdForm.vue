@@ -191,7 +191,7 @@ defineExpose({
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="handleDelete">
-                            <span style="color: red">Xóa</span>
+                            <span style="color: #fd3550">Xóa</span>
                         </DropdownItem>
                         <DropdownItem @click="handlePost" :disabled="!dataDetail?.draft">
                             <span :style="{ color: dataDetail?.draft && 'blue' }">Đăng bài</span>

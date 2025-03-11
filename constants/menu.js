@@ -34,11 +34,11 @@ const menu = [
         icon: 'md-git-pull-request',
         path: '/admin/yeu-cau-lam-tac-gia'
     },
-    {
-        title: 'Yêu cầu làm VIP',
-        icon: 'md-star',
-        path: '/admin/yeu-cau-lam-vip'
-    },
+    // {
+    //     title: 'Yêu cầu làm VIP',
+    //     icon: 'md-star',
+    //     path: '/admin/yeu-cau-lam-vip'
+    // },
     {
         title: 'Quản lý giao dịch',
         icon: 'ios-cash',
@@ -51,7 +51,7 @@ const menu = [
     },
     {
         title: 'Lịch sử mua VIP',
-        icon: 'md-star',
+        icon: 'md-list',
         path: '/admin/lich-su-mua-vip'
     },
 ]

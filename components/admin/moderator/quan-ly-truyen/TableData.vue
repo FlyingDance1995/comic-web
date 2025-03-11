@@ -366,7 +366,7 @@ onUnmounted(() => {
                 
                 <template #list>
                     <DropdownMenu>
-                        <DropdownItem @click="removeItem(row)"><span style="color: red">Xóa</span></DropdownItem>
+                        <DropdownItem @click="removeItem(row)"><span style="color: #fd3550">Xóa</span></DropdownItem>
                         <DropdownItem @click="approvalItem(row)"
                                       :disabled="row?.status !== 'draft'">
                             <span :style="{color: row?.status === 'draft' && 'blue'}">Yêu cầu phê duyệt</span>

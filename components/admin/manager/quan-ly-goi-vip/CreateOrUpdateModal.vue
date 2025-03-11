@@ -12,7 +12,6 @@ const formItem = reactive({
     enable: false,
 });
 
-
 const rules = {
     name: [
         {required: true, message: 'Vui lòng nhập tên gói', trigger: 'blur'}
@@ -83,7 +82,7 @@ defineExpose({
     <Modal
         v-model="openModal"
         :title="dataEdit ? 'Chỉnh sửa' : 'Tạo mới'"
-        width="800px">
+        width="500px">
         <Form ref="formRef" :model="formItem" :rules="rules" label-position="top">
             <FormItem label="Tên gói" prop="name">
                 <Input v-model="formItem.name" placeholder="Tên gói"/>
