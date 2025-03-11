@@ -44,6 +44,16 @@ const menu = [
         icon: 'ios-cash',
         path: '/admin/quan-ly-giao-dich'
     },
+    {
+        title: 'Quản lý gói VIP',
+        icon: 'md-star',
+        path: '/admin/quan-ly-goi-vip'
+    },
+    {
+        title: 'Lịch sử mua VIP',
+        icon: 'md-star',
+        path: '/admin/lich-su-mua-vip'
+    },
 ]
 
 export default menu

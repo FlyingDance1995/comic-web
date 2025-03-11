@@ -165,6 +165,8 @@ export default defineNuxtConfig({
             '/admin/*': { ssr: false },
             '/admin/quan-ly-truyen/*': { ssr: false },
             '/admin/quan-ly-giao-dich/*': { ssr: false },
+            '/admin/quan-ly-goi-vip/*': { ssr: false },
+            '/admin/lich-su-mua-vip/*': { ssr: false },
         },
     },
 
