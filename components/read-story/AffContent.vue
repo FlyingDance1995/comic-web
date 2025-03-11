@@ -33,7 +33,7 @@ const handleAffClick = (link) => {
         </div>
         <p style="text-align: center;">Lưu ý: Nội dung trên chỉ xuất hiện 1 lần trong ngày, mong Quý độc
             giả ủng hộ.</p>
-        <h3 style="text-align: center;"><span style="color: #993366;">Phetruyenn và đội ngũ Editor xin
+        <h3 style="text-align: center;"><span style="color: #993366;">Phê truyện và đội ngũ Editor xin
                 chân thành cảm ơn!</span></h3>
         <p>&nbsp;</p>
     </div>

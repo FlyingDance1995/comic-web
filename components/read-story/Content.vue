@@ -19,6 +19,7 @@ const initStyle = {
 
 const data = ref(null);
 const stateAffClick = ref(false);
+const checkVIP = ref(false);
 const styles = reactive(initStyle);
 
 const getData = async () => {
@@ -64,6 +65,13 @@ const handleChangeSetting = (e) => {
         styles['line-height'] = e?.detail?.form.lineHeight + '%' || '140%';
     }
 };
+
+if (process.client) {
+    const userStore = useUserStore();
+    watch(() => userStore.checkVIP(), (value) => {
+        checkVIP.value = userStore.checkVIP();
+    }, {immediate: true})
+}
 
 onMounted(() => {
     try {
@@ -148,9 +156,8 @@ useSeoMeta({
                         data?.chapter_number)?.modification_time)}}<br>
                     Lượt xem: {{ data?.count_watched }}
                 </p>
-
                 <div class="chapter-content">
-                    <div v-if="stateAffClick" class="content-container mt-4 ql-editor" id="chapter-content-render"
+                    <div v-if="stateAffClick || checkVIP" class="content-container mt-4 ql-editor" id="chapter-content-render"
                          :style="styles"
                          v-html="data?.content">
                     </div>

@@ -16,16 +16,16 @@ configStore.setAffModal(true);
 
 const handleClickOutside = () => {
     configStore.setAffModal(false);
-    setTimeout(() => {
-        configStore.setAffModal(true);
-    }, 90000);
+    // setTimeout(() => {
+    //     configStore.setAffModal(true);
+    // }, 1800000);
 };
 
 const handleAffLayerClick = () => {
     configStore.setAffModal(false);
-    setTimeout(() => {
-        configStore.setAffModal(true);
-    }, 1800000);
+    // setTimeout(() => {
+    //     configStore.setAffModal(true);
+    // }, 1800000);
 };
 
 const checkSessionStorage = () => {

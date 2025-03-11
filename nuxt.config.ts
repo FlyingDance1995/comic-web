@@ -157,6 +157,8 @@ export default defineNuxtConfig({
             '/user/lich-su-doc-truyen': { ssr: false },
             '/user/tro-thanh-tac-gia': { ssr: false },
             '/user/mua-vip': { ssr: false },
+            '/user/nap-tien': { ssr: false },
+            '/user/lich-su-giao-dich': { ssr: false },
             '/tim-kiem': { ssr: false },
             '/dang-truyen/*': { ssr: false },
             '/dang-truyen/quan-ly-truyen/*': { ssr: false },

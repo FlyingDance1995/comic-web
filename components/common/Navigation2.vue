@@ -12,11 +12,18 @@ const {category, loading, error} = storeToRefs(categoryStore);
 const openMenu = computed(() => menuStore.$state.open);
 const openSubMenu = ref(false);
 const openSubMenu2 = ref(false);
+const openSubMenuVip = ref(false);
 
 const category1 = [
     {slug: "truyen-moi", name: "Truyện mới cập nhật"},
     {slug: "truyen-hoan-thanh", name: "Truyện Full"},
     {slug: "truyen-sang-tac", name: "Truyện sáng tác"},
+]
+
+const subMenuVip = [
+    {slug: "/user/nap-tien", name: "Nạp tiền", icon: 'bx bx-credit-card'},
+    {slug: "/user/mua-vip", name: "Mua VIP", icon: 'bx bx-crown'},
+    {slug: "/user/lich-su-giao-dich", name: "Lịch sử giao dịch", icon: 'bx bx-history'},
 ]
 
 const closeMenu = () => {
@@ -144,14 +151,29 @@ if (process.client) {
                                 </NuxtLink>
                             </li>
 
-                            <li v-if="!checkVIP"
-                                class="nav-item">
-                                <NuxtLink class="nav-link" to="/user/mua-vip" @click="closeMenu">
-                                    <div class="parent-icon">
-                                        <i class='bx bx-crown'></i>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret"
+                                   :class="openSubMenuVip ? 'show' : ''"
+                                   :aria-expanded="openSubMenuVip"
+                                   href="javascript:;"
+                                   data-bs-toggle="dropdown" @click="openSubMenuVip = !openSubMenuVip">
+                                    <div class="parent-icon"><i class="bx bx-wallet"></i>
                                     </div>
-                                    <div class="menu-title d-flex align-items-center">VIP</div>
-                                </NuxtLink>
+                                    <div class="menu-title d-flex align-items-center">Ví</div>
+                                    <div class="ms-auto dropy-icon"><i class="bx bx-chevron-down"></i></div>
+                                </a>
+
+                                <ul class="dropdown-menu scroll-menu ps ps--active-x ps--active-y ps--scrolling-y"
+                                    :class="openSubMenuVip ? 'show' : ''"
+                                    style="overflow: auto !important;">
+                                    <li v-for="(item, index) in subMenuVip" :key="index">
+                                        <NuxtLink class="dropdown-item"
+                                                  :to="item.slug" @click="closeMenu">
+                                            <i :class="item.icon"></i>
+                                            {{ item.name }}
+                                        </NuxtLink>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>

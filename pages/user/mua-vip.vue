@@ -52,6 +52,10 @@ const handleSubmit = async () => {
 </script>
 
 <template>
+    <Head>
+        <Title>Mua VIP</Title>
+    </Head>
+
     <div class="row">
         <div class="col-xl-6 mx-auto">
             <h6 class="mb-0 text-uppercase">Nâng cấp VIP</h6>
