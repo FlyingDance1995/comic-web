@@ -196,13 +196,13 @@ export const mappingTransactionStatus  = (value) => {
         case 'init':
             return {
                 title: 'Khởi tạo',
-                color: '#000000'
+                color: ''
             };
 
         default:
             return {
                 title: '-',
-                color: '#000000'
+                color: ''
             };
     }
 };

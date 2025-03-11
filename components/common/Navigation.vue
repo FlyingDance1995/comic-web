@@ -23,7 +23,7 @@ const category1 = [
 const subMenuVip = [
     {slug: "/user/nap-tien", name: "Nạp tiền", icon: 'bx bx-credit-card'},
     {slug: "/user/mua-vip", name: "Mua VIP", icon: 'bx bx-crown'},
-    {slug: "/user/lich-su-giao-dich", name: "Lịch sử giao dịch", icon: 'bx bx-history'},
+    // {slug: "/user/lich-su-giao-dich", name: "Lịch sử giao dịch", icon: 'bx bx-history'},
 ]
 
 const closeMenu = () => {

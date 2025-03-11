@@ -9,8 +9,6 @@ const handleOk = async () => {
     if (swal.value.type === 'error' || swal.value.type === 'success') {
         closeModal();
     }
-    console.log(1);
-    
     if (swal.value.onSubmit) {
         await swal.value.onSubmit();
     }

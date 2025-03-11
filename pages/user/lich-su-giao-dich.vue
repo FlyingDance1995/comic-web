@@ -10,7 +10,7 @@ const router = useRouter();
 const { $api } = useNuxtApp();
 
 const user = computed(() => userStore.$state.user);
-const data = ref([]);
+const dataTable = ref([]);
 const loading = ref(false);
 const page = ref(Number(route.query?.page) || 1);
 const total = ref(0);
@@ -59,7 +59,7 @@ const getData = async () => {
             }
         });
 
-        data.value = response?.results?.map((item, index) => {
+        dataTable.value = response?.results?.map((item, index) => {
             return {
                 ...item,
                 stt: (10 * (page.value - 1)) + index + 1
@@ -110,11 +110,11 @@ watch(() => route?.query, (value, oldValue) => {
                 <div class="card-body">
                     <div class="table-responsive">
                         <Table
-                            class="flex-1 mt-4"
+                            class="flex-1 mt-4 test"
                             ref="table"
                             max-height="650"
                             :columns="columns"
-                            :data="data"
+                            :data="dataTable"
                             :loading="loading"
                         >
                             <template #creation_time="{ row }">
@@ -140,8 +140,40 @@ watch(() => route?.query, (value, oldValue) => {
     </div>
 </template>
 
-<style scoped>
+<style>
 .dark-theme .text-dark {
     color: #c0c8d1 !important;
 }
+
+.dark-theme .table-responsive .ivu-table {
+    color: white !important;
+}
+
+.dark-theme .table-responsive .ivu-table th {
+    background-color: #323537 !important;
+}
+
+.dark-theme .table-responsive .ivu-table td {
+    background-color: #16191b !important;
+}
+
+.dark-theme .table-responsive .ivu-page-total {
+    color: white !important;
+}
+
+.dark-theme .table-responsive .ivu-page-next, .dark-theme .table-responsive .ivu-page-prev {
+    background-color: #323537 !important;
+    color: white !important;
+}
+
+.dark-theme .table-responsive .ivu-page-item {
+    background-color: #323537 !important;
+    color: white;
+}
+
+.dark-theme .table-responsive .ivu-page-item-active a {
+    color: #2d8cf0 !important;
+}
+
+
 </style>
