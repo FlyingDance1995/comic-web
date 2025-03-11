@@ -67,19 +67,6 @@ const loading = ref(false);
 const page = ref(Number(route.query?.page) || 1);
 const total = ref(0);
 
-const openModal = ref(false);
-const loadingModal = ref(true);
-const formItem = ref({
-    type: "",
-    last_chapter: "",
-    name: "",
-    description: "",
-    category: []
-});
-
-const modalRemove = ref(false);
-const loadingRemove = ref(false);
-
 const getData = async () => {
     try {
         loading.value = true;
@@ -124,27 +111,6 @@ const handleChangePage = (value) => {
     });
 };
 
-const removeItem = async (row) => {
-    modalRemove.value = true;
-    formItem.value = row;
-};
-
-const okRemove = async () => {
-    try {
-        loadingRemove.value = true;
-        await useNuxtApp().$api(`admin/story/${formItem?.value?.slug}`, {
-            method: "DELETE",
-        });
-
-        await getData();
-        loadingRemove.value = false;
-        modalRemove.value = false;
-    } catch (e) {
-        console.log("error", e);
-        loadingRemove.value = false;
-    }
-};
-
 const handleStatusTransactionItem = async (row, status) => {
     try {
         loading.value = true;
@@ -166,49 +132,6 @@ const handleStatusTransactionItem = async (row, status) => {
         });
         console.log("error", e);
     }
-};
-
-const deputeItem = async (row) => {
-    try {
-        loading.value = true;
-        await useNuxtApp().$api(`admin/story/${row?.slug}`, {
-            method: "PATCH",
-            body: {
-                recommended: !row?.recommended
-            }
-        });
-
-        await getData();
-        Notice.success({
-            title: 'Đề cử thành công',
-        });
-    } catch (e) {
-        loading.value = false;
-        Notice.error({
-            title: 'Đề cử thất bại',
-        });
-        console.log("error", e);
-    }
-};
-
-const editItem = (row) => {
-    openModal.value = true;
-    formItem.value = row;
-};
-
-const asyncOK = () => {
-    loadingModal.value = true;
-
-    getData();
-    openModal.value = false;
-    loadingModal.value = false;
-    formItem.value = {
-        type: "",
-        last_chapter: "",
-        name: "",
-        description: "",
-        category: []
-    };
 };
 
 const handleSort = ({column, order}) => {
@@ -251,10 +174,6 @@ const handleFilter = (type, value) => {
     });
 };
 
-const handleClickRow = (row) => {
-    router.push(`/admin/quan-ly-truyen/${row?.slug}`);
-};
-
 watch(() => route?.query, (value, oldValue) => {
     if (value?.search !== oldValue?.search || value?.live !== oldValue?.live) {
         page.value = 1;
@@ -266,7 +185,6 @@ watch(() => route?.query, (value, oldValue) => {
 
 <template>
     <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading"
-           :row-class-name="() => 'cursor-pointer'"
            @on-sort-change="handleSort">
         <template #stt="{ row }">
             {{ row?.stt }}
@@ -299,7 +217,7 @@ watch(() => route?.query, (value, oldValue) => {
                 <template #list>
                     <DropdownMenu>
                         <DropdownItem @click="handleStatusTransactionItem(row, 'success')">
-                            <span style="color: blue">Thành công</span>
+                            <span style="color: green">Thành công</span>
                         </DropdownItem>
                         <DropdownItem @click="handleStatusTransactionItem(row, 'failed')">
                             <span style="color: red">Thất bại</span>
@@ -309,39 +227,6 @@ watch(() => route?.query, (value, oldValue) => {
             </Dropdown>
         </template>
     </Table>
-
-    <Modal v-model="openModal" title="Chỉnh sửa truyện" :loading="loadingModal" width="800px" @on-ok="asyncOK">
-        <Form :model="formItem" label-position="top">
-            <FormItem label="Loại">
-                <Select v-model="formItem.type">
-                    <div v-for="item in formItem.category" :key="item.id">
-                        <Option :value="item.slug">{{ item.name }}</Option>
-                    </div>
-                </Select>
-            </FormItem>
-
-            <FormItem label="Số chương">
-                <Select v-model="formItem.last_chapter">
-                    <Option value="1">1</Option>
-                    <Option value="2">2</Option>
-                    <Option value="3">3</Option>
-                </Select>
-            </FormItem>
-
-            <FormItem label="Tên">
-                <Input v-model="formItem.name" placeholder="Tên"></Input>
-            </FormItem>
-
-            <FormItem label="Nội dung">
-                <Input v-model="formItem.description" type="textarea" :autosize="{ minRows: 3, maxRows: 5 }"
-                    placeholder="Nội dung"></Input>
-            </FormItem>
-        </Form>
-    </Modal>
-
-    <Modal v-model="modalRemove" title="Xác nhận" :loading="loadingRemove" @on-ok="okRemove">
-        <p>Bạn có muốn chắc chắn xóa truyện này</p>
-    </Modal>
 
     <Page class="mt-4 text-black" style="text-align: right" :modelValue="page" :total="total" show-total
         @on-change="handleChangePage" />

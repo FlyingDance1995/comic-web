@@ -41,7 +41,7 @@ const menu = [
     },
     {
         title: 'Quản lý giao dịch',
-        icon: 'ios-book-outline',
+        icon: 'ios-cash',
         path: '/admin/quan-ly-giao-dich'
     },
 ]

@@ -70,14 +70,15 @@ watch(token, () => {
             id="drop-menu"
             class="dropdown-menu dropdown-menu-end"
             :class="openMenu ? 'show' : ''">
-            <!--                        <li>-->
-            <!--                            <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">-->
-            <!--                                <i class="bx bx-coin-stack fs-5"></i><span>0</span>-->
-            <!--                            </a>-->
-            <!--                        </li>-->
-            <!--                        <li>-->
-            <!--                            <div class="dropdown-divider mb-0"></div>-->
-            <!--                        </li>-->
+            <li>
+                <NuxtLink class="dropdown-item d-flex align-items-center" href="javascript:void(0)" to="/user/nap-tien">
+                    <i class="bx bx-money fs-5"></i><span>{{ user?.wallet?.balance?.toLocaleString()?.replaceAll('.', ',') || 0 }} VNĐ</span>
+                </NuxtLink>
+            </li>
+
+            <li>
+                <div class="dropdown-divider mb-0"></div>
+            </li>
 
             <li v-if="route.path.includes('/dang-truyen') || route.path.includes('/admin')">
                 <NuxtLink class="dropdown-item d-flex align-items-center"
@@ -177,8 +178,8 @@ watch(token, () => {
     position: absolute;
     z-index: 1;
     /*width: 65px;*/
-    //top: -2px;
-    //left: -3px;
+    /* top: -2px; */
+    /* left: -3px; */
     width: 70px;
     top: -13px;
     left: -14px;

@@ -41,11 +41,6 @@ const columns = [
         slot: 'amount',
         minWidth: 300,
     },
-    // {
-    //     title: 'Nội dung',
-    //     key: 'message',
-    //     minWidth: 300,
-    // },
 ]
 
 const getData = async () => {
@@ -127,7 +122,9 @@ watch(() => route?.query, (value, oldValue) => {
                             </template>
 
                             <template #status="{ row }">
-                                <span>{{ row?.status }}</span>
+                                <span :style="{ color: mappingTransactionStatus(row?.status).color }">
+                                    {{ mappingTransactionStatus(row?.status).title }}
+                                </span>
                             </template>
 
                             <template #amount="{ row }">

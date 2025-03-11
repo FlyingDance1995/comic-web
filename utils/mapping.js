@@ -61,6 +61,10 @@ export const mappingTransactionStatusTable  = [
         value: 'failed'
     },
     {
+        label: 'Đang chờ',
+        value: 'pending'
+    },
+    {
         label: 'Khởi tạo',
         value: 'init'
     }
@@ -174,6 +178,12 @@ export const mappingTransactionStatus  = (value) => {
         case 'success':
             return {
                 title: 'Thành công',
+                color: 'green'
+            };
+
+        case 'pending':
+            return {
+                title: 'Đang chờ',
                 color: '#2D2FFD'
             };
 
