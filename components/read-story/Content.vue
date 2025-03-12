@@ -6,6 +6,7 @@ import { useUserStore } from "~/store/user.js";
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 const route = useRoute();
+const router = useRouter();
 const configStore = useConfigStore();
 
 const slug = route?.params?.slug;
@@ -23,9 +24,12 @@ const checkVIP = ref(false);
 const styles = reactive(initStyle);
 
 const getData = async () => {
-    const { data: story } = await useAPI(`/story/${slug}/chapter/${chapter}`);
+    const { data: story, error, status } = await useAPI(`/story/${slug}/chapter/${chapter}`);
     data.value = story?.value;
-    if (story.value === null) {
+
+    if (error?.value?.data?.error?.includes('VIP')) {
+        await router.push('/user/mua-vip');
+    } else if (!story.value) {
         throw createError({
             statusCode: 404,
             fatal: true,
