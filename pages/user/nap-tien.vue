@@ -38,7 +38,7 @@ const columns = [
         width: 120,
     },
     {
-        title: 'Số tiền',
+        title: 'Số coin',
         slot: 'amount',
         minWidth: 170,
     },

@@ -24,7 +24,7 @@ const columns = [
         minWidth: 250,
     },
     {
-        title: 'Số tiền',
+        title: 'Số coin',
         key: 'price',
         slot: 'price',
         minWidth: 200,
@@ -195,7 +195,7 @@ onUnmounted(() => {
         </template>
 
         <template #price="{ row }">
-            {{Number(row?.price)?.toLocaleString()?.replaceAll('.', ',')}} VNĐ
+            {{Number(row?.price)?.toLocaleString()?.replaceAll('.', ',')}} coin
         </template>
 
         <template #action="{ row }">

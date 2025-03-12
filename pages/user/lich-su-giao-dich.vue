@@ -37,7 +37,7 @@ const columns = [
         minWidth: 300,
     },
     {
-        title: 'Số tiền',
+        title: 'Số coin',
         slot: 'amount',
         minWidth: 300,
     },
@@ -128,7 +128,7 @@ watch(() => route?.query, (value, oldValue) => {
                             </template>
 
                             <template #amount="{ row }">
-                                {{Number(row?.amount)?.toLocaleString()?.replaceAll('.', ',')}} VNĐ
+                                {{Number(row?.amount)?.toLocaleString()?.replaceAll('.', ',')}} coin
                             </template>
                         </Table>
 

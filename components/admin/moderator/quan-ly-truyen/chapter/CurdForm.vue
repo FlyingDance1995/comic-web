@@ -249,7 +249,7 @@ defineExpose({
 
                 <Col v-if="formItem.is_lock" span="10" offset="4">
                     <FormItem label="Giá">
-                        <InputNumber v-if="status !== 'detail'" v-model="formItem.coin" placeholder="Số tiền"
+                        <InputNumber v-if="status !== 'detail'" v-model="formItem.coin" placeholder="Số coin"
                                      class="w-100" :min="0" :readonly="status === 'detail'" />
 
                         <span v-else>
