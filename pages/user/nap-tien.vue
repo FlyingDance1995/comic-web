@@ -189,8 +189,11 @@ watch(() => route?.query, (value, oldValue) => {
                 <div class="card-body">
                     <div v-if="!success" class="card bg-info text-center">
                         <div class="card-body">
-                            <div class="p-2 text-white rounded">
-                                Số dư: {{ user?.wallet?.balance?.toLocaleString()?.replaceAll('.', ',') || 0 }} VNĐ
+                            <div class="text-white">
+                                Số dư: {{ user?.wallet?.balance?.toLocaleString()?.replaceAll('.', ',') || 0 }} coin
+                            </div>
+                            <div class="text-white">
+                                1,000 VNĐ = 1 coin
                             </div>
                         </div>
                     </div>

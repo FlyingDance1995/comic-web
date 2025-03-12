@@ -1,12 +1,13 @@
 <script setup>
 import { timeAgo } from "~/utils/formatTime.js";
 import { formattedNameChaper } from "~/utils/formatName.js";
-import {Tooltip} from "view-ui-plus";
 import {useUserStore} from "~/store/user.js";
+import {useConfigStore} from "~/store/config.js";
 
 const route = useRoute();
+const router = useRouter();
 const userStore = useUserStore();
-const runtimeConfig = useRuntimeConfig();
+const configStore = useConfigStore();
 
 const slug = route?.params?.slug;
 
@@ -31,6 +32,59 @@ const getData = async () => {
     }
 };
 
+const getInfo = async () => {
+    try {
+        const response = await useNuxtApp().$api('/profile');
+        userStore.setUser({
+            ...user.value,
+            ...response
+        })
+    } catch (error) {
+        console.log("error", error);
+    }
+};
+
+const handleChapterBuy = async (item) => {
+    if (!user.value) {
+        return configStore.setSwal({
+            open: true,
+            title: 'Oops...',
+            text: 'Bạn cần đăng nhập để có thể mua chương này.',
+            type: 'error'
+        });
+    }
+    
+    if (user.value?.wallet?.balance < item?.coin) {
+        return await router.push('/user/nap-tien')
+    }
+
+    configStore.setSwal({
+        open: true,
+        title: 'Mua chương',
+        text: `Bạn muốn mua chương này với ${item?.coin} coin?`,
+        type: 'info',
+        onSubmit: async () => {
+            try {
+                configStore.setLoadingModal(true);
+                await useNuxtApp().$api('/profile/chapter-buy', {
+                    method: "POST",
+                    body: {
+                        chapter: item?.id
+                    }
+                });
+                await getData();
+                await getInfo();
+                configStore.setLoadingModal(false);
+                return 'Đã mua chương này';
+            } catch (e) {
+                configStore.setLoadingModal(false);
+                console.log("error", e?.response);
+                return null;
+            }
+        }
+    });
+};
+
 getData();
 
 defineExpose({
@@ -39,37 +93,29 @@ defineExpose({
 </script>
 <template>
     <div class="list-chapters">
-        <div v-for="item in data?.results" :key="item?.id" class="item d-flex justify-content-between">
+        <div v-for="item in data?.results" :key="item?.id" class="item d-flex justify-content-between flex-wrap">
             <div class="episode-title"
                  :class="{
                     visited: item?.watched
                  }">
                 <NuxtLink :to="!checkVIP && item?.is_lock
-                        ? '/user/mua-vip'
+                        ? '#'
                         : `/${slug}/${item?.slug}`">
                     {{ formattedNameChaper(item?.type) }} {{ item?.chapter_number }}: {{ item?.name }}
                 </NuxtLink>
             </div>
 
-            <NuxtLink v-if="!checkVIP && item?.is_lock"
-                      to="/user/mua-vip"
-                      class="cursor-pointer me-1 text-primary">Mua</NuxtLink>
-
-            <Tooltip v-if="!checkVIP && item?.is_lock"
-                     placement="bottom-end">
-                <span class="me-2 icon-lock cursor-pointer">
+            <div class="d-flex gap-2 justify-content-end">
+                <div v-if="!checkVIP && item?.is_lock"
+                    class="d-flex gap-1 cursor-pointer text-primary align-items-center"
+                    @click="handleChapterBuy(item)">
                     <i class="bx bxs-lock"></i>
-                </span>
+                    <span>Mua ({{ item?.coin }} coin)</span>
+                </div>
 
-                <template #content>
-                    Nâng cấp VIP để được đọc
-                    <br>
-                    truyện mới nhất
-                </template>
-            </Tooltip>
-
-            <div class="episode-date">
-                <span>{{ timeAgo(item?.creation_time) }}</span>
+                <div class="episode-date text-end">
+                    <span>{{ timeAgo(item?.creation_time) }}</span>
+                </div>
             </div>
         </div>
     </div>

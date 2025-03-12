@@ -166,3 +166,37 @@ body {
 .dark-theme .form-group i {
     color: #fff !important;
 }
+
+.dark-theme .table-responsive .ivu-table {
+    color: white !important;
+}
+
+.dark-theme .table-responsive .ivu-table th {
+    background-color: #323537 !important;
+}
+
+.dark-theme .table-responsive .ivu-table td {
+    background-color: #16191b !important;
+}
+
+.dark-theme .table-responsive .ivu-page-total {
+    color: white !important;
+}
+
+.dark-theme .table-responsive .ivu-page-next, .dark-theme .table-responsive .ivu-page-prev {
+    background-color: #323537 !important;
+    color: white !important;
+}
+
+.dark-theme .table-responsive .ivu-page-item {
+    background-color: #323537 !important;
+    color: white;
+}
+
+.dark-theme .table-responsive .ivu-page-item-active a {
+    color: #2d8cf0 !important;
+}
+
+.dark-theme .table-responsive .ivu-spin-fix {
+    background-color: #414040e6 !important;
+}

@@ -123,8 +123,8 @@ watch(reportErrorModal, () => {
 
                             <div class="input-group mb-3">
                                 <p class="bg-warning radius-10 p-2">
-                                    Vui lòng mô tả chi tiết lỗi. Nếu báo lỗi đúng sẽ được thưởng ngay 1,000 xu. <br>
-                                    Đối với mỗi báo cáo "Truyện không chính chủ" chính xác sẽ nhận ngay 10,000 xu.
+                                    Vui lòng mô tả chi tiết lỗi. Nếu báo lỗi đúng sẽ được thưởng ngay 1 coin. <br>
+                                    Đối với mỗi báo cáo "Truyện không chính chủ" chính xác sẽ nhận ngay 10 coin.
                                 </p>
                             </div>
 

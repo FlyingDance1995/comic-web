@@ -32,7 +32,7 @@ const columns = [
         width: 160,
     },
     {
-        title: 'Số tiền',
+        title: 'Số coin',
         slot: 'price',
         minWidth: 170,
     },
@@ -143,7 +143,7 @@ const getPakageVip = async () => {
     try {
         configStore.setLoadingModal(true);
         const response = await useNuxtApp().$api('/admin/package-vip');
-        packageVip.value = response?.results?.map((item, index) => {
+        packageVip.value = response?.results?.filter(x => x?.enable)?.map((item, index) => {
             return {
                 ...item,
                 stt: index
@@ -199,15 +199,15 @@ watch(() => route?.query, (value, oldValue) => {
                     <div class="card bg-warning text-center">
                         <div class="card-body">
                             <div class="p-2 text-dark rounded">
-                                Nâng cấp VIP bạn sẽ đọc truyện mà không có quảng cáo và được đọc truyện mới nhất
+                                Nâng cấp VIP bạn sẽ đọc truyện mà không có quảng cáo
                             </div>
                         </div>
                     </div>
 
                     <div class="card bg-info text-center">
                         <div class="card-body">
-                            <div class="p-2 text-white rounded">
-                                Số dư: {{ user?.wallet?.balance?.toLocaleString()?.replaceAll('.', ',') || 0 }} VNĐ
+                            <div class="text-white rounded">
+                                Số dư: {{ user?.wallet?.balance?.toLocaleString()?.replaceAll('.', ',') || 0 }} coin
                             </div>
                         </div>
                     </div>
@@ -220,7 +220,7 @@ watch(() => route?.query, (value, oldValue) => {
                             class="form-check mb-3">
                             <input v-model="selectedPrice" class="form-check-input" type="radio" name="premiumPrice" :id="`premiumPrice${item?.id}`" :value="item?.id">
                             <label class="form-check-label" :for="`premiumPrice${item?.id}`">
-                                Gói VIP {{ item?.name }} ({{ item?.duration_days }} ngày): {{ Number(item?.price)?.toLocaleString()?.replaceAll('.', ',') || 0 }} VNĐ
+                                Gói VIP {{ item?.name }} ({{ item?.duration_days }} ngày): {{ Number(item?.price)?.toLocaleString()?.replaceAll('.', ',') || 0 }} coin
                             </label>
                         </div>
 
@@ -255,7 +255,7 @@ watch(() => route?.query, (value, oldValue) => {
                             </template>
 
                             <template #price="{ row }">
-                                {{Number(row?.package?.price)?.toLocaleString()?.replaceAll('.', ',')}} VNĐ
+                                {{Number(row?.package?.price)?.toLocaleString()?.replaceAll('.', ',')}} coin
                             </template>
                         </Table>
 

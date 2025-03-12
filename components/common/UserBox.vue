@@ -71,8 +71,8 @@ watch(token, () => {
             class="dropdown-menu dropdown-menu-end"
             :class="openMenu ? 'show' : ''">
             <li>
-                <NuxtLink class="dropdown-item d-flex align-items-center" href="javascript:void(0)" to="/user/nap-tien">
-                    <i class="bx bx-money fs-5"></i><span>{{ user?.wallet?.balance?.toLocaleString()?.replaceAll('.', ',') || 0 }} VNĐ</span>
+                <NuxtLink class="dropdown-item d-flex align-items-center" to="/user/nap-tien">
+                    <i class="bx bx-money fs-5"></i><span>{{ user?.wallet?.balance?.toLocaleString()?.replaceAll('.', ',') || 0 }} coin</span>
                 </NuxtLink>
             </li>
 

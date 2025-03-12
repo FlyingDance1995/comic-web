@@ -33205,7 +33205,7 @@ span.type-icon {
 }
 
 .list-chapters .item .episode-title {
-    width: calc(100% - 105px)
+    /* width: calc(100% - 105px) */
 }
 
 .list-chapters .item .episode-date {

@@ -26,7 +26,6 @@ const props = defineProps({
 
 const router = useRouter();
 const configStore = useConfigStore();
-const runtimeConfig = useRuntimeConfig();
 
 const user = ref();
 const checkVIP = ref(false);
