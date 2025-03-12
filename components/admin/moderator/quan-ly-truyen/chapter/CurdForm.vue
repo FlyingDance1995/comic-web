@@ -150,7 +150,7 @@ const submit = async (draft) => {
     });
 };
 
-watch(status, () => {
+watch(status, () => {    
     if (status.value === 'add') {
         formRef.value.resetFields();
         formItem.content = "<p></p>";
@@ -242,13 +242,13 @@ defineExpose({
 
             <Row :gutter="20">
                 <Col span="10">
-                    <FormItem label="Khóa">
+                    <FormItem label="Khóa" prop="is_lock">
                         <Switch v-model="formItem.is_lock" :disabled="status === 'detail'"/>
                     </FormItem>
                 </Col>
 
                 <Col v-if="formItem.is_lock" span="10" offset="4">
-                    <FormItem label="Giá">
+                    <FormItem label="Giá" prop="coin">
                         <InputNumber v-if="status !== 'detail'" v-model="formItem.coin" placeholder="Số coin"
                                      class="w-100" :min="0" :readonly="status === 'detail'" />
 
