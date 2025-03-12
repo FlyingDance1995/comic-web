@@ -35,7 +35,7 @@ const columns = [
         minWidth: 160,
     },
     {
-        title: 'Số tiền',
+        title: 'Số coin',
         slot: 'price',
         minWidth: 170,
     },
@@ -96,29 +96,6 @@ const handleChangePage = (value) => {
     });
 };
 
-const handleStatusTransactionItem = async (row, status) => {
-    try {
-        loading.value = true;
-        await useNuxtApp().$api(`admin/transaction/${row?.id}`, {
-            method: "PUT",
-            body: {
-                status: status
-            }
-        });
-
-        await getData();
-        Notice.success({
-            title: 'Xử lý thành công',
-        });
-    } catch (e) {
-        loading.value = false;
-        Notice.error({
-            title: 'Xử lý thất bại',
-        });
-        console.log("error", e);
-    }
-};
-
 const handleSort = ({column, order}) => {
     const type = column.slot || column.key;
     const query = {
@@ -165,7 +142,13 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #user="{ row }">
-            {{ row?.user?.email }}
+            <Tooltip placement="bottom-end">
+                {{ row?.user?.fullname }}
+
+                <template #content>
+                    {{ row?.user?.email }}
+                </template>
+            </Tooltip>
         </template>
 
         <template #creation_time="{ row }">
@@ -181,7 +164,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #price="{ row }">
-            {{Number(row?.package?.price)?.toLocaleString()?.replaceAll('.', ',')}} VNĐ
+            {{Number(row?.package?.price)?.toLocaleString()?.replaceAll('.', ',')}} Coin
         </template>
     </Table>
 

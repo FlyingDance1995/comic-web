@@ -17,7 +17,7 @@ const columns = [
         title: 'STT',
         key: 'stt',
         slot: 'stt',
-        width: 80,
+        width: 70,
     },
     {
         title: 'Name',
@@ -43,6 +43,11 @@ const columns = [
         filterRemote: value => handleFilter('is_vip', value),
     },
     {
+        title: 'Số coin',
+        slot: 'balance',
+        width: 160,
+    },
+    {
         title: "Trạng thái",
         slot: "is_active",
         width: 150,
@@ -59,7 +64,7 @@ const columns = [
     {
         title: "Lần đăng nhập gần nhất",
         slot: "last_login",
-        width: 220,
+        width: 215,
         sortable: true
     },
     {
@@ -343,6 +348,10 @@ onUnmounted(() => {
 
         <template #email="{ row }">
             <span>{{ row?.email }}</span>
+        </template>
+
+        <template #balance="{ row }">
+            <span>{{ row?.wallet?.balance }} Coin</span>
         </template>
 
         <template #role="{ row }">

@@ -15,51 +15,35 @@ const columns = [
     {
         title: 'STT',
         key: 'stt',
-        slot: 'stt',
         width: 80,
     },
     {
         title: 'Người dùng',
         key: 'user',
         slot: 'user',
-        minWidth: 250,
-    },
-    {
-        title: 'Số tiền',
-        slot: 'amount',
         minWidth: 200,
     },
     {
-        title: 'Code',
-        key: 'code',
-        minWidth: 140,
+        title: 'Tên truyện',
+        slot: 'name',
+        minWidth: 300,
     },
     {
-        title: 'Trạng thái',
-        slot: 'status',
-        width: 150,
-        filters: mappingTransactionStatusTable,
-        filterMultiple: false,
-        filterRemote: value => handleFilter('status', value),
+        title: 'Tên chương',
+        slot: 'chapter',
+        minWidth: 300,
+    },
+    {
+        title: 'Số coin',
+        slot: 'price',
+        minWidth: 160,
     },
     {
         title: "Thời gian tạo",
         slot: "creation_time",
-        width: 180,
+        width: 170,
         sortable: true,
     },
-    {
-        title: "Thời gian cập nhật",
-        slot: "modification_time",
-        width: 180,
-        sortable: true,
-    },
-    {
-        title: " ",
-        slot: "action",
-        width: 60,
-        fixed: 'right'
-    }
 ];
 
 const data = ref([]);
@@ -76,7 +60,7 @@ const getData = async () => {
         }
         if (!query?.search) delete query.search;
 
-        const response = await $api('/admin/transaction', {
+        const response = await $api('/admin/chapter-buy', {
             query: {
                 ...query,
                 size: 10
@@ -111,29 +95,6 @@ const handleChangePage = (value) => {
     });
 };
 
-const handleStatusTransactionItem = async (row, status) => {
-    try {
-        loading.value = true;
-        await useNuxtApp().$api(`admin/transaction/${row?.id}`, {
-            method: "PUT",
-            body: {
-                status: status
-            }
-        });
-
-        await getData();
-        Notice.success({
-            title: 'Xử lý thành công',
-        });
-    } catch (e) {
-        loading.value = false;
-        Notice.error({
-            title: 'Xử lý thất bại',
-        });
-        console.log("error", e);
-    }
-};
-
 const handleSort = ({column, order}) => {
     const type = column.slot || column.key;
     const query = {
@@ -156,22 +117,11 @@ const handleSort = ({column, order}) => {
     });
 };
 
-const handleFilter = (type, value) => {
-    const query = {
-        ...route.query,
-    };
-
-    if (value.length > 0) {
-        query[type] = value.join(',');
-    } else {
-        delete query[type];
-    }
-
-    delete query.page;
-
-    router.push({
-        query,
-    });
+const getColor = (endDate) => {
+    if (!endDate) return '';
+    const currentDate = new Date();
+    const expiryDate = new Date(endDate);
+    return expiryDate > currentDate ? 'text-success' : 'text-danger';
 };
 
 watch(() => route?.query, (value, oldValue) => {
@@ -186,49 +136,30 @@ watch(() => route?.query, (value, oldValue) => {
 <template>
     <Table class="flex-1 mt-4" ref="table" max-height="650" :columns="columns" :data="data" :loading="loading"
            @on-sort-change="handleSort">
-        <template #stt="{ row }">
-            {{ row?.stt }}
-        </template>
-
         <template #user="{ row }">
-            {{ row?.user?.email }}
-        </template>
+            <Tooltip placement="bottom-end">
+                {{ row?.user?.fullname }}
 
-        <template #status="{ row }">
-            <span :style="{ color: mappingTransactionStatus(row?.status).color }">
-                {{ mappingTransactionStatus(row?.status).title }}
-            </span>
+                <template #content>
+                    {{ row?.user?.email }}
+                </template>
+            </Tooltip>
         </template>
 
         <template #creation_time="{ row }">
             <span>{{ formattedDate(row?.creation_time) }}</span>
         </template>
         
-        <template #modification_time="{ row }">
-            <span>{{ formattedDate(row?.modification_time) }}</span>
+        <template #name="{ row }">
+            <span>{{ row?.chapter?.story?.name }}</span>
         </template>
 
-        <template #amount="{ row }">
-            {{Number(row?.amount)?.toLocaleString()?.replaceAll('.', ',')}} VNĐ
+        <template #chapter="{ row }">
+            <span>Chương {{ row?.chapter?.chapter_number }}: {{ row?.chapter?.name }}</span>
         </template>
 
-        <template #action="{ row }">
-            <Dropdown v-if="row?.status === 'init'" trigger="hover">
-                <a href="javascript:void(0)">
-                    <Icon type="ios-more" size="24" style="cursor: pointer" />
-                </a>
-
-                <template #list>
-                    <DropdownMenu>
-                        <DropdownItem @click="handleStatusTransactionItem(row, 'success')">
-                            <span style="color: #15ca20">Thành công</span>
-                        </DropdownItem>
-                        <DropdownItem @click="handleStatusTransactionItem(row, 'failed')">
-                            <span style="color: #fd3550">Thất bại</span>
-                        </DropdownItem>
-                    </DropdownMenu>
-                </template>
-            </Dropdown>
+        <template #price="{ row }">
+            {{row?.chapter?.price ? Number(row?.chapter?.price)?.toLocaleString()?.replaceAll('.', ',') : 0 }} Coin
         </template>
     </Table>
 

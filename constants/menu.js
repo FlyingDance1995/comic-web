@@ -54,6 +54,11 @@ const menu = [
         icon: 'md-list',
         path: '/admin/lich-su-mua-vip'
     },
+    {
+        title: 'Lịch sử mua chương',
+        icon: 'md-list',
+        path: '/admin/lich-su-mua-chuong'
+    },
 ]
 
 export default menu
