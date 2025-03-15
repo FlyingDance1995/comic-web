@@ -28,7 +28,7 @@ const getData = async () => {
     data.value = story?.value;
 
     if (error?.value?.data?.error) {
-        await router.push('/');
+        await router.push('/user/nap-tien');
     } else if (!story.value) {
         throw createError({
             statusCode: 404,
