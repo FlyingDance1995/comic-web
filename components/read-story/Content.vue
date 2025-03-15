@@ -27,8 +27,8 @@ const getData = async () => {
     const { data: story, error, status } = await useAPI(`/story/${slug}/chapter/${chapter}`);
     data.value = story?.value;
 
-    if (error?.value?.data?.error?.includes('VIP')) {
-        await router.push('/user/mua-vip');
+    if (error?.value?.data?.error) {
+        await router.push('/');
     } else if (!story.value) {
         throw createError({
             statusCode: 404,
@@ -194,6 +194,11 @@ useSeoMeta({
         </div>
     </div>
 
-    <ReadStoryChapterFooter :chapter="chapter" :list-chapter="data?.list_chapter" :slug="slug"
-        :chapter_number="data?.chapter_number || 1" />
+    <ClientOnly>
+        <ReadStoryChapterFooter
+          :chapter="chapter"
+          :list-chapter="data?.list_chapter?.filter(item => !item?.is_lock)"
+          :slug="slug"
+          :chapter_number="data?.chapter_number || 1" />
+    </ClientOnly>
 </template>

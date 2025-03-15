@@ -98,7 +98,7 @@ defineExpose({
                  :class="{
                     visited: item?.watched
                  }">
-                <NuxtLink :to="!checkVIP && item?.is_lock
+                <NuxtLink :to="item?.is_lock
                         ? '#'
                         : `/${slug}/${item?.slug}`">
                     {{ formattedNameChaper(item?.type) }} {{ item?.chapter_number }}: {{ item?.name }}
@@ -106,7 +106,7 @@ defineExpose({
             </div>
 
             <div class="d-flex gap-2 justify-content-end">
-                <div v-if="!checkVIP && item?.is_lock"
+                <div v-if="item?.is_lock"
                     class="d-flex gap-1 cursor-pointer text-primary align-items-center"
                     @click="handleChapterBuy(item)">
                     <i class="bx bxs-lock"></i>

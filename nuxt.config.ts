@@ -1,5 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    // ssr: false,
+
     devtools: {enabled: false},
 
     future: {
@@ -100,7 +102,8 @@ export default defineNuxtConfig({
                 {rel: 'dns-prefetch', href: '//apis.google.com'},
                 {rel: 'dns-prefetch', href: '//static.xx.fbcdn.net'},
                 {href: process.env.NUXT_PUBLIC_SITE_URL?.replace("http://", "https://")},
-                {rel: 'stylesheet', href: 'https://unpkg.com/view-ui-plus/dist/styles/viewuiplus.css'},
+                // {rel: 'stylesheet', href: 'https://unpkg.com/view-ui-plus/dist/styles/viewuiplus.css'},
+                {rel: 'stylesheet', href: '/css/viewuiplus.css'},
                 {rel: 'stylesheet', href: '/css/owl.carousel.css'},
                 {rel: 'stylesheet', href: '/css/main.css'},
                 {rel: 'stylesheet', href: 'https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'},
@@ -151,6 +154,7 @@ export default defineNuxtConfig({
         routeRules: {
             // '/': { prerender: true },
             // '/**': { swr: 3600 },
+            '/:slug/:chapter': { ssr: false },
             '/user/thong-tin-ca-nhan': { ssr: false },
             '/user/truyen-da-luu': { ssr: false },
             '/user/dich-gia-dang-theo-doi': { ssr: false },

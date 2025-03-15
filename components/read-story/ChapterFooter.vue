@@ -45,7 +45,6 @@ if (process.client) {
     const userStore = useUserStore();
     user.value = userStore.$state.user;
     checkVIP.value = userStore.checkVIP();
-
 }
 </script>
 
@@ -77,7 +76,7 @@ if (process.client) {
                     @change="handleChange">
                 <template v-for="item in listChapter"
                           :key="item?.id">
-                    <option v-if="checkVIP || !item?.is_lock"
+                    <option v-if="!item?.is_lock"
                             :value="item?.slug"
                             :selected="item?.slug === chapter">
                         {{ formattedNameChaper(item?.type) }} {{item?.chapter_number || ''}}
@@ -91,7 +90,7 @@ if (process.client) {
                :class="chapter === listChapter[0]?.slug ? `btn-secondary` : 'btn-white'"
                class="btn btn-sm"
                style="margin: 0.3rem;">
-                <i class="bx bx-chevrons-right mr-0"></i>
+              <i class="bx bx-chevrons-right mr-0"></i>
             </NuxtLink>
         </div>
     </div>

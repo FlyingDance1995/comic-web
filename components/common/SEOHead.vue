@@ -29,18 +29,18 @@ const description = getMax250Chars(info?.description || '');
 <template>
     <Head>
         <Title>{{ title }}</Title>
-        <Meta name="title" :content="`${info.name} | Phê Truyện`" />
+        <Meta name="title" :content="`${info?.name} | Phê Truyện`" />
         <Meta name="description" :content="description" />
         <Meta name="image" :content="defaultImage" />
 
         <Meta property="og:site_name" :content="siteName" />
         <Meta property="og:url" :content="canonical" />
-        <Meta property="og:title" :content="`${info.name} | Phê Truyện`" />
+        <Meta property="og:title" :content="`${info?.name} | Phê Truyện`" />
         <Meta property="og:description" :content="description" />
         <Meta property="og:image" :content="defaultImage" />
 
         <Meta name="twitter:card" content="summary_large_image" />
-        <Meta name="twitter:title" :content="`${info.name} | Phê Truyện`" />
+        <Meta name="twitter:title" :content="`${info?.name} | Phê Truyện`" />
         <Meta name="twitter:description" :content="description" />
         <Meta name="twitter:image" :content="twitterImage" />
         <Meta name="twitter:url" :content="canonical" />
