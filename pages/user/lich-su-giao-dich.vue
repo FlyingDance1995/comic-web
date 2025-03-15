@@ -17,31 +17,31 @@ const total = ref(0);
 
 const columns = [
     {
-        title: "ID",
-        key: "id",
-        width: 100,
+        title: 'STT',
+        key: 'stt',
+        width: 80,
     },
     {
-        title: "Thời gian",
-        slot: "creation_time",
-        width: 200,
+        title: 'Tên truyện',
+        slot: 'name',
+        minWidth: 300,
     },
     {
-        title: 'Code',
-        key: 'code',
-        minWidth: 200,
-    },
-    {
-        title: 'Trạng thái',
-        slot: 'status',
+        title: 'Tên chương',
+        slot: 'chapter',
         minWidth: 300,
     },
     {
         title: 'Số coin',
-        slot: 'amount',
-        minWidth: 300,
+        slot: 'price',
+        minWidth: 160,
     },
-]
+    {
+        title: "Thời gian",
+        slot: "creation_time",
+        width: 180,
+    },
+];
 
 const getData = async () => {
     try {
@@ -52,7 +52,7 @@ const getData = async () => {
         }
         if (!query?.search) delete query.search;
 
-        const response = await $api('/profile/transaction', {
+        const response = await $api('/profile/chapter-buy', {
             query: {
                 ...query,
                 size: 10
@@ -99,12 +99,12 @@ watch(() => route?.query, (value, oldValue) => {
 
 <template>
     <Head>
-        <Title>Lịch sử giao dịch</Title>
+        <Title>Lịch sử mua chương</Title>
     </Head>
 
     <div class="row">
         <div class="mx-auto">
-            <h6 class="mb-0 text-uppercase">Lịch sử giao dịch</h6>
+            <h6 class="mb-0 text-uppercase">Lịch sử mua chương</h6>
             <hr>
             <div class="card">
                 <div class="card-body">
@@ -121,14 +121,22 @@ watch(() => route?.query, (value, oldValue) => {
                                 <span>{{ formattedDate(row?.creation_time) }}</span>
                             </template>
 
-                            <template #status="{ row }">
-                                <span :style="{ color: mappingTransactionStatus(row?.status).color }">
-                                    {{ mappingTransactionStatus(row?.status).title }}
-                                </span>
+                            <template #name="{ row }">
+                                <NuxtLink :to="`/${row?.chapter?.story?.slug}/${row?.chapter?.slug}`" target="_blank"
+                                    class="text-primary">
+                                    {{ row?.chapter?.story?.name }}
+                                </NuxtLink>
                             </template>
 
-                            <template #amount="{ row }">
-                                {{Number(row?.amount)?.toLocaleString()?.replaceAll('.', ',')}} coin
+                            <template #chapter="{ row }">
+                                <NuxtLink :to="`/${row?.chapter?.story?.slug}/${row?.chapter?.slug}`" target="_blank"
+                                    class="text-primary">
+                                  {{ formattedNameChaper(row?.chapter?.type) }} {{ row?.chapter?.chapter_number }}: {{ row?.chapter?.name }}
+                                </NuxtLink>
+                            </template>
+
+                            <template #price="{ row }">
+                                {{ Number(row?.chapter?.price || row?.chapter?.coin || 0)?.toLocaleString()?.replaceAll('.', ',') }} coin
                             </template>
                         </Table>
 

@@ -155,7 +155,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #chapter="{ row }">
-            <span>Chương {{ row?.chapter?.chapter_number }}: {{ row?.chapter?.name }}</span>
+            <span>{{ formattedNameChaper(row?.chapter?.type) }} {{ row?.chapter?.chapter_number }}: {{ row?.chapter?.name }}</span>
         </template>
 
         <template #price="{ row }">
