@@ -24,18 +24,31 @@ const checkVIP = ref(false);
 const styles = reactive(initStyle);
 
 const getData = async () => {
-    const { data: story, error, status } = await useAPI(`/story/${slug}/chapter/${chapter}`);
-    data.value = story?.value;
-
-    if (error?.value?.data?.error) {
-        await router.push('/user/nap-tien');
-    } else if (!story.value) {
+    // const { data: story, error, status } = await useAPI(`/story/${slug}/chapter/${chapter}`);
+    try {
+      data.value = await useNuxtApp().$api(`/story/${slug}/chapter/${chapter}`);
+    } catch (e) {
+      console.log(e)
+      if (e?.response?.status === 404) {
         throw createError({
             statusCode: 404,
             fatal: true,
             statusMessage: 'Page Not Found'
         });
+      } else if (e?.response?.status === 403 || e?.response?.status === 401) {
+        await router.push('/user/nap-tien');
+      }
     }
+
+    // if (error?.value?.data?.error) {
+    //     await router.push('/user/nap-tien');
+    // } else if (!story.value) {
+    //     throw createError({
+    //         statusCode: 404,
+    //         fatal: true,
+    //         statusMessage: 'Page Not Found'
+    //     });
+    // }
 };
 
 if (slug && chapter) await getData();
@@ -134,7 +147,6 @@ useSeoMeta({
 </script>
 
 <template>
-
     <Head>
         <Title>{{ data?.name || data?.story?.name }} - {{ formattedNameChaper(data?.type) }} {{ data?.chapter_number ||
             '' }}: {{ data?.name || '' }}</Title>
@@ -143,6 +155,7 @@ useSeoMeta({
     <div class="container page-chapter-detail">
         <!--breadcrumb-->
         <CommonBreadCrumb
+            v-if="data?.name"
             :name="`${formattedNameChaper(data?.type)} ${data?.chapter_number || ''}: ${data?.name || ''}`">
             <li class="breadcrumb-item">
                 <NuxtLink :to="`/${data?.story?.slug}`">{{ data?.story?.name }}</NuxtLink>
@@ -152,7 +165,7 @@ useSeoMeta({
 
         <div class="card">
             <div class="card-body">
-                <h1 class="card-title">{{ data?.story?.name }} - {{ formattedNameChaper(data?.type) }}
+                <h1 v-if="data?.story?.name" class="card-title">{{ data?.story?.name }} - {{ formattedNameChaper(data?.type) }}
                     {{ data?.chapter_number || '' }}: {{ data?.name || '' }}</h1>
 
                 <p class="bg-light-info p-3 radius-10 mt-3">

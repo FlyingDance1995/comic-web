@@ -175,5 +175,9 @@ export default defineNuxtConfig({
         },
     },
 
+     // experimental: {
+     //    inlineRouteRules: true
+     // }
+
     // css: ['view-ui-plus/dist/styles/viewuiplus.css', '~/assets/css/main.css'],
 })
