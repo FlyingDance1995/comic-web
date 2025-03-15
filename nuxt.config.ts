@@ -154,7 +154,7 @@ export default defineNuxtConfig({
         routeRules: {
             // '/': { prerender: true },
             // '/**': { swr: 3600 },
-            '/:slug/:chapter': { ssr: false },
+            // '/:slug/:chapter': { ssr: false },
             '/user/thong-tin-ca-nhan': { ssr: false },
             '/user/truyen-da-luu': { ssr: false },
             '/user/dich-gia-dang-theo-doi': { ssr: false },
