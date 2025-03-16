@@ -118,36 +118,38 @@ onUnmounted(() => {
 });
 
 
-useHead({
-    title: `${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
-    meta: [
-        {
-            name: 'title',
-            content: `${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''} | Phê truyện`
-        },
-        {
-            name: 'description',
-            content: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`)
-        },
-        {
-            name: "image",
-            content: data.value?.story?.avatar?.replace("http://", "https://")
-        }
-    ],
-});
+if (data.value) {
+    useHead({
+        title: `${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
+        meta: [
+            {
+                name: 'title',
+                content: `${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''} | Phê truyện`
+            },
+            {
+                name: 'description',
+                content: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`)
+            },
+            {
+                name: "image",
+                content: data.value?.story?.avatar?.replace("http://", "https://")
+            }
+        ],
+    });
 
-useSeoMeta({
-    title: `${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
-    ogTitle: `${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
-    description: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
-    ogDescription: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
-    ogImage: data.value?.story?.avatar?.replace("http://", "https://"),
-    twitterCard: 'summary_large_image',
-});
+    useSeoMeta({
+        title: `${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
+        ogTitle: `${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`,
+        description: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
+        ogDescription: getMax250Chars(`${data.value?.name || data.value?.story?.name} - ${formattedNameChaper(data.value?.type)} ${data.value?.chapter_number || ''}: ${data.value?.name || ''}`),
+        ogImage: data.value?.story?.avatar?.replace("http://", "https://"),
+        twitterCard: 'summary_large_image',
+    });
+}
 </script>
 
 <template>
-    <Head>
+    <Head v-if="data?.name">
         <Title>{{ data?.name || data?.story?.name }} - {{ formattedNameChaper(data?.type) }} {{ data?.chapter_number ||
             '' }}: {{ data?.name || '' }}</Title>
     </Head>
