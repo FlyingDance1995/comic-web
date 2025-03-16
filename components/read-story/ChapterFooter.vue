@@ -34,12 +34,45 @@ const indexCurrentChapter = computed(() => props.listChapter.findIndex(o => o?.s
 
 const handleChange = (e) => {
     // window.location.href = e.target.value;
-    router.push(e.target.value)
+    // router.push(e.target.value)
+    const item = props.listChapter?.find(x => x?.slug === e.target.value)
+    if (item?.is_lock) {
+        e.target.value = props.chapter;
+        return configStore.setSwal({
+            open: true,
+            title: 'Oops...',
+            text: 'Bạn cần mua chương này để có thể đọc.',
+            type: 'error'
+        });
+    }
+    router.push(item?.slug)
 };
 
 const openSetting = () => {
     configStore.setSettingModal(true);
 };
+
+const handleNext = () => {
+    if (props.listChapter?.find((_, index) => indexCurrentChapter.value === index + 1)?.is_lock) {
+        configStore.setSwal({
+            open: true,
+            title: 'Oops...',
+            text: 'Bạn cần mua chương này để có thể đọc.',
+            type: 'error'
+        });
+    }
+}
+
+const handlePrev = () => {
+    if (props.listChapter?.find((_, index) => indexCurrentChapter.value === index - 1)?.is_lock) {
+        configStore.setSwal({
+            open: true,
+            title: 'Oops...',
+            text: 'Bạn cần mua chương này để có thể đọc.',
+            type: 'error'
+        });
+    }
+}
 
 if (process.client) {
     const userStore = useUserStore();
@@ -61,12 +94,13 @@ if (process.client) {
                 <i class="bx bx-list-ol mr-0"></i>
             </NuxtLink>
 
-            <NuxtLink :to="chapter === listChapter[listChapter.length - 1]?.slug
+            <NuxtLink :to="chapter === listChapter[listChapter.length - 1]?.slug || listChapter?.find((_, index) => indexCurrentChapter === index - 1)?.is_lock
                         ? 'javascript:void(0)'
                         : `/${slug}/${listChapter?.find((_, index) => indexCurrentChapter === index - 1)?.slug}`"
                :class="chapter === listChapter[listChapter.length - 1]?.slug ? `btn-secondary` : 'btn-white'"
                class="btn btn-sm"
-               style="margin: 0.3rem;">
+               style="margin: 0.3rem;"
+               @click="handlePrev">
                 <i class="bx bx-chevrons-left mr-0"></i>
             </NuxtLink>
 
@@ -76,20 +110,21 @@ if (process.client) {
                     @change="handleChange">
                 <template v-for="item in listChapter"
                           :key="item?.id">
-                    <option v-if="!item?.is_lock"
-                            :value="item?.slug"
+                    <option :value="item?.slug"
                             :selected="item?.slug === chapter">
-                        {{ formattedNameChaper(item?.type) }} {{item?.chapter_number || ''}}
+                        {{ formattedNameChaper(item?.type) }} {{item?.chapter_number || ''}} 
+                        <span v-if="item?.is_lock">🔒</span>
                     </option>
                 </template>
             </select>
 
-            <NuxtLink :to="chapter === listChapter[0]?.slug
+            <NuxtLink :to="chapter === listChapter[0]?.slug || listChapter?.find((_, index) => indexCurrentChapter === index + 1)?.is_lock
                         ? 'javascript:void(0)'
                         : `/${slug}/${listChapter?.find((_, index) => indexCurrentChapter === index + 1)?.slug}`"
                :class="chapter === listChapter[0]?.slug ? `btn-secondary` : 'btn-white'"
                class="btn btn-sm"
-               style="margin: 0.3rem;">
+               style="margin: 0.3rem;"
+               @click="handleNext">
               <i class="bx bx-chevrons-right mr-0"></i>
             </NuxtLink>
         </div>

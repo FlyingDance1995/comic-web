@@ -210,7 +210,7 @@ useSeoMeta({
     <ClientOnly>
         <ReadStoryChapterFooter
           :chapter="chapter"
-          :list-chapter="data?.list_chapter?.filter(item => !item?.is_lock)"
+          :list-chapter="data?.list_chapter"
           :slug="slug"
           :chapter_number="data?.chapter_number || 1" />
     </ClientOnly>
