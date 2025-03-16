@@ -115,7 +115,8 @@ export default defineNuxtConfig({
         // "@nuxt/ui",
         "@nuxtjs/seo",
         '@nuxt/image',
-        '@pinia/nuxt',
+        "@vite-pwa/nuxt",
+        '@pinia/nuxt'
     ],
 
     site: {
@@ -178,6 +179,54 @@ export default defineNuxtConfig({
      // experimental: {
      //    inlineRouteRules: true
      // }
+
+    pwa: {
+        strategies: 'generateSW',
+        registerType: 'autoUpdate',
+        manifest: {
+            name: 'Phê Truyện',
+            short_name: 'Phê Truyện',
+            description: "Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất",
+            lang: 'vi',
+            // useWebmanifestExtension: false,
+            "start_url": ".",
+            "display": "standalone",
+            "theme_color": "#ffffff",
+            "background_color": "#ffffff",
+            icons: [
+                {
+                    src: "images/favicon/icon_64x64.png",
+                    sizes: "64x64",
+                    type: "image/png",
+                },
+                {
+                    src: "images/favicon/ms-icon-144x144.png",
+                    sizes: "144x144",
+                    type: "image/png",
+                },
+                {
+                    src: "images/favicon/android-icon-192x192.png",
+                    sizes: "192x192",
+                    type: "image/png",
+                },
+                {
+                    src: "images/favicon/icon_512x512.png",
+                    sizes: "512x512",
+                    type: "image/png",
+                },
+            ],
+        },
+        workbox: {
+            navigateFallback: '/'
+        },
+        client: {
+            installPrompt: true,
+        },
+        devOptions: {
+            enabled: true,
+            type: 'module'
+        }
+    },
 
     // css: ['view-ui-plus/dist/styles/viewuiplus.css', '~/assets/css/main.css'],
 })
