@@ -9,11 +9,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
     deferredPrompt.value = e;
 });
 
-window.addEventListener('appinstalled', () => {
-    console.log('Ứng dụng PWA đã được cài đặt');
-    androidIsInstalled.value = true;
-});
-
 const installApp = async () => {
     if (isIOS.value) {
         alert('Để cài đặt ứng dụng trên iOS, vui lòng nhấn nút "Chia sẻ" trong Safari, sau đó tìm và chọn "Thêm vào Màn hình chính".');
@@ -29,7 +24,16 @@ const installApp = async () => {
     } else {
         console.log('Không thể hiển thị lời nhắc cài đặt PWA');
     }
-}
+};
+
+onMounted(() => {
+    androidIsInstalled.value = window.matchMedia('(display-mode: standalone)').matches;
+    if (androidIsInstalled.value) {
+        alert('Người dùng đang truy cập từ ứng dụng PWA đã cài đặt.');
+    } else {
+        alert('Người dùng đang truy cập từ trình duyệt web.');
+    }
+});
 </script>
 
 <template>
