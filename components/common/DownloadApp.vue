@@ -33,7 +33,7 @@ const installApp = async () => {
 </script>
 
 <template>
-    <div v-if="!iOSIsInstalled || !iOSIsAndroid" class="box-app d-flex align-items-center">
+    <div v-if="!iOSIsInstalled && !iOSIsAndroid" class="box-app d-flex align-items-center">
         <div class="app-logo">
             <img
                 alt=""
