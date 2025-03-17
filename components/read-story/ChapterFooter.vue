@@ -34,18 +34,36 @@ const indexCurrentChapter = computed(() => props.listChapter.findIndex(o => o?.s
 
 const handleChange = (e) => {
     // window.location.href = e.target.value;
-    // router.push(e.target.value)
     const item = props.listChapter?.find(x => x?.slug === e.target.value)
     if (item?.is_lock) {
         e.target.value = props.chapter;
         return configStore.setSwal({
             open: true,
-            title: 'Oops...',
-            text: 'Bạn cần mua chương này để có thể đọc.',
-            type: 'error'
+            title: 'Mua chương',
+            text: `Bạn muốn mua chương này với ${item?.coin} coin?`,
+            type: 'info',
+            onSubmit: async () => {
+                const res = await handleChapterBuy(item?.id, item?.coin, item?.slug);
+                if (res === 'Đã mua chương này') {
+                    e.target.value = item?.slug;
+                }
+                return res;
+            }
         });
     }
     router.push(item?.slug)
+};
+
+const getInfo = async () => {
+    try {
+        const response = await useNuxtApp().$api('/profile');
+        useUserStore().setUser({
+            ...user.value,
+            ...response
+        })
+    } catch (error) {
+        console.log("error", error);
+    }
 };
 
 const openSetting = () => {
@@ -53,24 +71,61 @@ const openSetting = () => {
 };
 
 const handleNext = () => {
-    if (props.listChapter?.find((_, index) => indexCurrentChapter.value === index + 1)?.is_lock) {
+    const afterChapter = props.listChapter?.find((_, index) => indexCurrentChapter.value === index + 1);
+    if (afterChapter?.is_lock) {
         configStore.setSwal({
             open: true,
-            title: 'Oops...',
-            text: 'Bạn cần mua chương này để có thể đọc.',
-            type: 'error'
+            title: 'Mua chương',
+            text: `Bạn muốn mua chương này với ${afterChapter?.coin} coin?`,
+            type: 'info',
+            onSubmit: async () => handleChapterBuy(afterChapter?.id, afterChapter?.coin, afterChapter?.slug)
         });
     }
 }
 
 const handlePrev = () => {
-    if (props.listChapter?.find((_, index) => indexCurrentChapter.value === index - 1)?.is_lock) {
+    const beforeChapter = props.listChapter?.find((_, index) => indexCurrentChapter.value === index - 1);
+    if (beforeChapter?.is_lock) {
         configStore.setSwal({
             open: true,
-            title: 'Oops...',
-            text: 'Bạn cần mua chương này để có thể đọc.',
-            type: 'error'
+            title: 'Mua chương',
+            text: `Bạn muốn mua chương này với ${beforeChapter?.coin} coin?`,
+            type: 'info',
+            onSubmit: async () => handleChapterBuy(beforeChapter?.id, beforeChapter?.coin, beforeChapter?.slug)
         });
+    }
+}
+
+const handleChapterBuy = async (id, coin, slug) => {
+    try {
+        if (!user.value) {
+            return configStore.setSwal({
+                open: true,
+                title: 'Oops...',
+                text: 'Bạn cần đăng nhập để có thể mua chương này.',
+                type: 'error'
+            });
+        }
+
+        if (user.value?.wallet?.balance < coin) {
+            return await router.push('/user/nap-tien')
+        }
+
+        configStore.setLoadingModal(true);
+        await useNuxtApp().$api('/profile/chapter-buy', {
+            method: "POST",
+            body: {
+                chapter: id
+            }
+        });
+        await getInfo();
+        await router.push(`/${props.slug}/${slug}`)
+        configStore.setLoadingModal(false);
+        return 'Đã mua chương này';
+    } catch (e) {
+        configStore.setLoadingModal(false);
+        console.log("error", e?.response);
+        return null;
     }
 }
 
