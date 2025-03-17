@@ -2,7 +2,7 @@
 const deferredPrompt = ref(null);
 const isIOS = ref(/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream);
 const iOSIsInstalled = ref(window.navigator.standalone === true);
-const iOSIsAndroid = ref(false);
+const androidIsInstalled = ref(false);
 
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
@@ -11,7 +11,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 window.addEventListener('appinstalled', () => {
     console.log('Ứng dụng PWA đã được cài đặt');
-    iOSIsAndroid.value = true;
+    androidIsInstalled.value = true;
 });
 
 const installApp = async () => {
@@ -33,7 +33,7 @@ const installApp = async () => {
 </script>
 
 <template>
-    <div v-if="!iOSIsInstalled && !iOSIsAndroid" class="box-app d-flex align-items-center">
+    <div v-if="!iOSIsInstalled && !androidIsInstalled" class="box-app d-flex align-items-center">
         <div class="app-logo">
             <img
                 alt=""
