@@ -1,13 +1,23 @@
 <script setup>
 const deferredPrompt = ref(null);
+const isIOS = ref(/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream);
+const iOSIsInstalled = ref(window.navigator.standalone === true);
+const iOSIsAndroid = ref(false);
 
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt.value = e;
 });
 
+window.addEventListener('appinstalled', () => {
+    console.log('Ứng dụng PWA đã được cài đặt');
+    iOSIsAndroid.value = true;
+});
+
 const installApp = async () => {
-    if (deferredPrompt.value) {
+    if (isIOS.value) {
+        alert('Để cài đặt ứng dụng trên iOS, vui lòng nhấn nút "Chia sẻ" trong Safari, sau đó tìm và chọn "Thêm vào Màn hình chính".');
+    } else if (deferredPrompt.value) {
         deferredPrompt.value.prompt();
         const { outcome } = await deferredPrompt.value.userChoice;
         if (outcome === 'accepted') {
@@ -23,7 +33,7 @@ const installApp = async () => {
 </script>
 
 <template>
-    <div class="box-app d-flex align-items-center">
+    <div v-if="!iOSIsInstalled || !iOSIsAndroid" class="box-app d-flex align-items-center">
         <div class="app-logo">
             <img
                 alt=""
