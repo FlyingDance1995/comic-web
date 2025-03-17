@@ -3,7 +3,9 @@
 </script>
 
 <template>
-    <CommonDownloadApp />
+    <ClientOnly>
+        <CommonDownloadApp />
+    </ClientOnly>
 
     <HomeSectionRecomended/>
 
