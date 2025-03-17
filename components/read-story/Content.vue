@@ -8,7 +8,6 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css';
 const route = useRoute();
 const router = useRouter();
 const configStore = useConfigStore();
-const userStore = useUserStore();
 
 const slug = route?.params?.slug;
 const chapter = route?.params?.chapter || '';
@@ -19,10 +18,9 @@ const initStyle = {
     'line-height': '140%',
 }
 
-const user = computed(() => userStore.$state.user);
-const checkVIP = computed(() => userStore.checkVIP());
-
 const data = ref(null);
+const user = ref(null);
+const checkVIP = ref(false);
 const stateAffClick = ref(false);
 const styles = reactive(initStyle);
 
@@ -35,13 +33,15 @@ const getData = async () => {
             const id = e?.response?._data?.id;
             const coin = e?.response?._data?.coin;
 
-            configStore.setSwal({
-                open: true,
-                title: 'Mua chương',
-                text: `Bạn muốn mua chương này với ${coin} coin?`,
-                type: 'info',
-                onSubmit: async () => await handleChapterBuy(id, coin)
-            });
+            if (process.client) {
+                configStore.setSwal({
+                    open: true,
+                    title: 'Mua chương',
+                    text: `Bạn muốn mua chương này với ${coin} coin?`,
+                    type: 'info',
+                    onSubmit: async () => await handleChapterBuy(id, coin)
+                });
+            }
         } else {
             throw createError({
                 statusCode: 404,
@@ -127,6 +127,12 @@ const handleChangeSetting = (e) => {
         styles['line-height'] = e?.detail?.form.lineHeight + '%' || '140%';
     }
 };
+
+if (process.client) {
+    const userStore = useUserStore();
+    user.value = userStore.$state.user;
+    checkVIP.value = userStore.checkVIP();
+}
 
 onMounted(() => {
     try {
