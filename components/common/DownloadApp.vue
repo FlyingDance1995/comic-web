@@ -28,11 +28,6 @@ const installApp = async () => {
 
 onMounted(() => {
     androidIsInstalled.value = window.matchMedia('(display-mode: standalone)').matches;
-    if (androidIsInstalled.value) {
-        alert('Người dùng đang truy cập từ ứng dụng PWA đã cài đặt.');
-    } else {
-        alert('Người dùng đang truy cập từ trình duyệt web.');
-    }
 });
 </script>
 
