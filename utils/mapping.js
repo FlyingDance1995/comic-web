@@ -190,7 +190,7 @@ export const mappingTransactionStatus  = (value) => {
         case 'failed':
             return {
                 title: 'Thất bại',
-                color: '#FCBD01'
+                color: '#FE3821'
             };
 
         case 'init':

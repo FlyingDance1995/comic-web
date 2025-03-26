@@ -52,10 +52,13 @@ getData();
                              class="d-flex top-item">
                             <div class="stt">{{ index + 1 }}</div>
                             <div class="thumbnail">
-                                <img
+                                <NuxtLink
+                                    :to="`/nhom-dich/${item?.slug}`">
+                                    <img
                                     :src="item?.avatar || ''"
                                     :alt="item?.name"
                                     onerror="this.src='/no-image.png'">
+                                </NuxtLink>
                             </div>
 
                             <div class="detail">
