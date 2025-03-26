@@ -12,6 +12,10 @@ const handleAffClick = (link) => {
     window.open(link, "_blank")
     emit('on-click-aff-chuong');
 }
+
+if (!aff.value) {
+    emit('on-click-aff-chuong');
+}
 </script>
 
 <template>

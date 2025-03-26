@@ -219,7 +219,7 @@ watch(() => route?.query, (value, oldValue) => {
         </template>
 
         <template #action="{ row }">
-            <Dropdown v-if="row?.status === 'init'" trigger="hover">
+            <Dropdown v-if="row?.status !== 'success'" trigger="hover">
                 <a href="javascript:void(0)">
                     <Icon type="ios-more" size="24" style="cursor: pointer" />
                 </a>
@@ -229,7 +229,7 @@ watch(() => route?.query, (value, oldValue) => {
                         <DropdownItem @click="handleStatusTransactionItem(row, 'success')">
                             <span style="color: #15ca20">Thành công</span>
                         </DropdownItem>
-                        <DropdownItem @click="handleStatusTransactionItem(row, 'failed')">
+                        <DropdownItem v-if="row?.status !== 'failed'" @click="handleStatusTransactionItem(row, 'failed')">
                             <span style="color: #fd3550">Thất bại</span>
                         </DropdownItem>
                     </DropdownMenu>

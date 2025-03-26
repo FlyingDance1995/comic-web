@@ -223,9 +223,11 @@ if (data.value) {
                     Lượt xem: {{ data?.count_watched }}
                 </p>
                 <div class="chapter-content">
-                    <div v-if="stateAffClick || checkVIP" class="content-container mt-4 ql-editor"
+                    <div v-if="stateAffClick || checkVIP"
+                         class="content-container mt-4 ql-editor"
                          id="chapter-content-render"
                          :style="styles"
+                         style="text-align: justify;"
                          v-html="data?.content">
                     </div>
 
