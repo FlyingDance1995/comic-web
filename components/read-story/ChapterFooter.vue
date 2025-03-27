@@ -5,10 +5,8 @@ import {useUserStore} from "~/store/user.js";
 
 const props = defineProps({
     slug: {
-        type: {
-            type: String,
-            default: ''
-        }
+        type: String,
+        default: ''
     },
     chapter: {
         type: String,
@@ -26,9 +24,9 @@ const props = defineProps({
 
 const router = useRouter();
 const configStore = useConfigStore();
+const userStore = useUserStore();
 
-const user = ref();
-const checkVIP = ref(false);
+const user = computed(() => userStore.$state.user);
 
 const indexCurrentChapter = computed(() => props.listChapter.findIndex(o => o?.slug === props.chapter));
 
@@ -127,12 +125,6 @@ const handleChapterBuy = async (id, coin, slug) => {
         console.log("error", e?.response);
         return null;
     }
-}
-
-if (process.client) {
-    const userStore = useUserStore();
-    user.value = userStore.$state.user;
-    checkVIP.value = userStore.checkVIP();
 }
 </script>
 

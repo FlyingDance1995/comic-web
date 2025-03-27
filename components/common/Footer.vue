@@ -1,22 +1,5 @@
 <script setup>
-import {useConfigStore} from "~/store/config.js";
-
 const runtimeConfig = useRuntimeConfig();
-const configStore = useConfigStore();
-
-const report = () => {
-    const user = localStorage.getItem('user');
-    if (!user) {
-        return configStore.setSwal({
-            open: true,
-            title: 'Oops...',
-            text: 'Bạn cần đăng nhập để có thể báo cáo lỗi.',
-            type: 'error'
-        });
-    }
-
-    setTimeout(() => configStore.setReportModal(true), 100)
-};
 </script>
 
 <template>
@@ -39,9 +22,6 @@ const report = () => {
                                 {{ runtimeConfig.public?.contactFb }}
                             </NuxtLink>
                         </p>
-<!--                        <button type="button" class="btn btn-sm btn-danger radius-30 px-3" @click.prevent="report">-->
-<!--                            Báo cáo vi phạm bản quyền-->
-<!--                        </button>-->
                     </div>
                 </div>
 

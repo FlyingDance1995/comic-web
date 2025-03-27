@@ -5,10 +5,13 @@ import {useUserStore} from "~/store/user.js";
 
 const menuStore = useMenuStore();
 const categoryStore = useCategoryStore();
+const userStore = useUserStore();
 
 await categoryStore.fetchCategory();
 
 const {category, loading, error} = storeToRefs(categoryStore);
+
+const user = computed(() => userStore.$state.user);
 const openMenu = computed(() => menuStore.$state.open);
 const openSubMenu = ref(false);
 const openSubMenu2 = ref(false);
@@ -29,20 +32,6 @@ const subMenuVip = [
 const closeMenu = () => {
     menuStore.setMenu(false);
 };
-
-let userStore = null;
-const user = ref();
-const checkVIP = ref(false);
-if (process.client) {
-    userStore = useUserStore();
-    const userComputed = computed(() => userStore.$state.user);
-    const checkVIPComputed = computed(() => userStore.checkVIP());
-
-    watch(userComputed, () => {
-        user.value = userComputed.value;
-        checkVIP.value = checkVIPComputed.value;
-    }, {immediate: true, deep: true});
-}
 </script>
 
 <template>

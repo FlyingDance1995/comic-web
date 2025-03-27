@@ -22,9 +22,9 @@ export default defineNuxtConfig({
                     name: 'title',
                     content: 'Phê Truyện - Chuyên cập nhật các truyện tiểu thuyết, ngôn tình, truyện ngắn hot nhất'
                 },
-                {name: 'msapplication-TileColor', content: '#ffffff'},
+                {name: 'msapplication-TileColor', content: '#f2b3f5'},
                 {name: 'msapplication-TileImage', content: '/images/favicon/ms-icon-144x144.png'},
-                {name: 'theme-color', content: '#ffffff'},
+                {name: 'theme-color', content: '#f2b3f5'},
                 {property: 'og:type', content: 'website'},
                 {
                     name: 'description',
@@ -191,8 +191,8 @@ export default defineNuxtConfig({
             // useWebmanifestExtension: false,
             "start_url": ".",
             "display": "standalone",
-            "theme_color": "#ffffff",
-            "background_color": "#ffffff",
+            "theme_color": "#f2b3f5",
+            "background_color": "#f2b3f5",
             icons: [
                 {
                     src: "images/favicon/icon_64x64.png",

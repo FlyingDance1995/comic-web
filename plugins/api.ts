@@ -5,10 +5,7 @@ export default defineNuxtPlugin(() => {
         baseURL: runtimeConfig.public.apiEndpoint,
         // @ts-ignore
         onRequest({ request, options, error }) {
-            let access_token = null;
-            if (!process.server) {
-                access_token = localStorage.getItem('token');
-            }
+            const access_token = useCookie('token').value;
 
             if (access_token && access_token !== 'null') {
                 const headers = options.headers ||= {};

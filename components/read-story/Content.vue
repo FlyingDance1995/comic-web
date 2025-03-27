@@ -8,6 +8,7 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css';
 const route = useRoute();
 const router = useRouter();
 const configStore = useConfigStore();
+const userStore = useUserStore();
 
 const slug = route?.params?.slug;
 const chapter = route?.params?.chapter || '';
@@ -18,37 +19,37 @@ const initStyle = {
     'line-height': '140%',
 }
 
+const user = computed(() => userStore.$state.user);
+const checkVIP = computed(() => userStore.checkVIP());
+const aff = computed(() => configStore.$state.affList?.find(x => x?.location === 3));
+
 const data = ref(null);
-const user = ref(null);
-const checkVIP = ref(false);
 const stateAffClick = ref(false);
 const styles = reactive(initStyle);
 
 const getData = async () => {
-    // const { data: story, error, status } = await useAPI(`/story/${slug}/chapter/${chapter}`);
-    try {
-        data.value = await useNuxtApp().$api(`/story/${slug}/chapter/${chapter}`);
-    } catch (e) {
-        if (e?.response?.status === 403) {
-            const id = e?.response?._data?.id;
-            const coin = e?.response?._data?.coin;
+    const { data: story, error, status } = await useAPI(`/story/${slug}/chapter/${chapter}`);
+    data.value = story.value;
 
-            if (process.client) {
-                configStore.setSwal({
-                    open: true,
-                    title: 'Mua chương',
-                    text: `Bạn muốn mua chương này với ${coin} coin?`,
-                    type: 'info',
-                    onSubmit: async () => await handleChapterBuy(id, coin)
-                });
-            }
-        } else {
-            throw createError({
-                statusCode: 404,
-                fatal: true,
-                statusMessage: 'Page Not Found'
+    if (error.value?.data?.id) {
+        const id = error.value?.data?.id;
+        const coin = error.value?.data?.coin;
+
+        if (process.client) {
+            configStore.setSwal({
+                open: true,
+                title: 'Mua chương',
+                text: `Bạn muốn mua chương này với ${coin} coin?`,
+                type: 'info',
+                onSubmit: async () => await handleChapterBuy(id, coin)
             });
         }
+    } else if (error.value?.data) {
+        throw createError({
+            statusCode: 404,
+            fatal: true,
+            statusMessage: 'Page Not Found'
+        });
     }
 };
 
@@ -127,12 +128,6 @@ const handleChangeSetting = (e) => {
         styles['line-height'] = e?.detail?.form.lineHeight + '%' || '140%';
     }
 };
-
-if (process.client) {
-    const userStore = useUserStore();
-    user.value = userStore.$state.user;
-    checkVIP.value = userStore.checkVIP();
-}
 
 onMounted(() => {
     try {
@@ -223,7 +218,7 @@ if (data.value) {
                     Lượt xem: {{ data?.count_watched }}
                 </p>
                 <div class="chapter-content">
-                    <div v-if="stateAffClick || checkVIP"
+                    <div v-if="!aff || stateAffClick || checkVIP"
                          class="content-container mt-4 ql-editor"
                          id="chapter-content-render"
                          :style="styles"
@@ -231,14 +226,10 @@ if (data.value) {
                          v-html="data?.content">
                     </div>
 
-                    <ClientOnly v-else>
-                        <ReadStoryAffContent @on-click-aff-chuong="handleAffClick"/>
-                    </ClientOnly>
+                    <ReadStoryAffContent v-else :aff="aff" @on-click-aff-chuong="handleAffClick"/>
                 </div>
 
-                <ClientOnly>
-                    <CommonAffHorizontal :location="4" style="margin: 0"/>
-                </ClientOnly>
+                <CommonAffHorizontal :location="4" style="margin: 0"/>
 
                 <div class="my-3 text-center">
                     <button type="button" class="btn btn-danger" @click.prevent="reportError">
@@ -259,13 +250,11 @@ if (data.value) {
         </div>
     </div>
 
-    <ClientOnly>
-        <ReadStoryChapterFooter
-            :chapter="chapter"
-            :list-chapter="data?.list_chapter"
-            :slug="slug"
-            :chapter_number="data?.chapter_number || 1"/>
-    </ClientOnly>
+    <ReadStoryChapterFooter
+        :chapter="chapter"
+        :list-chapter="data?.list_chapter"
+        :slug="slug"
+        :chapter_number="data?.chapter_number || 1"/>
 </template>
 <style scoped>
 .ql-editor {

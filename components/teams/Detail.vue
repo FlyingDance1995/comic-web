@@ -1,10 +1,13 @@
 <script setup>
 import {useConfigStore} from "~/store/config.js";
 import {getMax250Chars} from "~/utils/formatName.js";
+import {useUserStore} from "~/store/user.js";
 
 const route = useRoute();
 const configStore = useConfigStore();
+const userStore = useUserStore();
 
+const user = computed(() => userStore.$state.user);
 const slug = route?.params?.slug;
 const page = +route?.query?.page || 1;
 const query = {
@@ -50,9 +53,7 @@ if (slug) {
 }
 
 const handleFollow = () => {
-    const user = JSON.parse(localStorage.getItem('user') || null);
-
-    if (!user) {
+    if (!user.value) {
         return configStore.setSwal({
             open: true,
             title: 'Oops...',

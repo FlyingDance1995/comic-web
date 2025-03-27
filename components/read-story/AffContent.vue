@@ -1,19 +1,15 @@
 <script setup>
-import { useConfigStore } from "~/store/config.js";
-
+const props = defineProps({
+    aff: {
+        type: Object,
+        default: null
+    },
+});
 const emit = defineEmits(['on-click-aff-chuong'])
-
-const configStore = useConfigStore();
-
-const aff = computed(() => configStore.$state.affList?.find(x => x?.location === 3));
 
 const handleAffClick = (link) => {
     sessionStorage.setItem('aff-chuong', link)
     window.open(link, "_blank")
-    emit('on-click-aff-chuong');
-}
-
-if (!aff.value) {
     emit('on-click-aff-chuong');
 }
 </script>

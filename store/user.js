@@ -3,9 +3,13 @@ import { defineStore } from 'pinia'
 export const useUserStore = defineStore({
     id: 'user-store',
     state: () => {
-        let user = JSON.parse(localStorage.getItem('user') || null);
-        let token = localStorage.getItem('token') || null;
-        let expiry = localStorage.getItem('expiry') || null;
+        const userCookie = useCookie('user');
+        const tokenCookie = useCookie('token');
+        const expiryCookie = useCookie('expiry');
+
+        let user = userCookie.value || null;
+        let token = tokenCookie.value || null;
+        let expiry = expiryCookie.value || null;
 
         const dateToCompare = new Date(expiry);
         const now = new Date();
@@ -14,40 +18,43 @@ export const useUserStore = defineStore({
             user = null;
             token = null;
             expiry = null;
-            localStorage.removeItem('user');
-            localStorage.removeItem('token');
-            localStorage.removeItem('expiry');
+            userCookie.value = null;
+            tokenCookie.value = null;
+            expiryCookie.value = null;
         }
 
         return {
             user: user,
             token: token,
             expiry: expiry,
-        }
+        };
     },
     actions: {
         setUser(value) {
             this.$state.user = value;
+            const userCookie = useCookie('user');
             if (value === null) {
-                localStorage.removeItem('user');
+                userCookie.value = null;
             } else {
-                localStorage.setItem('user', JSON.stringify(value));
+                userCookie.value = value;
             }
         },
         setToken(value) {
             this.$state.token = value;
+            const tokenCookie = useCookie('token');
             if (value === null) {
-                localStorage.removeItem('token');
+                tokenCookie.value = null;
             } else {
-                localStorage.setItem('token', value);
+                tokenCookie.value = value;
             }
         },
         setExpiry(value) {
             this.$state.expiry = value;
+            const expiryCookie = useCookie('expiry');
             if (value === null) {
-                localStorage.removeItem('expiry');
+                expiryCookie.value = null;
             } else {
-                localStorage.setItem('expiry', value);
+                expiryCookie.value = value;
             }
         },
         checkVIP() {
@@ -59,6 +66,6 @@ export const useUserStore = defineStore({
                 return false;
             }
             return false;
-        }
+        },
     },
 });

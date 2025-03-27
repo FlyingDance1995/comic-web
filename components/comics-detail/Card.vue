@@ -1,5 +1,6 @@
 <script setup>
 import {useConfigStore} from "~/store/config.js";
+import {useUserStore} from "~/store/user.js";
 
 const props = defineProps({
     data: {
@@ -9,14 +10,15 @@ const props = defineProps({
 });
 
 const configStore = useConfigStore();
+const userStore = useUserStore();
+
+const user = computed(() => userStore.$state.user);
 
 const listChaptersRef = ref();
 const expanded = ref(false);
 
 const handleFollow = () => {
-    const user = JSON.parse(localStorage.getItem('user') || null);
-
-    if (!user) {
+    if (!user.value) {
         return configStore.setSwal({
             open: true,
             title: 'Oops...',
@@ -52,8 +54,7 @@ const handleFollow = () => {
 };
 
 const report = () => {
-    const user = localStorage.getItem('user');
-    if (!user) {
+    if (!user.value) {
         return configStore.setSwal({
             open: true,
             title: 'Oops...',
@@ -66,8 +67,7 @@ const report = () => {
 };
 
 const reportError = () => {
-    const user = localStorage.getItem('user');
-    if (!user) {
+    if (!user.value) {
         return configStore.setSwal({
             open: true,
             title: 'Oops...',

@@ -70,15 +70,11 @@ const openSearchModal = () => {
                             </a>
                         </li>
 
-                        <ClientOnly>
-                            <CommonNotify/>
-                        </ClientOnly>
+                        <CommonNotify/>
                     </ul>
                 </div>
 
-                <ClientOnly>
-                    <CommonUserBox/>
-                </ClientOnly>
+                <CommonUserBox/>
             </nav>
         </div>
     </header>

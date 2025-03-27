@@ -6,13 +6,11 @@ import {useConfigStore} from "~/store/config.js";
 
 const route = useRoute();
 const userStore = useUserStore();
-const configStore = useConfigStore();
 
 const user = computed(() => userStore.$state.user);
 const token = computed(() => userStore.$state.token);
 const checkVIP = computed(() => userStore.checkVIP());
 const openMenu = ref(false);
-const notify = ref();
 
 const handleLogout = () => {
     userStore.setUser(null);
@@ -37,17 +35,15 @@ const getInfo = async () => {
     }
 };
 
-if (user.value) {
-    getInfo();
-}
-
 watch(() => route.path, () => {
     openMenu.value = false;
 }, {deep: true});
 
 watch(token, () => {
-    getInfo();
-});
+    if (token.value && process.client) {
+        getInfo();
+    }
+}, {immediate: true});
 </script>
 
 <template>

@@ -45,13 +45,11 @@ const configStore = useConfigStore();
 
 const openMenu = computed(() => menuStore.$state.open);
 
-if (process.client) {
-    try {
-        const response = await useNuxtApp().$api('/affiliate');
-        configStore.setAffList(response?.results);
-    } catch (e) {
-        console.log(e);
-    }
+try {
+    const response = await useNuxtApp().$api('/affiliate');
+    configStore.setAffList(response?.results);
+} catch (e) {
+    console.log(e);
 }
 </script>
 
