@@ -1,5 +1,5 @@
 <script setup>
-import {usecreateStore1} from '@/store/storys'
+import {useStoryStore1} from '@/store/storys'
 
 const route = useRoute();
 const page = +route?.query?.page || 1;
@@ -9,7 +9,7 @@ const params = {
     size: 20
 };
 
-const storyStore = usecreateStore1();
+const storyStore = useStoryStore1();
 await storyStore.fetchStorys(params);
 const {storys1, total1} = storeToRefs(storyStore);
 </script>
@@ -36,7 +36,7 @@ const {storys1, total1} = storeToRefs(storyStore);
                                     :page="page"
                                     :size="params.size"
                                     type="truyen-hoan-thanh"/>
-                    <!-- Pagination -->
+                    <!-- End Pagination -->
                 </div>
             </div>
 

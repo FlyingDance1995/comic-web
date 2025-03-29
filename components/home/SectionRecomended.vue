@@ -1,7 +1,7 @@
 <script setup>
-import {useStoryStore} from '@/store/storys'
+import {useRecommendedStoryStore} from '@/store/storys'
 
-const storyStore = useStoryStore();
+const storyStore = useRecommendedStoryStore();
 
 const {storys} = storeToRefs(storyStore);
 const loading = ref(true);

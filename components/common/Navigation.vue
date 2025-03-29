@@ -7,8 +7,6 @@ const menuStore = useMenuStore();
 const categoryStore = useCategoryStore();
 const userStore = useUserStore();
 
-await categoryStore.fetchCategory();
-
 const {category, loading, error} = storeToRefs(categoryStore);
 
 const user = computed(() => userStore.$state.user);

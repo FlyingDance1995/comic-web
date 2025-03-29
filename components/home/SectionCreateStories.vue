@@ -1,15 +1,8 @@
 <script setup>
+import { usecreateStore1 } from '@/store/storys'
 
-const query = {
-    size: 20,
-    page: 1,
-    ordering: '-modification_time',
-    type: 'composed'
-};
-
-const { data: story } = await useAPI('/story', {
-    query: query
-});
+const storyStore = usecreateStore1();
+const { storys1: story, total1 } = storeToRefs(storyStore);
 
 const loading = ref(true);
 
@@ -66,7 +59,7 @@ onMounted(() => {
                                 id="propose-story-slider">
                                 <div class="owl-stage-outer">
                                     <div v-show="!loading" class="owl-stage">
-                                        <div v-for="item in story?.results" :key="item?.id" class="owl-item">
+                                        <div v-for="item in story" :key="item?.id" class="owl-item">
                                             <div class="single-story-block">
                                                 <div class="single-story-wrap">
                                                     <div class="single-story-img">

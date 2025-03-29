@@ -4,5 +4,4 @@
 
 <template>
     <CreativeStoriesContent/>
-
 </template>

@@ -9,9 +9,7 @@
 
     <HomeSectionRecomended/>
 
-    <ClientOnly>
-        <CommonAffHorizontal :location="2" class="container"/>
-    </ClientOnly>
+    <CommonAffHorizontal :location="2" class="container"/>
 
     <HomeSectionHotStories/>
 

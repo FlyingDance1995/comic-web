@@ -1,13 +1,7 @@
 <script setup>
 import { useStoryHotStore1 } from '@/store/storys'
 
-const params_hots = {
-    ordering: "hot",
-    page: 1,
-    size: 20
-};
 const storyStore = useStoryHotStore1();
-await storyStore.fetchStorys(params_hots);
 const { storys1, total1 } = storeToRefs(storyStore);
 const loading = ref(true);
 
