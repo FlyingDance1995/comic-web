@@ -23,8 +23,7 @@ const params_creative = {
 };
 
 const params_recommended = {
-    ordering: '-modification_time',
-    type: 'composed',
+    ordering: 'recommended',
     page: 1,
     size: 20
 };
