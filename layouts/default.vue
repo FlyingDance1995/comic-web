@@ -1,6 +1,7 @@
 <script setup>
 import {useMenuStore} from "~/store/menu.js";
 import {useConfigStore} from "~/store/config.js";
+import {useCategoryStore} from '@/store/category'
 
 useHead({
     meta: [
@@ -46,10 +47,15 @@ const configStore = useConfigStore();
 const openMenu = computed(() => menuStore.$state.open);
 
 try {
-    const response = await useNuxtApp().$api('/affiliate');
-    configStore.setAffList(response?.results);
+    await Promise.all([
+        (async () => {
+            const { data } = await useAPI('/affiliate');
+            configStore.setAffList(data.value?.results);
+        })(),
+        useCategoryStore().fetchCategory(),
+    ]);
 } catch (e) {
-    console.log(e);
+  console.log('Có lỗi xảy ra:', e);
 }
 </script>
 

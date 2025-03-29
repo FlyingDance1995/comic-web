@@ -38,7 +38,9 @@ const getData = async (ordering = 'daily_watched') => {
     }
 };
 
-getData();
+if (process.client) {
+    getData();
+}
 </script>
 
 <template>

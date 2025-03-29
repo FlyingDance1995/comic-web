@@ -1,5 +1,5 @@
 <script setup>
-import {useStoryStore} from '@/store/storys'
+import {usecreateStore1} from '@/store/storys'
 
 const route = useRoute();
 const page = +route?.query?.page || 1;
@@ -10,9 +10,9 @@ const params = {
     size: 20
 };
 
-const storyStore = useStoryStore();
+const storyStore = usecreateStore1();
 await storyStore.fetchStorys(params);
-const {storys, total} = storeToRefs(storyStore);
+const {storys1, total} = storeToRefs(storyStore);
 </script>
 
 <template>
@@ -26,7 +26,7 @@ const {storys, total} = storeToRefs(storyStore);
         <div class="row">
             <div class="col-lg-9 col-md-9 col-12">
                 <div class="row product-grid">
-                    <LazyHomeProductItem v-for="(item, index) in storys"
+                    <LazyHomeProductItem v-for="(item, index) in storys1"
                                          :key="index"
                                          :item="item"/>
                 </div>

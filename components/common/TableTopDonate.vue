@@ -23,7 +23,9 @@ const getData = async () => {
     }
 };
 
-getData();
+if (process.client) {
+    getData();
+}
 </script>
 <template>
     <div class="col-md-12">
