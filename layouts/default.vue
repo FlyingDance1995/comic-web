@@ -46,8 +46,8 @@ const configStore = useConfigStore();
 const openMenu = computed(() => menuStore.$state.open);
 
 try {
-    const response = await useNuxtApp().$api('/affiliate');
-    configStore.setAffList(response?.results);
+    const {data} = await useAPI('/affiliate');
+    configStore.setAffList(data.value?.results);
 } catch (e) {
     console.log(e);
 }
