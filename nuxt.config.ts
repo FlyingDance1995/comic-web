@@ -116,8 +116,7 @@ export default defineNuxtConfig({
         "@nuxtjs/seo",
         '@nuxt/image',
         "@vite-pwa/nuxt",
-        '@pinia/nuxt',
-        'nuxt-og-image'
+        '@pinia/nuxt'
     ],
 
     site: {
