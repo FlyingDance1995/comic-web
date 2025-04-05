@@ -1,6 +1,6 @@
 export const userDarkMode = () => {
     const isDarkMode = useState("darkMode", () => false);
-    const themeCookie = useCookie('theme', { default: () => 'light-theme' });
+    const themeCookie = useCookie('theme', { maxAge: 60 * 60 * 24 * 24 * 365 * 10, default: () => 'light-theme' });
 
     onMounted(() => {
         isDarkMode.value = themeCookie.value === "dark-theme";

@@ -32,7 +32,7 @@ export const useUserStore = defineStore({
     actions: {
         setUser(value) {
             this.$state.user = value;
-            const userCookie = useCookie('user');
+            const userCookie = useCookie('user', { maxAge: 60 * 60 * 24 * 24 * 365 * 10 });
             if (value === null) {
                 userCookie.value = null;
             } else {
@@ -41,7 +41,7 @@ export const useUserStore = defineStore({
         },
         setToken(value) {
             this.$state.token = value;
-            const tokenCookie = useCookie('token');
+            const tokenCookie = useCookie('token', { maxAge: 60 * 60 * 24 * 24 * 365 * 10 });
             if (value === null) {
                 tokenCookie.value = null;
             } else {
@@ -50,7 +50,7 @@ export const useUserStore = defineStore({
         },
         setExpiry(value) {
             this.$state.expiry = value;
-            const expiryCookie = useCookie('expiry');
+            const expiryCookie = useCookie('expiry', { maxAge: 60 * 60 * 24 * 24 * 365 * 10 });
             if (value === null) {
                 expiryCookie.value = null;
             } else {

@@ -1,6 +1,6 @@
 export default defineNuxtRouteMiddleware((to, from) => {
     if (process.server) {
-        const cookie = useCookie('theme', { default: () => 'light-theme' });
+        const cookie = useCookie('theme', { maxAge: 60 * 60 * 24 * 24 * 365 * 10, default: () => 'light-theme' });
         const theme = cookie.value || 'light-theme';
 
         useHead({
