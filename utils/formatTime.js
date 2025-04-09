@@ -3,6 +3,9 @@ import 'moment/locale/vi';
 
 moment.locale('vi');
 
+const date = moment();
+console.log(date.format('LLLL'));
+
 export const timeAgo = (timestamp) => {
     if (!timestamp) return "";
     return moment.unix(timestamp).fromNow().replace('tới', 'trước');

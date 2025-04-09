@@ -25,7 +25,7 @@ const params_creative = {
 const params_recommended = {
     ordering: 'recommended',
     page: 1,
-    size: 20
+    size: 5
 };
 
 try {
