@@ -1,4 +1,6 @@
 <script setup>
+const router = useRouter();
+
 const deferredPrompt = ref(null);
 const isIOS = ref(/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream);
 const iOSIsInstalled = ref(window.navigator.standalone === true);
@@ -11,10 +13,11 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 const installApp = async () => {
     if (isIOS.value) {
-        alert('Để cài đặt ứng dụng trên iOS, vui lòng nhấn nút "Chia sẻ" trong Safari, sau đó tìm và chọn "Thêm vào Màn hình chính".');
+        // alert('Để cài đặt ứng dụng trên iOS, vui lòng nhấn nút "Chia sẻ" trong Safari, sau đó tìm và chọn "Thêm vào Màn hình chính".');
+        await router.push('/huong-dan-tai-app');
     } else if (deferredPrompt.value) {
-        deferredPrompt.value.prompt();
-        const { outcome } = await deferredPrompt.value.userChoice;
+        deferredPrompt.value?.prompt();
+        const { outcome } = await deferredPrompt.value?.userChoice;
         if (outcome === 'accepted') {
             console.log('Người dùng đã chấp nhận cài đặt PWA');
         } else {

@@ -65,8 +65,8 @@ const openSearchModal = () => {
                         <li class="nav-item dark-mode d-flex">
                             <a class="nav-link dark-mode-icon" href="javascript:;"
                                @click="toggleDarkMode">
-                                <i v-if="isDarkMode" class="bx bx-sun"></i>
-                                <i v-else class="bx bx-moon"></i>
+                                <i class="bx bx-sun"></i>
+                                <i class="bx bx-moon"></i>
                             </a>
                         </li>
 
@@ -81,6 +81,22 @@ const openSearchModal = () => {
 </template>
 
 <style scoped>
+.bx-moon {
+    display: block;
+}
+
+.bx-sun {
+    display: none;
+}
+
+.dark-theme .bx-moon {
+    display: none;
+}
+
+.dark-theme .bx-sun {
+    display: block;
+}
+
 .logo-icon {
     width: 150px;
 }
