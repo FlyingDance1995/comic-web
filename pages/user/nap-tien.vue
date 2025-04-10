@@ -1,6 +1,6 @@
 <script setup>
-import {useConfigStore} from "~/store/config.js";
-import {useUserStore} from "~/store/user.js";
+import { useConfigStore } from "~/store/config.js";
+import { useUserStore } from "~/store/user.js";
 
 const userStore = useUserStore();
 const configStore = useConfigStore();
@@ -48,8 +48,8 @@ const getData = async () => {
     try {
         loading.value = true;
         let query = {
-          ordering: '-creation_time',
-          ...route.query
+            ordering: '-creation_time',
+            ...route.query
         }
         if (!query?.search) delete query.search;
 
@@ -106,7 +106,7 @@ const handleSubmit = async () => {
                 type: 'error'
             });
         }
-        
+
         configStore.setLoadingModal(true);
         const response = await useNuxtApp().$api('/profile/transaction', {
             method: 'POST',
@@ -173,10 +173,11 @@ watch(() => route?.query, (value, oldValue) => {
         page.value = 1;
     }
     getData();
-}, {immediate: true, deep: true});
+}, { immediate: true, deep: true });
 </script>
 
 <template>
+
     <Head>
         <Title>Nạp tiền</Title>
     </Head>
@@ -193,26 +194,20 @@ watch(() => route?.query, (value, oldValue) => {
                                 Số dư: {{ user?.wallet?.balance?.toLocaleString()?.replaceAll('.', ',') || 0 }} coin
                             </div>
                             <div class="text-white">
-                                1,000 VNĐ = 1 coin
+                                1,000 VNĐ = 10 coin
                             </div>
                         </div>
                     </div>
 
                     <form v-if="!success" action="" method="POST" @submit.prevent="handleSubmit">
                         <div class="input-group mb-2">
-                            <input v-model="form.amount"
-                                   type="text" name="amount" 
-                                   class="form-control" 
-                                   placeholder="Nhập số tiền"
-                                   @input="handleInput"
-                                   required>
+                            <input v-model="form.amount" type="text" name="amount" class="form-control"
+                                placeholder="Nhập số tiền" @input="handleInput" required>
                             <span class="input-group-text" id="basic-addon2">VNĐ</span>
                         </div>
 
                         <div class="d-flex align-items-center mb-3 gap-2 flex-wrap text-info">
-                            <span
-                                v-for="item in suggestedAmount"
-                                :key="item"
+                            <span v-for="item in suggestedAmount" :key="item"
                                 style="text-decoration: underline; cursor: pointer;"
                                 @click="form.amount = formatNumber(item)">
                                 {{ item.toLocaleString().replaceAll('.', ',') }}
@@ -227,11 +222,7 @@ watch(() => route?.query, (value, oldValue) => {
                     <template v-if="success">
                         <div class="text-center">
                             <h4 class="mb-3">Quét mã QR thanh toán</h4>
-                            <img 
-                                :src="data?.bank?.qrcode" 
-                                alt="" 
-                                width="300" 
-                                style="border: 2px solid #008cff; 
+                            <img :src="data?.bank?.qrcode" alt="" width="300" style="border: 2px solid #008cff; 
                                 border-radius: 5px;">
                             <p class="my-4" style="text-align: left; font-size: 16px">
                                 Ngân hàng: <b>{{ data?.bank?.name }}</b> <br>
@@ -243,7 +234,7 @@ watch(() => route?.query, (value, oldValue) => {
                                 * Nếu có vấn đề xảy ra hãy liên hệ hỗ trợ để được giải quyết!
                             </p>
                         </div>
-                        
+
                         <div class="input-group mb-3 justify-content-center">
                             <button class="btn btn-primary px-5" @click="handleVerify">Xác nhận đã chuyển khoản</button>
                         </div>
@@ -254,14 +245,8 @@ watch(() => route?.query, (value, oldValue) => {
             <div v-if="!success" class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <Table
-                            class="flex-1"
-                            ref="table"
-                            max-height="650"
-                            :columns="columns"
-                            :data="dataTable"
-                            :loading="loading"
-                        >
+                        <Table class="flex-1" ref="table" max-height="650" :columns="columns" :data="dataTable"
+                            :loading="loading">
                             <template #creation_time="{ row }">
                                 <span>{{ formattedDate(row?.creation_time) }}</span>
                             </template>
@@ -273,11 +258,12 @@ watch(() => route?.query, (value, oldValue) => {
                             </template>
 
                             <template #amount="{ row }">
-                                {{Number(row?.amount)?.toLocaleString()?.replaceAll('.', ',')}} VNĐ
+                                {{ Number(row?.amount)?.toLocaleString()?.replaceAll('.', ',') }} VNĐ
                             </template>
                         </Table>
 
-                        <Page class="mt-4 text-black" style="text-align: right" :modelValue="page" :total="total" :page-size="5" show-total @on-change="handleChangePage"/>
+                        <Page class="mt-4 text-black" style="text-align: right" :modelValue="page" :total="total"
+                            :page-size="5" show-total @on-change="handleChangePage" />
                     </div>
                 </div>
             </div>
