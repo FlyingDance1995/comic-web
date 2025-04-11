@@ -280,14 +280,14 @@ onUnmounted(() => {
                 
                 <template #list>
                     <DropdownMenu>
-                        <DropdownItem @click="removeItem(row)">
-                            <span style="color: #fd3550">Xóa</span>
-                        </DropdownItem>
                         <DropdownItem @click="approvalItem(row)">
                             <span v-if="row?.enable" style="color: #fd3550">Hủy kích hoạt</span>
                             <span v-else style="color: blue">Kích hoạt</span>
                         </DropdownItem>
                         <DropdownItem @click="editItem(row)">Chỉnh sửa</DropdownItem>
+                        <DropdownItem @click="removeItem(row)">
+                            <span style="color: #fd3550">Xóa</span>
+                        </DropdownItem>
                     </DropdownMenu>
                 </template>
             </Dropdown>

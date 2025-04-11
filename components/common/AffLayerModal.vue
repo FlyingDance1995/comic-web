@@ -5,35 +5,60 @@ import { useUserStore } from "~/store/user.js";
 const userStore = useUserStore();
 const configStore = useConfigStore();
 
+const TIME_OUT = 5 * 60 * 1000;
+
 const aff = computed(() => configStore.$state.affList?.find(x => x?.location === 1));
 const affModal = computed(() => configStore.$state.affModal);
 const checkVIP = computed(() => userStore.checkVIP());
 
 const isOpen = ref(false);
 const isBlock = ref(false);
+const timeoutId = ref(null);
 
 configStore.setAffModal(true);
 
-const handleClickOutside = () => {
-    configStore.setAffModal(false);
-    // setTimeout(() => {
-    //     configStore.setAffModal(true);
-    // }, 1800000);
-};
-
 const handleAffLayerClick = () => {
     configStore.setAffModal(false);
-    // setTimeout(() => {
-    //     configStore.setAffModal(true);
-    // }, 1800000);
+    resetTimer();
 };
 
-const checkSessionStorage = () => {
-    if (affModal.value) return;
+const startTimer = () => {
+    if (timeoutId.value) {
+        clearTimeout(timeoutId.value);
+    }
 
-    configStore.setAffModal(true);
+    timeoutId.value = setTimeout(() => {
+        if (!(checkVIP.value || !aff.value)) {
+            configStore.setAffModal(true);
+        }
+    }, TIME_OUT);
 };
 
+const resetTimer = () => {
+    if (timeoutId.value) {
+        clearTimeout(timeoutId.value);
+    }
+
+    if (document.visibilityState === "hidden" || !document.hasFocus()) {
+        startTimer();
+    }
+};
+
+const handleVisibilityChange = () => {
+    if (document.visibilityState === "hidden") {
+        startTimer();
+    } else {
+        resetTimer();
+    }
+};
+
+const handleFocus = () => {
+    resetTimer();
+};
+
+const handleBlur = () => {
+    startTimer();
+};
 
 watch([checkVIP, aff], () => {
     if (checkVIP.value || !aff.value) {
@@ -56,6 +81,22 @@ watch(affModal, () => {
         }, 150);
     }
 }, { immediate: true });
+
+onMounted(() => {
+    resetTimer();
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("focus", handleFocus);
+    window.addEventListener("blur", handleBlur);
+});
+
+onUnmounted(() => {
+    if (timeoutId.value) {
+        clearTimeout(timeoutId.value);
+    }
+    document.removeEventListener("visibilitychange", handleVisibilityChange);
+    window.removeEventListener("focus", handleFocus);
+    window.removeEventListener("blur", handleBlur);
+});
 </script>
 
 <template>
@@ -63,12 +104,7 @@ watch(affModal, () => {
         :aria-modal="affModal" :aria-hidden="!affModal" :style="{ display: isBlock ? 'block' : 'none' }">
         <div class="modal-dialog" role="document" style="margin-top: 30px">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" @click="handleClickOutside" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body text-center" style="font-size: 15px">
+                <div class="modal-body text-center" style="font-size: 15px; margin-top: 15px">
                     <p>
                         Để có kinh phí và năng lượng tiếp tục dịch và ra mắt các bộ truyện hay.
                         <br>
@@ -87,7 +123,7 @@ watch(affModal, () => {
                         </a>
                     </p>
                     <p>
-                        Quảng cáo sẽ được tắt một khoảng thời gian sau khi <b>Click</b>.
+                        Quảng cáo sẽ được tắt sau khi <b>Click</b>.
                         <br>
                         <b>Phê Truyện</b> xin chân thành cảm ơn!
                     </p>

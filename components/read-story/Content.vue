@@ -23,12 +23,15 @@ const user = computed(() => userStore.$state.user);
 const checkVIP = computed(() => userStore.checkVIP());
 const aff = computed(() => configStore.$state.affList?.find(x => x?.location === 3));
 
+const TIME_OUT = 5 * 60 * 1000;
+
 const data = ref(null);
 const stateAffClick = ref(false);
 const styles = reactive(initStyle);
+const timeoutId = ref(null);
 
 const getData = async () => {
-    const { data: story, error, status } = await useAPI(`/story/${slug}/chapter/${chapter}`);
+    const {data: story, error, status} = await useAPI(`/story/${slug}/chapter/${chapter}`);
     data.value = story.value;
 
     if (error.value?.data?.id) {
@@ -119,6 +122,43 @@ const reportError = () => {
 
 const handleAffClick = () => {
     stateAffClick.value = true;
+    resetTimer();
+};
+
+const startTimer = () => {
+    if (timeoutId.value) {
+        clearTimeout(timeoutId.value);
+    }
+
+    timeoutId.value = setTimeout(() => {
+        stateAffClick.value = false;
+    }, TIME_OUT);
+};
+
+const resetTimer = () => {
+    if (timeoutId.value) {
+        clearTimeout(timeoutId.value);
+    }
+
+    if (document.visibilityState === "hidden" || !document.hasFocus()) {
+        startTimer();
+    }
+};
+
+const handleVisibilityChange = () => {
+    if (document.visibilityState === "hidden") {
+        startTimer();
+    } else {
+        resetTimer();
+    }
+};
+
+const handleFocus = () => {
+    resetTimer();
+};
+
+const handleBlur = () => {
+    startTimer();
 };
 
 const handleChangeSetting = (e) => {
@@ -146,13 +186,23 @@ onMounted(() => {
     }
 
     window.addEventListener('localStorageChanged', handleChangeSetting);
-
     if (sessionStorage.getItem('aff-chuong')) {
         stateAffClick.value = true;
     }
+    resetTimer();
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("focus", handleFocus);
+    window.addEventListener("blur", handleBlur);
 });
 
 onUnmounted(() => {
+    if (timeoutId.value) {
+        clearTimeout(timeoutId.value);
+    }
+    document.removeEventListener("visibilitychange", handleVisibilityChange);
+    window.removeEventListener("focus", handleFocus);
+    window.removeEventListener("blur", handleBlur);
+
     window.removeEventListener('localStorageChanged', handleChangeSetting);
 });
 
@@ -189,8 +239,10 @@ if (data.value) {
 
 <template>
     <Head v-if="data?.name">
-        <Title>{{ data?.name || data?.story?.name }} - {{ formattedNameChaper(data?.type) }} {{ data?.chapter_number ||
-            '' }}: {{ data?.name || '' }}</Title>
+        <Title>{{ data?.name || data?.story?.name }} - {{ formattedNameChaper(data?.type) }} {{
+                data?.chapter_number ||
+                ''
+            }}: {{ data?.name || '' }}</Title>
     </Head>
 
     <div class="container page-chapter-detail">
@@ -258,6 +310,6 @@ if (data.value) {
 </template>
 <style scoped>
 .ql-editor {
-  padding: 12px 4px;
+    padding: 12px 4px;
 }
 </style>
