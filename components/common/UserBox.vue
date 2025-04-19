@@ -32,6 +32,9 @@ const getInfo = async () => {
         })
     } catch (error) {
         console.log("error", error);
+        if (error?.response?.status === 401 || error?.response?.status === 403) {
+            handleLogout()
+        }
     }
 };
 

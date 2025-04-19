@@ -8,7 +8,8 @@ const props = defineProps({
 const emit = defineEmits(['on-click-aff-chuong'])
 
 const handleAffClick = (link) => {
-    sessionStorage.setItem('aff-chuong', link)
+    sessionStorage.setItem('aff-chuong', link);
+    sessionStorage.setItem('affClickTime', Date.now().toString());
     window.open(link, "_blank")
     emit('on-click-aff-chuong');
 }

@@ -19,6 +19,8 @@ configStore.setAffModal(true);
 
 const handleAffLayerClick = () => {
     configStore.setAffModal(false);
+    sessionStorage.setItem('aff-popup', 'true');
+    sessionStorage.setItem('affPopupClickTime', Date.now().toString());
     resetTimer();
 };
 
@@ -30,6 +32,8 @@ const startTimer = () => {
     timeoutId.value = setTimeout(() => {
         if (!(checkVIP.value || !aff.value)) {
             configStore.setAffModal(true);
+            sessionStorage.removeItem('aff-popup');
+            sessionStorage.removeItem('affPopupClickTime');
         }
     }, TIME_OUT);
 };
@@ -60,6 +64,19 @@ const handleBlur = () => {
     startTimer();
 };
 
+const checkAffClickTime = () => {
+    const affClickTime = sessionStorage.getItem('affPopupClickTime');
+    if (affClickTime) {
+        const currentTime = Date.now();
+        const timeDiff = currentTime - parseInt(affClickTime, 10);
+        if (timeDiff >= TIME_OUT) {
+            configStore.setAffModal(true);
+            sessionStorage.removeItem('aff-popup');
+            sessionStorage.removeItem('affPopupClickTime');
+        }
+    }
+};
+
 watch([checkVIP, aff], () => {
     if (checkVIP.value || !aff.value) {
         configStore.setAffModal(false);
@@ -75,14 +92,19 @@ watch(affModal, () => {
         }, 150);
     } else {
         isOpen.value = false;
-        document.body.style.overflow = '';
         setTimeout(() => {
             isBlock.value = false;
+            document.body.style.overflow = '';
         }, 150);
     }
 }, { immediate: true });
 
 onMounted(() => {
+    checkAffClickTime();
+
+    if (sessionStorage.getItem('aff-popup')) {
+        configStore.setAffModal(false);
+    }
     resetTimer();
     document.addEventListener("visibilitychange", handleVisibilityChange);
     window.addEventListener("focus", handleFocus);

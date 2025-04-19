@@ -24,6 +24,7 @@ const checkVIP = computed(() => userStore.checkVIP());
 const aff = computed(() => configStore.$state.affList?.find(x => x?.location === 3));
 
 const TIME_OUT = 5 * 60 * 1000;
+// const TIME_OUT = 10000;
 
 const data = ref(null);
 const stateAffClick = ref(false);
@@ -132,6 +133,7 @@ const startTimer = () => {
 
     timeoutId.value = setTimeout(() => {
         stateAffClick.value = false;
+        sessionStorage.removeItem('aff-chuong');
     }, TIME_OUT);
 };
 
@@ -169,6 +171,19 @@ const handleChangeSetting = (e) => {
     }
 };
 
+const checkAffClickTime = () => {
+    const affClickTime = sessionStorage.getItem('affClickTime');
+    if (affClickTime) {
+        const currentTime = Date.now();
+        const timeDiff = currentTime - parseInt(affClickTime, 10);
+        if (timeDiff >= TIME_OUT) {
+            stateAffClick.value = false;
+            sessionStorage.removeItem('aff-chuong');
+            sessionStorage.removeItem('affClickTime');
+        }
+    }
+};
+
 onMounted(() => {
     try {
         const settingFont = localStorage.getItem('settingFont');
@@ -184,6 +199,8 @@ onMounted(() => {
         });
         console.log(e);
     }
+
+    checkAffClickTime();
 
     window.addEventListener('localStorageChanged', handleChangeSetting);
     if (sessionStorage.getItem('aff-chuong')) {
