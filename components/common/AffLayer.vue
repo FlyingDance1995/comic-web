@@ -1,66 +1,46 @@
 <script setup>
 import {useUserStore} from "~/store/user.js";
+import {useConfigStore} from "~/store/config.js";
 
 const userStore = useUserStore();
-const {setTimeAff} = useRuntimeConfig().public;
+const configStore = useConfigStore();
 
-const user = computed(() => userStore.$state.user);
+const TIME_OUT = 5 * 60 * 1000;
+
 const checkVIP = computed(() => userStore.checkVIP());
 
 const aff = ref();
-const listAff = ref([]);
+const listAff = computed(() => configStore.$state.affList?.filter(x => x?.location === 5 || x?.location === 6));
 const currentIndex = ref(0);
-const isAff = ref(sessionStorage.getItem('aff') !== null);
 const isClick = ref(false);
 
-try {
-    listAff.value = await useNuxtApp().$api('/affiliate');
-    aff.value = listAff.value[currentIndex.value];
-    currentIndex.value = (currentIndex.value + 1) % listAff.value.length;
-} catch (error) {
-    console.log(error);
+const handleAffLayerClick = () => {
+    isClick.value = true;
+
+    if (currentIndex.value >= 1) return;
+    currentIndex.value += 1;
+    setTimeout(showAff, TIME_OUT);
+};
+
+const showAff = () => {
+    try {
+        isClick.value = false;
+        aff.value = listAff.value[currentIndex.value];
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-const checkSessionStorage = () => {
-    if (!isAff.value) return;
-
-    aff.value = listAff.value[Math.floor(Math.random() * listAff.value.length)];
-    currentIndex.value = (currentIndex.value + 1) % listAff.value.length;
-    sessionStorage.removeItem('aff');
-    isAff.value = false;
-};
-
-const handleAffLayerClick = () => {
-    sessionStorage.setItem('aff', 'true');
-    isAff.value = true;
-    isClick.value = true;
-};
-
-const handleVisibilityChange = () => {
-    if (document.visibilityState === 'visible') {
-        if(!isClick.value) checkSessionStorage();
-        isClick.value = false;
-    }
-};
-
-let intervalId;
-
 onMounted(() => {
-    intervalId = setInterval(checkSessionStorage, setTimeAff * 1000);
-    // document.addEventListener('visibilitychange', handleVisibilityChange);
-});
-
-onUnmounted(() => {
-    clearInterval(intervalId);
-    // document.removeEventListener('visibilitychange', handleVisibilityChange);
+    setTimeout(showAff, TIME_OUT);
 });
 </script>
 
 <template>
-    <a v-if="aff && !isAff && !checkVIP"
+    <a v-if="aff && !isClick && !checkVIP"
        id="affLayer"
        class="transparent-layer"
-       :href="aff"
+       :href="aff?.link"
        target="_blank"
        @click="handleAffLayerClick"/>
 </template>

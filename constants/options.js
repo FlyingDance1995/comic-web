@@ -32,4 +32,6 @@ export const optionsLocation = [
     {value: 2, label: 'Trang chủ'},
     {value: 3, label: 'Trang thông tin truyện'},
     {value: 4, label: 'Trang đọc truyện'},
+    {value: 5, label: 'Lớp phủ 1'},
+    {value: 6, label: 'Lớp phủ 2'},
 ];

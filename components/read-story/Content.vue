@@ -24,7 +24,6 @@ const checkVIP = computed(() => userStore.checkVIP());
 const aff = computed(() => configStore.$state.affList?.find(x => x?.location === 3));
 
 const TIME_OUT = 5 * 60 * 1000;
-// const TIME_OUT = 10000;
 
 const data = ref(null);
 const stateAffClick = ref(false);

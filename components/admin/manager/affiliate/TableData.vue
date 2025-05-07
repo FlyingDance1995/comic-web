@@ -3,6 +3,7 @@ import {
     mappingAffiliateTable, filterAffiliateStatus
 } from "~/utils/mapping.js";
 import {optionsLocation} from "../../../../constants/options.js";
+import {Image} from "view-ui-plus";
 
 const { $api } = useNuxtApp();
 const route = useRoute();
@@ -19,6 +20,11 @@ const columns = [
         title: 'Name',
         key: 'name',
         minWidth: 300,
+    },
+    {
+        title: 'Banner',
+        slot: 'banner',
+        width: 300,
     },
     {
         title: 'Link',
@@ -252,6 +258,12 @@ onUnmounted(() => {
             {{row?.name}}
         </template>
 
+        <template #banner="{ row }">
+            <div class="py-2">
+                <Image :src="row?.banner" preview fit="contain" height="100px" :preview-list="[row?.banner]"/>
+            </div>
+        </template>
+
         <template #link="{ row }">
             <NuxtLink :to="row?.link" target="_blank" external>
                 {{row?.link}}
@@ -293,25 +305,6 @@ onUnmounted(() => {
             </Dropdown>
         </template>
     </Table>
-
-    <Modal
-        v-model="openModal"
-        title="Chỉnh sửa Affiliate"
-        :loading="loadingModal"
-        width="800px"
-        @on-ok="asyncOK">
-
-        <Form :model="formItem" label-position="top">
-            <FormItem label="Tên">
-                <Input v-model="formItem.name" placeholder="Tên"></Input>
-            </FormItem>
-
-            <FormItem label="Link">
-                <Input v-model="formItem.link" placeholder="Link"></Input>
-            </FormItem>
-        </Form>
-    </Modal>
-
 
     <AdminManagerAffiliateCreateOrUpdateModal ref="modalUpdateRef"/>
 

@@ -63,7 +63,7 @@ try {
     <NuxtLoadingIndicator color="#bb85be"/>
     <!--ads-->
     <ClientOnly>
-<!--        <CommonAffLayer/>-->
+        <CommonAffLayer/>
         <CommonAffLayerModal/>
     </ClientOnly>
     <!--wrapper-->
