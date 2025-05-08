@@ -69,7 +69,7 @@ watch(token, () => {
             id="drop-menu"
             class="dropdown-menu dropdown-menu-end"
             :class="openMenu ? 'show' : ''">
-            <li>
+            <!-- <li>
                 <NuxtLink class="dropdown-item d-flex align-items-center" to="/user/nap-tien">
                     <i class="bx bx-money fs-5"></i><span>{{ user?.wallet?.balance?.toLocaleString()?.replaceAll('.', ',') || 0 }} coin</span>
                 </NuxtLink>
@@ -77,7 +77,7 @@ watch(token, () => {
 
             <li>
                 <div class="dropdown-divider mb-0"></div>
-            </li>
+            </li> -->
 
             <li v-if="route.path.includes('/dang-truyen') || route.path.includes('/admin')">
                 <NuxtLink class="dropdown-item d-flex align-items-center"

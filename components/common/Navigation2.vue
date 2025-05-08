@@ -138,7 +138,7 @@ const closeMenu = () => {
                                 </NuxtLink>
                             </li>
 
-                            <li class="nav-item dropdown">
+                            <!-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret"
                                    :class="openSubMenuVip ? 'show' : ''"
                                    :aria-expanded="openSubMenuVip"
@@ -161,7 +161,7 @@ const closeMenu = () => {
                                         </NuxtLink>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
